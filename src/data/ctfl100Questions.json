@@ -1,0 +1,1202 @@
+[
+  {
+    "id": 1,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 2,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 3,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 4,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 5,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 6,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 7,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 8,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 9,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 10,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 11,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 12,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 13,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 14,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 15,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 16,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 17,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 18,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 19,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 20,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 21,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 22,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 23,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 24,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 25,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 26,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 27,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 28,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 29,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 30,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 31,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 32,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 33,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 34,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 35,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 36,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 37,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 38,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 39,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 40,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 41,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 42,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 43,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 44,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 45,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 46,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 47,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 48,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 49,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 50,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 51,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 52,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 53,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 54,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 55,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 56,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 57,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 58,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 59,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 60,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 61,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 62,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 63,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 64,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 65,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 66,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 67,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 68,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 69,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 70,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 71,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 72,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 73,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 74,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 75,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 76,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 77,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 78,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 79,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 80,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 81,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 82,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 83,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 84,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 85,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 86,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 87,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 88,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 89,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 90,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 91,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 92,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 93,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 94,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 95,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 96,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 97,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 98,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  },
+  {
+    "id": 99,
+    "question": "Qual das opções abaixo representa melhor o objetivo principal do teste de software?",
+    "options": [
+      "Garantir que o software está livre de defeitos.",
+      "Demonstrar que o software atende aos requisitos especificados.",
+      "Corrigir todos os bugs antes da entrega.",
+      "Otimizar a performance do código."
+    ],
+    "correctAnswer": 1,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, conforme o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.1 - O que é Teste?), o objetivo principal do teste de software é **demonstrar que o software atende aos requisitos especificados** e **identificar defeitos**. A opção A está incorreta porque o teste pode reduzir a probabilidade de defeitos não descobertos, mas não pode garantir a ausência total de defeitos (princípio 1: Teste mostra a presença de defeitos, não sua ausência). A opção C está incorreta porque corrigir bugs é uma atividade de desenvolvimento, não o objetivo principal do teste. A opção D está incorreta porque otimizar a performance é um objetivo secundário ou um tipo específico de teste (teste de performance), não o objetivo principal do teste de software em geral."
+  },
+  {
+    "id": 100,
+    "question": "O que é um erro (mistake) em engenharia de software?",
+    "options": [
+      "Um desvio entre o comportamento esperado e o real.",
+      "Uma falha durante a execução.",
+      "Uma ação humana que gera um resultado incorreto.",
+      "Uma exceção do sistema."
+    ],
+    "correctAnswer": 2,
+    "explanation": "**Análise Detalhada:** A resposta correta é a opção  porque, de acordo com o ISTQB/BSTQB CTFL 4.0 (Capítulo 1.2 - Por que o Teste é Necessário?), um **erro (mistake)** é uma ação humana que pode produzir um resultado incorreto, como um defeito ou falha. A opção A descreve uma falha (failure). A opção B descreve uma falha (failure). A opção D descreve uma falha (failure) ou um tipo de defeito. Erros humanos levam a defeitos no código ou na documentação, que por sua vez podem causar falhas durante a execução do software."
+  }
+]

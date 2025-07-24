@@ -1,0 +1,224 @@
+[
+  {
+    "question": "De acordo com o CTFL, qual é a principal diferença entre verificação e validação?",
+    "options": [
+      "Verificação é 'construir o produto certo', validação é 'construir o produto corretamente'.",
+      "Verificação é 'construir o produto corretamente', validação é 'construir o produto certo'.",
+      "Ambos são sinônimos e se referem ao mesmo processo de teste.",
+      "Verificação é um teste manual, enquanto validação é um teste automatizado."
+    ],
+    "correct": 1,
+    "explanation": "Verificação (Are we building the product right?) é o processo de avaliar se o software está sendo construído corretamente, de acordo com as especificações. Validação (Are we building the right product?) é o processo de avaliar se o software atende às necessidades do usuário e aos requisitos de negócio."
+  },
+  {
+    "question": "No contexto do SDLC, em qual fase a equipe de QA geralmente começa a se envolver ativamente em uma abordagem 'Shift Left'?",
+    "options": [
+      "Fase de Implantação.",
+      "Fase de Manutenção.",
+      "Fase de Requisitos e Design.",
+      "Fase de Testes Finais."
+    ],
+    "correct": 2,
+    "explanation": "A abordagem 'Shift Left' preconiza que o QA se envolva desde as fases iniciais do SDLC, como Requisitos e Design, para identificar e prevenir defeitos o mais cedo possível."
+  },
+  {
+    "question": "Qual é o principal objetivo de um teste de regressão em um ciclo de desenvolvimento ágil?",
+    "options": [
+      "Garantir que novas funcionalidades funcionem corretamente.",
+      "Verificar se as alterações recentes não introduziram novos defeitos ou quebraram funcionalidades existentes.",
+      "Avaliar a performance do sistema sob carga.",
+      "Testar a usabilidade da interface do usuário."
+    ],
+    "correct": 1,
+    "explanation": "O teste de regressão é crucial em ciclos ágeis para garantir que as modificações no código (novas funcionalidades, correções de bugs) não impactem negativamente as funcionalidades já existentes e estáveis."
+  },
+  {
+    "question": "Qual dos seguintes tipos de teste foca em verificar se o software atende às necessidades e expectativas do usuário final?",
+    "options": [
+      "Teste de Unidade.",
+      "Teste de Integração.",
+      "Teste de Aceitação do Usuário (UAT).",
+      "Teste de Performance."
+    ],
+    "correct": 2,
+    "explanation": "O Teste de Aceitação do Usuário (UAT) é realizado pelos usuários finais para verificar se o sistema atende aos seus requisitos de negócio e se está pronto para ser liberado para produção."
+  },
+  {
+    "question": "Em um cenário de automação de testes, qual a principal vantagem de utilizar o Cypress em vez do Selenium para aplicações web modernas?",
+    "options": [
+      "Cypress suporta múltiplas linguagens de programação, enquanto Selenium não.",
+      "Cypress é mais rápido e fácil de configurar para testes end-to-end em aplicações web modernas.",
+      "Selenium oferece depuração em tempo real, enquanto Cypress não.",
+      "Cypress é ideal para testes de API, enquanto Selenium é para UI."
+    ],
+    "correct": 1,
+    "explanation": "Cypress é conhecido por sua arquitetura que executa os testes no mesmo loop de execução da aplicação, proporcionando depuração em tempo real, instalação mais simples e execução mais rápida para testes end-to-end em aplicações web modernas, ao contrário do Selenium que requer drivers e configurações mais complexas."
+  },
+  {
+    "question": "Qual o propósito principal do JUnit em um projeto Java?",
+    "options": [
+      "Gerenciar dependências do projeto.",
+      "Automatizar testes de interface do usuário.",
+      "Facilitar a escrita e execução de testes de unidade.",
+      "Monitorar a performance da aplicação em produção."
+    ],
+    "correct": 2,
+    "explanation": "JUnit é um framework de testes de unidade para Java, amplamente utilizado para escrever e executar testes automatizados para componentes individuais do código, garantindo que cada parte funcione como esperado."
+  },
+  {
+    "question": "O que é um 'Feature File' no contexto do Cucumber e BDD?",
+    "options": [
+      "Um arquivo que descreve as funcionalidades do sistema em código Java.",
+      "Um arquivo que contém os resultados dos testes de performance.",
+      "Um arquivo que descreve o comportamento do software em linguagem Gherkin, usando cenários e passos.",
+      "Um arquivo de configuração para o ambiente de testes."
+    ],
+    "correct": 2,
+    "explanation": "No Cucumber, um 'Feature File' é um arquivo de texto simples que descreve as funcionalidades do sistema e seus cenários de comportamento usando a sintaxe Gherkin (Dado, Quando, Então), tornando-o legível por não-técnicos."
+  },
+  {
+    "question": "Qual ferramenta é mais adequada para testar APIs RESTful, permitindo o envio de requisições HTTP e a inspeção de respostas?",
+    "options": [
+      "Jira.",
+      "GitLab.",
+      "Postman.",
+      "Jenkins."
+    ],
+    "correct": 2,
+    "explanation": "Postman é uma ferramenta popular para desenvolvimento e teste de APIs, permitindo aos usuários enviar requisições HTTP, inspecionar as respostas, e automatizar coleções de testes para APIs RESTful e SOAP."
+  },
+  {
+    "question": "Na Pirâmide de Testes, qual camada deve ter o maior número de testes e por quê?",
+    "options": [
+      "Testes de UI, porque são os mais próximos do usuário final.",
+      "Testes de Integração, porque cobrem a interação entre módulos.",
+      "Testes de Unidade, porque são rápidos, baratos e isolam falhas.",
+      "Testes de Performance, para garantir a escalabilidade."
+    ],
+    "correct": 2,
+    "explanation": "A base da Pirâmide de Testes é composta por Testes de Unidade. Eles são os mais numerosos porque são rápidos de executar, baratos de manter e eficazes em isolar defeitos em pequenas unidades de código, facilitando a depuração."
+  },
+  {
+    "question": "Qual o principal benefício de usar um sistema de controle de versão como Git/GitHub em um projeto de automação de testes?",
+    "options": [
+      "Acelerar a execução dos scripts de teste.",
+      "Automatizar a geração de relatórios de teste.",
+      "Permitir a colaboração entre testadores, rastrear mudanças e gerenciar diferentes versões dos scripts.",
+      "Reduzir o tempo de desenvolvimento dos testes."
+    ],
+    "correct": 2,
+    "explanation": "Git e GitHub são fundamentais para a colaboração em equipes de automação, permitindo que múltiplos testadores trabalhem no mesmo código, rastreiem alterações, revertam para versões anteriores e gerenciem o ciclo de vida dos scripts de teste de forma eficiente."
+  },
+  {
+    "question": "Em Scrum, qual evento tem como objetivo inspecionar o trabalho realizado e adaptar o Backlog do Produto, se necessário?",
+    "options": [
+      "Daily Scrum.",
+      "Sprint Planning.",
+      "Sprint Review.",
+      "Sprint Retrospective."
+    ],
+    "correct": 2,
+    "explanation": "A Sprint Review é um evento do Scrum onde o Time Scrum e os stakeholders inspecionam o Incremento e adaptam o Backlog do Produto, se necessário, com base no feedback recebido."
+  },
+  {
+    "question": "Qual é a principal característica de um quadro Kanban?",
+    "options": [
+      "Sprints de duração fixa.",
+      "Limitação do trabalho em progresso (WIP) e visualização do fluxo de trabalho.",
+      "Papéis e responsabilidades bem definidos para cada membro da equipe.",
+      "Reuniões diárias obrigatórias para sincronização."
+    ],
+    "correct": 1,
+    "explanation": "Kanban é um método ágil que foca na visualização do fluxo de trabalho, na limitação do trabalho em progresso (WIP) e na melhoria contínua, utilizando um quadro visual para gerenciar as tarefas."
+  },
+  {
+    "question": "O que é um 'bug' no contexto de testes de software?",
+    "options": [
+      "Um erro de digitação em um documento.",
+      "Uma falha, defeito ou erro em um programa de computador que causa um resultado inesperado ou incorreto.",
+      "Um recurso não documentado do software.",
+      "Um problema de hardware no computador do testador."
+    ],
+    "correct": 1,
+    "explanation": "Um bug é uma falha no software que faz com que ele se comporte de maneira diferente do esperado, podendo ser um erro de codificação, lógica ou design."
+  },
+  {
+    "question": "Qual a importância dos testes de usabilidade?",
+    "options": [
+      "Garantir que o software seja seguro contra ataques cibernéticos.",
+      "Verificar se o software é fácil de usar, eficiente e satisfatório para o usuário final.",
+      "Medir o tempo de resposta do sistema sob alta carga.",
+      "Confirmar que todas as funcionalidades estão implementadas."
+    ],
+    "correct": 1,
+    "explanation": "Testes de usabilidade avaliam a facilidade com que os usuários podem aprender e usar um software para atingir seus objetivos, focando na experiência do usuário e na interação com a interface."
+  },
+  {
+    "question": "O que é um 'caso de teste' (Test Case)?",
+    "options": [
+      "Um relatório de bug.",
+      "Um conjunto de condições e passos para verificar uma funcionalidade específica do software.",
+      "Um script de automação de testes.",
+      "Um documento que descreve a arquitetura do sistema."
+    ],
+    "correct": 1,
+    "explanation": "Um caso de teste é um conjunto de ações a serem executadas para verificar uma funcionalidade específica do software, incluindo pré-condições, passos de execução, dados de entrada e resultados esperados."
+  },
+  {
+    "question": "Qual o papel do QA no dia a dia de uma equipe ágil?",
+    "options": [
+      "Apenas encontrar bugs e reportá-los.",
+      "Colaborar com desenvolvedores, participar de reuniões, escrever e executar testes, e garantir a qualidade contínua do produto.",
+      "Gerenciar o projeto e as tarefas da equipe.",
+      "Escrever o código fonte da aplicação."
+    ],
+    "correct": 1,
+    "explanation": "No dia a dia de uma equipe ágil, o QA é um membro ativo e colaborativo, envolvido em todas as etapas do desenvolvimento, desde a definição dos requisitos até a entrega, focando na prevenção de defeitos e na melhoria contínua da qualidade."
+  },
+  {
+    "question": "O que é um teste de caixa branca?",
+    "options": [
+      "Teste realizado sem acesso ao código interno.",
+      "Teste que verifica a funcionalidade externa do software.",
+      "Teste que avalia a estrutura interna e o funcionamento do código.",
+      "Teste realizado apenas por usuários finais."
+    ],
+    "correct": 2,
+    "explanation": "Teste de caixa branca é uma técnica de teste que avalia a estrutura interna e o funcionamento do código, permitindo ao testador ter conhecimento sobre a lógica, caminhos de código e estruturas de dados."
+  },
+  {
+    "question": "Qual a importância de testes de segurança?",
+    "options": [
+      "Garantir que o software seja fácil de usar.",
+      "Verificar se o software protege dados e funcionalidades contra acessos não autorizados e ataques maliciosos.",
+      "Medir a velocidade de resposta do sistema.",
+      "Assegurar que o software funcione em diferentes navegadores."
+    ],
+    "correct": 1,
+    "explanation": "Testes de segurança são cruciais para identificar vulnerabilidades e garantir que o software seja robusto contra ameaças cibernéticas, protegendo dados sensíveis e a integridade do sistema."
+  },
+  {
+    "question": "O que é um 'mock' ou 'stub' em testes de unidade?",
+    "options": [
+      "Um tipo de bug.",
+      "Uma ferramenta para automação de testes de UI.",
+      "Objetos simulados que substituem dependências reais para isolar a unidade de código em teste.",
+      "Um ambiente de teste completo."
+    ],
+    "correct": 2,
+    "explanation": "Mocks e stubs são objetos simulados usados em testes de unidade para controlar o comportamento de dependências externas (como bancos de dados ou APIs), permitindo que a unidade de código seja testada isoladamente e de forma consistente."
+  },
+  {
+    "question": "Qual o objetivo principal de um teste de carga (Load Test)?",
+    "options": [
+      "Verificar a funcionalidade do software.",
+      "Avaliar o comportamento do sistema sob uma carga de trabalho esperada ou normal.",
+      "Identificar vulnerabilidades de segurança.",
+      "Testar a compatibilidade do software com diferentes sistemas operacionais."
+    ],
+    "correct": 1,
+    "explanation": "Testes de carga são um tipo de teste de performance que avalia o comportamento do sistema sob uma carga de trabalho esperada, medindo métricas como tempo de resposta, throughput e utilização de recursos para garantir que o sistema possa lidar com o número de usuários e transações previstos."
+  }
+]
+
+

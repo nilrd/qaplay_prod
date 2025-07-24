@@ -1,0 +1,355 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.7 0.15 240);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.7 0.15 240);
+  --chart-1: oklch(0.6 0.25 260);
+  --chart-2: oklch(0.7 0.17 160);
+  --chart-3: oklch(0.75 0.19 70);
+  --chart-4: oklch(0.65 0.27 300);
+  --chart-5: oklch(0.65 0.25 15);
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.6 0.25 260);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: oklch(0.6 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* QAPlay Custom Styles */
+@layer components {
+  /* Desktop-first responsive layout */
+  .qaplay-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Desktop navigation - visible on screens >= 1024px */
+  .desktop-nav {
+    @apply hidden lg:flex;
+  }
+  
+  /* Mobile navigation - visible on screens < 1024px */
+  .mobile-nav {
+    @apply lg:hidden;
+  }
+  
+  /* Hero section with proper desktop layout */
+  .hero-section {
+    @apply py-16 lg:py-24 text-center;
+  }
+  
+  /* Card grid with proper responsive behavior */
+  .card-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+  }
+  
+  /* Feature grid for desktop */
+  .feature-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8;
+  }
+  
+  /* Main content area with sidebar */
+  .main-layout {
+    @apply flex flex-col lg:flex-row gap-8;
+  }
+  
+  .main-content {
+    @apply flex-1 min-w-0;
+  }
+  
+  .sidebar {
+    @apply w-full lg:w-80 lg:flex-shrink-0;
+  }
+}
+
+
+/* Dark mode specific improvements */
+.dark .bg-white {
+  @apply bg-card;
+}
+
+.dark .text-gray-900 {
+  @apply text-foreground;
+}
+
+.dark .text-gray-600 {
+  @apply text-muted-foreground;
+}
+
+.dark .text-gray-500 {
+  @apply text-muted-foreground;
+}
+
+.dark .border-gray-200 {
+  @apply border-border;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-muted;
+}
+
+.dark .bg-gray-100 {
+  @apply bg-muted;
+}
+
+/* Ensure proper contrast for buttons in dark mode */
+.dark .bg-blue-600 {
+  @apply bg-primary;
+}
+
+.dark .hover\:bg-blue-700:hover {
+  @apply hover:bg-primary/90;
+}
+
+.dark .text-blue-600 {
+  @apply text-primary;
+}
+
+/* Fix card backgrounds in dark mode */
+.dark .bg-gradient-to-br {
+  @apply from-card to-muted;
+}
+
+/* Improve visibility of badges and tags in dark mode */
+.dark .bg-blue-50 {
+  @apply bg-primary/10 text-primary;
+}
+
+.dark .bg-green-50 {
+  @apply bg-green-500/10 text-green-400;
+}
+
+.dark .bg-red-50 {
+  @apply bg-red-500/10 text-red-400;
+}
+
+.dark .bg-yellow-50 {
+  @apply bg-yellow-500/10 text-yellow-400;
+}
+
+.dark .bg-purple-50 {
+  @apply bg-purple-500/10 text-purple-400;
+}
+
+.dark .bg-orange-50 {
+  @apply bg-orange-500/10 text-orange-400;
+}
+
+/* Fix text colors in dark mode */
+.dark .text-blue-800 {
+  @apply text-blue-300;
+}
+
+.dark .text-green-800 {
+  @apply text-green-300;
+}
+
+.dark .text-red-800 {
+  @apply text-red-300;
+}
+
+.dark .text-yellow-800 {
+  @apply text-yellow-300;
+}
+
+.dark .text-purple-800 {
+  @apply text-purple-300;
+}
+
+.dark .text-orange-800 {
+  @apply text-orange-300;
+}
+
+/* Improve form inputs in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  @apply bg-input border-border text-foreground;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  @apply ring-ring border-ring;
+}
+
+/* Fix alert components in dark mode */
+.dark .border-blue-200 {
+  @apply border-blue-500/30;
+}
+
+.dark .border-red-200 {
+  @apply border-red-500/30;
+}
+
+.dark .border-green-200 {
+  @apply border-green-500/30;
+}
+
+.dark .border-yellow-200 {
+  @apply border-yellow-500/30;
+}
+
+.dark .border-orange-200 {
+  @apply border-orange-500/30;
+}
+
+/* Improve hover states in dark mode */
+.dark .hover\:bg-gray-50:hover {
+  @apply hover:bg-muted;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  @apply hover:bg-accent;
+}
+
+/* Fix gradient backgrounds in dark mode */
+.dark .bg-gradient-to-r.from-blue-50.to-white {
+  @apply from-blue-500/10 to-card;
+}
+
+.dark .bg-gradient-to-r.from-green-50.to-white {
+  @apply from-green-500/10 to-card;
+}
+
+.dark .bg-gradient-to-r.from-purple-50.to-white {
+  @apply from-purple-500/10 to-card;
+}
+
+.dark .bg-gradient-to-r.from-red-50.to-white {
+  @apply from-red-500/10 to-card;
+}
+
+.dark .bg-gradient-to-r.from-yellow-50.to-white {
+  @apply from-yellow-500/10 to-card;
+}
+
+.dark .bg-gradient-to-r.from-orange-50.to-white {
+  @apply from-orange-500/10 to-card;
+}
+
+/* Ensure proper visibility for icons in dark mode */
+.dark .text-gray-400 {
+  @apply text-muted-foreground;
+}
+
+.dark .text-gray-300 {
+  @apply text-foreground/80;
+}
+
+/* Fix shadow colors in dark mode */
+.dark .shadow-lg {
+  @apply shadow-black/20;
+}
+
+.dark .shadow-xl {
+  @apply shadow-black/25;
+}
+
+.dark .shadow-2xl {
+  @apply shadow-black/30;
+}
+
