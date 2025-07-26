@@ -16,11 +16,11 @@
     "question": "Qual dos seguintes NÃO é um princípio fundamental de teste segundo o CTFL 4.0?",
     "options": [
       "Teste mostra a presença de defeitos, não sua ausência",
+      "Teste deve começar o mais cedo possível",
       "Teste exaustivo é impossível",
-      "Teste deve começar o mais tarde possível",
       "Defeitos se agrupam"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "O teste deve começar o mais cedo possível (shift-left), não o mais tarde possível. Testar cedo reduz custos e melhora a qualidade."
   },
   {
@@ -1200,4 +1200,6 @@
     "explanation": "O testador em equipe ágil colabora durante todo o ciclo: ajuda na definição de requisitos, critérios de aceitação, automação, e garante qualidade contínua."
   }
 ]
+
+
 

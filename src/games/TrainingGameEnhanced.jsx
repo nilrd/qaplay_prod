@@ -17,7 +17,7 @@ const TrainingGameEnhanced = () => {
   const [score, setScore] = useState(0)
   const [questions, setQuestions] = useState([])
   const [startTime, setStartTime] = useState(null)
-  const [timeRemaining, setTimeRemaining] = useState(60 * 60) // 60 minutos em segundos
+  const [timeRemaining, setTimeRemaining] = useState(30 * 60) // 30 minutos em segundos
   const [answers, setAnswers] = useState([])
   const [isTabActive, setIsTabActive] = useState(true)
   const [userInfo, setUserInfo] = useState({ name: '', linkedin: '' })
@@ -224,7 +224,7 @@ const TrainingGameEnhanced = () => {
                 </li>
                 <li className="flex items-start space-x-2">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span><strong>60 minutos</strong> para completar</span>
+                  <span><strong>30 minutos</strong> para completar</span>
                 </li>
                 <li className="flex items-start space-x-2">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
