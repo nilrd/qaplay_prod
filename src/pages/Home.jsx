@@ -14,7 +14,7 @@ const Home = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/20">
               <Gamepad2 className="w-4 h-4" />
-              <span>🎮 Plataforma Gamificada de QA</span>
+              <span className="text-primary-foreground">🎮 Plataforma Gamificada de QA</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
@@ -103,7 +103,7 @@ const Home = () => {
           <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-500/10 dark:to-blue-500/10 border-green-200/50 dark:border-green-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader className="text-center pb-4">
               <div className="mx-auto w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Gamepad2 className="h-8 w-8 text-white" />
+                <Gamepad2 className="h-8 w-8 text-gray-900 dark:text-white" />
               </div>
               <CardTitle className="text-2xl text-foreground">Jogos Interativos</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -159,7 +159,7 @@ const Home = () => {
           <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-500/10 dark:to-red-500/10 border-orange-200/50 dark:border-orange-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader className="text-center pb-4">
               <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Target className="h-8 w-8 text-white" />
+                <Target className="h-8 w-8 text-gray-900 dark:text-white" />
               </div>
               <CardTitle className="text-2xl text-foreground">Modo Treinamento</CardTitle>
               <CardDescription className="text-muted-foreground">
@@ -222,7 +222,7 @@ const Home = () => {
           <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 border-purple-200/50 dark:border-purple-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
             <CardHeader className="text-center pb-4">
               <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Code className="h-8 w-8 text-white" />
+                <Code className="h-8 w-8 text-gray-900 dark:text-white" />
               </div>
               <CardTitle className="text-2xl text-foreground">Desafios de Programação</CardTitle>
               <CardDescription className="text-muted-foreground">
