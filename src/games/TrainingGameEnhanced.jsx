@@ -26,7 +26,25 @@ const TrainingGameEnhanced = () => {
   // Embaralhar perguntas e selecionar 30
   const shuffleQuestions = () => {
     const shuffled = [...trainingQuestions].sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, 30)
+    const selected = shuffled.slice(0, 30)
+    
+    // Embaralhar as opções de cada pergunta
+    return selected.map(question => {
+      const options = [...question.options]
+      const correctAnswer = options[question.correct]
+      
+      // Embaralhar as opções
+      const shuffledOptions = options.sort(() => Math.random() - 0.5)
+      
+      // Encontrar a nova posição da resposta correta
+      const newCorrectIndex = shuffledOptions.findIndex(option => option === correctAnswer)
+      
+      return {
+        ...question,
+        options: shuffledOptions,
+        correct: newCorrectIndex
+      }
+    })
   }
 
   // Monitorar mudança de aba/janela
@@ -98,7 +116,7 @@ const TrainingGameEnhanced = () => {
     setShowFeedback(false)
     setScore(0)
     setStartTime(new Date())
-    setTimeRemaining(60 * 60)
+    setTimeRemaining(30 * 60)
     setAnswers([])
   }
 
@@ -151,7 +169,7 @@ const TrainingGameEnhanced = () => {
     setScore(0)
     setQuestions([])
     setStartTime(null)
-    setTimeRemaining(60 * 60)
+    setTimeRemaining(30 * 60)
     setAnswers([])
     setUserInfo({ name: '', linkedin: '' })
   }
@@ -175,14 +193,14 @@ const TrainingGameEnhanced = () => {
   }
 
   const getTimeTaken = () => {
-    const totalTime = 60 * 60
+    const totalTime = 30 * 60
     return totalTime - timeRemaining
   }
 
   const shareOnLinkedIn = () => {
     const classification = getClassification()
     const percentage = getScorePercentage()
-    const text = `Acabei de completar o Treinamento QA no QAPlay! 🎯\n\nMeu resultado: ${percentage}% - Nível ${classification.level}\n\nBaseado no CTFL 4.0 com 30 questões em 60 minutos.\n\n#QualityAssurance #QA #Testing #CTFL #QAPlay`
+    const text = `Acabei de completar o Desafio do Conhecimento QA no QAPlay! 🎯\n\nMeu resultado: ${percentage}% - Nível ${classification.level}\n\nBaseado no CTFL 4.0 com 30 questões em 30 minutos.\n\n#QualityAssurance #QA #Testing #CTFL #QAPlay`
     
     const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.com')}&text=${encodeURIComponent(text)}`
     window.open(linkedinUrl, '_blank')
@@ -196,7 +214,7 @@ const TrainingGameEnhanced = () => {
             <Trophy className="h-8 w-8 text-gray-800 dark:text-gray-100" />
           </div>
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-            Treinamento QA - CTFL 4.0
+            Desafio do Conhecimento QA - CTFL 4.0
           </CardTitle>
           <CardDescription className="text-lg">
             Avalie seu conhecimento com nosso treinamento baseado no CTFL 4.0
@@ -215,7 +233,7 @@ const TrainingGameEnhanced = () => {
             <div className="space-y-4">
               <h3 className="font-semibold text-lg flex items-center">
                 <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                Regras do Treinamento
+                Regras do Desafio
               </h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start space-x-2">
@@ -270,14 +288,14 @@ const TrainingGameEnhanced = () => {
           <Alert className="border-red-200 bg-red-50">
             <AlertTriangle className="h-4 w-4 text-red-600" />
             <AlertDescription className="text-red-800">
-              <strong>IMPORTANTE:</strong> Se você minimizar o navegador ou trocar de aba durante o treinamento, 
+              <strong>IMPORTANTE:</strong> Se você minimizar o navegador ou trocar de aba durante o desafio, 
               a questão atual será marcada como incorreta automaticamente.
             </AlertDescription>
           </Alert>
 
             <Button 
               onClick={() => setGameState("form")}
-              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 dark:from-green-500 dark:to-blue-500 dark:hover:from-green-600 dark:hover:to-blue-600 text-white"
+              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 dark:from-green-500 dark:to-blue-500 dark:hover:from-green-600 dark:hover:to-blue-600 text-white font-semibold border-2 border-transparent hover:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
               size="lg"
             >
             <User className="mr-2 h-5 w-5" />
@@ -294,7 +312,7 @@ const TrainingGameEnhanced = () => {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">Informações para Certificação</CardTitle>
           <CardDescription>
-            Preencha seus dados para gerar seu certificado ao final do treinamento
+            Preencha seus dados para gerar seu certificado ao final do desafio
           </CardDescription>
         </CardHeader>
         
@@ -336,11 +354,11 @@ const TrainingGameEnhanced = () => {
             </Button>
             <Button 
               onClick={startGame}
-              className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700"
+              className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold border-2 border-transparent hover:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
               disabled={!userInfo.name.trim()}
             >
               <Trophy className="mr-2 h-4 w-4" />
-              Iniciar Treinamento
+              Iniciar Desafio
             </Button>
           </div>
         </CardContent>
@@ -487,7 +505,7 @@ const TrainingGameEnhanced = () => {
           <div className="mx-auto w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mb-4">
             <Award className="h-10 w-10 text-white" />
           </div>
-          <CardTitle className="text-3xl font-bold">Treinamento Concluído!</CardTitle>
+          <CardTitle className="text-3xl font-bold">Desafio Concluído!</CardTitle>
           <CardDescription>Parabéns, {userInfo.name}! Aqui está seu resultado:</CardDescription>
         </CardHeader>
 
@@ -537,7 +555,7 @@ const TrainingGameEnhanced = () => {
                 <strong>{userInfo.name}</strong>
               </p>
               <p className="text-sm text-muted-foreground">
-                Completou o Treinamento QA baseado no CTFL 4.0
+                Completou o Desafio do Conhecimento QA baseado no CTFL 4.0
               </p>
               <p className="text-sm">
                 <strong>Resultado:</strong> {percentage}% - Nível {classification.level}
@@ -568,7 +586,7 @@ const TrainingGameEnhanced = () => {
               variant="outline"
               className="flex-1"
             >
-              Novo Treinamento
+              Novo Desafio
             </Button>
           </div>
         </CardContent>

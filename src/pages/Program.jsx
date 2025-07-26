@@ -27,7 +27,10 @@ const Program = () => {
             <CardDescription>
               Desafios práticos para você aplicar seus conhecimentos em automação de testes web e API, utilizando ferramentas e frameworks populares como Cypress, Playwright, Selenium e Postman.
             </CardDescription>
-            <Link to="/jogos/programming-challenge" className="text-primary hover:underline mt-4 block text-lg font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-200">Começar Desafio <ArrowRight className="inline-block h-4 w-4 ml-1" /></Link>
+            <Link to="/jogos/programming-challenge" className="inline-flex items-center justify-center w-full mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg border-2 border-transparent hover:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              Começar Desafio 
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </CardContent>
         </Card>
 
@@ -42,7 +45,10 @@ const Program = () => {
             <CardDescription>
               Exercícios de lógica de programação em JavaScript e Java para fortalecer sua base e prepará-lo para escrever códigos de teste mais eficientes e robustos.
             </CardDescription>
-            <Link to="/jogos/logic-programming" className="text-primary hover:underline mt-4 block text-lg font-semibold text-pink-600 dark:text-pink-400 hover:text-pink-800 dark:hover:text-pink-200 transition-colors duration-200">Começar Desafio <ArrowRight className="inline-block h-4 w-4 ml-1" /></Link>
+            <Link to="/jogos/logic-programming" className="inline-flex items-center justify-center w-full mt-4 px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold rounded-lg border-2 border-transparent hover:border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              Começar Desafio 
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </CardContent>
         </Card>
       </section>

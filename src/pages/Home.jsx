@@ -14,7 +14,7 @@ const Home = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/20">
               <Gamepad2 className="w-4 h-4" />
-              <span className="text-primary-foreground dark:text-primary-foreground">🎮 Plataforma Gamificada de QA</span>
+              <span className="text-gray-800 dark:text-gray-200 font-semibold">🎮 Plataforma Gamificada de QA</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
