@@ -193,7 +193,7 @@ const TrainingGameEnhanced = () => {
       <Card className="max-w-4xl mx-auto">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-            <Trophy className="h-8 w-8 text-white" />
+            <Trophy className="h-8 w-8 text-gray-800 dark:text-gray-100" />
           </div>
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
             Treinamento QA - CTFL 4.0
@@ -275,11 +275,11 @@ const TrainingGameEnhanced = () => {
             </AlertDescription>
           </Alert>
 
-          <Button 
-            onClick={() => setGameState('form')}
-            className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700"
-            size="lg"
-          >
+            <Button 
+              onClick={() => setGameState("form")}
+              className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 dark:from-green-500 dark:to-blue-500 dark:hover:from-green-600 dark:hover:to-blue-600 text-white"
+              size="lg"
+            >
             <User className="mr-2 h-5 w-5" />
             Continuar para Cadastro
           </Button>

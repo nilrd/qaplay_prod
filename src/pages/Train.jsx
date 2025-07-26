@@ -14,7 +14,7 @@ const Train = () => {
           </Link>
         </Button>
         <div>
-          <h1 className="text-2xl font-bold">Treinamento QA</h1>
+          <h1 className="text-2xl font-bold">Desafio do Conhecimento QA</h1>
           <p className="text-muted-foreground">30 questões baseadas no CTFL 4.0 com certificação e compartilhamento</p>
         </div>
       </div>

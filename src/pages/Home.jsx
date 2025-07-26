@@ -14,7 +14,7 @@ const Home = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/20">
               <Gamepad2 className="w-4 h-4" />
-              <span className="text-primary-foreground">🎮 Plataforma Gamificada de QA</span>
+              <span className="text-primary-foreground dark:text-primary-foreground">🎮 Plataforma Gamificada de QA</span>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
@@ -161,7 +161,7 @@ const Home = () => {
               <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
                 <Target className="h-8 w-8 text-gray-900 dark:text-white" />
               </div>
-              <CardTitle className="text-2xl text-foreground">Modo Treinamento</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Desafio do Conhecimento QA</CardTitle>
               <CardDescription className="text-muted-foreground">
                 Prepare-se para certificações e avalie seu nível
               </CardDescription>
@@ -170,7 +170,7 @@ const Home = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Clock className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">30 questões em 60 minutos</span>
+                  <span className="text-sm text-muted-foreground">30 questões em 30 minutos</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <BookOpen className="h-5 w-5 text-orange-500 flex-shrink-0" />
