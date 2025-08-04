@@ -1,213 +1,99 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Calendar, Clock, Search, Tag, ArrowRight, BookOpen } from 'lucide-react'
-import postsData from "../data/blogPosts.json"
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Search } from 'lucide-react';
 
 const Blog = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const posts = postsData;
+  useEffect(() => {
+    // Em um ambiente real, você faria uma requisição para buscar os posts
+    // Por enquanto, vamos simular com dados estáticos ou carregar de um JSON
+    const fetchPosts = async () => {
+      // Simular carregamento de posts de arquivos markdown
+      // No ambiente de desenvolvimento, você pode usar require.context ou similar
+      // Para produção, os posts seriam pré-processados ou carregados via API
+      const dummyPosts = [
+        {
+          slug: 'primeiro-post',
+          title: 'Meu Primeiro Post no Blog',
+          date: '2025-07-20',
+          author: 'Nilson da Silva Brites',
+          thumbnail: '/images/blog/post1.jpg',
+          preview: 'Este é o preview do meu primeiro post. Ele fala sobre as novidades do QAPlay e como estamos evoluindo. Fique ligado para mais conteúdos em breve!',
+        },
+        {
+          slug: 'dicas-de-qa',
+          title: 'Dicas Essenciais para Testadores de Software',
+          date: '2025-07-25',
+          author: 'Nilson da Silva Brites',
+          thumbnail: '/images/blog/post2.jpg',
+          preview: 'Descubra as melhores práticas e ferramentas para se tornar um testador de software de elite. Abordamos desde testes funcionais até automação.',
+        },
+        {
+          slug: 'automacao-com-cypress',
+          title: 'Introdução à Automação de Testes com Cypress',
+          date: '2025-07-30',
+          author: 'Nilson da Silva Brites',
+          thumbnail: '/images/blog/post3.jpg',
+          preview: 'Aprenda os fundamentos do Cypress para automatizar seus testes de interface. Um guia completo para iniciantes e dicas avançadas.',
+        },
+      ];
+      setPosts(dummyPosts);
+    };
 
-  const categories = ['all', 'Carreira', 'Técnico', 'Ferramentas', 'Educação']
+    fetchPosts();
+  }, []);
 
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
-
-  const featuredPost = posts.find(post => post.featured)
-  const regularPosts = filteredPosts.filter(post => !post.featured)
-
-  const getCategoryColor = (category) => {
-    switch (category) {
-      case 'Carreira': return 'bg-blue-100 text-blue-800'
-      case 'Técnico': return 'bg-green-100 text-green-800'
-      case 'Ferramentas': return 'bg-purple-100 text-purple-800'
-      case 'Educação': return 'bg-orange-100 text-orange-800'
-      default: return 'bg-gray-100 text-gray-800'
-    }
-  }
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('pt-BR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  }
+  const filteredPosts = posts.filter(post =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    post.preview.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <section className="text-center space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-          Blog QAPlay
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Artigos, tutoriais e insights sobre Quality Assurance, carreira em tecnologia e 
-          as últimas tendências da área.
-        </p>
-      </section>
+    <div className="container mx-auto py-12 px-4">
+      <h1 className="text-4xl font-bold text-center mb-8">Blog QAPlay</h1>
+      
+      <div className="max-w-xl mx-auto mb-8 flex space-x-2">
+        <Input
+          type="text"
+          placeholder="Buscar posts..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="flex-grow"
+        />
+        <Button><Search className="h-4 w-4 mr-2" />Buscar</Button>
+      </div>
 
-      {/* Search and Filters */}
-      <section className="space-y-4">
-        <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          <Input
-            placeholder="Buscar artigos..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
-          />
-        </div>
-        
-        <div className="flex flex-wrap gap-2 justify-center">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className="capitalize"
-            >
-              {category === 'all' ? 'Todas as Categorias' : category}
-            </Button>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Post */}
-      {featuredPost && selectedCategory === 'all' && !searchTerm && (
-        <section>
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <BookOpen className="mr-2 h-6 w-6" />
-            Artigo em Destaque
-          </h2>
-          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="md:flex">
-              <div className="md:w-1/3">
-                <div className="h-48 md:h-full bg-gradient-to-r from-primary/20 to-blue-600/20 flex items-center justify-center">
-                  <BookOpen className="h-16 w-16 text-primary/50" />
-                </div>
-              </div>
-              <div className="md:w-2/3 p-6">
-                <CardHeader className="p-0 mb-4">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Badge className={getCategoryColor(featuredPost.category)}>
-                      {featuredPost.category}
-                    </Badge>
-                    <span className="text-sm text-muted-foreground">Destaque</span>
-                  </div>
-                  <CardTitle className="text-2xl hover:text-primary transition-colors cursor-pointer">
-                    {featuredPost.title}
-                  </CardTitle>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map(post => (
+            <Card key={post.slug} className="overflow-hidden">
+              <Link to={`/blog/${post.slug}`}>
+                {post.thumbnail && (
+                  <img src={post.thumbnail} alt={post.title} className="w-full h-48 object-cover" />
+                )}
+                <CardHeader>
+                  <CardTitle className="text-xl font-semibold hover:text-primary transition-colors duration-200">{post.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">Por {post.author} em {post.date}</p>
                 </CardHeader>
-                <CardContent className="p-0 space-y-4">
-                  <CardDescription className="text-base">
-                    {featuredPost.excerpt}
-                  </CardDescription>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {formatDate(featuredPost.date)}
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1" />
-                        {featuredPost.readTime}
-                      </div>
-                    </div>
-                    <Button asChild>
-                      <Link to={`/blog/${featuredPost.id}`}>
-                        Ler Artigo
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
+                <CardContent>
+                  <p className="text-sm text-gray-600">{post.preview}...</p>
                 </CardContent>
-              </div>
-            </div>
-          </Card>
-        </section>
-      )}
-
-      {/* Posts Grid */}
-      <section>
-        {regularPosts.length > 0 ? (
-          <>
-            <h2 className="text-2xl font-bold mb-6">
-              {searchTerm || selectedCategory !== 'all' ? 'Resultados da Busca' : 'Artigos Recentes'}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {regularPosts.map((post) => (
-                <Card key={post.id} className="hover:shadow-lg transition-shadow group">
-                  <div className="h-48 bg-gradient-to-r from-muted to-muted/50 flex items-center justify-center">
-                    <BookOpen className="h-12 w-12 text-muted-foreground/50" />
-                  </div>
-                  <CardHeader>
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Badge className={getCategoryColor(post.category)}>
-                        {post.category}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors cursor-pointer line-clamp-2">
-                      {post.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="line-clamp-3">
-                      {post.excerpt}
-                    </CardDescription>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Calendar className="h-3 w-3" />
-                        <span>{formatDate(post.date)}</span>
-                        <Clock className="h-3 w-3 ml-2" />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-                    <Button asChild className="w-full" variant="outline">
-                      <Link to={`/blog/${post.id}`}>
-                        Ler Mais
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </>
+              </Link>
+            </Card>
+          ))
         ) : (
-          <div className="text-center py-12">
-            <BookOpen className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Nenhum artigo encontrado</h3>
-            <p className="text-muted-foreground">
-              Tente ajustar sua busca ou explorar outras categorias.
-            </p>
-          </div>
+          <p className="col-span-full text-center text-muted-foreground">Nenhum post encontrado.</p>
         )}
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="bg-muted/50 rounded-lg p-8 text-center space-y-4">
-        <h2 className="text-2xl font-bold">Não Perca Nenhum Artigo</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Receba notificações sobre novos artigos, tutoriais e conteúdos exclusivos 
-          diretamente no seu email.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-          <Input placeholder="Seu melhor email" className="flex-1" />
-          <Button>Inscrever-se</Button>
-        </div>
-      </section>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
+
 

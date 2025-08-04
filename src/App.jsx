@@ -21,10 +21,10 @@ import AutomationGamePage from './pages/AutomationGamePage'
 import AgileGamePage from './pages/AgileGamePage'
 import SpecificTestsGamePage from './pages/SpecificTestsGamePage'
 
-import BrokenInterfaceGamePage from './pages/BrokenInterfaceGamePage'
 import ProgramGamePage from './pages/ProgramGamePage'
 import LogicGamePage from './pages/LogicGamePage'
 import BDDGamePage from './pages/BDDGamePage'
+import AutomationMasterGame from './games/AutomationMasterGame'
 import './App.css'
 
 function App() {
@@ -38,10 +38,10 @@ function App() {
             <Route path="jogos" element={<Games />} />
             <Route path="jogos/quiz" element={<QuizGamePage />} />
             <Route path="jogos/ctfl-100-quiz" element={<CTFL100Quiz />} />
-            <Route path="jogos/interface-quebrada" element={<BrokenInterfaceGamePage />} />
             <Route path="jogos/programming-challenge" element={<ProgramGamePage />} />
             <Route path="jogos/logic-programming" element={<LogicGamePage />} />
             <Route path="jogos/bdd-challenge" element={<BDDGamePage />} />
+            <Route path="jogos/automation-master" element={<AutomationMasterGame />} />
             <Route path="treinar" element={<Train />} />
             <Route path="treinar/exercicios" element={<TrainContent />} />
             <Route path="treinar/jogo/fundamentos-ctfl" element={<CTFLGamePage />} />
@@ -52,7 +52,7 @@ function App() {
             <Route path="programar" element={<Program />} />
             <Route path="/sobre-jogos" element={<AboutGames />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="blog/:postId" element={<BlogPostPage />} />
+            <Route path="blog/:slug" element={<BlogPostPage />} />
             <Route path="/sobre" element={<About />} />
           </Route>
         </Routes>
@@ -62,4 +62,5 @@ function App() {
 }
 
 export default App
+
 

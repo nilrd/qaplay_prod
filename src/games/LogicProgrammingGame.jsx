@@ -12,6 +12,7 @@ const LogicProgrammingGame = () => {
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [userCode, setUserCode] = useState('');
   const [testResult, setTestResult] = useState(null); // null, 'pass', 'fail'
+  const [evaluationMessage, setEvaluationMessage] = useState('');
   const [showExplanation, setShowExplanation] = useState(false);
   const timerRef = useRef(null);
 
@@ -305,6 +306,7 @@ const LogicProgrammingGame = () => {
     setCurrentChallengeIndex(0);
     setUserCode('');
     setTestResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(120);
     startTimer();
@@ -333,37 +335,62 @@ const LogicProgrammingGame = () => {
 
   const handleTestCode = () => {
     clearInterval(timerRef.current);
-    // Simulação de execução de código e teste
-    const normalizedUserCode = userCode.replace(/\s/g, '').toLowerCase();
-    const normalizedExpectedCode = currentChallenge.expectedCode.replace(/\s/g, '').toLowerCase();
+
+    const userCodeTrimmed = userCode.trim();
+    if (!userCodeTrimmed) {
+      setTestResult('fail');
+      setEvaluationMessage('Por favor, insira seu código antes de testar.');
+      setShowExplanation(true);
+      return;
+    }
+
+    let passed = true;
+    let message = 'Seu código precisa de melhorias.';
 
     if (currentChallenge.testCases) {
-      // Lógica para testar funções com casos de teste
-      let allTestsPass = true;
       try {
         // eslint-disable-next-line no-eval
-        const userFunction = eval(`(${userCode})`);
+        const userFunction = eval(`(${userCodeTrimmed})`);
+
         for (const testCase of currentChallenge.testCases) {
-          const result = Array.isArray(testCase.input) ? userFunction(...testCase.input) : userFunction(testCase.input);
-          if (typeof testCase.expectedOutput === 'string' && testCase.expectedOutput.includes('between')) {
-            // Para casos de números aleatórios, apenas verifica se é um número
-            if (typeof result !== 'number') {
-              allTestsPass = false;
-              break;
-            }
-          } else if (result !== testCase.expectedOutput) {
-            allTestsPass = false;
+          let result;
+          if (Array.isArray(testCase.input)) {
+            result = userFunction(...testCase.input);
+          } else {
+            result = userFunction(testCase.input);
+          }
+
+          if (result !== testCase.expectedOutput) {
+            passed = false;
+            message = `Falha no teste para entrada ${JSON.stringify(testCase.input)}. Esperado: ${testCase.expectedOutput}, Recebido: ${result}.`;
             break;
           }
         }
+
+        if (passed) {
+          message = 'Parabéns! Seu código passou em todos os testes!';
+        }
+
       } catch (e) {
-        allTestsPass = false; // Erro de sintaxe ou execução
+        passed = false;
+        message = `Erro de execução: ${e.message}. Verifique a sintaxe do seu código.`;
       }
-      setTestResult(allTestsPass ? 'pass' : 'fail');
     } else {
-      // Comparação simples de string para outros tipos de código
-      setTestResult(normalizedUserCode.includes(normalizedExpectedCode) ? 'pass' : 'fail');
+      // Para desafios sem testCases, apenas compara o código (simulação)
+      const normalizedUserCode = userCodeTrimmed.replace(/\s/g, '').toLowerCase();
+      const normalizedExpectedCode = currentChallenge.expectedCode.replace(/\s/g, '').toLowerCase();
+
+      if (normalizedUserCode.includes(normalizedExpectedCode)) {
+        passed = true;
+        message = 'Seu código parece correto! (Simulação)';
+      } else {
+        passed = false;
+        message = 'Seu código não corresponde ao esperado. Verifique a sintaxe e a lógica.';
+      }
     }
+
+    setTestResult(passed ? 'pass' : 'fail');
+    setEvaluationMessage(message);
     setShowExplanation(true);
   };
 
@@ -372,12 +399,13 @@ const LogicProgrammingGame = () => {
       setCurrentChallengeIndex(prevIndex => prevIndex + 1);
       setUserCode('');
       setTestResult(null);
+      setEvaluationMessage('');
       setShowExplanation(false);
       setTimeLeft(120);
     } else {
       // Fim do jogo
       setGameStarted(false);
-      alert('Parabéns! Você completou todos os desafios de lógica de programação!');
+      alert('Parabéns! Você completou todos os desafios de programação!');
     }
   };
 
@@ -386,6 +414,7 @@ const LogicProgrammingGame = () => {
     setCurrentChallengeIndex(0);
     setUserCode('');
     setTestResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(120);
   };
@@ -395,40 +424,32 @@ const LogicProgrammingGame = () => {
       <div className="max-w-2xl mx-auto space-y-6">
         <Card className="text-center">
           <CardHeader>
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Brain className="h-8 w-8 text-white" />
             </div>
-            <CardTitle className="text-2xl">Lógica de Programação</CardTitle>
+            <CardTitle className="text-2xl">Desafios de Lógica de Programação</CardTitle>
             <CardDescription className="text-lg">
-              Fortaleça sua base com 20 exercícios de lógica de programação em JavaScript.
+              Teste suas habilidades em lógica de programação com desafios práticos.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
               <h3 className="font-semibold text-xl">Sobre o Jogo:</h3>
               <p className="text-sm text-muted-foreground text-left">
-                Desenvolva suas habilidades de lógica de programação com 20 desafios práticos em JavaScript. Cada exercício foi cuidadosamente selecionado para fortalecer conceitos fundamentais de programação.
+                No jogo "Desafios de Lógica de Programação", você receberá problemas de lógica para resolver. Seu objetivo é escrever o código correto para passar nos testes.
               </p>
               <h3 className="font-semibold text-xl">Como Jogar:</h3>
               <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Você receberá um problema de lógica de programação.</li>
-                <li>• Escreva sua função JavaScript na área de texto fornecida.</li>
-                <li>• Clique em "Testar Código" para verificar sua solução.</li>
+                <li>• Você receberá um problema de lógica e o idioma em que deve codificar.</li>
+                <li>• Escreva seu código na área designada.</li>
                 <li>• Você terá 2 minutos para cada desafio.</li>
-                <li>• Sua solução será testada com casos de teste automáticos.</li>
-              </ul>
-              <h3 className="font-semibold text-xl">O que você vai aprender:</h3>
-              <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Manipulação de arrays e strings</li>
-                <li>• Estruturas de repetição e condicionais</li>
-                <li>• Algoritmos de ordenação e busca</li>
-                <li>• Validação de dados e expressões regulares</li>
-                <li>• Conceitos matemáticos aplicados à programação</li>
+                <li>• Clique em "Testar Código" para verificar se sua solução está correta.</li>
+                <li>• Uma explicação e a solução esperada serão mostradas após o teste.</li>
               </ul>
             </div>
             <Button onClick={startGame} size="lg" className="w-full">
               <Brain className="mr-2 h-5 w-5" />
-              Começar Desafio ({challenges.length} questões)
+              Começar Desafio de Lógica
             </Button>
           </CardContent>
         </Card>
@@ -437,7 +458,7 @@ const LogicProgrammingGame = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Desafio {currentChallengeIndex + 1} de {challenges.length}: {currentChallenge.title}</h2>
         <div className="flex items-center space-x-2">
@@ -448,54 +469,79 @@ const LogicProgrammingGame = () => {
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{currentChallenge.description}</CardTitle>
-          <CardDescription>
-            Linguagem: <Badge variant="secondary">{currentChallenge.language}</Badge>
-            <Badge variant="outline" className="ml-2">{currentChallenge.type}</Badge>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Label htmlFor="user-code">Seu Código:</Label>
-          <Textarea
-            id="user-code"
-            value={userCode}
-            onChange={(e) => setUserCode(e.target.value)}
-            placeholder="Escreva sua função aqui..."
-            rows={10}
-            className="font-mono"
-          />
-          <Button onClick={handleTestCode} className="w-full" size="lg" disabled={showExplanation}>
-            Testar Código
-          </Button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Descrição do Desafio */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Problema</CardTitle>
+            <CardDescription>
+              <Badge variant="secondary">{currentChallenge.language}</Badge>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <h4 className="font-semibold mb-2">{currentChallenge.description}</h4>
+          </CardContent>
+        </Card>
 
-          {showExplanation && (
-            <div className={`mt-6 p-4 rounded-lg border ${testResult === 'pass' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-              <h4 className="font-semibold mb-2">
-                {testResult === 'pass' ? (<CheckCircle className="inline-block mr-2 h-5 w-5" />) : (<XCircle className="inline-block mr-2 h-5 w-5" />)}
-                {testResult === 'pass' ? 'Parabéns! Seu código passou nos testes!' : 'Seu código falhou nos testes.'}
+        {/* Área de Código */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Seu Código</CardTitle>
+            <CardDescription>
+              Escreva sua solução no campo abaixo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Label htmlFor="user-code">Código:</Label>
+            <Textarea
+              id="user-code"
+              value={userCode}
+              onChange={(e) => setUserCode(e.target.value)}
+              placeholder={`// Escreva seu código aqui\nfunction exemplo(param) {\n  // ...\n}`}
+              rows={15}
+              className="font-mono text-sm"
+            />
+            <Button onClick={handleTestCode} className="w-full" size="lg" disabled={showExplanation}>
+              Testar Código
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+
+      {showExplanation && (
+        <Card>
+          <CardContent className="p-6">
+            <div className={`p-4 rounded-lg border ${testResult === 'pass' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <h4 className={`font-semibold mb-2 ${testResult === 'pass' ? 'text-green-800' : 'text-red-800'}`}>
+                {testResult === 'pass' ? (
+                  <CheckCircle className="inline-block mr-2 h-5 w-5" />
+                ) : (
+                  <XCircle className="inline-block mr-2 h-5 w-5" />
+                )}
+                {testResult === 'pass' ? 'Parabéns! Seu código está correto!' : 'Seu código precisa de ajustes.'}
               </h4>
-              <p className="text-sm">{currentChallenge.explanation}</p>
-              {testResult === 'fail' && (
-                <div className="mt-2">
-                  <h5 className="font-semibold">Solução Esperada:</h5>
-                  <pre className="bg-gray-100 p-2 rounded-md text-xs overflow-auto"><code>{currentChallenge.expectedCode}</code></pre>
+              <p className={`text-sm mb-4 ${testResult === 'pass' ? 'text-green-700' : 'text-red-700'}`}>
+                {evaluationMessage}
+              </p>
+              
+              <div className="mt-4">
+                <h5 className="font-semibold mb-2">Solução Esperada:</h5>
+                <div className="bg-gray-100 p-3 rounded-md text-xs overflow-auto">
+                  <pre className="whitespace-pre-wrap">{currentChallenge.expectedCode}</pre>
                 </div>
-              )}
+              </div>
             </div>
-          )}
-
-          {showExplanation && (
-            <Button onClick={handleNextChallenge} className="w-full" size="lg">
+            
+            <Button onClick={handleNextChallenge} className="w-full mt-4" size="lg">
               {currentChallengeIndex < challenges.length - 1 ? 'Próximo Desafio' : 'Finalizar Jogo'}
             </Button>
-          )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 };
 
 export default LogicProgrammingGame;
+
 

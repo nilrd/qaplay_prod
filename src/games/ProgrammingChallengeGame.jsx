@@ -12,6 +12,7 @@ const ProgrammingChallengeGame = () => {
   const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
   const [userCode, setUserCode] = useState('');
   const [testResult, setTestResult] = useState(null); // null, 'pass', 'fail'
+  const [evaluationMessage, setEvaluationMessage] = useState('');
   const [showExplanation, setShowExplanation] = useState(false);
   const timerRef = useRef(null);
 
@@ -197,7 +198,7 @@ const ProgrammingChallengeGame = () => {
       title: 'Automação CI/CD (GitHub Actions)',
       description: 'Escreva um step básico do GitHub Actions para executar testes npm.',
       language: 'YAML (CI/CD)',
-      expectedCode: `- name: Run tests\n  run: npm test`,
+      expectedCode: ` - name: Run tests\n  run: npm test`,
       explanation: 'CI/CD automatiza execução de testes. GitHub Actions usa YAML para definir steps. "run: npm test" executa os testes do projeto Node.js.',
       type: 'Automação CI/CD'
     },
@@ -255,6 +256,7 @@ const ProgrammingChallengeGame = () => {
     setCurrentChallengeIndex(0);
     setUserCode('');
     setTestResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(120);
     startTimer();
@@ -283,32 +285,57 @@ const ProgrammingChallengeGame = () => {
 
   const handleTestCode = () => {
     clearInterval(timerRef.current);
-    // Simulação de execução de código e teste
-    // Em um ambiente real, isso envolveria um backend para executar e validar o código
-    const normalizedUserCode = userCode.replace(/\s/g, '').toLowerCase();
-    const normalizedExpectedCode = currentChallenge.expectedCode.replace(/\s/g, '').toLowerCase();
+
+    const userCodeTrimmed = userCode.trim();
+    if (!userCodeTrimmed) {
+      setTestResult('fail');
+      setEvaluationMessage('Por favor, insira seu código antes de testar.');
+      setShowExplanation(true);
+      return;
+    }
+
+    let passed = true;
+    let message = 'Seu código precisa de melhorias.';
 
     if (currentChallenge.testCases) {
-      // Lógica para testar funções com casos de teste
-      let allTestsPass = true;
+      // Simulação de execução para desafios com testCases (ex: Lógica de Programação)
       try {
-        // eslint-disable-next-line no-eval
-        const userFunction = eval(`(${userCode})`); // Avalia a string como uma função
-        for (const testCase of currentChallenge.testCases) {
-          const result = userFunction(testCase.input);
-          if (result !== testCase.expectedOutput) {
-            allTestsPass = false;
-            break;
+        // Apenas para demonstração. Em um ambiente real, isso seria executado em um backend seguro.
+        // Verifica se o código do usuário contém a estrutura básica da função esperada
+        if (!userCodeTrimmed.includes('function sumEvenNumbers(arr)')) {
+          passed = false;
+          message = 'A estrutura da função não corresponde ao esperado. Certifique-se de definir a função `sumEvenNumbers(arr)`.';
+        } else {
+          // Simula a execução dos testes comparando com o expectedCode
+          // Esta é uma simulação. Em um ambiente real, o código seria executado e os resultados comparados.
+          if (userCodeTrimmed.toLowerCase().includes(currentChallenge.expectedCode.toLowerCase().replace(/\s/g, ''))) {
+            passed = true;
+            message = 'Seu código parece correto e passaria nos testes! (Simulação)';
+          } else {
+            passed = false;
+            message = 'Seu código não produz o resultado esperado para os casos de teste. Verifique a lógica.';
           }
         }
       } catch (e) {
-        allTestsPass = false; // Erro de sintaxe ou execução
+        passed = false;
+        message = `Erro de execução: ${e.message}. Verifique a sintaxe do seu código.`;
       }
-      setTestResult(allTestsPass ? 'pass' : 'fail');
     } else {
-      // Comparação simples de string para outros tipos de código
-      setTestResult(normalizedUserCode.includes(normalizedExpectedCode) ? 'pass' : 'fail');
+      // Para desafios sem testCases, apenas compara o código (simulação)
+      const normalizedUserCode = userCodeTrimmed.replace(/\s/g, '').toLowerCase();
+      const normalizedExpectedCode = currentChallenge.expectedCode.replace(/\s/g, '').toLowerCase();
+
+      if (normalizedUserCode.includes(normalizedExpectedCode)) {
+        passed = true;
+        message = 'Seu código parece correto! (Simulação)';
+      } else {
+        passed = false;
+        message = 'Seu código não corresponde ao esperado. Verifique a sintaxe e a lógica.';
+      }
     }
+
+    setTestResult(passed ? 'pass' : 'fail');
+    setEvaluationMessage(message);
     setShowExplanation(true);
   };
 
@@ -317,6 +344,7 @@ const ProgrammingChallengeGame = () => {
       setCurrentChallengeIndex(prevIndex => prevIndex + 1);
       setUserCode('');
       setTestResult(null);
+      setEvaluationMessage('');
       setShowExplanation(false);
       setTimeLeft(120);
     } else {
@@ -331,6 +359,7 @@ const ProgrammingChallengeGame = () => {
     setCurrentChallengeIndex(0);
     setUserCode('');
     setTestResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(120);
   };
@@ -340,41 +369,32 @@ const ProgrammingChallengeGame = () => {
       <div className="max-w-2xl mx-auto space-y-6">
         <Card className="text-center">
           <CardHeader>
-            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Code className="h-8 w-8 text-white" />
             </div>
             <CardTitle className="text-2xl">Desafios de Programação</CardTitle>
             <CardDescription className="text-lg">
-              Teste suas habilidades em lógica de programação e automação de testes com 25 desafios focados em Qualidade de Software.
+              Teste suas habilidades em programação e lógica com desafios práticos.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
               <h3 className="font-semibold text-xl">Sobre o Jogo:</h3>
               <p className="text-sm text-muted-foreground text-left">
-                No jogo "Desafios de Programação", você enfrentará 25 problemas práticos de lógica, automação de testes e conceitos de qualidade de software. Seu objetivo é escrever o código correto para resolver cada desafio dentro do tempo limite.
+                No jogo "Desafios de Programação", você receberá problemas de lógica e programação para resolver. Seu objetivo é escrever o código correto para passar nos testes.
               </p>
               <h3 className="font-semibold text-xl">Como Jogar:</h3>
               <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Você receberá um problema de programação, automação ou conceito de QA.</li>
-                <li>• Escreva seu código ou resposta na área de texto fornecida.</li>
-                <li>• Clique em "Testar Código" para verificar sua solução.</li>
-                <li>• Você terá 2 minutos para cada desafio. Se o tempo acabar, seu código será testado automaticamente.</li>
-                <li>• Após o teste, você verá se sua solução passou ou falhou, e uma explicação será fornecida.</li>
-              </ul>
-              <h3 className="font-semibold text-xl">O que você vai aprender:</h3>
-              <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Lógica de programação em JavaScript e Java.</li>
-                <li>• Automação de testes com Cypress, Playwright, Selenium e Appium.</li>
-                <li>• Testes de unidade, integração, API e performance.</li>
-                <li>• Conceitos de qualidade: STLC, pirâmide de testes, métricas.</li>
-                <li>• Testes de acessibilidade, segurança e usabilidade.</li>
-                <li>• CI/CD, code review e boas práticas de QA.</li>
+                <li>• Você receberá um problema de programação e o idioma em que deve codificar.</li>
+                <li>• Escreva seu código na área designada.</li>
+                <li>• Você terá 2 minutos para cada desafio.</li>
+                <li>• Clique em "Testar Código" para verificar se sua solução está correta.</li>
+                <li>• Uma explicação e a solução esperada serão mostradas após o teste.</li>
               </ul>
             </div>
             <Button onClick={startGame} size="lg" className="w-full">
               <Code className="mr-2 h-5 w-5" />
-              Começar Desafio ({challenges.length} questões)
+              Começar Desafio de Programação
             </Button>
           </CardContent>
         </Card>
@@ -383,7 +403,7 @@ const ProgrammingChallengeGame = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Desafio {currentChallengeIndex + 1} de {challenges.length}: {currentChallenge.title}</h2>
         <div className="flex items-center space-x-2">
@@ -394,54 +414,79 @@ const ProgrammingChallengeGame = () => {
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{currentChallenge.description}</CardTitle>
-          <CardDescription>
-            Linguagem: <Badge variant="secondary">{currentChallenge.language}</Badge>
-            <Badge variant="outline" className="ml-2">{currentChallenge.type}</Badge>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Label htmlFor="user-code">Seu Código:</Label>
-          <Textarea
-            id="user-code"
-            value={userCode}
-            onChange={(e) => setUserCode(e.target.value)}
-            placeholder="Escreva seu código aqui..."
-            rows={10}
-            className="font-mono"
-          />
-          <Button onClick={handleTestCode} className="w-full" size="lg" disabled={showExplanation}>
-            Testar Código
-          </Button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Descrição do Desafio */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Problema</CardTitle>
+            <CardDescription>
+              <Badge variant="secondary">{currentChallenge.language}</Badge>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <h4 className="font-semibold mb-2">{currentChallenge.description}</h4>
+          </CardContent>
+        </Card>
 
-          {showExplanation && (
-            <div className={`mt-6 p-4 rounded-lg border ${testResult === 'pass' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-              <h4 className="font-semibold mb-2">
-                {testResult === 'pass' ? (<CheckCircle className="inline-block mr-2 h-5 w-5" />) : (<XCircle className="inline-block mr-2 h-5 w-5" />)}
-                {testResult === 'pass' ? 'Parabéns! Seu código passou nos testes!' : 'Seu código falhou nos testes.'}
+        {/* Área de Código */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Seu Código</CardTitle>
+            <CardDescription>
+              Escreva sua solução no campo abaixo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Label htmlFor="user-code">Código:</Label>
+            <Textarea
+              id="user-code"
+              value={userCode}
+              onChange={(e) => setUserCode(e.target.value)}
+              placeholder={`// Escreva seu código aqui\nfunction exemplo(param) {\n  // ...\n}`}
+              rows={15}
+              className="font-mono text-sm"
+            />
+            <Button onClick={handleTestCode} className="w-full" size="lg" disabled={showExplanation}>
+              Testar Código
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+
+      {showExplanation && (
+        <Card>
+          <CardContent className="p-6">
+            <div className={`p-4 rounded-lg border ${testResult === 'pass' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <h4 className={`font-semibold mb-2 ${testResult === 'pass' ? 'text-green-800' : 'text-red-800'}`}>
+                {testResult === 'pass' ? (
+                  <CheckCircle className="inline-block mr-2 h-5 w-5" />
+                ) : (
+                  <XCircle className="inline-block mr-2 h-5 w-5" />
+                )}
+                {testResult === 'pass' ? 'Parabéns! Seu código está correto!' : 'Seu código precisa de ajustes.'}
               </h4>
-              <p className="text-sm">{currentChallenge.explanation}</p>
-              {testResult === 'fail' && (
-                <div className="mt-2">
-                  <h5 className="font-semibold">Solução Esperada:</h5>
-                  <pre className="bg-gray-100 p-2 rounded-md text-xs overflow-auto"><code>{currentChallenge.expectedCode}</code></pre>
+              <p className={`text-sm mb-4 ${testResult === 'pass' ? 'text-green-700' : 'text-red-700'}`}>
+                {evaluationMessage}
+              </p>
+              
+              <div className="mt-4">
+                <h5 className="font-semibold mb-2">Solução Esperada:</h5>
+                <div className="bg-gray-100 p-3 rounded-md text-xs overflow-auto">
+                  <pre className="whitespace-pre-wrap">{currentChallenge.expectedCode}</pre>
                 </div>
-              )}
+              </div>
             </div>
-          )}
-
-          {showExplanation && (
-            <Button onClick={handleNextChallenge} className="w-full" size="lg">
+            
+            <Button onClick={handleNextChallenge} className="w-full mt-4" size="lg">
               {currentChallengeIndex < challenges.length - 1 ? 'Próximo Desafio' : 'Finalizar Jogo'}
             </Button>
-          )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 };
 
 export default ProgrammingChallengeGame;
+
 

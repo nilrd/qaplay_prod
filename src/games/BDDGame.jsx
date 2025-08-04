@@ -12,6 +12,7 @@ const BDDGame = () => {
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [userScenario, setUserScenario] = useState('');
   const [evaluationResult, setEvaluationResult] = useState(null); // null, 'pass', 'fail'
+  const [evaluationMessage, setEvaluationMessage] = useState('');
   const [showExplanation, setShowExplanation] = useState(false);
   const timerRef = useRef(null);
 
@@ -149,6 +150,7 @@ Feature: Reserva de hotel
     setCurrentScenarioIndex(0);
     setUserScenario('');
     setEvaluationResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(300);
     startTimer();
@@ -178,25 +180,68 @@ Feature: Reserva de hotel
   const handleEvaluateScenario = () => {
     clearInterval(timerRef.current);
     
-    // Avaliação simples baseada em palavras-chave do BDD
-    const userScenarioLower = userScenario.toLowerCase();
-    const hasFeature = userScenarioLower.includes('feature:');
-    const hasScenario = userScenarioLower.includes('scenario:');
-    const hasGiven = userScenarioLower.includes('given');
-    const hasWhen = userScenarioLower.includes('when');
-    const hasThen = userScenarioLower.includes('then');
-    
-    // Verifica se tem estrutura básica do Gherkin
-    const hasBasicStructure = hasFeature && hasScenario && hasGiven && hasWhen && hasThen;
-    
-    // Verifica se tem pelo menos 2 cenários (happy path e sad path)
-    const scenarioCount = (userScenarioLower.match(/scenario:/g) || []).length;
-    const hasMultipleScenarios = scenarioCount >= 2;
-    
-    // Avaliação final
-    const passed = hasBasicStructure && hasMultipleScenarios && userScenario.length > 200;
-    
-    setEvaluationResult(passed ? 'pass' : 'fail');
+    const userScenarioTrimmed = userScenario.trim();
+    if (!userScenarioTrimmed) {
+      setEvaluationResult('fail');
+      setEvaluationMessage('Por favor, escreva seus cenários Gherkin antes de avaliar.');
+      setShowExplanation(true);
+      return;
+    }
+
+    const lines = userScenarioTrimmed.split('\n').map(line => line.trim());
+    let passed = true;
+    let message = 'Seus cenários precisam de melhorias.';
+
+    // 1. Verificar a presença de Feature
+    if (!lines[0] || !lines[0].toLowerCase().startsWith('feature:')) {
+      passed = false;
+      message = 'O cenário deve começar com a palavra-chave "Feature:".';
+    } else {
+      // 2. Verificar a presença de pelo menos um Scenario
+      const scenarioLines = lines.filter(line => line.toLowerCase().startsWith('scenario:'));
+      if (scenarioLines.length === 0) {
+        passed = false;
+        message = 'Pelo menos um "Scenario:" é obrigatório.';
+      } else {
+        // 3. Para cada cenário, verificar Given, When, Then
+        let currentScenarioPassed = true;
+        let currentScenarioMessage = '';
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].toLowerCase();
+          if (line.startsWith('scenario:')) {
+            let hasGiven = false;
+            let hasWhen = false;
+            let hasThen = false;
+            let j = i + 1;
+            while (j < lines.length && !lines[j].toLowerCase().startsWith('scenario:')) {
+              const innerLine = lines[j].toLowerCase();
+              if (innerLine.startsWith('given')) hasGiven = true;
+              if (innerLine.startsWith('when')) hasWhen = true;
+              if (innerLine.startsWith('then')) hasThen = true;
+              j++;
+            }
+            if (!hasGiven || !hasWhen || !hasThen) {
+              currentScenarioPassed = false;
+              currentScenarioMessage = 'Cada cenário deve conter pelo menos um "Given", "When" e "Then".';
+              break;
+            }
+            i = j - 1; // Ajusta o índice para o próximo cenário ou fim do documento
+          }
+        }
+        if (!currentScenarioPassed) {
+          passed = false;
+          message = currentScenarioMessage;
+        }
+      }
+    }
+
+    if (passed) {
+      setEvaluationResult('pass');
+      setEvaluationMessage('Excelente! Seus cenários estão bem estruturados e seguem as diretrizes do Gherkin!');
+    } else {
+      setEvaluationResult('fail');
+      setEvaluationMessage(message);
+    }
     setShowExplanation(true);
   };
 
@@ -205,6 +250,7 @@ Feature: Reserva de hotel
       setCurrentScenarioIndex(prevIndex => prevIndex + 1);
       setUserScenario('');
       setEvaluationResult(null);
+      setEvaluationMessage('');
       setShowExplanation(false);
       setTimeLeft(300);
     } else {
@@ -219,6 +265,7 @@ Feature: Reserva de hotel
     setCurrentScenarioIndex(0);
     setUserScenario('');
     setEvaluationResult(null);
+    setEvaluationMessage('');
     setShowExplanation(false);
     setTimeLeft(300);
   };
@@ -314,12 +361,7 @@ Feature: Reserva de hotel
               id="user-scenario"
               value={userScenario}
               onChange={(e) => setUserScenario(e.target.value)}
-              placeholder={`Feature: Nome da funcionalidade
-
-Scenario: Nome do cenário
-  Given que [pré-condição]
-  When o usuário [ação]
-  Then [resultado esperado]`}
+              placeholder={`Feature: Nome da funcionalidade\n\nScenario: Nome do cenário\n  Given que [pré-condição]\n  When o usuário [ação]\n  Then [resultado esperado]`}
               rows={15}
               className="font-mono text-sm"
             />
@@ -340,10 +382,10 @@ Scenario: Nome do cenário
                 ) : (
                   <XCircle className="inline-block mr-2 h-5 w-5" />
                 )}
-                {evaluationResult === 'pass' ? 'Excelente! Seus cenários estão bem estruturados!' : 'Seus cenários precisam de melhorias.'}
+                {evaluationResult === 'pass' ? 'Avaliação Concluída!' : 'Avaliação Concluída!'}
               </h4>
               <p className={`text-sm mb-4 ${evaluationResult === 'pass' ? 'text-green-700' : 'text-red-700'}`}>
-                {currentDocument.explanation}
+                {evaluationMessage}
               </p>
               
               <div className="mt-4">
@@ -365,4 +407,5 @@ Scenario: Nome do cenário
 };
 
 export default BDDGame;
+
 

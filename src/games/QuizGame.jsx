@@ -1,107 +1,141 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target } from 'lucide-react'
 import questionsData from '../data/quizQuestions.json'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const QuizGame = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
   const [score, setScore] = useState(0)
-  const [showResult, setShowResult] = useState(false)
+  const [showExplanation, setShowExplanation] = useState(false)
   const [gameFinished, setGameFinished] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(30)
+  const [timeLeft, setTimeLeft] = useState(30) // 30 segundos por pergunta
   const [gameStarted, setGameStarted] = useState(false)
+  const [shuffledQuestions, setShuffledQuestions] = useState([])
+  const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
+  const timerRef = useRef(null);
 
-  const questions = questionsData;
-
-  // Timer effect
-  useEffect(() => {
-    if (gameStarted && !gameFinished && timeLeft > 0) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
-      return () => clearTimeout(timer)
-    } else if (timeLeft === 0 && !showResult) {
-      handleNextQuestion()
+  // Fisher-Yates Shuffle algorithm
+  const shuffleArray = (array) => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-  }, [timeLeft, gameStarted, gameFinished, showResult])
-
-  // Load saved score
-  useEffect(() => {
-    const savedScore = localStorage.getItem('qaplay-quiz-best-score')
-    if (savedScore) {
-      setBestScore(parseInt(savedScore))
-    }
-  }, [])
-
-  const [bestScore, setBestScore] = useState(0)
+    return newArray;
+  };
 
   const startGame = () => {
-    setGameStarted(true)
-    setCurrentQuestion(0)
-    setScore(0)
-    setSelectedAnswer(null)
-    setShowResult(false)
-    setGameFinished(false)
-    setTimeLeft(30)
-  }
+    const shuffledQ = shuffleArray(questionsData);
+    const shuffledQWithOptions = shuffledQ.map(q => ({
+      ...q,
+      originalOptions: [...q.options],
+      options: shuffleArray(q.options.map((option, index) => ({ text: option, originalIndex: index }))),
+    }));
+    setShuffledQuestions(shuffledQWithOptions);
+    setGameStarted(true);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setSelectedAnswerIndex(null);
+    setShowExplanation(false);
+    setGameFinished(false);
+    setTimeLeft(30);
+    startTimer();
+  };
+
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setTimeLeft(prevTime => {
+        if (prevTime <= 1) {
+          clearInterval(timerRef.current);
+          handleTimeUp();
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const handleTimeUp = () => {
+    setIsTimeUpModalOpen(true);
+    setShowExplanation(true);
+    // Se o tempo acabar e o usuário não selecionou uma resposta, trate como incorreta
+    if (selectedAnswerIndex === null) {
+      // Não adiciona pontos e mostra a explicação
+    }
+  };
 
   const handleAnswerSelect = (answerIndex) => {
-    if (selectedAnswer !== null) return
-    setSelectedAnswer(answerIndex)
-    setShowResult(true)
-    
-    if (answerIndex === questions[currentQuestion].correct) {
-      const timeBonus = Math.floor(timeLeft / 3)
-      setScore(score + 10 + timeBonus)
+    if (showExplanation) return;
+    setSelectedAnswerIndex(answerIndex);
+    setShowExplanation(true);
+
+    const currentQuestion = shuffledQuestions[currentQuestionIndex];
+    const selectedOption = currentQuestion.options[answerIndex];
+    const isCorrect = selectedOption.originalIndex === currentQuestion.correct;
+
+    if (isCorrect) {
+      const timeBonus = Math.floor(timeLeft / 3);
+      setScore(prevScore => prevScore + 10 + timeBonus);
     }
-  }
+  };
 
   const handleNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
-      setSelectedAnswer(null)
-      setShowResult(false)
-      setTimeLeft(30)
+    setIsTimeUpModalOpen(false);
+    if (currentQuestionIndex < shuffledQuestions.length - 1) {
+      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      setSelectedAnswerIndex(null);
+      setShowExplanation(false);
+      setTimeLeft(30);
+      startTimer();
     } else {
-      finishGame()
+      finishGame();
     }
-  }
+  };
 
   const finishGame = () => {
-    setGameFinished(true)
-    
-    // Save best score
-    if (score > bestScore) {
-      setBestScore(score)
-      localStorage.setItem('qaplay-quiz-best-score', score.toString())
+    clearInterval(timerRef.current);
+    setGameFinished(true);
+    // Lógica para salvar melhor pontuação, se houver
+    const savedBestScore = localStorage.getItem('qaplay-quiz-best-score');
+    if (!savedBestScore || score > parseInt(savedBestScore)) {
+      localStorage.setItem('qaplay-quiz-best-score', score.toString());
     }
-    
-    // Save game stats
-    const stats = JSON.parse(localStorage.getItem('qaplay-quiz-stats') || '{"gamesPlayed": 0, "totalScore": 0}')
-    stats.gamesPlayed += 1
-    stats.totalScore += score
-    localStorage.setItem('qaplay-quiz-stats', JSON.stringify(stats))
-  }
+  };
 
   const resetGame = () => {
-    setGameStarted(false)
-    setCurrentQuestion(0)
-    setScore(0)
-    setSelectedAnswer(null)
-    setShowResult(false)
-    setGameFinished(false)
-    setTimeLeft(30)
-  }
+    setGameStarted(false);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswerIndex(null);
+    setScore(0);
+    setShowExplanation(false);
+    setGameFinished(false);
+    setShuffledQuestions([]);
+    setTimeLeft(30);
+    setIsTimeUpModalOpen(false);
+  };
 
   const getScoreMessage = () => {
-    const percentage = (score / (questions.length * 10)) * 100
-    if (percentage >= 90) return "Excelente! Você é um expert em QA! 🏆"
-    if (percentage >= 70) return "Muito bom! Você tem um ótimo conhecimento em QA! 🎉"
-    if (percentage >= 50) return "Bom trabalho! Continue estudando para melhorar! 📚"
-    return "Continue praticando! Todo expert já foi iniciante! 💪"
-  }
+    const percentage = (score / (shuffledQuestions.length * 10)) * 100;
+    if (percentage >= 90) return "Excelente! Você é um expert em QA! 🏆";
+    if (percentage >= 70) return "Muito bom! Você tem um ótimo conhecimento em QA! 🎉";
+    if (percentage >= 50) return "Bom trabalho! Continue estudando para melhorar! 📚";
+    return "Continue praticando! Todo expert já foi iniciante! 💪";
+  };
+
+  const currentQ = shuffledQuestions[currentQuestionIndex];
+  const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
+
+  const currentBestScore = localStorage.getItem('qaplay-quiz-best-score') || 0;
 
   if (!gameStarted) {
     return (
@@ -119,7 +153,7 @@ const QuizGame = () => {
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{questions.length}</div>
+                <div className="text-2xl font-bold text-primary">{questionsData.length}</div>
                 <div className="text-sm text-muted-foreground">Perguntas</div>
               </div>
               <div className="text-center">
@@ -127,7 +161,7 @@ const QuizGame = () => {
                 <div className="text-sm text-muted-foreground">Por pergunta</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{bestScore}</div>
+                <div className="text-2xl font-bold text-primary">{currentBestScore}</div>
                 <div className="text-sm text-muted-foreground">Melhor pontuação</div>
               </div>
             </div>
@@ -149,7 +183,7 @@ const QuizGame = () => {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
 
   if (gameFinished) {
@@ -172,12 +206,12 @@ const QuizGame = () => {
                 <div className="text-sm text-muted-foreground">Pontuação Final</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">{Math.round((score / (questions.length * 10)) * 100)}%</div>
+                <div className="text-3xl font-bold text-primary">{Math.round((score / (shuffledQuestions.length * 10)) * 100)}%</div>
                 <div className="text-sm text-muted-foreground">Acertos</div>
               </div>
             </div>
             
-            {score > bestScore && (
+            {score > currentBestScore && (
               <Badge className="bg-yellow-100 text-yellow-800">
                 🎉 Nova melhor pontuação!
               </Badge>
@@ -195,23 +229,20 @@ const QuizGame = () => {
           </CardContent>
         </Card>
       </div>
-    )
+    );
   }
-
-  const currentQ = questions[currentQuestion]
-  const progress = ((currentQuestion + 1) / questions.length) * 100
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
         <Badge variant="outline">
-          Pergunta {currentQuestion + 1} de {questions.length}
+          Pergunta {currentQuestionIndex + 1} de {shuffledQuestions.length}
         </Badge>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <Clock className="h-4 w-4" />
-            <span className={`font-mono ${timeLeft <= 10 ? 'text-red-500' : ''}`}>
+            <span className={`font-mono text-lg ${timeLeft <= 10 ? 'text-red-500 font-bold' : ''}`}>
               {timeLeft}s
             </span>
           </div>
@@ -233,61 +264,77 @@ const QuizGame = () => {
         <CardContent className="space-y-4">
           <div className="grid gap-3">
             {currentQ.options.map((option, index) => {
-              let buttonClass = "w-full text-left p-4 border rounded-lg transition-colors"
+              const isCorrectOption = option.originalIndex === currentQ.correct;
+              const isSelected = selectedAnswerIndex === index;
+
+              let buttonClass = "w-full text-left p-4 border rounded-lg transition-colors";
               
-              if (showResult) {
-                if (index === currentQ.correct) {
-                  buttonClass += " bg-green-100 border-green-500 text-green-800"
-                } else if (index === selectedAnswer && index !== currentQ.correct) {
-                  buttonClass += " bg-red-100 border-red-500 text-red-800"
+              if (showExplanation) {
+                if (isCorrectOption) {
+                  buttonClass += " bg-green-100 border-green-500 text-green-800";
+                } else if (isSelected && !isCorrectOption) {
+                  buttonClass += " bg-red-100 border-red-500 text-red-800";
                 } else {
-                  buttonClass += " bg-muted"
+                  buttonClass += " bg-muted";
                 }
               } else {
-                buttonClass += " hover:bg-accent hover:border-primary"
+                buttonClass += " hover:bg-accent hover:border-primary";
               }
 
               return (
                 <button
-                  key={index}
+                  key={option.originalIndex} // Use originalIndex as key for stable rendering
                   onClick={() => handleAnswerSelect(index)}
-                  disabled={showResult}
+                  disabled={showExplanation}
                   className={buttonClass}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-semibold">
                       {String.fromCharCode(65 + index)}
                     </div>
-                    <span>{option}</span>
-                    {showResult && index === currentQ.correct && (
+                    <span>{option.text}</span>
+                    {showExplanation && isCorrectOption && (
                       <CheckCircle className="h-5 w-5 text-green-600 ml-auto" />
                     )}
-                    {showResult && index === selectedAnswer && index !== currentQ.correct && (
+                    {showExplanation && isSelected && !isCorrectOption && (
                       <XCircle className="h-5 w-5 text-red-600 ml-auto" />
                     )}
                   </div>
                 </button>
-              )
+              );
             })}
           </div>
 
-          {showResult && (
+          {showExplanation && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2">Explicação:</h4>
               <p className="text-blue-800">{currentQ.explanation}</p>
             </div>
           )}
 
-          {showResult && (
+          {showExplanation && (
             <Button onClick={handleNextQuestion} className="w-full" size="lg">
-              {currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
+              {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
             </Button>
           )}
         </CardContent>
       </Card>
-    </div>
-  )
-}
 
-export default QuizGame
+      <Dialog open={isTimeUpModalOpen} onOpenChange={setIsTimeUpModalOpen}>
+        <DialogContent className="sm:max-w-[425px] text-center">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-red-600">Tempo Esgotado!</DialogTitle>
+            <DialogDescription className="mt-2">
+              O tempo para responder a esta pergunta acabou.
+            </DialogDescription>
+          </DialogHeader>
+          <Button onClick={handleNextQuestion} className="w-full mt-4">Continuar</Button>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default QuizGame;
+
 

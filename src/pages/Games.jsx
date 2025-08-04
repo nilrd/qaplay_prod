@@ -22,18 +22,6 @@ const Games = () => {
       color: 'from-blue-500 to-purple-600'
     },
     {
-      id: 'interface-quebrada',
-      title: 'Interface Quebrada',
-      description: 'Identifique erros reais de interface, fluxo e funcionalidade em mini aplicações web.',
-      icon: '⚙️',
-      difficulty: 'Intermediário',
-      duration: '5-10 min',
-      rating: 5.0,
-      players: '100+',
-      status: 'available',
-      color: 'from-purple-500 to-indigo-600'
-    },
-    {
       id: 'programming-challenge',
       title: 'Desafios de Programação',
       description: 'Teste suas habilidades em lógica de programação e automação de testes.',
@@ -56,6 +44,30 @@ const Games = () => {
       rating: 4.7,
       status: 'available',
       color: 'from-orange-500 to-red-600'
+    },
+    {
+      id: 'logic-programming',
+      title: 'Desafios de Lógica de Programação',
+      description: 'Aprimore suas habilidades de resolução de problemas com desafios de lógica.',
+      icon: '🧠',
+      difficulty: 'Intermediário',
+      estimatedTime: '10-20 min',
+      players: '30+',
+      rating: 4.6,
+      status: 'available',
+      color: 'from-pink-500 to-red-600'
+    },
+    {
+      id: 'automation-master',
+      title: 'Mestre da Automação',
+      description: 'Teste seus conhecimentos sobre automação de testes, frameworks e boas práticas.',
+      icon: '⚙️',
+      difficulty: 'Avançado',
+      estimatedTime: '20-30 min',
+      players: '10+',
+      rating: 4.9,
+      status: 'available',
+      color: 'from-blue-500 to-purple-600'
     },
   ]
 
@@ -91,7 +103,7 @@ const Games = () => {
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="text-center">
           <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-primary">4</div>
+            <div className="text-2xl font-bold text-primary">{games.length}</div>
             <p className="text-sm text-muted-foreground">Jogos Disponíveis</p>
           </CardContent>
         </Card>
@@ -177,15 +189,15 @@ const Games = () => {
                 className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                 size="lg"
                 disabled={game.status !== 'available'}
-                asChild={game.id === 'qa-quiz' || game.id === 'ctfl-100-quiz' || game.id === 'interface-quebrada' || game.id === 'programming-challenge' || game.id === 'bdd-challenge'}
+                asChild={game.id === 'qa-quiz' || game.id === 'programming-challenge' || game.id === 'bdd-challenge' || game.id === 'logic-programming' || game.id === 'automation-master'}
               >
                 {game.id === 'qa-quiz' ? (
                   <Link to="/jogos/quiz">
                     <Play className="mr-2 h-4 w-4" />
                     Jogar Agora
                   </Link>
-                ) : game.id === 'interface-quebrada' ? (
-                  <Link to="/jogos/interface-quebrada">
+                ) : game.id === 'programming-challenge' ? (
+                  <Link to="/jogos/programming-challenge">
                     <Play className="mr-2 h-4 w-4" />
                     Jogar Agora
                   </Link>
@@ -194,8 +206,13 @@ const Games = () => {
                     <Play className="mr-2 h-4 w-4" />
                     Jogar Agora
                   </Link>
-                ) : game.id === 'programming-challenge' ? (
-                  <Link to="/jogos/programming-challenge">
+                ) : game.id === 'logic-programming' ? (
+                  <Link to="/jogos/logic-programming">
+                    <Play className="mr-2 h-4 w-4" />
+                    Jogar Agora
+                  </Link>
+                ) : game.id === 'automation-master' ? (
+                  <Link to="/jogos/automation-master">
                     <Play className="mr-2 h-4 w-4" />
                     Jogar Agora
                   </Link>
@@ -212,4 +229,5 @@ const Games = () => {
 }
 
 export default Games
+
 
