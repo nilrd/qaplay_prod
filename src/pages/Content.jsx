@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import { Lightbulb, Tool, CheckCircle, GitBranch, BookOpen, Video, Image as ImageIcon } from 'lucide-react';
+import { Lightbulb, Wrench, CheckCircle, GitBranch, BookOpen, Video, Image as ImageIcon } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 // Dados simulados para as categorias e conteúdos
@@ -84,7 +84,7 @@ const contentCategories = [
     id: 'ferramentas-de-automacao',
     title: 'Ferramentas de Automação',
     description: 'Conheça as principais ferramentas utilizadas na automação de testes.',
-    icon: <Tool className="h-8 w-8 text-green-600" />,
+    icon: <Wrench className="h-8 w-8 text-green-600" />,
     color: 'bg-green-50',
     items: [
       {
@@ -268,7 +268,7 @@ const Content = () => {
                   <img 
                     src={selectedItem.image} 
                     alt={selectedItem.title} 
-                    className="w-full h-auto rounded-lg shadow-md object-contain max-h-[400px]"
+                    className="w-full h-full rounded-lg shadow-md object-contain max-h-[400px]"
                   />
                 </div>
               )}
