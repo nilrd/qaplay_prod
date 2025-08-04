@@ -8,34 +8,34 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Layout Desktop Centralizado */}
-      <section className="text-center py-16 px-4">
-        <div className="max-w-6xl mx-auto space-y-8">
+      <section className="text-center py-12 px-4">
+        <div className="max-w-5xl mx-auto space-y-6">
           {/* Badge e Título Principal */}
-          <div className="space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/20">
+          <div className="space-y-4">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-semibold border border-primary/20">
               <Gamepad2 className="w-4 h-4" />
               <span className="text-gray-800 dark:text-gray-200 font-semibold">🎮 Plataforma Gamificada de QA</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Bem-vindo ao QAPlay
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Uma plataforma gamificada e gratuita para aprender Quality Assurance de forma prática, 
               divertida e eficiente. Desenvolvida para estudantes e profissionais que querem evoluir na área de QA.
             </p>
           </div>
           
           {/* Botões de Ação Melhorados */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="px-8 py-4 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-3">
+            <Button size="lg" className="px-6 py-3 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300" asChild>
               <Link to="/jogos">
                 <Play className="mr-2 h-5 w-5" />
                 Jogar Agora
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300" asChild>
+            <Button size="lg" variant="outline" className="px-6 py-3 text-lg border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300" asChild>
               <Link to="/treinar">
                 <Target className="mr-2 h-5 w-5" />
                 Treinar
@@ -46,15 +46,15 @@ const Home = () => {
       </section>
 
       {/* Layout Principal - Seções Específicas */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-6xl mx-auto px-4 py-12">
         
         {/* Primeira Linha: Criador (Esquerda) + Jogos (Direita) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           
           {/* Seção Sobre o Criador - Esquerda */}
           <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 border-blue-200/50 dark:border-blue-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader className="text-center pb-4">
-              <div className="mx-auto w-20 h-20 rounded-full overflow-hidden mb-4 ring-4 ring-blue-200/50 dark:ring-blue-500/20">
+            <CardHeader className="text-center pb-3">
+              <div className="mx-auto w-16 h-16 rounded-full overflow-hidden mb-3 ring-3 ring-blue-200/50 dark:ring-blue-500/20">
                 <img 
                   src="/nilson-photo.png" 
                   alt="Nilson Brites" 
@@ -65,26 +65,25 @@ const Home = () => {
                   }}
                 />
                 <div className="w-full h-full bg-muted rounded-full flex items-center justify-center" style={{display: 'none'}}>
-                  <User className="h-10 w-10 text-muted-foreground" />
+                  <User className="h-8 w-8 text-muted-foreground" />
                 </div>
               </div>
-              <CardTitle className="text-2xl text-foreground">Sobre o Criador</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="text-xl text-foreground">Sobre o Criador</CardTitle>
+              <CardDescription className="text-muted-foreground text-sm">
                 Conheça quem está por trás do QAPlay
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="text-center space-y-3">
-                <h3 className="text-lg font-semibold text-foreground">Nilson Brites</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+            <CardContent className="space-y-3">
+              <div className="text-center space-y-2">
+                <h3 className="text-base font-semibold text-foreground">Nilson Brites</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   Quality Assurance Engineer apaixonado por ensinar e compartilhar conhecimento. 
                   Especialista em automação de testes e metodologias ágeis, criador do QAPlay.
                 </p>
                 
                 {/* Badges de especialidades */}
-                <div className="flex flex-wrap justify-center gap-2 pt-2">
+                <div className="flex flex-wrap justify-center gap-1.5 pt-1.5">
                   <Badge variant="secondary" className="text-xs">QA Expert</Badge>
-                  <Badge variant="secondary" className="text-xs">CTFL Certified</Badge>
                   <Badge variant="secondary" className="text-xs">Mentor</Badge>
                 </div>
               </div>
@@ -101,36 +100,32 @@ const Home = () => {
 
           {/* Seção Jogos - Direita */}
           <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-500/10 dark:to-blue-500/10 border-green-200/50 dark:border-green-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader className="text-center pb-4">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Gamepad2 className="h-8 w-8 text-gray-900 dark:text-white" />
+            <CardHeader className="text-center pb-3">
+              <div className="mx-auto w-14 h-14 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                <Gamepad2 className="h-7 w-7 text-gray-900 dark:text-white" />
               </div>
-              <CardTitle className="text-2xl text-foreground">Jogos Interativos</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="text-xl text-foreground">Jogos Interativos</CardTitle>
+              <CardDescription className="text-muted-foreground text-sm">
                 Aprenda QA jogando e se divertindo
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">QA Quiz com 100+ perguntas</span>
+            <CardContent className="space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">QA Quiz com 100+ perguntas</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Desafios de Interface Quebrada</span>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Desafios de Programação e Automação</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Programação e Automação</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Desafios BDD e Gherkin</span>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Desafios BDD e Gherkin</span>
                 </div>
               </div>
               
-              <div className="bg-white/50 dark:bg-card/50 p-4 rounded-lg border border-green-200/50 dark:border-green-500/20">
+              <div className="bg-white/50 dark:bg-card/50 p-3 rounded-lg border border-green-200/50 dark:border-green-500/20">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Jogadores ativos:</span>
                   <span className="font-semibold text-foreground">3.2k+</span>
@@ -153,42 +148,42 @@ const Home = () => {
         </div>
 
         {/* Segunda Linha: Treinar (Esquerda) + Programar (Direita) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           {/* Seção Treinar - Esquerda */}
           <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-500/10 dark:to-red-500/10 border-orange-200/50 dark:border-orange-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader className="text-center pb-4">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Target className="h-8 w-8 text-gray-900 dark:text-white" />
+            <CardHeader className="text-center pb-3">
+              <div className="mx-auto w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                <Target className="h-7 w-7 text-gray-900 dark:text-white" />
               </div>
-              <CardTitle className="text-2xl text-foreground">Desafio do Conhecimento QA</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="text-xl text-foreground">Desafio do Conhecimento QA</CardTitle>
+              <CardDescription className="text-muted-foreground text-sm">
                 Prepare-se para certificações e avalie seu nível
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">30 questões em 30 minutos</span>
+            <CardContent className="space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Clock className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">30 questões em 30 minutos</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <BookOpen className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Baseado no CTFL 4.0</span>
+                <div className="flex items-center space-x-2">
+                  <BookOpen className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Baseado no CTFL 4.0</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Award className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Certificado personalizado</span>
+                <div className="flex items-center space-x-2">
+                  <Award className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Certificado personalizado</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Star className="h-5 w-5 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Compartilhamento no LinkedIn</span>
+                <div className="flex items-center space-x-2">
+                  <Star className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Compartilhamento no LinkedIn</span>
                 </div>
               </div>
               
-              <div className="bg-white/50 dark:bg-card/50 p-4 rounded-lg border border-orange-200/50 dark:border-orange-500/20">
+              <div className="bg-white/50 dark:bg-card/50 p-3 rounded-lg border border-orange-200/50 dark:border-orange-500/20">
                 <h4 className="font-semibold text-foreground mb-2">Níveis de Classificação:</h4>
-                <div className="space-y-1 text-sm">
+                <div className="space-y-1 text-xs">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Expert:</span>
                     <span className="text-purple-600 font-medium">80-100%</span>
@@ -220,38 +215,38 @@ const Home = () => {
 
           {/* Seção Programar - Direita */}
           <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 border-purple-200/50 dark:border-purple-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader className="text-center pb-4">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                <Code className="h-8 w-8 text-gray-900 dark:text-white" />
+            <CardHeader className="text-center pb-3">
+              <div className="mx-auto w-14 h-14 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                <Code className="h-7 w-7 text-gray-900 dark:text-white" />
               </div>
-              <CardTitle className="text-2xl text-foreground">Desafios de Programação</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="text-xl text-foreground">Desafios de Programação</CardTitle>
+              <CardDescription className="text-muted-foreground text-sm">
                 Desenvolva habilidades em automação de testes
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Code className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Lógica de programação aplicada</span>
+            <CardContent className="space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Code className="h-4 w-4 text-purple-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Lógica de programação aplicada</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Lightbulb className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Automação de testes práticos</span>
+                <div className="flex items-center space-x-2">
+                  <Lightbulb className="h-4 w-4 text-purple-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Automação de testes práticos</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Target className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Desafios progressivos</span>
+                <div className="flex items-center space-x-2">
+                  <Target className="h-4 w-4 text-purple-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Desafios progressivos</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Trophy className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">Ranking de desenvolvedores</span>
+                <div className="flex items-center space-x-2">
+                  <Trophy className="h-4 w-4 text-purple-500 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">Ranking de desenvolvedores</span>
                 </div>
               </div>
               
-              <div className="bg-white/50 dark:bg-card/50 p-4 rounded-lg border border-purple-200/50 dark:border-purple-500/20">
+              <div className="bg-white/50 dark:bg-card/50 p-3 rounded-lg border border-purple-200/50 dark:border-purple-500/20">
                 <h4 className="font-semibold text-foreground mb-2">Tecnologias Abordadas:</h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">JavaScript</Badge>
                   <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">Python</Badge>
                   <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">Selenium</Badge>
@@ -272,31 +267,56 @@ const Home = () => {
       </section>
 
       {/* Seção de Estatísticas */}
-      <section className="bg-muted/30 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">QAPlay em Números</h2>
-            <p className="text-muted-foreground">Uma comunidade crescente de profissionais de QA</p>
+      <section className="bg-muted/30 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-foreground mb-3">QAPlay em Números</h2>
+            <p className="text-muted-foreground text-lg">
+              Veja o impacto da nossa plataforma na comunidade de QA.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">4</div>
-              <div className="text-sm text-muted-foreground">Jogos Disponíveis</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">3.2k+</div>
-              <div className="text-sm text-muted-foreground">Jogadores Ativos</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">15k+</div>
-              <div className="text-sm text-muted-foreground">Partidas Jogadas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">4.7</div>
-              <div className="text-sm text-muted-foreground">Avaliação Média</div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <Card className="p-4 bg-card/50 border border-border/50 shadow-sm">
+              <CardContent className="p-0">
+                <div className="text-4xl font-bold text-primary mb-1">4+</div>
+                <CardDescription className="text-sm text-muted-foreground">Jogos Interativos</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="p-4 bg-card/50 border border-border/50 shadow-sm">
+              <CardContent className="p-0">
+                <div className="text-4xl font-bold text-primary mb-1">3.2k+</div>
+                <CardDescription className="text-sm text-muted-foreground">Jogadores Ativos</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="p-4 bg-card/50 border border-border/50 shadow-sm">
+              <CardContent className="p-0">
+                <div className="text-4xl font-bold text-primary mb-1">15k+</div>
+                <CardDescription className="text-sm text-muted-foreground">Partidas Jogadas</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="p-4 bg-card/50 border border-border/50 shadow-sm">
+              <CardContent className="p-0">
+                <div className="text-4xl font-bold text-primary mb-1">4.7/5</div>
+                <CardDescription className="text-sm text-muted-foreground">Avaliação Média</CardDescription>
+              </CardContent>
+            </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Seção de Chamada para Ação - Blog */}
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold">Fique por Dentro das Novidades em QA!</h2>
+          <p className="text-lg opacity-90">
+            Acompanhe nosso blog para artigos, tutoriais e as últimas tendências em Quality Assurance.
+          </p>
+          <Button size="lg" variant="secondary" className="px-8 py-4 text-lg text-primary hover:bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+            <Link to="/blog">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Acessar o Blog
+            </Link>
+          </Button>
         </div>
       </section>
     </div>
@@ -304,4 +324,5 @@ const Home = () => {
 }
 
 export default Home
+
 
