@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target, BookOpen } from 'lucide-react'
-import questionsData from '../data/quizQuestions.json'
+import questionsData from '../data/ctfl_150_questions_definitive.json'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import CertificateModal from '@/components/CertificateModal';
 import { Input } from '@/components/ui/input';
@@ -16,7 +16,7 @@ const QuizGame = () => {
   const [score, setScore] = useState(0)
   const [showExplanation, setShowExplanation] = useState(false)
   const [gameFinished, setGameFinished] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(30) // 30 segundos por pergunta
+  const [timeLeft, setTimeLeft] = useState(null) // Tempo restante em segundos
   const [gameStarted, setGameStarted] = useState(false)
   const [shuffledQuestions, setShuffledQuestions] = useState([])
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
@@ -37,7 +37,7 @@ const QuizGame = () => {
   };
 
   const startGame = (mode) => {
-    let questionsToUse = shuffleArray(questionsData);
+    let questionsToUse = questionsData.questions;
 
     // Filtrar e selecionar 20 questões: 8 básicas, 8 intermediárias, 4 avançadas
     const basicQuestions = questionsToUse.filter(q => q.level === 'básico');
@@ -103,16 +103,16 @@ const QuizGame = () => {
     if (showExplanation) return;
     setSelectedAnswerIndex(answerIndex);
     
-    if (gameMode === 'aprendizado') {
-      setShowExplanation(true);
-    }
-
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
     const selectedOption = currentQuestion.options[answerIndex];
-    const isCorrect = selectedOption.originalIndex === currentQuestion.correct;
+    const isCorrect = selectedOption.originalIndex === currentQuestion.correctAnswer;
 
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
+    }
+
+    if (gameMode === 'aprendizado') {
+      setShowExplanation(true);
     }
   };
 
@@ -123,7 +123,7 @@ const QuizGame = () => {
       setSelectedAnswerIndex(null);
       setShowExplanation(false);
       if (gameMode === 'simulado') {
-        setTimeLeft(1200 - (currentQuestionIndex + 1) * 60); // Ajusta o tempo restante para o modo simulado
+        // No modo simulado, o tempo é global, não por questão. Apenas avança a questão.
       }
     } else {
       finishGame();
@@ -148,7 +148,7 @@ const QuizGame = () => {
     setShowExplanation(false);
     setGameFinished(false);
     setShuffledQuestions([]);
-    setTimeLeft(1200);
+    setTimeLeft(null);
     setIsTimeUpModalOpen(false);
     setIsCertificateModalOpen(false);
     setFullName('');
@@ -327,7 +327,7 @@ const QuizGame = () => {
         <CardContent className="space-y-4">
           <div className="grid gap-3">
             {currentQ.options.map((option, index) => {
-              const isCorrectOption = option.originalIndex === currentQ.correct;
+              const isCorrectOption = option.originalIndex === currentQ.correctAnswer;
               const isSelected = selectedAnswerIndex === index;
 
               let buttonClass = "w-full text-left p-4 border rounded-lg transition-colors";
@@ -371,7 +371,10 @@ const QuizGame = () => {
           {showExplanation && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2">Explicação:</h4>
-              <p className="text-blue-800">{currentQ.explanation}</p>
+              <p className="text-blue-800">{currentQ.correctFeedback}</p>
+              {currentQ.incorrectFeedback && selectedAnswerIndex !== null && !shuffledQuestions[currentQuestionIndex].options[selectedAnswerIndex].originalIndex === currentQ.correctAnswer && (
+                <p className="text-blue-800 mt-2">{currentQ.incorrectFeedback}</p>
+              )}
             </div>
           )}
 
