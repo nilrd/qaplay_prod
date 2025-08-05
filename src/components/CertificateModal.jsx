@@ -33,7 +33,7 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 
   const shareOnLinkedIn = () => {
     const badgeText = `QA Quiz - ${getBadgeLevel()} (${percentage}% de acertos)`;
-    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🎉\n\nTeste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #CTFL #QAPlay`;
+    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🎉\n\nBaseado no Syllabus ISTQB CTFL 4.0. Teste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #ISTQB #CTFL #QAPlay`;
     
     const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
     
@@ -77,7 +77,7 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
                   </div>
                 </div>
                 <h1 className="text-3xl font-bold text-gray-800">Certificado de Conclusão</h1>
-                <p className="text-lg text-gray-600">QAPlay - Quiz de Quality Assurance</p>
+                <p className="text-lg text-gray-600">QAPlay - Quiz de Quality Assurance (Baseado no Syllabus ISTQB CTFL 4.0)</p>
               </div>
 
               {/* Conteúdo Principal */}
@@ -162,6 +162,8 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 };
 
 export default CertificateModal;
+
+
 
 
 
