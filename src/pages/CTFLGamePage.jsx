@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import QuizGame from '../games/QuizGame';
+import CTFLQuizGame from '../games/CTFLQuizGame'; // Importar o novo componente do jogo CTFL
 
 const CTFLGamePage = () => {
   return (
@@ -20,10 +20,11 @@ const CTFLGamePage = () => {
         </div>
       </div>
       
-      <QuizGame />
+      <CTFLQuizGame />
     </div>
   );
 };
 
 export default CTFLGamePage;
+
 

@@ -1,140 +1,164 @@
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Trophy, Share2, Download, X, Linkedin } from 'lucide-react'
+import React, { useRef } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Trophy, Download, Share2, Award } from 'lucide-react';
+import html2canvas from 'html2canvas';
 
-const CertificateModal = ({ userInfo, score, onClose, onShareLinkedIn }) => {
-  const getScoreLevel = (percentage) => {
-    if (percentage >= 90) return { level: 'Expert', color: 'text-green-600', bg: 'bg-green-100' }
-    if (percentage >= 80) return { level: 'Avançado', color: 'text-blue-600', bg: 'bg-blue-100' }
-    if (percentage >= 70) return { level: 'Intermediário', color: 'text-yellow-600', bg: 'bg-yellow-100' }
-    if (percentage >= 60) return { level: 'Iniciante', color: 'text-orange-600', bg: 'bg-orange-100' }
-    return { level: 'Precisa Estudar', color: 'text-red-600', bg: 'bg-red-100' }
-  }
+const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, linkedinProfile }) => {
+  const certificateRef = useRef(null);
 
-  const scoreLevel = getScoreLevel(score.percentage)
-  const currentDate = new Date().toLocaleDateString('pt-BR')
+  const percentage = Math.round((score / (totalQuestions * 10)) * 100);
+  const currentDate = new Date().toLocaleDateString('pt-BR');
 
-  const generateLinkedInPost = () => {
-    const text = `🎯 Acabei de completar o "Desafio: Mestre da Qualidade" no QAPlay!
-
-📊 Resultado: ${score.percentage}% (${score.correct}/${score.total} questões corretas)
-🏆 Nível: ${scoreLevel.level}
-📚 100 questões baseadas no CTFL 4.0
-
-O QAPlay é uma plataforma gamificada criada por Nilson da Silva Brites para ensinar Quality Assurance de forma prática e divertida.
-
-#QualityAssurance #QA #CTFL #Testing #QAPlay #Certificação #TechSkills`
-
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://www.qaplay.com.br')}&text=${encodeURIComponent(text)}`
-    
-    if (onShareLinkedIn) {
-      onShareLinkedIn(url)
-    } else {
-      window.open(url, '_blank')
+  const downloadCertificate = async () => {
+    if (certificateRef.current) {
+      try {
+        const canvas = await html2canvas(certificateRef.current, {
+          backgroundColor: '#ffffff',
+          scale: 2,
+          useCORS: true,
+        });
+        
+        const link = document.createElement('a');
+        link.download = `certificado-qaplay-${fullName.replace(/\s+/g, '-').toLowerCase()}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      } catch (error) {
+        console.error('Erro ao gerar certificado:', error);
+        alert('Erro ao gerar o certificado. Tente novamente.');
+      }
     }
-  }
+  };
+
+  const shareOnLinkedIn = () => {
+    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos! 🎉\n\nTeste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #CTFL #QAPlay`;
+    
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&text=${encodeURIComponent(text)}`;
+    
+    window.open(linkedinUrl, '_blank', 'width=600,height=400');
+  };
+
+  const getBadgeColor = () => {
+    if (percentage >= 90) return 'bg-yellow-500';
+    if (percentage >= 70) return 'bg-blue-500';
+    if (percentage >= 50) return 'bg-green-500';
+    return 'bg-gray-500';
+  };
+
+  const getBadgeLevel = () => {
+    if (percentage >= 90) return 'Expert';
+    if (percentage >= 70) return 'Avançado';
+    if (percentage >= 50) return 'Intermediário';
+    return 'Iniciante';
+  };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <CardHeader className="relative">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClose}
-            className="absolute right-2 top-2"
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-center">Certificado de Conclusão</DialogTitle>
+        </DialogHeader>
+        
+        <div className="space-y-6">
+          {/* Certificado */}
+          <div 
+            ref={certificateRef}
+            className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-lg border-2 border-blue-200 text-center"
+            style={{ minHeight: '500px' }}
           >
-            <X className="w-4 h-4" />
-          </Button>
-          <div className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-              <Trophy className="w-8 h-8 text-white" />
-            </div>
-            <CardTitle className="text-3xl">Conquista</CardTitle>
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border-2 border-dashed border-blue-200">
-              <div className="text-center space-y-3">
-                <h2 className="text-2xl font-bold text-gray-800">Certificado de Conclusão</h2>
-                <div className="text-lg">
-                  <p className="text-gray-600">Certificamos que</p>
-                  <p className="text-2xl font-bold text-blue-600 my-2">{userInfo.name}</p>
-                  <p className="text-gray-600">completou com sucesso o</p>
-                  <p className="text-xl font-semibold text-purple-600 my-2">Desafio: Mestre da Qualidade</p>
-                </div>
-                
-                <div className="flex justify-center items-center space-x-4 my-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">{score.percentage}%</div>
-                    <div className="text-sm text-gray-500">Pontuação</div>
+            <div className="space-y-6">
+              {/* Header */}
+              <div className="space-y-2">
+                <div className="flex justify-center">
+                  <div className={`w-16 h-16 ${getBadgeColor()} rounded-full flex items-center justify-center`}>
+                    <Award className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-center">
-                    <Badge className={`${scoreLevel.bg} ${scoreLevel.color} text-lg px-3 py-1`}>
-                      {scoreLevel.level}
+                </div>
+                <h1 className="text-3xl font-bold text-gray-800">Certificado de Conclusão</h1>
+                <p className="text-lg text-gray-600">QAPlay - Quiz de Quality Assurance</p>
+              </div>
+
+              {/* Conteúdo Principal */}
+              <div className="space-y-4">
+                <p className="text-lg text-gray-700">Certificamos que</p>
+                <h2 className="text-4xl font-bold text-blue-600">{fullName}</h2>
+                <p className="text-lg text-gray-700">
+                  completou com sucesso o Quiz de Quality Assurance
+                </p>
+              </div>
+
+              {/* Resultados */}
+              <div className="bg-white p-6 rounded-lg shadow-sm border">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-blue-600">{score}</div>
+                    <div className="text-sm text-gray-600">Pontuação</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-green-600">{percentage}%</div>
+                    <div className="text-sm text-gray-600">Acertos</div>
+                  </div>
+                  <div>
+                    <Badge className={`${getBadgeColor()} text-white`}>
+                      {getBadgeLevel()}
                     </Badge>
-                    <div className="text-sm text-gray-500 mt-1">Nível</div>
+                    <div className="text-sm text-gray-600 mt-1">Nível</div>
                   </div>
                 </div>
+              </div>
 
-                <div className="text-sm text-gray-500 space-y-1">
-                  <p>{score.correct} de {score.total} questões corretas</p>
-                  <p>Baseado no CTFL 4.0</p>
-                  <p>Data: {currentDate}</p>
-                </div>
-
-                <div className="border-t pt-3 mt-4">
-                  <p className="text-xs text-gray-400">QAPlay - Plataforma de Ensino de QA</p>
-                  <p className="text-xs text-gray-400">Por Nilson da Silva Brites</p>
-                  <p className="text-xs text-gray-400">www.qaplay.com.br</p>
-                </div>
+              {/* Footer */}
+              <div className="space-y-2 text-sm text-gray-600">
+                <p>Data de conclusão: {currentDate}</p>
+                <p>QAPlay - Plataforma de Treinamento em Quality Assurance</p>
+                <p className="text-xs">Certificado gerado automaticamente pelo sistema QAPlay</p>
               </div>
             </div>
           </div>
-        </CardHeader>
-        
-        <CardContent className="space-y-4">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold mb-2">Parabéns!</h3>
-            <p className="text-muted-foreground">
-              {userInfo.name}, você completou o desafio com uma pontuação de {score.percentage}%.
-            </p>
+
+          {/* Badge Digital */}
+          <div className="bg-gray-50 p-6 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-4">Seu Badge Digital</h3>
+            <div className="inline-flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm border">
+              <div className={`w-12 h-12 ${getBadgeColor()} rounded-full flex items-center justify-center`}>
+                <Trophy className="h-6 w-6 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="font-semibold">QA Quiz - {getBadgeLevel()}</div>
+                <div className="text-sm text-gray-600">{percentage}% de acertos</div>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-muted p-4 rounded-lg">
-            <h4 className="font-semibold mb-2">Análise do Desempenho:</h4>
-            <p className="text-sm text-muted-foreground">
-              {score.percentage >= 90 && "Excelente! Você demonstra domínio avançado dos conceitos de QA e está pronto para certificações."}
-              {score.percentage >= 80 && score.percentage < 90 && "Muito bom! Você tem conhecimento sólido em QA, continue estudando para alcançar a excelência."}
-              {score.percentage >= 70 && score.percentage < 80 && "Bom desempenho! Você tem uma base sólida, mas há espaço para aprimoramento em algumas áreas."}
-              {score.percentage >= 60 && score.percentage < 70 && "Você está no caminho certo! Continue estudando e praticando para fortalecer seus conhecimentos."}
-              {score.percentage < 60 && "Recomendamos revisar os conceitos fundamentais de QA e praticar mais antes de tentar novamente."}
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button 
-              onClick={generateLinkedInPost}
-              className="flex-1 bg-blue-600 hover:bg-blue-700"
-            >
-              <Linkedin className="mr-2 h-4 w-4" />
-              Compartilhar no LinkedIn
-            </Button>
-            <Button variant="outline" className="flex-1">
+          {/* Ações */}
+          <div className="flex gap-4">
+            <Button onClick={downloadCertificate} className="flex-1">
               <Download className="mr-2 h-4 w-4" />
               Baixar Certificado
             </Button>
+            <Button onClick={shareOnLinkedIn} variant="outline" className="flex-1">
+              <Share2 className="mr-2 h-4 w-4" />
+              Compartilhar no LinkedIn
+            </Button>
           </div>
 
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              linkedin.com/in/nilsonbrites
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
+          {/* Informações do LinkedIn */}
+          {linkedinProfile && (
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <p className="text-sm text-blue-800">
+                <strong>Perfil LinkedIn:</strong> {linkedinProfile}
+              </p>
+              <p className="text-xs text-blue-600 mt-1">
+                Adicione este certificado ao seu perfil para destacar suas habilidades em QA!
+              </p>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
-export default CertificateModal
+export default CertificateModal;
 

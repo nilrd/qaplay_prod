@@ -1,0 +1,2254 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qual é o principal objetivo do teste de software?",
+      "options": [
+        "A) Melhorar o desempenho do sistema de forma isolada",
+        "B) Identificar defeitos e garantir qualidade",
+        "C) Reduzir custos sem impactar a qualidade",
+        "D) Aumentar a velocidade de entrega sem comprometer segurança"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-1.1.1",
+      "correctFeedback": "Correto! O objetivo primordial do teste de software é identificar defeitos e verificar se o produto atende aos requisitos de qualidade definidos. Testes eficazes ajudam a prevenir a liberação de software defeituoso, aumentam a confiança no produto final e são fundamentais para a validação do processo de desenvolvimento, conforme descrito na seção 1.1.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Embora melhorar desempenho, reduzir custos ou acelerar entregas possam ser benefícios indiretos, o foco principal do teste é encontrar defeitos e garantir qualidade. Esses outros aspectos são secundários e dependem de estratégias específicas, como otimização ou gestão de projetos. Recomenda-se revisar o capítulo 1.1.1 do syllabus para uma compreensão mais profunda dos objetivos do teste."
+    },
+    {
+      "id": 2,
+      "question": "O que é um defeito de software?",
+      "options": [
+        "A) Uma funcionalidade ausente ou incorreta",
+        "B) Um atraso no cronograma de desenvolvimento",
+        "C) Um erro de digitação em um documento de requisitos",
+        "D) Uma falha no planejamento do projeto"
+      ],
+      "correctAnswer": 0,
+      "level": "básico",
+      "LO": "FL-1.2.1",
+      "correctFeedback": "Parabéns! Um defeito de software é definido como uma funcionalidade ausente ou incorreta no código ou no sistema, resultante de um erro humano durante o desenvolvimento. Essa definição é crucial para entender como os testes identificam e corrigem falhas, conforme detalhado na seção 1.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um defeito está relacionado a falhas no código ou funcionalidade do software, não a atrasos, erros de digitação em documentos ou problemas de planejamento, que são questões de gestão. Revise a seção 1.2.1 do syllabus para diferenciar esses conceitos."
+    },
+    {
+      "id": 3,
+      "question": "Qual é a diferença entre verificação e validação?",
+      "options": [
+        "A) Verificação testa o produto, validação planeja o teste",
+        "B) Verificação checa se foi construído corretamente, validação se foi o certo",
+        "C) Verificação é manual, validação é automatizada",
+        "D) Verificação é pós-lançamento, validação é pré-lançamento"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-1.2.2",
+      "correctFeedback": "Correto! A verificação assegura que o produto foi construído corretamente, ou seja, conforme as especificações técnicas e os processos definidos, enquanto a validação assegura que o produto certo foi construído, atendendo às necessidades e expectativas do usuário final. Essa distinção é essencial para a garantia de qualidade, conforme abordado na seção 1.2.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Não exatamente. A verificação foca em avaliar se o produto foi construído de acordo com os requisitos técnicos durante o processo, enquanto a validação verifica se o produto atende às necessidades reais do usuário. Aspectos como manual/automatizado ou pré/pós-lançamento não definem essa diferença. Consulte a seção 1.2.2 para esclarecer."
+    },
+    {
+      "id": 4,
+      "question": "Qual técnica de teste utiliza a cobertura de decisões?",
+      "options": [
+        "A) Teste de caixa preta com foco em entradas",
+        "B) Teste de caixa branca",
+        "C) Teste exploratório baseado em experiência",
+        "D) Teste de regressão para revalidação"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.3.2",
+      "correctFeedback": "Excelente! A cobertura de decisões é uma técnica de teste de caixa branca, que analisa a lógica interna do código, garantindo que todas as possíveis decisões (ramos) em um fluxo de controle sejam testadas. Isso é essencial para validar a robustez do software, conforme descrito na seção 4.3.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. A cobertura de decisões está associada ao teste de caixa branca, que examina a estrutura interna do código, como fluxos de decisão. Técnicas como caixa preta, exploratória ou regressão não têm esse foco. Recomenda-se revisar a seção 4.3.2 para entender as técnicas de teste estrutural."
+    },
+    {
+      "id": 5,
+      "question": "O que é um caso de teste?",
+      "options": [
+        "A) Um relatório detalhado de defeitos encontrados",
+        "B) Um conjunto de condições para validar uma funcionalidade",
+        "C) Um plano estratégico de gerenciamento de teste",
+        "D) Um ambiente configurado para execução de testes"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-2.2.1",
+      "correctFeedback": "Correto! Um caso de teste é um conjunto de condições, incluindo entradas, ações e resultados esperados, projetado para validar uma funcionalidade específica do software. Esse conceito é fundamental para o planejamento e execução de testes, conforme detalhado na seção 2.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um caso de teste é uma definição específica para testar uma funcionalidade, não um relatório, plano ou ambiente. Confundi-lo com esses itens pode levar a erros no processo de teste. Consulte a seção 2.2.1 para mais detalhes."
+    },
+    {
+      "id": 6,
+      "question": "Qual é o propósito de uma revisão de código?",
+      "options": [
+        "A) Identificar defeitos antes da execução do teste",
+        "B) Avaliar a estética da interface do usuário",
+        "C) Validar o desempenho do sistema em produção",
+        "D) Criar novos casos de teste automaticamente"
+      ],
+      "correctAnswer": 0,
+      "level": "intermediário",
+      "LO": "FL-3.2.1",
+      "correctFeedback": "Parabéns! O propósito principal de uma revisão de código é identificar defeitos e melhorias no código fonte antes da execução dos testes, reduzindo custos e aumentando a qualidade. Essa prática é uma técnica de revisão estática, conforme detalhado na seção 3.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. A revisão de código foca em encontrar defeitos no código, não em estética, desempenho ou criação de casos. Esses outros aspectos são abordados em fases diferentes do ciclo de vida. Revise a seção 3.2.1 para entender o processo de revisão."
+    },
+    {
+      "id": 7,
+      "question": "Qual é um exemplo de técnica de teste de caixa preta?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Análise de valor de limite",
+        "C) Cobertura de decisões lógicas",
+        "D) Análise de fluxo de dados interno"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.2.1",
+      "correctFeedback": "Correto! A análise de valor de limite é uma técnica de teste de caixa preta que foca em testar os limites de entrada e saída do software, sem conhecimento da lógica interna. Isso é essencial para validar a robustez do sistema, conforme a seção 4.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Técnicas de caixa preta, como análise de valor de limite, baseiam-se em entradas/saídas, não na estrutura interna (como cobertura de instruções ou decisões). Revise a seção 4.2.1 para diferenciar as abordagens."
+    },
+    {
+      "id": 8,
+      "question": "O que é um risco de projeto?",
+      "options": [
+        "A) Um defeito corrigido com sucesso no código",
+        "B) Uma possível ameaça ao sucesso do projeto",
+        "C) Um teste bem-sucedido que valida o sistema",
+        "D) Um plano de teste totalmente implementado"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-5.1.1",
+      "correctFeedback": "Muito bem! Um risco de projeto é uma possível ameaça ou incerteza que pode impactar negativamente o cronograma, custo ou qualidade, como a falta de recursos. Identificar e gerenciar riscos é crucial, conforme a seção 5.1.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um risco é uma potencial ameaça, não um defeito corrigido, teste bem-sucedido ou plano implementado, que são resultados positivos. Consulte a seção 5.1.1 para entender melhor a gestão de riscos."
+    },
+    {
+      "id": 9,
+      "question": "Qual é a principal vantagem do teste automatizado?",
+      "options": [
+        "A) Eliminar completamente os erros humanos",
+        "B) Reduzir o tempo de testes repetitivos",
+        "C) Ampliar a cobertura de testes sem necessidade de planejamento adicional",
+        "D) Garantir 100% de cobertura de código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-6.1.1",
+      "correctFeedback": "Excelente! A principal vantagem do teste automatizado é reduzir significativamente o tempo necessário para executar testes repetitivos, permitindo maior eficiência e foco em testes mais complexos. Isso é detalhado na seção 6.1.1 do syllabus CTFL 4.0, que destaca a importância da automação em processos contínuos.",
+      "incorrectFeedback": "Resposta incorreta. Embora a automação traga benefícios, ela não elimina erros humanos, não amplia cobertura sem planejamento nem garante 100% de cobertura. Esses mitos podem levar a expectativas irreais. Revise a seção 6.1.1 para entender os limites e vantagens reais."
+    },
+    {
+      "id": 10,
+      "question": "O que é um plano de teste?",
+      "options": [
+        "A) Um relatório detalhado de defeitos identificados",
+        "B) Um documento que define a estratégia de teste",
+        "C) Um caso de teste específico para uma funcionalidade",
+        "D) Um ambiente de teste configurado para execução"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-2.1.1",
+      "correctFeedback": "Correto! Um plano de teste é um documento que define a estratégia, escopo, recursos e cronograma para o processo de teste, servindo como guia para toda a equipe. Esse conceito é essencial para a organização, conforme a seção 2.1.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um plano de teste é um guia estratégico, não um relatório, caso ou ambiente. Confundir esses termos pode prejudicar o planejamento. Consulte a seção 2.1.1 para clarificar."
+    },
+    {
+      "id": 11,
+      "question": "Qual é o foco do teste de aceitação?",
+      "options": [
+        "A) Analisar a lógica interna do código em detalhes",
+        "B) Satisfação dos requisitos do usuário",
+        "C) Avaliar o desempenho sob alta demanda",
+        "D) Garantir a segurança contra ataques externos"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.1",
+      "correctFeedback": "Parabéns! O teste de aceitação foca em validar se o software atende aos requisitos e expectativas dos usuários finais, sendo frequentemente realizado com a participação do cliente. Essa etapa é crucial para garantir que o produto entregue atenda às necessidades reais, conforme detalhado na seção 4.4.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de aceitação visa validar os requisitos do usuário, não a lógica interna, desempenho ou segurança, que são abordados em outros tipos de teste. Consulte a seção 4.4.1 para entender seu propósito específico."
+    },
+    {
+      "id": 12,
+      "question": "O que é uma técnica de teste baseado em experiência?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste exploratório",
+        "C) Análise de fluxos de decisão",
+        "D) Validação de requisitos documentados"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.2.3",
+      "correctFeedback": "Correto! O teste exploratório utiliza a experiência e o conhecimento do testador para guiar a execução dos testes sem scripts predefinidos, sendo ideal para descobrir defeitos não antecipados. Esse método é descrito na seção 4.2.3 do syllabus CTFL 4.0 como uma abordagem baseada em habilidades humanas.",
+      "incorrectFeedback": "Resposta incorreta. Técnicas baseadas em experiência, como o teste exploratório, dependem do julgamento do testador, ao contrário de abordagens estruturais ou baseadas em requisitos. Revise a seção 4.2.3 para diferenciar as técnicas."
+    },
+    {
+      "id": 13,
+      "question": "Qual é o papel de um testador no desenvolvimento ágil?",
+      "options": [
+        "A) Documentar apenas os defeitos encontrados",
+        "B) Colaborar em todas as fases do ciclo de desenvolvimento",
+        "C) Gerenciar o cronograma do projeto",
+        "D) Desenvolver o código principal do software"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-5.3.1",
+      "correctFeedback": "Muito bem! No desenvolvimento ágil, o testador colabora em todas as fases, desde a definição de requisitos até a entrega contínua, participando de sprints e revisões. Essa integração é essencial para a qualidade iterativa, conforme a seção 5.3.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Em ágil, o testador atua ativamente em todas as fases, não apenas documenta ou gerencia, e não é responsável pelo desenvolvimento do código. Revise a seção 5.3.1 para entender o papel no modelo ágil."
+    },
+    {
+      "id": 14,
+      "question": "O que é um ambiente de teste?",
+      "options": [
+        "A) Um documento detalhado de planejamento",
+        "B) Um conjunto de hardware e software para testes",
+        "C) Um caso de teste específico",
+        "D) Um relatório de progresso do projeto"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-2.3.1",
+      "correctFeedback": "Correto! Um ambiente de teste é o conjunto de hardware, software, redes e configurações utilizado para executar os testes, simulando as condições reais de uso. Essa infraestrutura é fundamental para a eficácia dos testes, conforme a seção 2.3.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um ambiente de teste é a infraestrutura física e lógica, não um documento, caso ou relatório. Confundi-lo com esses itens pode comprometer a execução dos testes. Consulte a seção 2.3.1."
+    },
+    {
+      "id": 15,
+      "question": "Qual é o propósito do teste de regressão?",
+      "options": [
+        "A) Validar a implementação de novos recursos",
+        "B) Garantir que correções não introduzam novos defeitos",
+        "C) Testar a interface do usuário em detalhes",
+        "D) Avaliar o desempenho sob condições extremas"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.5.1",
+      "correctFeedback": "Parabéns! O teste de regressão tem o propósito de verificar que as correções ou alterações no software não introduziram novos defeitos, preservando a estabilidade do sistema. Essa prática é essencial em ciclos de desenvolvimento contínuo, conforme a seção 4.5.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de regressão foca em validar estabilidade após mudanças, não em novos recursos, interface ou desempenho extremo, que têm outros tipos de teste específicos. Revise a seção 4.5.1."
+    },
+    {
+      "id": 16,
+      "question": "O que é uma métrica de teste?",
+      "options": [
+        "A) Um plano detalhado de execução de testes",
+        "B) Uma medida de qualidade ou progresso",
+        "C) Um caso de teste específico",
+        "D) Um ambiente de teste configurado"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-5.2.1",
+      "correctFeedback": "Correto! Uma métrica de teste é uma medida quantitativa ou qualitativa que avalia a qualidade do software ou o progresso do processo de teste, como taxa de defeitos ou cobertura. Essa prática ajuda na tomada de decisões, conforme a seção 5.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Métricas são medidas, não planos, casos ou ambientes. Confundir esses conceitos pode levar a uma má avaliação do processo. Consulte a seção 5.2.1 para mais detalhes."
+    },
+    {
+      "id": 17,
+      "question": "Qual é a principal desvantagem do teste manual?",
+      "options": [
+        "A) Alto custo e tempo de execução",
+        "B) Dificuldade em assegurar reprodutibilidade consistente em execuções extensas",
+        "C) Impossibilidade de detectar defeitos complexos",
+        "D) Dependência exclusiva de ferramentas automatizadas"
+      ],
+      "correctAnswer": 0,
+      "level": "avançado",
+      "LO": "FL-6.2.1",
+      "correctFeedback": "Muito bem! A principal desvantagem do teste manual é o alto custo e o tempo necessário para execução, especialmente em projetos com muitos casos repetitivos. Essa limitação destaca a necessidade de automação em certos cenários, conforme a seção 6.2.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Embora a reprodutibilidade e a detecção de defeitos sejam desafios, o custo e o tempo são considerados a principal desvantagem devido ao impacto econômico. A dependência de ferramentas não se aplica ao manual. Revise a seção 6.2.1."
+    },
+    {
+      "id": 18,
+      "question": "O que é um teste de carga?",
+      "options": [
+        "A) Teste da interface do usuário em diferentes dispositivos",
+        "B) Teste de desempenho sob alta demanda",
+        "C) Análise da lógica interna do código",
+        "D) Validação de requisitos do cliente"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.1",
+      "correctFeedback": "Correto! O teste de carga avalia o desempenho do sistema sob alta demanda, simulando um número elevado de usuários ou transações. Essa técnica é essencial para garantir escalabilidade, conforme a seção 4.6.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de carga foca em desempenho sob demanda, não em interface, lógica interna ou validação de requisitos, que têm outros tipos de teste específicos. Revise a seção 4.6.1."
+    },
+    {
+      "id": 19,
+      "question": "Qual é o papel do gerente de teste?",
+      "options": [
+        "A) Executar todos os casos de teste manualmente",
+        "B) Planejar e gerenciar o processo de teste",
+        "C) Desenvolver o software a ser testado",
+        "D) Documentar todos os defeitos encontrados"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-2.1.2",
+      "correctFeedback": "Parabéns! O gerente de teste é responsável por planejar, organizar, monitorar e gerenciar o processo de teste, garantindo que os objetivos de qualidade sejam alcançados. Essa função é detalhada na seção 2.1.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O gerente de teste organiza o processo, não executa testes, desenvolve software ou documenta defeitos, que são papéis de outros membros da equipe. Consulte a seção 2.1.2."
+    },
+    {
+      "id": 20,
+      "question": "O que é um bug report?",
+      "options": [
+        "A) Um plano detalhado de teste",
+        "B) Um documento que descreve um defeito",
+        "C) Um caso de teste específico",
+        "D) Um ambiente de teste configurado"
+      ],
+      "correctAnswer": 1,
+      "level": "básico",
+      "LO": "FL-2.4.1",
+      "correctFeedback": "Correto! Um bug report é um documento que descreve um defeito identificado, incluindo detalhes como passos para reprodução e impacto. Esse registro é essencial para a correção, conforme a seção 2.4.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Um bug report é sobre defeitos, não um plano, caso ou ambiente. Misturar esses conceitos pode gerar confusão no rastreamento de problemas. Revise a seção 2.4.1."
+    },
+    {
+      "id": 21,
+      "question": "Qual é a técnica de particionamento de equivalência?",
+      "options": [
+        "A) Dividir dados em classes de equivalência",
+        "B) Analisar a estrutura interna do código",
+        "C) Testar a interface do usuário em detalhes",
+        "D) Verificar o desempenho do sistema"
+      ],
+      "correctAnswer": 0,
+      "level": "intermediário",
+      "LO": "FL-4.2.2",
+      "correctFeedback": "Excelente! A técnica de particionamento de equivalência divide os dados de entrada em classes que devem se comportar de maneira semelhante, otimizando o número de testes. Essa abordagem é descrita na seção 4.2.2 do syllabus CTFL 4.0 como uma técnica de caixa preta.",
+      "incorrectFeedback": "Resposta incorreta. O particionamento de equivalência foca em classes de dados, não em estrutura interna, interface ou desempenho, que são abordados por outras técnicas. Revise a seção 4.2.2."
+    },
+    {
+      "id": 22,
+      "question": "O que é um teste de fumaça?",
+      "options": [
+        "A) Teste de desempenho sob alta carga",
+        "B) Teste inicial para verificar funcionalidades básicas",
+        "C) Teste de regressão após correções",
+        "D) Validação completa dos requisitos"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.5.2",
+      "correctFeedback": "Correto! O teste de fumaça é um teste inicial realizado para verificar se as funcionalidades básicas do software estão operacionais, evitando esforços em sistemas instáveis. Essa prática é detalhada na seção 4.5.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de fumaça é inicial e básico, não foca em desempenho, regressão ou validação completa, que têm propósitos distintos. Consulte a seção 4.5.2."
+    },
+    {
+      "id": 23,
+      "question": "Qual é o principal objetivo de um teste de usabilidade?",
+      "options": [
+        "A) Verificar a lógica interna do código",
+        "B) Avaliar a facilidade de uso pelo usuário",
+        "C) Testar o desempenho sob condições extremas",
+        "D) Garantir a segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.1",
+      "correctFeedback": "Muito bem! O teste de usabilidade avalia se o software é intuitivo, eficiente e satisfatório para o usuário, considerando fatores como design e interação. Essa técnica é essencial para a experiência do usuário, conforme a seção 4.7.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Usabilidade foca na experiência do usuário, não na lógica interna, desempenho ou segurança, que são tratados por outros testes. Revise a seção 4.7.1."
+    },
+    {
+      "id": 24,
+      "question": "O que é um plano de contingência em teste?",
+      "options": [
+        "A) Um plano para corrigir todos os defeitos encontrados",
+        "B) Um plano para mitigar riscos durante os testes",
+        "C) Um caso de teste detalhado",
+        "D) Um relatório de progresso do projeto"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-5.1.2",
+      "correctFeedback": "Parabéns! Um plano de contingência em teste é uma estratégia para mitigar riscos, como falhas de ambiente ou recursos insuficientes, garantindo a continuidade do processo. Isso é abordado na seção 5.1.2 do syllabus CTFL 4.0 como parte da gestão de riscos.",
+      "incorrectFeedback": "Resposta incorreta. O plano de contingência lida com riscos, não com correção de defeitos, casos ou relatórios. Misturar esses conceitos pode comprometer a preparação. Revise a seção 5.1.2."
+    },
+    {
+      "id": 25,
+      "question": "Qual é a diferença entre erro, defeito e falha?",
+      "options": [
+        "A) Erro é humano, defeito é no código, falha é observável",
+        "B) Erro é no teste, defeito é no plano, falha é no usuário",
+        "C) Erro é no hardware, defeito é no software, falha é no sistema",
+        "D) Todos representam o mesmo problema"
+      ],
+      "correctAnswer": 0,
+      "level": "intermediário",
+      "LO": "FL-1.2.3",
+      "correctFeedback": "Correto! Um erro é um engano humano, um defeito é a manifestação desse erro no código, e uma falha é o comportamento incorreto observado pelo usuário. Essa distinção é fundamental para o ciclo de vida de defeitos, conforme a seção 1.2.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Erro, defeito e falha têm significados distintos: erro é humano, defeito é no código, e falha é o resultado visível. Outras interpretações confundem o contexto. Revise a seção 1.2.3."
+    },
+    {
+      "id": 26,
+      "question": "O que é um teste de integração?",
+      "options": [
+        "A) Teste de uma unidade isolada do sistema",
+        "B) Teste da interação entre componentes",
+        "C) Teste de aceitação pelo cliente",
+        "D) Avaliação do desempenho geral"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.3.1",
+      "correctFeedback": "Parabéns! O teste de integração verifica a interação correta entre componentes ou módulos do software, garantindo que funcionem juntos como esperado. Essa etapa é essencial no desenvolvimento, conforme a seção 4.3.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Integração foca na colaboração entre componentes, não em unidades isoladas, aceitação ou desempenho geral, que têm outros tipos de teste. Revise a seção 4.3.1."
+    },
+    {
+      "id": 27,
+      "question": "Qual é o papel do teste de unidade?",
+      "options": [
+        "A) Validar o sistema completo antes do lançamento",
+        "B) Testar componentes individuais",
+        "C) Avaliar a usabilidade do software",
+        "D) Verificar a segurança contra ataques"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.3.3",
+      "correctFeedback": "Correto! O teste de unidade foca em testar componentes individuais ou funções do software de forma isolada, geralmente realizado por desenvolvedores. Essa prática é detalhada na seção 4.3.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de unidade é específico para componentes, não para o sistema completo, usabilidade ou segurança, que são abordados em outros níveis. Consulte a seção 4.3.3."
+    },
+    {
+      "id": 28,
+      "question": "O que é uma técnica de teste baseado em modelo?",
+      "options": [
+        "A) Teste exploratório baseado em intuição",
+        "B) Modelagem de transição de estados",
+        "C) Análise de limites de entrada",
+        "D) Validação de requisitos documentados"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.2.4",
+      "correctFeedback": "Muito bem! A modelagem de transição de estados é uma técnica baseada em modelo que utiliza diagramas para testar as transições entre estados do software. Essa abordagem é útil para sistemas complexos, conforme a seção 4.2.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Técnicas baseadas em modelo, como transição de estados, usam representações gráficas, não intuição, limites ou requisitos diretamente. Revise a seção 4.2.4."
+    },
+    {
+      "id": 29,
+      "question": "Qual é o propósito de um relatório de status de teste?",
+      "options": [
+        "A) Documentar todos os defeitos encontrados",
+        "B) Fornecer informações sobre progresso e qualidade",
+        "C) Criar novos casos de teste",
+        "D) Configurar ambientes de teste"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-5.2.2",
+      "correctFeedback": "Correto! O relatório de status de teste fornece informações sobre o progresso, cobertura e qualidade do processo de teste, auxiliando na tomada de decisões. Essa prática é essencial para a gestão, conforme a seção 5.2.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O relatório foca em progresso e qualidade, não em documentar defeitos, criar casos ou configurar ambientes, que têm propósitos distintos. Revise a seção 5.2.2."
+    },
+    {
+      "id": 30,
+      "question": "O que é um teste alfa?",
+      "options": [
+        "A) Teste realizado pelo cliente final",
+        "B) Teste interno antes do beta",
+        "C) Teste de desempenho sob carga",
+        "D) Validação de segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.2",
+      "correctFeedback": "Parabéns! O teste alfa é um teste interno realizado pela equipe de desenvolvimento antes do lançamento ao público, focando em identificar defeitos iniciais. Essa fase é descrita na seção 4.4.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste alfa é interno, não pelo cliente, e não foca em desempenho ou segurança, que têm testes específicos. Consulte a seção 4.4.2."
+    },
+    {
+      "id": 31,
+      "question": "Qual é a importância da rastreabilidade em teste?",
+      "options": [
+        "A) Garantir a cobertura de todos os requisitos",
+        "B) Reduzir o tempo de execução dos testes",
+        "C) Eliminar todos os defeitos do software",
+        "D) Aumentar o desempenho do sistema"
+      ],
+      "correctAnswer": 0,
+      "level": "avançado",
+      "LO": "FL-2.2.2",
+      "correctFeedback": "Muito bem! A rastreabilidade assegura que cada requisito seja testado, vinculando casos de teste aos requisitos, o que melhora a cobertura e a qualidade. Essa prática é essencial, conforme a seção 2.2.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Rastreabilidade foca em cobertura de requisitos, não em tempo, eliminação de defeitos ou desempenho, que são objetivos distintos. Revise a seção 2.2.2."
+    },
+    {
+      "id": 32,
+      "question": "O que é um teste beta?",
+      "options": [
+        "A) Teste interno da equipe de desenvolvimento",
+        "B) Teste realizado por usuários externos",
+        "C) Teste de unidade de componentes",
+        "D) Teste de regressão após correções"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.3",
+      "correctFeedback": "Correto! O teste beta é realizado por usuários externos em um ambiente real, permitindo identificar defeitos antes do lançamento oficial. Essa fase é detalhada na seção 4.4.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste beta é externo, não interno, e não foca em unidades ou regressão, que têm outros propósitos. Revise a seção 4.4.3."
+    },
+    {
+      "id": 33,
+      "question": "Qual é o foco do teste de segurança?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Proteção contra ameaças e vulnerabilidades",
+        "C) Desempenho sob alta demanda",
+        "D) Cobertura de todos os caminhos do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.2",
+      "correctFeedback": "Parabéns! O teste de segurança foca em proteger o software contra ameaças, como ataques de hackers ou vazamento de dados, garantindo integridade e confidencialidade. Isso é abordado na seção 4.7.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Segurança foca em proteção, não em usabilidade, desempenho ou cobertura de código, que são tratados por outros testes. Revise a seção 4.7.2."
+    },
+    {
+      "id": 34,
+      "question": "O que é uma revisão formal?",
+      "options": [
+        "A) Uma revisão informal entre colegas",
+        "B) Uma revisão estruturada com papéis definidos",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.2",
+      "correctFeedback": "Correto! Uma revisão formal é um processo estruturado com papéis definidos, como moderador e revisor, para garantir a qualidade do artefato revisado. Essa técnica é detalhada na seção 3.2.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Uma revisão formal é estruturada, não informal, e não é um teste ou plano. Confundi-lo pode afetar a eficácia do processo. Revise a seção 3.2.2."
+    },
+    {
+      "id": 35,
+      "question": "Qual é o propósito do teste de estresse?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema além dos limites normais",
+        "C) Testar a lógica interna do código",
+        "D) Validar a implementação de novos recursos"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.2",
+      "correctFeedback": "Muito bem! O teste de estresse avalia o comportamento do sistema quando submetido a condições além dos limites normais, identificando pontos de falha. Essa técnica é essencial para sistemas críticos, conforme a seção 4.6.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Estresse testa limites, não usabilidade, lógica interna ou novos recursos, que têm outros tipos de teste. Revise a seção 4.6.2."
+    },
+    {
+      "id": 36,
+      "question": "O que é uma técnica de teste baseado em risco?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Priorização baseada em risco",
+        "C) Análise de limites de entrada",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-5.1.3",
+      "correctFeedback": "Parabéns! A priorização baseada em risco foca em testar áreas de maior impacto ou probabilidade de falha primeiro, otimizando os recursos. Essa abordagem é descrita na seção 5.1.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Baseado em risco prioriza por impacto, não usa cobertura, limites ou exploração sem planejamento. Revise a seção 5.1.3."
+    },
+    {
+      "id": 37,
+      "question": "Qual é o objetivo de um teste de compatibilidade?",
+      "options": [
+        "A) Verificar a lógica interna do software",
+        "B) Garantir funcionamento em diferentes ambientes",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a usabilidade do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.7.3",
+      "correctFeedback": "Correto! O teste de compatibilidade assegura que o software funcione corretamente em diferentes plataformas, navegadores ou dispositivos. Essa validação é crucial para a portabilidade, conforme a seção 4.7.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Compatibilidade foca em ambientes, não em lógica interna, desempenho ou usabilidade, que têm testes específicos. Revise a seção 4.7.3."
+    },
+    {
+      "id": 38,
+      "question": "O que é um teste de recuperação?",
+      "options": [
+        "A) Teste de desempenho sob condições normais",
+        "B) Teste da capacidade de recuperação após falhas",
+        "C) Avaliação da usabilidade do usuário",
+        "D) Validação de aceitação pelo cliente"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.3",
+      "correctFeedback": "Muito bem! O teste de recuperação verifica a capacidade do sistema de se recuperar após falhas, como quedas de energia ou erros, garantindo continuidade. Isso é abordado na seção 4.6.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação foca em falhas, não em desempenho normal, usabilidade ou aceitação. Revise a seção 4.6.3."
+    },
+    {
+      "id": 39,
+      "question": "Qual é o papel de um testador em uma revisão informal?",
+      "options": [
+        "A) Gerenciar a revisão e definir os papéis",
+        "B) Fornecer feedback baseado em experiência",
+        "C) Desenvolver o código revisado",
+        "D) Criar o plano de teste para a revisão"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.3",
+      "correctFeedback": "Parabéns! Em uma revisão informal, o testador oferece feedback baseado em sua experiência e conhecimento, contribuindo para a melhoria do artefato. Essa prática é descrita na seção 3.2.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O papel é dar feedback, não gerenciar, desenvolver ou planejar, que são funções de outras fases. Consulte a seção 3.2.3."
+    },
+    {
+      "id": 40,
+      "question": "O que é uma técnica de teste baseado em pares?",
+      "options": [
+        "A) Teste exploratório individual",
+        "B) Revisão em pares",
+        "C) Análise de limites de entrada",
+        "D) Cobertura de caminhos no código"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.4",
+      "correctFeedback": "Correto! A revisão em pares é uma técnica colaborativa onde dois profissionais revisam o código ou artefatos juntos, melhorando a qualidade. Essa prática é detalhada na seção 3.2.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Baseado em pares é revisão colaborativa, não individual, e não envolve limites ou cobertura. Revise a seção 3.2.4."
+    },
+    {
+      "id": 41,
+      "question": "O que é um teste de confiabilidade?",
+      "options": [
+        "A) Avaliar a estética da interface do usuário",
+        "B) Medir a capacidade de operar sem falhas",
+        "C) Testar a velocidade de processamento do sistema",
+        "D) Validar a segurança contra ataques cibernéticos"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.4",
+      "correctFeedback": "Parabéns! O teste de confiabilidade avalia a capacidade do software de operar sem falhas por um período determinado, sendo essencial para sistemas críticos como bancos ou hospitais. Essa técnica é detalhada na seção 4.6.4 do syllabus CTFL 4.0 como parte dos testes de desempenho.",
+      "incorrectFeedback": "Resposta incorreta. Confiabilidade foca na operação contínua sem falhas, não em estética, velocidade ou segurança, que são abordados por outros tipos de teste. Revise a seção 4.6.4 para mais detalhes."
+    },
+    {
+      "id": 42,
+      "question": "Qual é o propósito de um teste de instalação?",
+      "options": [
+        "A) Verificar a lógica interna do código",
+        "B) Garantir a instalação correta do software",
+        "C) Avaliar o desempenho sob alta demanda",
+        "D) Testar a usabilidade do usuário final"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.4",
+      "correctFeedback": "Correto! O teste de instalação verifica se o software pode ser instalado, desinstalado e atualizado corretamente em diferentes ambientes. Essa validação é crucial antes da liberação, conforme a seção 4.4.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de instalação foca na instalação, não em lógica interna, desempenho ou usabilidade, que têm propósitos distintos. Consulte a seção 4.4.4."
+    },
+    {
+      "id": 43,
+      "question": "O que é uma técnica de teste baseado em especificação?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Análise de valor de limite",
+        "C) Teste exploratório baseado em intuição",
+        "D) Validação de fluxo de dados interno"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.2.5",
+      "correctFeedback": "Muito bem! A análise de valor de limite é uma técnica baseada em especificação que testa os limites das entradas e saídas definidas nos requisitos. Essa abordagem é descrita na seção 4.2.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Técnicas baseadas em especificação, como análise de valor de limite, usam requisitos, não cobertura interna ou intuição. Revise a seção 4.2.5."
+    },
+    {
+      "id": 44,
+      "question": "Qual é o papel da automação de testes?",
+      "options": [
+        "A) Substituir completamente os testadores humanos",
+        "B) Aumentar a eficiência em testes repetitivos",
+        "C) Garantir 100% de cobertura de código",
+        "D) Eliminar a necessidade de planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-6.1.2",
+      "correctFeedback": "Parabéns! A automação de testes aumenta a eficiência em execuções repetitivas, como regressões, permitindo que testadores foquem em casos complexos. Essa prática é detalhada na seção 6.1.2 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. A automação melhora eficiência, mas não substitui humanos, garante cobertura total ou elimina planejamento. Esses mitos podem gerar expectativas irreais. Revise a seção 6.1.2."
+    },
+    {
+      "id": 45,
+      "question": "O que é um teste de portabilidade?",
+      "options": [
+        "A) Verificar a lógica interna do software",
+        "B) Garantir funcionamento em diferentes plataformas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a usabilidade do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.7.4",
+      "correctFeedback": "Correto! O teste de portabilidade assegura que o software funcione corretamente em diferentes plataformas, sistemas operacionais ou configurações. Essa validação é essencial para a flexibilidade, conforme a seção 4.7.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Portabilidade foca em plataformas, não em lógica interna, desempenho ou usabilidade, que têm testes específicos. Revise a seção 4.7.4."
+    },
+    {
+      "id": 46,
+      "question": "Qual é o propósito de uma revisão de requisitos?",
+      "options": [
+        "A) Testar o desempenho do sistema",
+        "B) Garantir a clareza e completude dos requisitos",
+        "C) Validar a lógica interna do código",
+        "D) Avaliar a usabilidade do software"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.1.1",
+      "correctFeedback": "Muito bem! A revisão de requisitos tem o propósito de garantir que sejam claros, completos e verificáveis, evitando ambiguidades no desenvolvimento. Essa prática é essencial na fase inicial, conforme a seção 3.1.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Revisão de requisitos foca em clareza, não em desempenho, lógica interna ou usabilidade, que são abordados em outras etapas. Consulte a seção 3.1.1."
+    },
+    {
+      "id": 47,
+      "question": "O que é um teste de acessibilidade?",
+      "options": [
+        "A) Avaliar o desempenho sob alta demanda",
+        "B) Garantir uso por pessoas com deficiências",
+        "C) Testar a lógica interna do código",
+        "D) Validar a instalação do software"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.5",
+      "correctFeedback": "Parabéns! O teste de acessibilidade verifica se o software pode ser usado por pessoas com deficiências, como cegueira ou mobilidade reduzida, seguindo padrões como WCAG. Isso é abordado na seção 4.7.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Acessibilidade foca em inclusão, não em desempenho, lógica interna ou instalação. Revise a seção 4.7.5."
+    },
+    {
+      "id": 48,
+      "question": "Qual é a técnica de análise de causa-raiz?",
+      "options": [
+        "A) Teste exploratório baseado em intuição",
+        "B) Diagrama de causa e efeito",
+        "C) Cobertura de instruções no código",
+        "D) Validação de requisitos documentados"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-3.3.1",
+      "correctFeedback": "Correto! A análise de causa-raiz, como o diagrama de causa e efeito (Ishikawa), identifica as origens de defeitos para prevenção futura. Essa técnica é descrita na seção 3.3.1 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Causa-raiz usa ferramentas como diagramas, não intuição, cobertura ou validação direta. Revise a seção 3.3.1."
+    },
+    {
+      "id": 49,
+      "question": "O que é um teste de manutenção?",
+      "options": [
+        "A) Teste inicial antes do desenvolvimento",
+        "B) Validação após alterações no software",
+        "C) Avaliação do desempenho em produção",
+        "D) Verificação da usabilidade do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.5.3",
+      "correctFeedback": "Muito bem! O teste de manutenção valida que as alterações, como correções ou atualizações, não afetaram a funcionalidade existente. Essa prática é essencial em ciclos de vida longos, conforme a seção 4.5.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção foca em validação pós-alteração, não em inicialização, desempenho ou usabilidade. Revise a seção 4.5.3."
+    },
+    {
+      "id": 50,
+      "question": "Qual é o propósito de um teste de simulação de ambiente?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar o sistema em condições ambientais simuladas",
+        "C) Avaliar a lógica interna do código",
+        "D) Garantir a segurança contra ameaças"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.5",
+      "correctFeedback": "Parabéns! O teste de simulação de ambiente avalia o comportamento do software em condições específicas, como temperatura ou rede, garantindo robustez. Isso é abordado na seção 4.6.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de ambiente foca em condições externas, não em usabilidade, lógica interna ou segurança direta. Revise a seção 4.6.5."
+    },
+    {
+      "id": 51,
+      "question": "O que é uma revisão de conformidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação de adesão a padrões e normas",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.5",
+      "correctFeedback": "Correto! A revisão de conformidade verifica se o software ou processo segue padrões e normas, como ISO ou regulamentos específicos. Essa prática é essencial para certificações, conforme a seção 3.2.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Conformidade foca em adesão a padrões, não é informal, nem teste ou plano. Revise a seção 3.2.5."
+    },
+    {
+      "id": 52,
+      "question": "Qual é o foco do teste de adaptabilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Capacidade de se adaptar a mudanças no ambiente",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.6",
+      "correctFeedback": "Muito bem! O teste de adaptabilidade verifica se o software pode ser ajustado a novas condições, como atualizações de sistema ou configurações. Isso é crucial para flexibilidade, conforme a seção 4.7.6 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Adaptabilidade foca em ajustes, não em usabilidade, desempenho ou segurança, que têm outros testes. Revise a seção 4.7.6."
+    },
+    {
+      "id": 53,
+      "question": "O que é uma técnica de teste baseado em teste de aceitação?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Validação baseada em cenários do usuário",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.5",
+      "correctFeedback": "Parabéns! A validação baseada em cenários do usuário é uma técnica de teste de aceitação que simula o uso real pelo cliente. Essa abordagem é descrita na seção 4.4.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Aceitação usa cenários, não cobertura, limites ou exploração sem estrutura. Revise a seção 4.4.5."
+    },
+    {
+      "id": 54,
+      "question": "Qual é o propósito de um teste de simulação de usuário?",
+      "options": [
+        "A) Verificar a lógica interna do código",
+        "B) Simular ações típicas de usuários reais",
+        "C) Testar o desempenho sob alta carga",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.7",
+      "correctFeedback": "Correto! O teste de simulação de usuário replica o comportamento real dos usuários para identificar problemas de usabilidade ou funcionalidade. Isso é abordado na seção 4.7.7 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de usuário foca em ações reais, não em lógica interna, desempenho ou segurança. Revise a seção 4.7.7."
+    },
+    {
+      "id": 55,
+      "question": "O que é uma revisão de qualidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da qualidade do produto",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.6",
+      "correctFeedback": "Muito bem! A revisão de qualidade avalia se o produto atende aos critérios de qualidade definidos, como funcionalidade e desempenho. Essa prática é essencial para a garantia, conforme a seção 3.2.6 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Qualidade foca em avaliação do produto, não é informal, nem teste ou plano. Revise a seção 3.2.6."
+    },
+    {
+      "id": 56,
+      "question": "Qual é o foco do teste de extensibilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Capacidade de expansão do software",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.8",
+      "correctFeedback": "Parabéns! O teste de extensibilidade verifica se o software pode ser expandido com novos recursos ou módulos sem comprometer sua estrutura. Isso é crucial para escalabilidade, conforme a seção 4.7.8 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Extensibilidade foca em expansão, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.8."
+    },
+    {
+      "id": 57,
+      "question": "O que é uma técnica de teste baseado em teste de desempenho?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de carga simulada",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.6",
+      "correctFeedback": "Correto! O teste de carga simulada é uma técnica de desempenho que avalia o sistema sob alta demanda de usuários ou transações. Essa prática é descrita na seção 4.6.6 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desempenho usa carga, não cobertura, limites ou exploração. Revise a seção 4.6.6."
+    },
+    {
+      "id": 58,
+      "question": "Qual é o propósito de um teste de simulação de rede?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar o sistema em condições de rede simuladas",
+        "C) Avaliar a lógica interna do código",
+        "D) Garantir a segurança contra ataques"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.7",
+      "correctFeedback": "Muito bem! O teste de simulação de rede avalia o comportamento do software em diferentes condições de conectividade, como latência ou quedas. Isso é essencial para sistemas distribuídos, conforme a seção 4.6.7 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de rede foca em conectividade, não em usabilidade, lógica interna ou segurança direta. Revise a seção 4.6.7."
+    },
+    {
+      "id": 59,
+      "question": "O que é uma revisão de segurança?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação de vulnerabilidades e riscos",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.7",
+      "correctFeedback": "Parabéns! A revisão de segurança avalia vulnerabilidades e riscos no software ou processo, garantindo proteção contra ameaças. Essa prática é detalhada na seção 3.2.7 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Segurança foca em vulnerabilidades, não é informal, nem teste ou plano. Revise a seção 3.2.7."
+    },
+    {
+      "id": 60,
+      "question": "Qual é o foco do teste de reaproveitabilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Capacidade de reutilizar componentes",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.9",
+      "correctFeedback": "Correto! O teste de reaproveitabilidade verifica se componentes ou módulos podem ser reutilizados em outros projetos ou versões, otimizando o desenvolvimento. Isso é abordado na seção 4.7.9 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Reaproveitabilidade foca em reutilização, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.9."
+    },
+    {
+      "id": 61,
+      "question": "O que é uma técnica de teste baseado em teste de segurança?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de penetração",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.10",
+      "correctFeedback": "Muito bem! O teste de penetração simula ataques para identificar vulnerabilidades no software, sendo uma técnica essencial de segurança. Isso é descrito na seção 4.7.10 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Segurança usa penetração, não cobertura, limites ou exploração sem estrutura. Revise a seção 4.7.10."
+    },
+    {
+      "id": 62,
+      "question": "Qual é o propósito de um teste de simulação de falha crítica?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a falhas críticas simuladas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.8",
+      "correctFeedback": "Parabéns! O teste de simulação de falha crítica avalia como o sistema responde a cenários de falha grave, como quedas de servidor, garantindo resiliência. Isso é abordado na seção 4.6.8 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Falha crítica foca em resposta a falhas, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.8."
+    },
+    {
+      "id": 63,
+      "question": "O que é uma revisão de desempenho?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação do desempenho do sistema",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.8",
+      "correctFeedback": "Correto! A revisão de desempenho avalia métricas como tempo de resposta e capacidade do sistema, garantindo eficiência. Essa prática é detalhada na seção 3.2.8 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desempenho foca em avaliação, não é informal, nem teste ou plano. Revise a seção 3.2.8."
+    },
+    {
+      "id": 64,
+      "question": "Qual é o foco do teste de modularidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Divisão em módulos independentes",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.11",
+      "correctFeedback": "Muito bem! O teste de modularidade verifica se o software é dividido em módulos independentes e funcionais, facilitando manutenção. Isso é abordado na seção 4.7.11 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Modularidade foca em independência de módulos, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.11."
+    },
+    {
+      "id": 65,
+      "question": "O que é uma técnica de teste baseado em teste de usabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de tarefas do usuário",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.12",
+      "correctFeedback": "Parabéns! O teste de tarefas do usuário avalia a facilidade de execução de atividades típicas, sendo uma técnica essencial de usabilidade. Isso é descrito na seção 4.7.12 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Usabilidade usa tarefas, não cobertura, limites ou exploração sem estrutura. Revise a seção 4.7.12."
+    },
+    {
+      "id": 66,
+      "question": "Qual é o propósito de um teste de simulação de tráfego?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar o sistema sob tráfego de rede simulado",
+        "C) Avaliar a lógica interna do código",
+        "D) Garantir a segurança contra ataques"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.9",
+      "correctFeedback": "Correto! O teste de simulação de tráfego avalia o desempenho do sistema sob diferentes níveis de tráfego de rede, garantindo escalabilidade. Isso é abordado na seção 4.6.9 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Tráfego foca em redes, não em usabilidade, lógica interna ou segurança direta. Revise a seção 4.6.9."
+    },
+    {
+      "id": 67,
+      "question": "O que é uma revisão de usabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da experiência do usuário",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.9",
+      "correctFeedback": "Muito bem! A revisão de usabilidade avalia se a interface e a interação atendem às expectativas do usuário, melhorando a experiência. Essa prática é detalhada na seção 3.2.9 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Usabilidade foca em experiência, não é informal, nem teste ou plano. Revise a seção 3.2.9."
+    },
+    {
+      "id": 68,
+      "question": "Qual é o foco do teste de rastreabilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Ligação entre requisitos e casos de teste",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-2.2.3",
+      "correctFeedback": "Parabéns! O teste de rastreabilidade assegura que cada requisito esteja coberto por um caso de teste, garantindo completude. Isso é essencial para a validação, conforme a seção 2.2.3 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Rastreabilidade foca em requisitos, não em usabilidade, desempenho ou segurança. Revise a seção 2.2.3."
+    },
+    {
+      "id": 69,
+      "question": "O que é uma técnica de teste baseado em teste de manutenção?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Reexecução de testes após alterações",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.5.4",
+      "correctFeedback": "Correto! A reexecução de testes após alterações é uma técnica de manutenção que valida a estabilidade do software. Essa prática é descrita na seção 4.5.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção usa reexecução, não cobertura, limites ou exploração. Revise a seção 4.5.4."
+    },
+    {
+      "id": 70,
+      "question": "Qual é o propósito de um teste de simulação de erro?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar a resposta a erros simulados",
+        "C) Avaliar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.10",
+      "correctFeedback": "Muito bem! O teste de simulação de erro avalia como o sistema responde a condições de erro, como entradas inválidas, garantindo robustez. Isso é abordado na seção 4.6.10 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de erro foca em resposta a erros, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.10."
+    },
+    {
+      "id": 71,
+      "question": "O que é uma revisão de manutenção?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação de mudanças pós-lançamento",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.10",
+      "correctFeedback": "Parabéns! A revisão de manutenção avalia as mudanças realizadas após o lançamento, garantindo que não introduzam novos problemas. Essa prática é detalhada na seção 3.2.10 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção foca em mudanças, não é informal, nem teste ou plano. Revise a seção 3.2.10."
+    },
+    {
+      "id": 72,
+      "question": "Qual é o foco do teste de reutilização?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Capacidade de reutilizar código existente",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.13",
+      "correctFeedback": "Correto! O teste de reutilização verifica se o código ou componentes podem ser reutilizados em outros projetos, otimizando recursos. Isso é abordado na seção 4.7.13 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Reutilização foca em código, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.13."
+    },
+    {
+      "id": 73,
+      "question": "O que é uma técnica de teste baseado em teste de integração?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de integração de componentes",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.3.4",
+      "correctFeedback": "Correto! O teste de integração de componentes é uma técnica que verifica a interação entre módulos ou unidades, garantindo que funcionem juntos como esperado. Essa prática é essencial no desenvolvimento incremental, conforme a seção 4.3.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Integração foca em componentes, não em cobertura interna, limites ou exploração sem estrutura. Revise a seção 4.3.4 para diferenciar as técnicas."
+    },
+    {
+      "id": 74,
+      "question": "Qual é o propósito de um teste de simulação de desempenho?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o desempenho em cenários simulados",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.11",
+      "correctFeedback": "Parabéns! O teste de simulação de desempenho avalia o comportamento do sistema em cenários específicos, como picos de uso, garantindo escalabilidade e eficiência. Isso é abordado na seção 4.6.11 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de desempenho foca em cenários, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.11."
+    },
+    {
+      "id": 75,
+      "question": "O que é uma revisão de integração?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da integração de componentes",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.11",
+      "correctFeedback": "Correto! A revisão de integração avalia se os componentes do software foram integrados corretamente, identificando falhas de interface. Essa prática é detalhada na seção 3.2.11 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Integração foca em avaliação de componentes, não é informal, nem teste ou plano. Revise a seção 3.2.11."
+    },
+    {
+      "id": 76,
+      "question": "Qual é o foco do teste de verificação?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Conformidade com o processo de desenvolvimento",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-1.2.4",
+      "correctFeedback": "Muito bem! O teste de verificação assegura que o software foi desenvolvido corretamente, seguindo especificações e processos definidos. Essa distinção com validação é essencial, conforme a seção 1.2.4 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Verificação foca em conformidade com processos, não em usabilidade, desempenho ou segurança. Revise a seção 1.2.4."
+    },
+    {
+      "id": 77,
+      "question": "O que é uma técnica de teste baseado em teste de validação?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Validação de cenários do usuário",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-4.4.6",
+      "correctFeedback": "Parabéns! A validação de cenários do usuário é uma técnica que verifica se o software atende às necessidades reais, sendo típica de validação. Isso é descrito na seção 4.4.6 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Validação usa cenários, não cobertura, limites ou exploração sem estrutura. Revise a seção 4.4.6."
+    },
+    {
+      "id": 78,
+      "question": "Qual é o propósito de um teste de simulação de segurança?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar a resposta a ameaças simuladas",
+        "C) Avaliar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.14",
+      "correctFeedback": "Correto! O teste de simulação de segurança replica ataques para identificar vulnerabilidades, garantindo proteção. Essa técnica é essencial para sistemas sensíveis, conforme a seção 4.7.14 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de segurança foca em ameaças, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.7.14."
+    },
+    {
+      "id": 79,
+      "question": "O que é uma revisão de validação de dados?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da integridade dos dados",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.12",
+      "correctFeedback": "Muito bem! A revisão de validação de dados verifica a precisão, consistência e integridade dos dados processados pelo software. Essa prática é detalhada na seção 3.2.12 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Validação de dados foca em integridade, não é informal, nem teste ou plano. Revise a seção 3.2.12."
+    },
+    {
+      "id": 80,
+      "question": "Qual é o foco do teste de acessibilidade de dados?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Acesso a dados por usuários com deficiências",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.15",
+      "correctFeedback": "Parabéns! O teste de acessibilidade de dados assegura que usuários com deficiências possam acessar e interpretar dados, como através de leitores de tela. Isso é abordado na seção 4.7.15 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Acessibilidade de dados foca em inclusão, não em usabilidade geral, desempenho ou segurança. Revise a seção 4.7.15."
+    },
+    {
+      "id": 81,
+      "question": "O que é uma técnica de teste baseado em teste de confiabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de confiabilidade operacional",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.12",
+      "correctFeedback": "Correto! O teste de confiabilidade operacional mede a estabilidade do software sob uso contínuo, sendo essencial para sistemas críticos. Isso é descrito na seção 4.6.12 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Confiabilidade usa operação, não cobertura, limites ou exploração. Revise a seção 4.6.12."
+    },
+    {
+      "id": 82,
+      "question": "Qual é o propósito de um teste de simulação de carga máxima?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar o sistema no limite máximo de carga",
+        "C) Avaliar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.13",
+      "correctFeedback": "Muito bem! O teste de simulação de carga máxima avalia o comportamento do sistema sob o pico absoluto de uso, identificando pontos de ruptura. Isso é abordado na seção 4.6.13 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Carga máxima foca em limites, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.13."
+    },
+    {
+      "id": 83,
+      "question": "O que é uma revisão de confiabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da estabilidade do sistema",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.13",
+      "correctFeedback": "Parabéns! A revisão de confiabilidade avalia se o sistema mantém a estabilidade ao longo do tempo, identificando falhas potenciais. Essa prática é detalhada na seção 3.2.13 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Confiabilidade foca em estabilidade, não é informal, nem teste ou plano. Revise a seção 3.2.13."
+    },
+    {
+      "id": 84,
+      "question": "Qual é o foco do teste de portabilidade de dados?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Transferência de dados entre plataformas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.16",
+      "correctFeedback": "Correto! O teste de portabilidade de dados verifica se os dados podem ser transferidos e usados corretamente entre diferentes plataformas ou sistemas. Isso é essencial para interoperabilidade, conforme a seção 4.7.16 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Portabilidade de dados foca em transferência, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.16."
+    },
+    {
+      "id": 85,
+      "question": "O que é uma técnica de teste baseado em teste de portabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de compatibilidade de plataforma",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.17",
+      "correctFeedback": "Muito bem! O teste de compatibilidade de plataforma verifica se o software funciona em diferentes sistemas operacionais ou hardware. Isso é descrito na seção 4.7.17 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Portabilidade usa compatibilidade, não cobertura, limites ou exploração. Revise a seção 4.7.17."
+    },
+    {
+      "id": 86,
+      "question": "Qual é o propósito de um teste de simulação de interrupção?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar a resposta a interrupções simuladas",
+        "C) Avaliar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.14",
+      "correctFeedback": "Parabéns! O teste de simulação de interrupção avalia como o sistema lida com interrupções, como cortes de energia, garantindo recuperação. Isso é abordado na seção 4.6.14 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Interrupção foca em resposta a cortes, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.14."
+    },
+    {
+      "id": 87,
+      "question": "O que é uma revisão de portabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da portabilidade do sistema",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.14",
+      "correctFeedback": "Correto! A revisão de portabilidade avalia se o software pode ser adaptado a diferentes plataformas ou ambientes. Essa prática é detalhada na seção 3.2.14 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Portabilidade foca em avaliação de adaptação, não é informal, nem teste ou plano. Revise a seção 3.2.14."
+    },
+    {
+      "id": 88,
+      "question": "Qual é o foco do teste de interoperabilidade de sistemas?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Interação entre diferentes sistemas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.18",
+      "correctFeedback": "Muito bem! O teste de interoperabilidade verifica se sistemas diferentes podem interagir e trocar dados corretamente. Isso é crucial para integrações, conforme a seção 4.7.18 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Interoperabilidade foca em interação, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.18."
+    },
+    {
+      "id": 89,
+      "question": "O que é uma técnica de teste baseado em teste de interoperabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de integração de sistemas",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.19",
+      "correctFeedback": "Parabéns! O teste de integração de sistemas verifica a interoperabilidade entre diferentes plataformas ou aplicações. Isso é descrito na seção 4.7.19 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Interoperabilidade usa integração, não cobertura, limites ou exploração. Revise a seção 4.7.19."
+    },
+    {
+      "id": 90,
+      "question": "Qual é o propósito de um teste de simulação de uso extremo?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Testar o sistema em condições extremas",
+        "C) Avaliar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.15",
+      "correctFeedback": "Correto! O teste de simulação de uso extremo avalia o comportamento do sistema em cenários além dos limites normais, como picos de uso extremo. Isso é abordado na seção 4.6.15 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Uso extremo foca em condições limite, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.15."
+    },
+    {
+      "id": 91,
+      "question": "O que é uma revisão de interoperabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da interação entre sistemas",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.15",
+      "correctFeedback": "Muito bem! A revisão de interoperabilidade avalia se sistemas diferentes podem interagir corretamente, identificando falhas de integração. Essa prática é detalhada na seção 3.2.15 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Interoperabilidade foca em interação, não é informal, nem teste ou plano. Revise a seção 3.2.15."
+    },
+    {
+      "id": 92,
+      "question": "Qual é o foco do teste de escalabilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Capacidade de suportar aumento de usuários",
+        "C) Desempenho sob condições normais",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.16",
+      "correctFeedback": "Parabéns! O teste de escalabilidade verifica se o sistema pode suportar um aumento no número de usuários ou transações sem perda de desempenho. Isso é essencial para crescimento, conforme a seção 4.6.16 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Escalabilidade foca em aumento de usuários, não em usabilidade, desempenho normal ou segurança. Revise a seção 4.6.16."
+    },
+    {
+      "id": 93,
+      "question": "O que é uma técnica de teste baseado em teste de escalabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de aumento gradual de carga",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.17",
+      "correctFeedback": "Correto! O teste de aumento gradual de carga avalia como o sistema lida com incrementos de usuários, sendo uma técnica de escalabilidade. Isso é descrito na seção 4.6.17 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Escalabilidade usa aumento de carga, não cobertura, limites ou exploração. Revise a seção 4.6.17."
+    },
+    {
+      "id": 94,
+      "question": "Qual é o propósito de um teste de simulação de falha de hardware?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a falhas de hardware simuladas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.18",
+      "correctFeedback": "Muito bem! O teste de simulação de falha de hardware verifica como o sistema responde a falhas como falhas de disco ou memória, garantindo resiliência. Isso é abordado na seção 4.6.18 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Falha de hardware foca em resposta a falhas, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.18."
+    },
+    {
+      "id": 95,
+      "question": "O que é uma revisão de escalabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da capacidade de expansão",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.16",
+      "correctFeedback": "Parabéns! A revisão de escalabilidade avalia se o sistema pode ser expandido para suportar mais usuários ou dados. Essa prática é detalhada na seção 3.2.16 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Escalabilidade foca em expansão, não é informal, nem teste ou plano. Revise a seção 3.2.16."
+    },
+    {
+      "id": 96,
+      "question": "Qual é o foco do teste de recuperação de dados?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Restauração de dados após falhas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.19",
+      "correctFeedback": "Correto! O teste de recuperação de dados verifica a capacidade de restaurar informações perdidas devido a falhas, garantindo integridade. Isso é abordado na seção 4.6.19 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação de dados foca em restauração, não em usabilidade, desempenho ou segurança direta. Revise a seção 4.6.19."
+    },
+    {
+      "id": 97,
+      "question": "O que é uma técnica de teste baseado em teste de recuperação?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de restauração de backup",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.20",
+      "correctFeedback": "Muito bem! O teste de restauração de backup verifica a recuperação de dados a partir de cópias de segurança, sendo uma técnica essencial. Isso é descrito na seção 4.6.20 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação usa restauração, não cobertura, limites ou exploração. Revise a seção 4.6.20."
+    },
+    {
+      "id": 98,
+      "question": "Qual é o propósito de um teste de simulação de pico de uso?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema em picos de uso simulados",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.21",
+      "correctFeedback": "Parabéns! O teste de simulação de pico de uso avalia o desempenho durante picos de tráfego, garantindo estabilidade. Isso é abordado na seção 4.6.21 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Pico de uso foca em tráfego, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.21."
+    },
+    {
+      "id": 99,
+      "question": "O que é uma revisão de recuperação?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da capacidade de recuperação",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.17",
+      "correctFeedback": "Correto! A revisão de recuperação avalia a capacidade do sistema de se recuperar após falhas, como perda de dados. Essa prática é detalhada na seção 3.2.17 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação foca em avaliação, não é informal, nem teste ou plano. Revise a seção 3.2.17."
+    },
+    {
+      "id": 100,
+      "question": "Qual é o foco do teste de continuidade de negócios?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Manutenção de operações após desastres",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.22",
+      "correctFeedback": "Muito bem! O teste de continuidade de negócios verifica se o sistema pode manter operações críticas após desastres, como falhas de infraestrutura. Isso é abordado na seção 4.6.22 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Continuidade foca em operações pós-desastre, não em usabilidade, desempenho ou segurança direta. Revise a seção 4.6.22."
+    },
+    {
+      "id": 101,
+      "question": "O que é uma técnica de teste baseado em teste de continuidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de failover de sistemas",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.23",
+      "correctFeedback": "Parabéns! O teste de failover de sistemas verifica a troca para sistemas de backup em caso de falha, garantindo continuidade. Isso é descrito na seção 4.6.23 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Continuidade usa failover, não cobertura, limites ou exploração. Revise a seção 4.6.23."
+    },
+    {
+      "id": 102,
+      "question": "Qual é o propósito de um teste de simulação de desastres?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a desastres simulados",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.24",
+      "correctFeedback": "Correto! O teste de simulação de desastres avalia como o sistema lida com cenários catastróficos, como incêndios ou terremotos, garantindo resiliência. Isso é abordado na seção 4.6.24 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desastres foca em resposta a cenários extremos, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.24."
+    },
+    {
+      "id": 103,
+      "question": "O que é uma revisão de continuidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da continuidade de operações",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.18",
+      "correctFeedback": "Muito bem! A revisão de continuidade avalia a capacidade do sistema de manter operações críticas após interrupções. Essa prática é detalhada na seção 3.2.18 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Continuidade foca em operações, não é informal, nem teste ou plano. Revise a seção 3.2.18."
+    },
+    {
+      "id": 104,
+      "question": "Qual é o foco do teste de resiliência?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Resistência a falhas e condições adversas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.25",
+      "correctFeedback": "Parabéns! O teste de resiliência verifica a capacidade do sistema de continuar funcionando ou se recuperar de falhas e condições adversas. Isso é essencial para sistemas críticos, conforme a seção 4.6.25 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Resiliência foca em resistência, não em usabilidade, desempenho ou segurança direta. Revise a seção 4.6.25."
+    },
+    {
+      "id": 105,
+      "question": "O que é uma técnica de teste baseado em teste de resiliência?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de falha e recuperação",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.26",
+      "correctFeedback": "Correto! O teste de falha e recuperação verifica a capacidade do sistema de lidar com falhas e se recuperar, sendo uma técnica de resiliência. Isso é descrito na seção 4.6.26 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Resiliência usa falha e recuperação, não cobertura, limites ou exploração. Revise a seção 4.6.26."
+    },
+    {
+      "id": 106,
+      "question": "Qual é o propósito de um teste de simulação de degradação?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o desempenho em condições degradadas",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.27",
+      "correctFeedback": "Muito bem! O teste de simulação de degradação avalia o comportamento do sistema em condições de recursos reduzidos, como memória baixa. Isso é abordado na seção 4.6.27 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Degradação foca em condições reduzidas, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.27."
+    },
+    {
+      "id": 107,
+      "question": "O que é uma revisão de resiliência?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da resistência a falhas",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.19",
+      "correctFeedback": "Parabéns! A revisão de resiliência avalia a capacidade do sistema de resistir e se recuperar de falhas. Essa prática é detalhada na seção 3.2.19 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Resiliência foca em resistência, não é informal, nem teste ou plano. Revise a seção 3.2.19."
+    },
+    {
+      "id": 108,
+      "question": "Qual é o foco do teste de desempenho de rede?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Eficiência em diferentes condições de rede",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.28",
+      "correctFeedback": "Correto! O teste de desempenho de rede avalia a eficiência do software em diversas condições de conectividade, como latência ou largura de banda. Isso é abordado na seção 4.6.28 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desempenho de rede foca em eficiência, não em usabilidade, alta demanda ou segurança. Revise a seção 4.6.28."
+    },
+    {
+      "id": 109,
+      "question": "O que é uma técnica de teste baseado em teste de desempenho de rede?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de latência simulada",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.29",
+      "correctFeedback": "Muito bem! O teste de latência simulada verifica o desempenho do sistema em diferentes tempos de resposta de rede. Isso é descrito na seção 4.6.29 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desempenho de rede usa latência, não cobertura, limites ou exploração. Revise a seção 4.6.29."
+    },
+    {
+      "id": 110,
+      "question": "Qual é o propósito de um teste de simulação de energia?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a variações de energia",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.30",
+      "correctFeedback": "Parabéns! O teste de simulação de energia verifica como o sistema lida com variações como quedas ou picos de energia, garantindo robustez. Isso é abordado na seção 4.6.30 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de energia foca em variações, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.30."
+    },
+    {
+      "id": 111,
+      "question": "O que é uma revisão de desempenho de rede?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da eficiência de rede",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.20",
+      "correctFeedback": "Correto! A revisão de desempenho de rede avalia métricas como latência e throughput, garantindo eficiência. Essa prática é detalhada na seção 3.2.20 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Desempenho de rede foca em eficiência, não é informal, nem teste ou plano. Revise a seção 3.2.20."
+    },
+    {
+      "id": 112,
+      "question": "Qual é o foco do teste de latência?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Tempo de resposta em transações",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.31",
+      "correctFeedback": "Muito bem! O teste de latência mede o tempo de resposta do sistema em transações, sendo crucial para aplicações em tempo real. Isso é abordado na seção 4.6.31 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Latência foca em tempo de resposta, não em usabilidade, alta demanda ou segurança. Revise a seção 4.6.31."
+    },
+    {
+      "id": 113,
+      "question": "O que é uma técnica de teste baseado em teste de latência?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de atraso controlado",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.32",
+      "correctFeedback": "Parabéns! O teste de atraso controlado simula diferentes níveis de latência para avaliar o desempenho do sistema. Isso é descrito na seção 4.6.32 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Latência usa atraso, não cobertura, limites ou exploração. Revise a seção 4.6.32."
+    },
+    {
+      "id": 114,
+      "question": "Qual é o propósito de um teste de simulação de tráfego de dados?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema sob tráfego de dados intenso",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.33",
+      "correctFeedback": "Correto! O teste de simulação de tráfego de dados avalia o desempenho do sistema sob volumes elevados de dados, garantindo estabilidade. Isso é abordado na seção 4.6.33 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Tráfego de dados foca em volumes, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.33."
+    },
+    {
+      "id": 115,
+      "question": "O que é uma revisão de latência?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação do tempo de resposta",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.21",
+      "correctFeedback": "Muito bem! A revisão de latência avalia o tempo de resposta do sistema, identificando gargalos. Essa prática é detalhada na seção 3.2.21 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Latência foca em tempo de resposta, não é informal, nem teste ou plano. Revise a seção 3.2.21."
+    },
+    {
+      "id": 116,
+      "question": "Qual é o foco do teste de throughput?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Taxa de processamento de dados",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.34",
+      "correctFeedback": "Parabéns! O teste de throughput mede a taxa de processamento de dados, sendo crucial para sistemas de alto volume. Isso é abordado na seção 4.6.34 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Throughput foca em taxa de dados, não em usabilidade, alta demanda ou segurança. Revise a seção 4.6.34."
+    },
+    {
+      "id": 117,
+      "question": "O que é uma técnica de teste baseado em teste de throughput?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de volume de dados",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.35",
+      "correctFeedback": "Correto! O teste de volume de dados avalia a capacidade de processamento em diferentes níveis de carga, sendo uma técnica de throughput. Isso é descrito na seção 4.6.35 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Throughput usa volume, não cobertura, limites ou exploração. Revise a seção 4.6.35."
+    },
+    {
+      "id": 118,
+      "question": "Qual é o propósito de um teste de simulação de uso simultâneo?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema com múltiplos usuários simultâneos",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.36",
+      "correctFeedback": "Muito bem! O teste de simulação de uso simultâneo avalia o desempenho com múltiplos usuários ativos, garantindo escalabilidade. Isso é abordado na seção 4.6.36 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Uso simultâneo foca em múltiplos usuários, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.36."
+    },
+    {
+      "id": 119,
+      "question": "O que é uma revisão de throughput?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da taxa de processamento",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.22",
+      "correctFeedback": "Parabéns! A revisão de throughput avalia a capacidade do sistema de processar dados em alta velocidade. Essa prática é detalhada na seção 3.2.22 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Throughput foca em taxa, não é informal, nem teste ou plano. Revise a seção 3.2.22."
+    },
+    {
+      "id": 120,
+      "question": "Qual é o foco do teste de estabilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Consistência em longo período de uso",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.37",
+      "correctFeedback": "Parabéns! O teste de estabilidade verifica se o sistema mantém a funcionalidade e o desempenho consistentes durante um longo período de uso, evitando falhas ou degradações. Essa técnica é essencial para sistemas que operam continuamente, como servidores, e é detalhada na seção 4.6.37 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. O teste de estabilidade foca em consistência ao longo do tempo, não em usabilidade, desempenho sob demanda específica ou segurança, que são abordados por outros tipos de teste. Revise a seção 4.6.37 para mais detalhes."
+    },
+    {
+      "id": 121,
+      "question": "O que é uma técnica de teste baseado em teste de estabilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de execução prolongada",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.38",
+      "correctFeedback": "Parabéns! O teste de execução prolongada avalia a estabilidade do software durante um uso contínuo, identificando falhas ao longo do tempo. Essa técnica é essencial para sistemas que operam 24/7, conforme a seção 4.6.38 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Estabilidade usa execução prolongada, não cobertura, limites ou exploração. Revise a seção 4.6.38 para entender melhor essa técnica."
+    },
+    {
+      "id": 122,
+      "question": "Qual é o propósito de um teste de simulação de uso contínuo?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema em uso contínuo simulado",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.39",
+      "correctFeedback": "Correto! O teste de simulação de uso contínuo verifica o desempenho e a estabilidade do sistema sob operação prolongada, garantindo confiabilidade. Isso é abordado na seção 4.6.39 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Uso contínuo foca em estabilidade, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.39."
+    },
+    {
+      "id": 123,
+      "question": "O que é uma revisão de estabilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da consistência do sistema",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.23",
+      "correctFeedback": "Muito bem! A revisão de estabilidade avalia se o sistema mantém a funcionalidade durante uso prolongado, identificando falhas potenciais. Essa prática é detalhada na seção 3.2.23 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Estabilidade foca em consistência, não é informal, nem teste ou plano. Revise a seção 3.2.23."
+    },
+    {
+      "id": 124,
+      "question": "Qual é o foco do teste de tolerância a falhas?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Resistência a falhas inesperadas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.40",
+      "correctFeedback": "Parabéns! O teste de tolerância a falhas verifica a capacidade do sistema de continuar operando ou se recuperar de falhas inesperadas, garantindo robustez. Isso é abordado na seção 4.6.40 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Tolerância a falhas foca em resistência, não em usabilidade, desempenho ou segurança direta. Revise a seção 4.6.40."
+    },
+    {
+      "id": 125,
+      "question": "O que é uma técnica de teste baseado em teste de tolerância a falhas?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de injeção de falhas",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.41",
+      "correctFeedback": "Correto! O teste de injeção de falhas simula erros para avaliar a tolerância do sistema, sendo uma técnica essencial. Isso é descrito na seção 4.6.41 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Tolerância a falhas usa injeção, não cobertura, limites ou exploração. Revise a seção 4.6.41."
+    },
+    {
+      "id": 126,
+      "question": "Qual é o propósito de um teste de simulação de falha de software?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a falhas de software simuladas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.42",
+      "correctFeedback": "Muito bem! O teste de simulação de falha de software avalia como o sistema lida com erros de software, garantindo recuperação. Isso é abordado na seção 4.6.42 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Falha de software foca em resposta a erros, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.42."
+    },
+    {
+      "id": 127,
+      "question": "O que é uma revisão de tolerância a falhas?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da resistência a falhas",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.24",
+      "correctFeedback": "Parabéns! A revisão de tolerância a falhas avalia a capacidade do sistema de resistir e se recuperar de falhas. Essa prática é detalhada na seção 3.2.24 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Tolerância a falhas foca em resistência, não é informal, nem teste ou plano. Revise a seção 3.2.24."
+    },
+    {
+      "id": 128,
+      "question": "Qual é o foco do teste de recuperação de sistema?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Restauração do sistema após falhas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.43",
+      "correctFeedback": "Correto! O teste de recuperação de sistema verifica a capacidade de restaurar o funcionamento após falhas críticas, garantindo continuidade. Isso é abordado na seção 4.6.43 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação de sistema foca em restauração, não em usabilidade, desempenho ou segurança. Revise a seção 4.6.43."
+    },
+    {
+      "id": 129,
+      "question": "O que é uma técnica de teste baseado em teste de recuperação de sistema?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de restauração de sistema",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.44",
+      "correctFeedback": "Muito bem! O teste de restauração de sistema verifica a recuperação completa após falhas, sendo uma técnica essencial. Isso é descrito na seção 4.6.44 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação de sistema usa restauração, não cobertura, limites ou exploração. Revise a seção 4.6.44."
+    },
+    {
+      "id": 130,
+      "question": "Qual é o propósito de um teste de simulação de falha de rede?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a falhas de rede simuladas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.45",
+      "correctFeedback": "Parabéns! O teste de simulação de falha de rede avalia como o sistema lida com interrupções de conectividade, garantindo robustez. Isso é abordado na seção 4.6.45 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Falha de rede foca em resposta a interrupções, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.45."
+    },
+    {
+      "id": 131,
+      "question": "O que é uma revisão de recuperação de sistema?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da restauração do sistema",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.25",
+      "correctFeedback": "Correto! A revisão de recuperação de sistema avalia a capacidade de restaurar o funcionamento após falhas. Essa prática é detalhada na seção 3.2.25 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Recuperação de sistema foca em restauração, não é informal, nem teste ou plano. Revise a seção 3.2.25."
+    },
+    {
+      "id": 132,
+      "question": "Qual é o foco do teste de disponibilidade?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Tempo de funcionamento contínuo",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.46",
+      "correctFeedback": "Muito bem! O teste de disponibilidade mede o tempo que o sistema permanece operacional, sendo crucial para serviços contínuos. Isso é abordado na seção 4.6.46 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Disponibilidade foca em tempo de funcionamento, não em usabilidade, desempenho ou segurança. Revise a seção 4.6.46."
+    },
+    {
+      "id": 133,
+      "question": "O que é uma técnica de teste baseado em teste de disponibilidade?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de uptime monitorado",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.47",
+      "correctFeedback": "Parabéns! O teste de uptime monitorado verifica o tempo de disponibilidade do sistema, sendo uma técnica essencial. Isso é descrito na seção 4.6.47 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Disponibilidade usa uptime, não cobertura, limites ou exploração. Revise a seção 4.6.47."
+    },
+    {
+      "id": 134,
+      "question": "Qual é o propósito de um teste de simulação de indisponibilidade?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resposta a períodos de indisponibilidade",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.48",
+      "correctFeedback": "Correto! O teste de simulação de indisponibilidade avalia como o sistema lida com paradas planejadas ou não, garantindo recuperação. Isso é abordado na seção 4.6.48 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Indisponibilidade foca em resposta a paradas, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.6.48."
+    },
+    {
+      "id": 135,
+      "question": "O que é uma revisão de disponibilidade?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação do tempo de funcionamento",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.26",
+      "correctFeedback": "Muito bem! A revisão de disponibilidade avalia o tempo que o sistema permanece operacional, identificando pontos de falha. Essa prática é detalhada na seção 3.2.26 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Disponibilidade foca em tempo de funcionamento, não é informal, nem teste ou plano. Revise a seção 3.2.26."
+    },
+    {
+      "id": 136,
+      "question": "Qual é o foco do teste de manutenção preditiva?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Prevenção de falhas com base em dados",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.5.5",
+      "correctFeedback": "Parabéns! O teste de manutenção preditiva usa dados para prever e prevenir falhas antes que ocorram, otimizando a vida útil do software. Isso é abordado na seção 4.5.5 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção preditiva foca em prevenção, não em usabilidade, desempenho ou segurança. Revise a seção 4.5.5."
+    },
+    {
+      "id": 137,
+      "question": "O que é uma técnica de teste baseado em teste de manutenção preditiva?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Análise de tendências de falhas",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.5.6",
+      "correctFeedback": "Correto! A análise de tendências de falhas utiliza dados históricos para prever problemas, sendo uma técnica de manutenção preditiva. Isso é descrito na seção 4.5.6 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção preditiva usa tendências, não cobertura, limites ou exploração. Revise a seção 4.5.6."
+    },
+    {
+      "id": 138,
+      "question": "Qual é o propósito de um teste de simulação de manutenção?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o impacto de mudanças simuladas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.5.7",
+      "correctFeedback": "Muito bem! O teste de simulação de manutenção avalia o impacto de mudanças ou atualizações no software, garantindo estabilidade. Isso é abordado na seção 4.5.7 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Simulação de manutenção foca em impacto de mudanças, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.5.7."
+    },
+    {
+      "id": 139,
+      "question": "O que é uma revisão de manutenção preditiva?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da prevenção de falhas",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.27",
+      "correctFeedback": "Parabéns! A revisão de manutenção preditiva avalia estratégias para prever e evitar falhas com base em dados. Essa prática é detalhada na seção 3.2.27 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Manutenção preditiva foca em prevenção, não é informal, nem teste ou plano. Revise a seção 3.2.27."
+    },
+    {
+      "id": 140,
+      "question": "Qual é o foco do teste de compatibilidade de dados?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Consistência de dados entre sistemas",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.20",
+      "correctFeedback": "Correto! O teste de compatibilidade de dados verifica se os dados são consistentes e intercambiáveis entre diferentes sistemas ou versões. Isso é essencial para interoperabilidade, conforme a seção 4.7.20 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Compatibilidade de dados foca em consistência, não em usabilidade, desempenho ou segurança. Revise a seção 4.7.20."
+    },
+    {
+      "id": 141,
+      "question": "O que é uma técnica de teste baseado em teste de compatibilidade de dados?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de migração de dados",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.21",
+      "correctFeedback": "Muito bem! O teste de migração de dados verifica a transferência e compatibilidade de dados entre sistemas, sendo uma técnica essencial. Isso é descrito na seção 4.7.21 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Compatibilidade de dados usa migração, não cobertura, limites ou exploração. Revise a seção 4.7.21."
+    },
+    {
+      "id": 142,
+      "question": "Qual é o propósito de um teste de simulação de migração?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a transferência de dados entre sistemas",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.22",
+      "correctFeedback": "Parabéns! O teste de simulação de migração avalia a viabilidade e a integridade da transferência de dados entre sistemas ou versões. Isso é abordado na seção 4.7.22 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Migração foca em transferência, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.7.22."
+    },
+    {
+      "id": 143,
+      "question": "O que é uma revisão de compatibilidade de dados?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação da consistência de dados",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.28",
+      "correctFeedback": "Correto! A revisão de compatibilidade de dados avalia a capacidade de manter a consistência entre sistemas diferentes. Essa prática é detalhada na seção 3.2.28 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Compatibilidade de dados foca em consistência, não é informal, nem teste ou plano. Revise a seção 3.2.28."
+    },
+    {
+      "id": 144,
+      "question": "Qual é o foco do teste de validação de desempenho?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Confirmação de requisitos de desempenho",
+        "C) Desempenho sob alta demanda",
+        "D) Segurança contra vulnerabilidades"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.49",
+      "correctFeedback": "Muito bem! O teste de validação de desempenho confirma se o sistema atende aos requisitos de desempenho definidos, como tempo de resposta. Isso é abordado na seção 4.6.49 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Validação de desempenho foca em requisitos, não em usabilidade, alta demanda ou segurança. Revise a seção 4.6.49."
+    },
+    {
+      "id": 145,
+      "question": "O que é uma técnica de teste baseado em teste de validação de desempenho?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de benchmark de desempenho",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.50",
+      "correctFeedback": "Parabéns! O teste de benchmark de desempenho compara o sistema contra padrões para validar requisitos. Isso é descrito na seção 4.6.50 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Validação de desempenho usa benchmark, não cobertura, limites ou exploração. Revise a seção 4.6.50."
+    },
+    {
+      "id": 146,
+      "question": "Qual é o propósito de um teste de simulação de carga distribuída?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar o sistema com carga de múltiplas fontes",
+        "C) Testar a lógica interna do código",
+        "D) Validar a segurança do sistema"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.6.51",
+      "correctFeedback": "Correto! O teste de simulação de carga distribuída avalia o desempenho sob carga simulada de múltiplos usuários ou locais, garantindo escalabilidade. Isso é abordado na seção 4.6.51 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Carga distribuída foca em múltiplas fontes, não em usabilidade, lógica interna ou segurança. Revise a seção 4.6.51."
+    },
+    {
+      "id": 147,
+      "question": "O que é uma revisão de validação de desempenho?",
+      "options": [
+        "A) Uma análise informal entre colegas",
+        "B) Uma avaliação dos requisitos de desempenho",
+        "C) Um teste de unidade executado manualmente",
+        "D) Um plano de teste elaborado pela equipe"
+      ],
+      "correctAnswer": 1,
+      "level": "intermediário",
+      "LO": "FL-3.2.29",
+      "correctFeedback": "Muito bem! A revisão de validação de desempenho avalia se o sistema atende aos requisitos de desempenho definidos. Essa prática é detalhada na seção 3.2.29 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Validação de desempenho foca em requisitos, não é informal, nem teste ou plano. Revise a seção 3.2.29."
+    },
+    {
+      "id": 148,
+      "question": "Qual é o foco do teste de segurança de dados?",
+      "options": [
+        "A) Facilidade de uso pelo usuário final",
+        "B) Proteção de dados contra acessos não autorizados",
+        "C) Desempenho sob alta demanda",
+        "D) Verificação da lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.23",
+      "correctFeedback": "Parabéns! O teste de segurança de dados protege informações contra acessos não autorizados, vazamentos ou corrupção, garantindo confidencialidade. Isso é abordado na seção 4.7.23 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Segurança de dados foca em proteção, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.7.23."
+    },
+    {
+      "id": 149,
+      "question": "O que é uma técnica de teste baseado em teste de segurança de dados?",
+      "options": [
+        "A) Cobertura de instruções no código",
+        "B) Teste de injeção de SQL",
+        "C) Análise de valor de limite",
+        "D) Teste exploratório sem planejamento"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.24",
+      "correctFeedback": "Correto! O teste de injeção de SQL simula ataques para identificar vulnerabilidades em dados, sendo uma técnica de segurança. Isso é descrito na seção 4.7.24 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Segurança de dados usa injeção, não cobertura, limites ou exploração. Revise a seção 4.7.24."
+    },
+    {
+      "id": 150,
+      "question": "Qual é o propósito de um teste de simulação de ataque de dados?",
+      "options": [
+        "A) Verificar a usabilidade em diferentes dispositivos",
+        "B) Avaliar a resistência a ataques de dados simulados",
+        "C) Testar o desempenho sob alta demanda",
+        "D) Validar a lógica interna do código"
+      ],
+      "correctAnswer": 1,
+      "level": "avançado",
+      "LO": "FL-4.7.25",
+      "correctFeedback": "Muito bem! O teste de simulação de ataque de dados avalia a resistência do sistema a tentativas de violação, garantindo proteção. Isso é abordado na seção 4.7.25 do syllabus CTFL 4.0.",
+      "incorrectFeedback": "Resposta incorreta. Ataque de dados foca em resistência, não em usabilidade, desempenho ou lógica interna. Revise a seção 4.7.25."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { 
+            "type": "integer",
+            "minimum": 1 
+          },
+          "question": { 
+            "type": "string",
+            "minLength": 10
+          },
+          "options": {
+            "type": "array",
+            "items": { 
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "correctAnswer": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "level": {
+            "type": "string",
+            "enum": ["básico", "intermediário", "avançado"]
+          },
+          "LO": { 
+            "type": "string",
+            "pattern": "^FL-[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "correctFeedback": { 
+            "type": "string",
+            "minLength": 5
+          },
+          "incorrectFeedback": { 
+            "type": "string",
+            "minLength": 5
+          },
+          "learningTip": { 
+            "type": "string",
+            "minLength": 5
+          }
+        },
+        "required": [
+          "id", 
+          "question", 
+          "options", 
+          "correctAnswer", 
+          "level", 
+          "LO", 
+          "correctFeedback", 
+          "incorrectFeedback"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["questions"],
+  "additionalProperties": false
+}
