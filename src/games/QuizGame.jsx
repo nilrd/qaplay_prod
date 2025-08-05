@@ -3,9 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target } from 'lucide-react'
+import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target, BookOpen } from 'lucide-react'
 import questionsData from '../data/quizQuestions.json'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import CertificateModal from '@/components/CertificateModal';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const QuizGame = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -17,6 +20,10 @@ const QuizGame = () => {
   const [gameStarted, setGameStarted] = useState(false)
   const [shuffledQuestions, setShuffledQuestions] = useState([])
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
+  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false); // Estado para o modal do certificado
+  const [fullName, setFullName] = useState('');
+  const [linkedinProfile, setLinkedinProfile] = useState('');
+  const [gameMode, setGameMode] = useState(''); // 'simulado' ou 'aprendizado'
   const timerRef = useRef(null);
 
   // Fisher-Yates Shuffle algorithm
@@ -29,22 +36,40 @@ const QuizGame = () => {
     return newArray;
   };
 
-  const startGame = () => {
-    const shuffledQ = shuffleArray(questionsData);
-    const shuffledQWithOptions = shuffledQ.map(q => ({
+  const startGame = (mode) => {
+    let questionsToUse = shuffleArray(questionsData);
+
+    // Filtrar e selecionar 20 questões: 8 básicas, 8 intermediárias, 4 avançadas
+    const basicQuestions = questionsToUse.filter(q => q.level === 'básico');
+    const intermediateQuestions = questionsToUse.filter(q => q.level === 'intermediário');
+    const advancedQuestions = questionsToUse.filter(q => q.level === 'avançado');
+
+    const selectedBasic = shuffleArray(basicQuestions).slice(0, 8);
+    const selectedIntermediate = shuffleArray(intermediateQuestions).slice(0, 8);
+    const selectedAdvanced = shuffleArray(advancedQuestions).slice(0, 4);
+
+    questionsToUse = shuffleArray([...selectedBasic, ...selectedIntermediate, ...selectedAdvanced]);
+
+    const shuffledQWithOptions = questionsToUse.map(q => ({
       ...q,
       originalOptions: [...q.options],
       options: shuffleArray(q.options.map((option, index) => ({ text: option, originalIndex: index }))),
     }));
     setShuffledQuestions(shuffledQWithOptions);
     setGameStarted(true);
+    setGameMode(mode);
     setCurrentQuestionIndex(0);
     setScore(0);
     setSelectedAnswerIndex(null);
     setShowExplanation(false);
     setGameFinished(false);
-    setTimeLeft(30);
-    startTimer();
+    setTimeLeft(mode === 'simulado' ? 1200 : null); // 20 minutos para o modo simulado, tempo livre para aprendizado
+    setIsCertificateModalOpen(false);
+    setFullName('');
+    setLinkedinProfile('');
+    if (mode === 'simulado') {
+      startTimer();
+    }
   };
 
   const startTimer = () => {
@@ -66,26 +91,28 @@ const QuizGame = () => {
   }, []);
 
   const handleTimeUp = () => {
-    setIsTimeUpModalOpen(true);
-    setShowExplanation(true);
-    // Se o tempo acabar e o usuário não selecionou uma resposta, trate como incorreta
-    if (selectedAnswerIndex === null) {
-      // Não adiciona pontos e mostra a explicação
+    if (gameMode === 'simulado') {
+      finishGame();
+    } else {
+      setIsTimeUpModalOpen(true);
+      setShowExplanation(true);
     }
   };
 
   const handleAnswerSelect = (answerIndex) => {
     if (showExplanation) return;
     setSelectedAnswerIndex(answerIndex);
-    setShowExplanation(true);
+    
+    if (gameMode === 'aprendizado') {
+      setShowExplanation(true);
+    }
 
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
     const selectedOption = currentQuestion.options[answerIndex];
     const isCorrect = selectedOption.originalIndex === currentQuestion.correct;
 
     if (isCorrect) {
-      const timeBonus = Math.floor(timeLeft / 3);
-      setScore(prevScore => prevScore + 10 + timeBonus);
+      setScore(prevScore => prevScore + 1);
     }
   };
 
@@ -95,8 +122,9 @@ const QuizGame = () => {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
       setSelectedAnswerIndex(null);
       setShowExplanation(false);
-      setTimeLeft(30);
-      startTimer();
+      if (gameMode === 'simulado') {
+        setTimeLeft(1200 - (currentQuestionIndex + 1) * 60); // Ajusta o tempo restante para o modo simulado
+      }
     } else {
       finishGame();
     }
@@ -105,10 +133,10 @@ const QuizGame = () => {
   const finishGame = () => {
     clearInterval(timerRef.current);
     setGameFinished(true);
-    // Lógica para salvar melhor pontuação, se houver
-    const savedBestScore = localStorage.getItem('qaplay-quiz-best-score');
-    if (!savedBestScore || score > parseInt(savedBestScore)) {
-      localStorage.setItem('qaplay-quiz-best-score', score.toString());
+    
+    // Para modo simulado, mostrar explicações
+    if (gameMode === 'simulado') {
+      setShowExplanation(true);
     }
   };
 
@@ -120,22 +148,39 @@ const QuizGame = () => {
     setShowExplanation(false);
     setGameFinished(false);
     setShuffledQuestions([]);
-    setTimeLeft(30);
+    setTimeLeft(1200);
     setIsTimeUpModalOpen(false);
+    setIsCertificateModalOpen(false);
+    setFullName('');
+    setLinkedinProfile('');
+    setGameMode('');
   };
 
   const getScoreMessage = () => {
-    const percentage = (score / (shuffledQuestions.length * 10)) * 100;
-    if (percentage >= 90) return "Excelente! Você é um expert em QA! 🏆";
-    if (percentage >= 70) return "Muito bom! Você tem um ótimo conhecimento em QA! 🎉";
-    if (percentage >= 50) return "Bom trabalho! Continue estudando para melhorar! 📚";
-    return "Continue praticando! Todo expert já foi iniciante! 💪";
+    const percentage = (score / shuffledQuestions.length) * 100;
+    if (percentage >= 90) return 'Excelente! Você é um expert em QA! 🏆';
+    if (percentage >= 70) return 'Muito bom! Você tem um ótimo conhecimento em QA! 🎉';
+    if (percentage >= 50) return 'Bom trabalho! Continue estudando para melhorar! 📚';
+    return 'Continue praticando! Todo expert já foi iniciante! 💪';
+  };
+
+  const handleGenerateCertificate = () => {
+    if (fullName && linkedinProfile) {
+      setIsCertificateModalOpen(true);
+    } else {
+      alert('Por favor, preencha seu nome completo e o link do seu perfil do LinkedIn para gerar o certificado.');
+    }
   };
 
   const currentQ = shuffledQuestions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
 
-  const currentBestScore = localStorage.getItem('qaplay-quiz-best-score') || 0;
+  const formatTime = (seconds) => {
+    if (seconds === null) return 'Livre';
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
 
   if (!gameStarted) {
     return (
@@ -151,35 +196,25 @@ const QuizGame = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{questionsData.length}</div>
-                <div className="text-sm text-muted-foreground">Perguntas</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">30s</div>
-                <div className="text-sm text-muted-foreground">Por pergunta</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{currentBestScore}</div>
-                <div className="text-sm text-muted-foreground">Melhor pontuação</div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Button onClick={() => startGame('simulado')} size="lg" className="w-full">
+                <Target className="mr-2 h-5 w-5" />
+                Modo Simulado (20 min)
+              </Button>
+              <Button onClick={() => startGame('aprendizado')} size="lg" className="w-full" variant="outline">
+                <BookOpen className="mr-2 h-5 w-5" />
+                Modo Aprendizado (Tempo Livre)
+              </Button>
             </div>
             
             <div className="space-y-4">
-              <h3 className="font-semibold">Como jogar:</h3>
+              <h3 className="font-semibold">Regras:</h3>
               <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Responda cada pergunta em até 30 segundos</li>
-                <li>• Ganhe 10 pontos por resposta correta + bônus de tempo</li>
-                <li>• Veja a explicação após cada resposta</li>
-                <li>• Sua melhor pontuação será salva automaticamente</li>
+                <li>• Modo Simulado: 20 questões, 20 minutos, feedback apenas no final.</li>
+                <li>• Modo Aprendizado: 20 questões, tempo livre, feedback imediato.</li>
+                <li>• Questões randomizadas e balanceadas por nível.</li>
               </ul>
             </div>
-            
-            <Button onClick={startGame} size="lg" className="w-full">
-              <Target className="mr-2 h-5 w-5" />
-              Começar Quiz
-            </Button>
           </CardContent>
         </Card>
       </div>
@@ -187,6 +222,7 @@ const QuizGame = () => {
   }
 
   if (gameFinished) {
+    const percentage = (score / shuffledQuestions.length) * 100;
     return (
       <div className="max-w-2xl mx-auto space-y-6">
         <Card className="text-center">
@@ -203,19 +239,41 @@ const QuizGame = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">{score}</div>
-                <div className="text-sm text-muted-foreground">Pontuação Final</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">{Math.round((score / (shuffledQuestions.length * 10)) * 100)}%</div>
                 <div className="text-sm text-muted-foreground">Acertos</div>
               </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">{percentage.toFixed(1)}%</div>
+                <div className="text-sm text-muted-foreground">Aproveitamento</div>
+              </div>
             </div>
-            
-            {score > currentBestScore && (
-              <Badge className="bg-yellow-100 text-yellow-800">
-                🎉 Nova melhor pontuação!
-              </Badge>
-            )}
+
+            <div className="space-y-4 mt-6 p-4 border rounded-lg bg-gray-50">
+              <h3 className="text-lg font-semibold">Gerar Certificado de Conclusão</h3>
+              <p className="text-sm text-muted-foreground">Preencha seus dados para gerar um certificado e compartilhar seu resultado no LinkedIn.</p>
+              <div className="grid gap-2">
+                <Label htmlFor="fullName">Nome Completo</Label>
+                <Input
+                  id="fullName"
+                  type="text"
+                  placeholder="Seu Nome Completo"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="linkedinProfile">Link do Perfil LinkedIn</Label>
+                <Input
+                  id="linkedinProfile"
+                  type="url"
+                  placeholder="https://linkedin.com/in/seuperfil"
+                  value={linkedinProfile}
+                  onChange={(e) => setLinkedinProfile(e.target.value)}
+                />
+              </div>
+              <Button onClick={handleGenerateCertificate} className="w-full">
+                Gerar Certificado e Compartilhar
+              </Button>
+            </div>
             
             <div className="flex gap-4">
               <Button onClick={resetGame} variant="outline" className="flex-1">
@@ -228,6 +286,15 @@ const QuizGame = () => {
             </div>
           </CardContent>
         </Card>
+
+        <CertificateModal
+          isOpen={isCertificateModalOpen}
+          onClose={() => setIsCertificateModalOpen(false)}
+          fullName={fullName}
+          score={score}
+          totalQuestions={shuffledQuestions.length}
+          linkedinProfile={linkedinProfile}
+        />
       </div>
     );
   }
@@ -239,18 +306,14 @@ const QuizGame = () => {
         <Badge variant="outline">
           Pergunta {currentQuestionIndex + 1} de {shuffledQuestions.length}
         </Badge>
-        <div className="flex items-center space-x-4">
+        {timeLeft !== null && (
           <div className="flex items-center space-x-2">
             <Clock className="h-4 w-4" />
-            <span className={`font-mono text-lg ${timeLeft <= 10 ? 'text-red-500 font-bold' : ''}`}>
-              {timeLeft}s
+            <span className={`font-mono text-lg ${timeLeft <= 60 && timeLeft > 0 ? 'text-red-500 font-bold' : ''}`}>
+              {formatTime(timeLeft)}
             </span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Trophy className="h-4 w-4" />
-            <span className="font-semibold">{score}</span>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* Progress */}
@@ -312,9 +375,15 @@ const QuizGame = () => {
             </div>
           )}
 
-          {showExplanation && (
+          {showExplanation && gameMode === 'aprendizado' && (
             <Button onClick={handleNextQuestion} className="w-full" size="lg">
               {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
+            </Button>
+          )}
+
+          {gameMode === 'simulado' && !showExplanation && (
+            <Button onClick={handleNextQuestion} className="w-full" size="lg">
+              {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Finalizar'}
             </Button>
           )}
         </CardContent>

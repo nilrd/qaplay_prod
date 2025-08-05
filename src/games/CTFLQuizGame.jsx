@@ -410,4 +410,3 @@ const CTFLQuizGame = () => {
 
 export default CTFLQuizGame;
 
-
