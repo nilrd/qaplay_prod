@@ -1,6 +1,6 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card'
+import { Button } from '@components/ui/button'
+import { Badge } from '@components/ui/badge'
 import { Github, Linkedin, Mail, Download, Award, Code, Users, Target, Phone, MapPin, Calendar, Briefcase, GraduationCap, Star, CheckCircle } from 'lucide-react'
 import ContactDialog from "../components/ContactDialog";
 
@@ -354,63 +354,22 @@ const About = () => {
           </Card>
         </section>
 
-        {/* QAPlay - Projeto Pessoal */}
-        <section>
-          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
-            <Gamepad2 className="mr-2 h-7 w-7 text-primary" />
-            QAPlay - Projeto Pessoal
-          </h2>
-          <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-500/10 dark:to-blue-500/10 border-green-200/50 dark:border-green-500/20">
-            <CardContent className="p-6">
-              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm">
-                <p>
-                  O <strong className="text-foreground">QAPlay</strong> é uma plataforma gamificada que idealizei e desenvolvi com o objetivo de 
-                  democratizar o ensino de Quality Assurance. Através de jogos interativos e conteúdos práticos, 
-                  o QAPlay oferece uma maneira divertida e eficaz de aprender e aprimorar habilidades em QA.
-                </p>
-                <p>
-                  Este projeto reflete minha paixão por tecnologia, educação e o desejo de contribuir para a 
-                  comunidade de QA, fornecendo uma ferramenta acessível para estudantes e profissionais.
-                </p>
-              </div>
-              <div className="mt-4 flex justify-center">
-                <Button asChild>
-                  <Link to="/jogos">
-                    <Play className="mr-2 h-4 w-4" />
-                    Explorar QAPlay
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Modal "Vamos Conversar" - Corrigir bug visual */}
-        <section>
-          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
-            <Mail className="mr-2 h-7 w-7 text-primary" />
-            Vamos Conversar?
-          </h2>
-          <Card>
-            <CardContent className="p-6 text-center">
-              <p className="text-muted-foreground mb-4 text-sm">
-                Tenho interesse em novas oportunidades e parcerias. Se você busca um profissional de QA 
-                dedicado e com experiência, ou quer discutir sobre projetos e tecnologia, entre em contato!
-              </p>
-              <ContactDialog>
-                <Button size="lg">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Enviar Mensagem
-                </Button>
-              </ContactDialog>
-            </CardContent>
-          </Card>
+        {/* Seção de Contato */}
+        <section className="text-center py-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 rounded-lg shadow-inner">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Vamos Conversar!</h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Se você tem um projeto, uma ideia ou apenas quer trocar uma experiência, 
+            sinta-se à vontade para entrar em contato. Estou sempre aberto a novas conexões e desafios.
+          </p>
+          <ContactDialog>
+            <Button size="lg" className="px-8 py-3 text-lg">Entrar em Contato</Button>
+          </ContactDialog>
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;
 
 

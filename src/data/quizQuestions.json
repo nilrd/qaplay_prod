@@ -8,7 +8,8 @@
       "Verificação é um teste manual, enquanto validação é um teste automatizado."
     ],
     "correct": 1,
-    "explanation": "Verificação (Are we building the product right?) é o processo de avaliar se o software está sendo construído corretamente, de acordo com as especificações. Validação (Are we building the right product?) é o processo de avaliar se o software atende às necessidades do usuário e aos requisitos de negócio."
+    "explanation": "Verificação (Are we building the product right?) é o processo de avaliar se o software está sendo construído corretamente, de acordo com as especificações. Validação (Are we building the right product?) é o processo de avaliar se o software atende às necessidades do usuário e aos requisitos de negócio.",
+    "level": "básico"
   },
   {
     "question": "No contexto do SDLC, em qual fase a equipe de QA geralmente começa a se envolver ativamente em uma abordagem 'Shift Left'?",
@@ -19,7 +20,8 @@
       "Fase de Testes Finais."
     ],
     "correct": 2,
-    "explanation": "A abordagem 'Shift Left' preconiza que o QA se envolva desde as fases iniciais do SDLC, como Requisitos e Design, para identificar e prevenir defeitos o mais cedo possível."
+    "explanation": "A abordagem 'Shift Left' preconiza que o QA se envolva desde as fases iniciais do SDLC, como Requisitos e Design, para identificar e prevenir defeitos o mais cedo possível.",
+    "level": "básico"
   },
   {
     "question": "Qual é o principal objetivo de um teste de regressão em um ciclo de desenvolvimento ágil?",
@@ -30,7 +32,8 @@
       "Testar a usabilidade da interface do usuário."
     ],
     "correct": 1,
-    "explanation": "O teste de regressão é crucial em ciclos ágeis para garantir que as modificações no código (novas funcionalidades, correções de bugs) não impactem negativamente as funcionalidades já existentes e estáveis."
+    "explanation": "O teste de regressão é crucial em ciclos ágeis para garantir que as modificações no código (novas funcionalidades, correções de bugs) não impactem negativamente as funcionalidades já existentes e estáveis.",
+    "level": "básico"
   },
   {
     "question": "Qual dos seguintes tipos de teste foca em verificar se o software atende às necessidades e expectativas do usuário final?",
@@ -41,7 +44,8 @@
       "Teste de Performance."
     ],
     "correct": 2,
-    "explanation": "O Teste de Aceitação do Usuário (UAT) é realizado pelos usuários finais para verificar se o sistema atende aos seus requisitos de negócio e se está pronto para ser liberado para produção."
+    "explanation": "O Teste de Aceitação do Usuário (UAT) é realizado pelos usuários finais para verificar se o sistema atende aos seus requisitos de negócio e se está pronto para ser liberado para produção.",
+    "level": "básico"
   },
   {
     "question": "Em um cenário de automação de testes, qual a principal vantagem de utilizar o Cypress em vez do Selenium para aplicações web modernas?",
@@ -52,7 +56,8 @@
       "Cypress é ideal para testes de API, enquanto Selenium é para UI."
     ],
     "correct": 1,
-    "explanation": "Cypress é conhecido por sua arquitetura que executa os testes no mesmo loop de execução da aplicação, proporcionando depuração em tempo real, instalação mais simples e execução mais rápida para testes end-to-end em aplicações web modernas, ao contrário do Selenium que requer drivers e configurações mais complexas."
+    "explanation": "Cypress é conhecido por sua arquitetura que executa os testes no mesmo loop de execução da aplicação, proporcionando depuração em tempo real, instalação mais simples e execução mais rápida para testes end-to-end em aplicações web modernas, ao contrário do Selenium que requer drivers e configurações mais complexas.",
+    "level": "intermediário"
   },
   {
     "question": "Qual o propósito principal do JUnit em um projeto Java?",
@@ -63,7 +68,8 @@
       "Monitorar a performance da aplicação em produção."
     ],
     "correct": 2,
-    "explanation": "JUnit é um framework de testes de unidade para Java, amplamente utilizado para escrever e executar testes automatizados para componentes individuais do código, garantindo que cada parte funcione como esperado."
+    "explanation": "JUnit é um framework de testes de unidade para Java, amplamente utilizado para escrever e executar testes automatizados para componentes individuais do código, garantindo que cada parte funcione como esperado.",
+    "level": "intermediário"
   },
   {
     "question": "O que é um 'Feature File' no contexto do Cucumber e BDD?",
@@ -74,7 +80,8 @@
       "Um arquivo de configuração para o ambiente de testes."
     ],
     "correct": 2,
-    "explanation": "No Cucumber, um 'Feature File' é um arquivo de texto simples que descreve as funcionalidades do sistema e seus cenários de comportamento usando a sintaxe Gherkin (Dado, Quando, Então), tornando-o legível por não-técnicos."
+    "explanation": "No Cucumber, um 'Feature File' é um arquivo de texto simples que descreve as funcionalidades do sistema e seus cenários de comportamento usando a sintaxe Gherkin (Dado, Quando, Então), tornando-o legível por não-técnicos.",
+    "level": "intermediário"
   },
   {
     "question": "Qual ferramenta é mais adequada para testar APIs RESTful, permitindo o envio de requisições HTTP e a inspeção de respostas?",
@@ -85,7 +92,8 @@
       "Jenkins."
     ],
     "correct": 2,
-    "explanation": "Postman é uma ferramenta popular para desenvolvimento e teste de APIs, permitindo aos usuários enviar requisições HTTP, inspecionar as respostas, e automatizar coleções de testes para APIs RESTful e SOAP."
+    "explanation": "Postman é uma ferramenta popular para desenvolvimento e teste de APIs, permitindo aos usuários enviar requisições HTTP, inspecionar as respostas, e automatizar coleções de testes para APIs RESTful e SOAP.",
+    "level": "intermediário"
   },
   {
     "question": "Na Pirâmide de Testes, qual camada deve ter o maior número de testes e por quê?",
@@ -96,7 +104,8 @@
       "Testes de Performance, para garantir a escalabilidade."
     ],
     "correct": 2,
-    "explanation": "A base da Pirâmide de Testes é composta por Testes de Unidade. Eles são os mais numerosos porque são rápidos de executar, baratos de manter e eficazes em isolar defeitos em pequenas unidades de código, facilitando a depuração."
+    "explanation": "A base da Pirâmide de Testes é composta por Testes de Unidade. Eles são os mais numerosos porque são rápidos de executar, baratos de manter e eficazes em isolar defeitos em pequenas unidades de código, facilitando a depuração.",
+    "level": "avançado"
   },
   {
     "question": "Qual o principal benefício de usar um sistema de controle de versão como Git/GitHub em um projeto de automação de testes?",
@@ -107,7 +116,8 @@
       "Reduzir o tempo de desenvolvimento dos testes."
     ],
     "correct": 2,
-    "explanation": "Git e GitHub são fundamentais para a colaboração em equipes de automação, permitindo que múltiplos testadores trabalhem no mesmo código, rastreiem alterações, revertam para versões anteriores e gerenciem o ciclo de vida dos scripts de teste de forma eficiente."
+    "explanation": "Git e GitHub são fundamentais para a colaboração em equipes de automação, permitindo que múltiplos testadores trabalhem no mesmo código, rastreiem alterações, revertam para versões anteriores e gerenciem o ciclo de vida dos scripts de teste de forma eficiente.",
+    "level": "avançado"
   },
   {
     "question": "Em Scrum, qual evento tem como objetivo inspecionar o trabalho realizado e adaptar o Backlog do Produto, se necessário?",
@@ -118,7 +128,8 @@
       "Sprint Retrospective."
     ],
     "correct": 2,
-    "explanation": "A Sprint Review é um evento do Scrum onde o Time Scrum e os stakeholders inspecionam o Incremento e adaptam o Backlog do Produto, se necessário, com base no feedback recebido."
+    "explanation": "A Sprint Review é um evento do Scrum onde o Time Scrum e os stakeholders inspecionam o Incremento e adaptam o Backlog do Produto, se necessário, com base no feedback recebido.",
+    "level": "avançado"
   },
   {
     "question": "Qual é a principal característica de um quadro Kanban?",
@@ -129,7 +140,8 @@
       "Reuniões diárias obrigatórias para sincronização."
     ],
     "correct": 1,
-    "explanation": "Kanban é um método ágil que foca na visualização do fluxo de trabalho, na limitação do trabalho em progresso (WIP) e na melhoria contínua, utilizando um quadro visual para gerenciar as tarefas."
+    "explanation": "Kanban é um método ágil que foca na visualização do fluxo de trabalho, na limitação do trabalho em progresso (WIP) e na melhoria contínua, utilizando um quadro visual para gerenciar as tarefas.",
+    "level": "avançado"
   },
   {
     "question": "O que é um 'bug' no contexto de testes de software?",
@@ -140,7 +152,8 @@
       "Um problema de hardware no computador do testador."
     ],
     "correct": 1,
-    "explanation": "Um bug é uma falha no software que faz com que ele se comporte de maneira diferente do esperado, podendo ser um erro de codificação, lógica ou design."
+    "explanation": "Um bug é uma falha no software que faz com que ele se comporte de maneira diferente do esperado, podendo ser um erro de codificação, lógica ou design.",
+    "level": "básico"
   },
   {
     "question": "Qual a importância dos testes de usabilidade?",
@@ -151,7 +164,8 @@
       "Confirmar que todas as funcionalidades estão implementadas."
     ],
     "correct": 1,
-    "explanation": "Testes de usabilidade avaliam a facilidade com que os usuários podem aprender e usar um software para atingir seus objetivos, focando na experiência do usuário e na interação com a interface."
+    "explanation": "Testes de usabilidade avaliam a facilidade com que os usuários podem aprender e usar um software para atingir seus objetivos, focando na experiência do usuário e na interação com a interface.",
+    "level": "básico"
   },
   {
     "question": "O que é um 'caso de teste' (Test Case)?",
@@ -162,7 +176,8 @@
       "Um documento que descreve a arquitetura do sistema."
     ],
     "correct": 1,
-    "explanation": "Um caso de teste é um conjunto de ações a serem executadas para verificar uma funcionalidade específica do software, incluindo pré-condições, passos de execução, dados de entrada e resultados esperados."
+    "explanation": "Um caso de teste é um conjunto de ações a serem executadas para verificar uma funcionalidade específica do software, incluindo pré-condições, passos de execução, dados de entrada e resultados esperados.",
+    "level": "básico"
   },
   {
     "question": "Qual o papel do QA no dia a dia de uma equipe ágil?",
@@ -173,7 +188,8 @@
       "Escrever o código fonte da aplicação."
     ],
     "correct": 1,
-    "explanation": "No dia a dia de uma equipe ágil, o QA é um membro ativo e colaborativo, envolvido em todas as etapas do desenvolvimento, desde a definição dos requisitos até a entrega, focando na prevenção de defeitos e na melhoria contínua da qualidade."
+    "explanation": "No dia a dia de uma equipe ágil, o QA é um membro ativo e colaborativo, envolvido em todas as etapas do desenvolvimento, desde a definição dos requisitos até a entrega, focando na prevenção de defeitos e na melhoria contínua da qualidade.",
+    "level": "intermediário"
   },
   {
     "question": "O que é um teste de caixa branca?",
@@ -184,7 +200,8 @@
       "Teste realizado apenas por usuários finais."
     ],
     "correct": 2,
-    "explanation": "Teste de caixa branca é uma técnica de teste que avalia a estrutura interna e o funcionamento do código, permitindo ao testador ter conhecimento sobre a lógica, caminhos de código e estruturas de dados."
+    "explanation": "Teste de caixa branca é uma técnica de teste que avalia a estrutura interna e o funcionamento do código, permitindo ao testador ter conhecimento sobre a lógica, caminhos de código e estruturas de dados.",
+    "level": "intermediário"
   },
   {
     "question": "Qual a importância de testes de segurança?",
@@ -195,7 +212,8 @@
       "Assegurar que o software funcione em diferentes navegadores."
     ],
     "correct": 1,
-    "explanation": "Testes de segurança são cruciais para identificar vulnerabilidades e garantir que o software seja robusto contra ameaças cibernéticas, protegendo dados sensíveis e a integridade do sistema."
+    "explanation": "Testes de segurança são cruciais para identificar vulnerabilidades e garantir que o software seja robusto contra ameaças cibernéticas, protegendo dados sensíveis e a integridade do sistema.",
+    "level": "intermediário"
   },
   {
     "question": "O que é um 'mock' ou 'stub' em testes de unidade?",
@@ -206,7 +224,8 @@
       "Um ambiente de teste completo."
     ],
     "correct": 2,
-    "explanation": "Mocks e stubs são objetos simulados usados em testes de unidade para controlar o comportamento de dependências externas (como bancos de dados ou APIs), permitindo que a unidade de código seja testada isoladamente e de forma consistente."
+    "explanation": "Mocks e stubs são objetos simulados usados em testes de unidade para controlar o comportamento de dependências externas (como bancos de dados ou APIs), permitindo que a unidade de código seja testada isoladamente e de forma consistente.",
+    "level": "avançado"
   },
   {
     "question": "Qual o objetivo principal de um teste de carga (Load Test)?",
@@ -217,7 +236,8 @@
       "Testar a compatibilidade do software com diferentes sistemas operacionais."
     ],
     "correct": 1,
-    "explanation": "Testes de carga são um tipo de teste de performance que avalia o comportamento do sistema sob uma carga de trabalho esperada, medindo métricas como tempo de resposta, throughput e utilização de recursos para garantir que o sistema possa lidar com o número de usuários e transações previstos."
+    "explanation": "Testes de carga são um tipo de teste de performance que avalia o comportamento do sistema sob uma carga de trabalho esperada, medindo métricas como tempo de resposta, throughput e utilização de recursos para garantir que o sistema possa lidar com o número de usuários e transações previstos.",
+    "level": "avançado"
   }
 ]
 
