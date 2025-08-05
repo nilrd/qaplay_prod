@@ -37,24 +37,36 @@ const CTFLQuizGame = () => {
   };
 
   const startGame = (mode) => {
-    let questionsToUse = shuffleArray(questionsData.questions);
+    const allQuestions = questionsData.questions;
+
+    // Filtrar e embaralhar questões por nível
+    const basicQuestions = shuffleArray(allQuestions.filter(q => q.level === 'básico'));
+    const intermediateQuestions = shuffleArray(allQuestions.filter(q => q.level === 'intermediário'));
+    const advancedQuestions = shuffleArray(allQuestions.filter(q => q.level === 'avançado'));
 
     // Selecionar 20 questões: 8 básicas, 8 intermediárias, 4 avançadas
-    const basicQuestions = questionsToUse.filter(q => q.level === 'básico');
-    const intermediateQuestions = questionsToUse.filter(q => q.level === 'intermediário');
-    const advancedQuestions = questionsToUse.filter(q => q.level === 'avançado');
+    const selectedBasic = basicQuestions.slice(0, 8);
+    const selectedIntermediate = intermediateQuestions.slice(0, 8);
+    const selectedAdvanced = advancedQuestions.slice(0, 4);
 
-    const selectedBasic = shuffleArray(basicQuestions).slice(0, 8);
-    const selectedIntermediate = shuffleArray(intermediateQuestions).slice(0, 8);
-    const selectedAdvanced = shuffleArray(advancedQuestions).slice(0, 4);
+    let questionsToUse = shuffleArray([...selectedBasic, ...selectedIntermediate, ...selectedAdvanced]);
 
-    questionsToUse = shuffleArray([...selectedBasic, ...selectedIntermediate, ...selectedAdvanced]);
+    // Embaralhar as opções de cada questão e remapear a resposta correta
+    const shuffledQWithOptions = questionsToUse.map(q => {
+      const originalCorrectAnswerIndex = q.correctAnswer;
+      const optionsWithOriginalIndex = q.options.map((option, index) => ({ text: option, originalIndex: index }));
+      const shuffledOptions = shuffleArray(optionsWithOriginalIndex);
+      
+      // Encontrar o novo índice da resposta correta após o embaralhamento
+      const newCorrectAnswerIndex = shuffledOptions.findIndex(option => option.originalIndex === originalCorrectAnswerIndex);
 
-    const shuffledQWithOptions = questionsToUse.map(q => ({
-      ...q,
-      originalOptions: [...q.options],
-      options: shuffleArray(q.options.map((option, index) => ({ text: option, originalIndex: index }))),
-    }));
+      return {
+        ...q,
+        options: shuffledOptions,
+        correctAnswer: newCorrectAnswerIndex, // Atualiza o índice da resposta correta
+      };
+    });
+
     setShuffledQuestions(shuffledQWithOptions);
     setGameStarted(true);
     setGameMode(mode);
@@ -94,25 +106,25 @@ const CTFLQuizGame = () => {
     if (gameMode === 'simulado') {
       finishGame();
     } else {
-      setIsTimeUpModalOpen(true);
-      setShowExplanation(true);
+      // No modo aprendizado, o tempo livre não deve esgotar o jogo, apenas mostrar a explicação se o usuário quiser
+      // setIsTimeUpModalOpen(true); // Não abre modal de tempo esgotado no modo aprendizado
+      // setShowExplanation(true); // Não força explicação, o usuário controla
     }
   };
 
   const handleAnswerSelect = (answerIndex) => {
-    if (showExplanation) return;
+    if (showExplanation && gameMode === 'aprendizado') return; // Permite selecionar apenas uma vez no modo aprendizado
     setSelectedAnswerIndex(answerIndex);
     
-    if (gameMode === 'aprendizado') {
-      setShowExplanation(true);
-    }
-
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
-    const selectedOption = currentQuestion.options[answerIndex];
-    const isCorrect = selectedOption.originalIndex === currentQuestion.correctAnswer;
+    const isCorrect = answerIndex === currentQuestion.correctAnswer;
 
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
+    }
+
+    if (gameMode === 'aprendizado') {
+      setShowExplanation(true);
     }
   };
 
@@ -324,7 +336,7 @@ const CTFLQuizGame = () => {
         <CardContent className="space-y-4">
           <div className="grid gap-3">
             {currentQ.options.map((option, index) => {
-              const isCorrectOption = option.originalIndex === currentQ.correctAnswer;
+              const isCorrectOption = index === currentQ.correctAnswer;
               const isSelected = selectedAnswerIndex === index;
 
               let buttonClass = "w-full text-left p-4 border rounded-lg transition-colors";
@@ -343,7 +355,7 @@ const CTFLQuizGame = () => {
 
               return (
                 <button
-                  key={option.originalIndex} // Use originalIndex as key for stable rendering
+                  key={option.text} // Use option.text as key for stable rendering after shuffling
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showExplanation}
                   className={buttonClass}
@@ -368,7 +380,7 @@ const CTFLQuizGame = () => {
           {showExplanation && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2">Explicação:</h4>
-              <p className="text-blue-800">{currentQ.correctFeedback}</p>
+              <p className="text-blue-800">{selectedAnswerIndex === currentQ.correctAnswer ? currentQ.correctFeedback : currentQ.incorrectFeedback}</p>
               {currentQ.learningTip && (
                 <p className="text-blue-800 mt-2">
                   <a href={currentQ.learningTip} target="_blank" rel="noopener noreferrer" className="underline">
@@ -385,8 +397,8 @@ const CTFLQuizGame = () => {
             </Button>
           )}
 
-          {gameMode === 'simulado' && !showExplanation && (
-            <Button onClick={handleNextQuestion} className="w-full" size="lg">
+          {gameMode === 'simulado' && (
+            <Button onClick={handleNextQuestion} className="w-full" size="lg" disabled={selectedAnswerIndex === null && gameMode === 'simulado'}>
               {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Finalizar'}
             </Button>
           )}
@@ -409,4 +421,6 @@ const CTFLQuizGame = () => {
 };
 
 export default CTFLQuizGame;
+
+
 

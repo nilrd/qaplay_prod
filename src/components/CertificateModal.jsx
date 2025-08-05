@@ -8,7 +8,7 @@ import html2canvas from 'html2canvas';
 const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, linkedinProfile }) => {
   const certificateRef = useRef(null);
 
-  const percentage = Math.round((score / (totalQuestions * 10)) * 100);
+  const percentage = Math.round((score / totalQuestions) * 100);
   const currentDate = new Date().toLocaleDateString('pt-BR');
 
   const downloadCertificate = async () => {
@@ -32,9 +32,10 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
   };
 
   const shareOnLinkedIn = () => {
-    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos! 🎉\n\nTeste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #CTFL #QAPlay`;
+    const badgeText = `QA Quiz - ${getBadgeLevel()} (${percentage}% de acertos)`;
+    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🎉\n\nTeste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #CTFL #QAPlay`;
     
-    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&text=${encodeURIComponent(text)}`;
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
     
     window.open(linkedinUrl, '_blank', 'width=600,height=400');
   };
@@ -161,4 +162,6 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 };
 
 export default CertificateModal;
+
+
 

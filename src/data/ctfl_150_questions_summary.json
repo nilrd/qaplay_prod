@@ -1,9 +1,9 @@
 {
   "total_questions": 150,
   "level_distribution": {
-    "básico": 60,
-    "intermediário": 60,
-    "avançado": 30
+    "básico": 9,
+    "intermediário": 53,
+    "avançado": 88
   },
   "expected_distribution": {
     "básico": 60,
@@ -11,8 +11,9 @@
     "avançado": 30
   },
   "status": {
-    "básico": "OK",
-    "intermediário": "OK",
-    "avançado": "OK"
+    "básico": "DIVERGENTE",
+    "intermediário": "DIVERGENTE",
+    "avançado": "DIVERGENTE"
   }
 }
+
