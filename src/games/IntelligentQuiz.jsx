@@ -4,6 +4,7 @@ import knowledgeBase from '../data/knowledge_base.json';
 import BadgeGenerator from '../components/BadgeGenerator';
 
 const IntelligentQuiz = () => {
+  const playAgainText = "Jogar Novamente";
   const [gameState, setGameState] = useState("menu"); // 'menu', 'playing', 'finished'
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState([]);
@@ -627,7 +628,7 @@ Que tal testar seus conhecimentos também? 🚀
                 className="flex items-center justify-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors"
               >
                 <RotateCcw className="w-5 h-5" />
-                <span>Jogar Novamente</span>
+                {playAgainText}
               </button>
             </div>
 
@@ -680,7 +681,7 @@ Que tal testar seus conhecimentos também? 🚀
                 className="flex items-center justify-center space-x-2 bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <RotateCcw className="w-5 h-5" />
-                <span>Jogar Novamente</span>
+                {playAgainText}
               </button>
             </div>
           </div>
