@@ -627,7 +627,7 @@ Que tal testar seus conhecimentos também? 🚀
                 className="flex items-center justify-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors"
               >
                 <RotateCcw className="w-5 h-5" />
-                Jogar Novamente
+                <span>Jogar Novamente</span>
               </button>
             </div>
 
@@ -680,7 +680,7 @@ Que tal testar seus conhecimentos também? 🚀
                 className="flex items-center justify-center space-x-2 bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <RotateCcw className="w-5 h-5" />
-                Jogar Novamente
+                <span>Jogar Novamente</span>
               </button>
             </div>
           </div>
