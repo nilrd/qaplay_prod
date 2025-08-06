@@ -10,16 +10,16 @@ const Games = () => {
 
   const games = [
     {
-      id: 'qa-quiz',
-      title: 'QA Quiz',
-      description: 'Teste seus conhecimentos com perguntas de múltipla escolha sobre conceitos fundamentais de QA',
+      id: 'intelligent-quiz',
+      title: 'Quiz Inteligente ISTQB CTFL 4.0',
+      description: 'Teste seus conhecimentos com questões geradas dinamicamente baseadas no syllabus oficial ISTQB CTFL 4.0. Três níveis de dificuldade disponíveis.',
       icon: '🧠',
-      difficulty: 'Iniciante',
-      estimatedTime: '5-10 min',
-      players: '1.2k+',
-      rating: 4.8,
+      difficulty: 'Todos os Níveis',
+      estimatedTime: '20 min',
+      players: '1.5k+',
+      rating: 4.9,
       status: 'available',
-      color: 'from-blue-500 to-purple-600'
+      color: 'from-purple-500 to-blue-600'
     },
     {
       id: 'programming-challenge',
@@ -189,9 +189,14 @@ const Games = () => {
                 className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                 size="lg"
                 disabled={game.status !== 'available'}
-                asChild={game.id === 'qa-quiz' || game.id === 'programming-challenge' || game.id === 'bdd-challenge' || game.id === 'logic-programming' || game.id === 'automation-master'}
+                asChild={game.id === 'intelligent-quiz' || game.id === 'qa-quiz' || game.id === 'programming-challenge' || game.id === 'bdd-challenge' || game.id === 'logic-programming' || game.id === 'automation-master'}
               >
-                {game.id === 'qa-quiz' ? (
+                {game.id === 'intelligent-quiz' ? (
+                  <Link to="/jogos/intelligent-quiz">
+                    <Play className="mr-2 h-4 w-4" />
+                    Jogar Agora
+                  </Link>
+                ) : game.id === 'qa-quiz' ? (
                   <Link to="/jogos/quiz">
                     <Play className="mr-2 h-4 w-4" />
                     Jogar Agora
