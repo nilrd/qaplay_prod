@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node ./scripts/validate_questions.js",
+    "prebuild": "node ./scripts/validate_questions.js && node ./scripts/validate_options_length.js",
+    "validate-questions": "node ./scripts/validate_questions.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

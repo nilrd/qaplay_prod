@@ -33,9 +33,9 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 
   const shareOnLinkedIn = () => {
     const badgeText = `QA Quiz - ${getBadgeLevel()} (${percentage}% de acertos)`;
-    const text = `Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🎉\n\nBaseado no Syllabus ISTQB CTFL 4.0. Teste seus conhecimentos em Quality Assurance também: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #ISTQB #CTFL #QAPlay`;
+    const text = `🎯 Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🏆\n\n📚 Baseado no Syllabus ISTQB® CTFL 4.0 - International Software Testing Qualifications Board\n🎮 150 questões cuidadosamente elaboradas para preparação certificação\n⚡ Teste seus conhecimentos em Quality Assurance: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #ISTQB #CTFL #SoftwareTesting #QAPlay #Certificação`;
     
-    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay - ISTQB CTFL 4.0')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
     
     window.open(linkedinUrl, '_blank', 'width=600,height=400');
   };
@@ -77,7 +77,9 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
                   </div>
                 </div>
                 <h1 className="text-3xl font-bold text-gray-800">Certificado de Conclusão</h1>
-                <p className="text-lg text-gray-600">QAPlay - Quiz de Quality Assurance (Baseado no Syllabus ISTQB CTFL 4.0)</p>
+                <p className="text-lg text-gray-600">QAPlay - Quiz de Quality Assurance</p>
+                <p className="text-base text-blue-600 font-semibold">Baseado no Syllabus ISTQB® CTFL 4.0</p>
+                <p className="text-sm text-gray-500">International Software Testing Qualifications Board</p>
               </div>
 
               {/* Conteúdo Principal */}
