@@ -666,7 +666,7 @@ Que tal testar seus conhecimentos também? 🚀
         </div>
       </div>
     );
-  }an>
+  
               </button>
               <button
                 onClick={downloadBadge}
