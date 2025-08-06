@@ -667,7 +667,6 @@ Que tal testar seus conhecimentos também? 🚀
       </div>
     );
   
-              </button>
               <button
                 onClick={downloadBadge}
                 disabled={!badgeUrl}
