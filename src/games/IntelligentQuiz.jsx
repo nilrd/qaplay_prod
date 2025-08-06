@@ -271,12 +271,6 @@ const IntelligentQuiz = () => {
       finishGame();
     }
   };
-      setSelectedAnswer(null);
-    } else {
-      finishGame();
-    }
-  };
-
   // Finish the game
   const finishGame = () => {
     const { level } = getPerformanceResult();
