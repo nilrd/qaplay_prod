@@ -208,7 +208,7 @@ const IntelligentQuiz = () => {
 **🎯 Próximos passos:** Pratique mais questões sobre este tópico e certifique-se de entender a diferença entre os conceitos relacionados.`;
 
           generatedQuestions.push({
-            question: `De acordo com o ISTQB CTFL 4.0, qual é a definição ou principal característica de \'${selectedConcept.title}\'?`,
+            question: `De acordo com o ISTQB CTFL 4.0, qual é a definição ou principal característica de '${selectedConcept.title}'?`,
             options: options,
             correctAnswer: correctAnswerIndex,
             correctFeedback: correctFeedback,
@@ -261,6 +261,7 @@ const IntelligentQuiz = () => {
 
     setShowFeedback(true);
   };
+
   // Go to next question
   const nextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
@@ -271,10 +272,9 @@ const IntelligentQuiz = () => {
       finishGame();
     }
   };
+
   // Finish the game
   const finishGame = () => {
-    const { level } = getPerformanceResult();
-    setSelectedLevel(level);
     setGameState("finished");
   };
 
@@ -596,7 +596,6 @@ Que tal testar seus conhecimentos também? 🚀
               <p className="mt-3 text-sm sm:text-base text-blue-100">{message}</p>
             </div>
 
-            {/* Recomendação de estudo */}
             <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6">
               <h3 className="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">💡 Recomendação para seu desenvolvimento:</h3>
               <p className="text-sm text-yellow-700 dark:text-yellow-200">{recommendation}</p>
@@ -621,17 +620,15 @@ Que tal testar seus conhecimentos também? 🚀
                 <Share2 className="w-5 h-5" />
                 <span>Compartilhar no LinkedIn</span>
               </button>
-              
               <button
                 onClick={resetGame}
                 className="flex items-center justify-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors"
               >
                 <RotateCcw className="w-5 h-5" />
-                                <span>{`Jogar Novamente`}</span>
+                <span>Jogar Novamente</span>
               </button>
             </div>
 
-            {/* Badge Generator */}
             <div className="mt-6">
               <BadgeGenerator
                 playerName={playerName}
@@ -640,7 +637,6 @@ Que tal testar seus conhecimentos também? 🚀
                 level={level}
                 onBadgeGenerated={handleBadgeGenerated}
               />
-              
               {badgeUrl && (
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mt-4">
                   <h3 className="font-semibold text-blue-800 dark:text-blue-300 mb-2 text-center">
@@ -666,40 +662,9 @@ Que tal testar seus conhecimentos também? 🚀
         </div>
       </div>
     );
-  
-              <button
-                onClick={downloadBadge}
-                disabled={!badgeUrl}
-                className="flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-              >
-                <Download className="w-5 h-5" />
-                <span>Baixar Badge</span>
-              </button>
-              <button
-                onClick={resetGame}
-                className="flex items-center justify-center space-x-2 bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                <RotateCcw className="w-5 h-5" />
-                                <span>{`Jogar Novamente`}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Badge Generator */}
-          <BadgeGenerator
-            playerName={playerName}
-            score={score}
-            percentage={getPercentage()}
-            level={selectedLevel}
-            onBadgeGenerated={handleBadgeGenerated}
-          />
-        </div>
-      </div>
-    );
   }
 
   return null;
 };
 
 export default IntelligentQuiz;
-
