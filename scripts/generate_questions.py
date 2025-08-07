@@ -17,7 +17,7 @@ def generate_question(knowledge_base, difficulty):
     selected_concept = random.choice(available_concepts)
 
     # Generate question based on the concept's description
-    question_text = f"De acordo com o ISTQB CTFL 4.0, qual é a definição ou principal característica de '{selected_concept['title']}'?"
+    question_text = f"Qual é a definição ou principal característica de '{selected_concept['title']}'?"
 
     # Generate correct answer
     correct_answer = selected_concept["description"]
