@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Trophy, Share2, CheckCircle, XCircle, RotateCcw, Download } from 'lucide-react';
-import knowledgeBase from '../../data/knowledge_base.json';
+import questionsData from '../../data/ctfl_150_questions.json';
 import BadgeGenerator from '../../components/BadgeGenerator';
 
 const IntelligentQuiz = () => {
@@ -15,8 +15,6 @@ const IntelligentQuiz = () => {
   const [playerName, setPlayerName] = useState('');
   const [badgeUrl, setBadgeUrl] = useState(null);
   const [fraudDetected, setFraudDetected] = useState(false);
-  const [fraudCount, setFraudCount] = useState(0);
-  const [isTabActive, setIsTabActive] = useState(true);
 
   // Timer effect
   useEffect(() => {
@@ -34,32 +32,15 @@ const IntelligentQuiz = () => {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        setIsTabActive(false);
-        handleFraudDetection('Troca de aba/minimização detectada');
-        // Marcar questão como incorreta imediatamente
-        if (currentQuestion < questions.length) {
-          const newAnswers = [...answers];
-          newAnswers[currentQuestion] = -1; // -1 indica incorreta por fraude
-          setAnswers(newAnswers);
-          setShowFeedback(true);
-          setSelectedAnswer(null);
-        }
-      } else {
-        setIsTabActive(true);
+        handleFraudDetection('Troca de aba ou minimização detectada');
       }
     };
 
     const handleBlur = () => {
-      setIsTabActive(false);
       handleFraudDetection('Perda de foco da janela detectada');
     };
 
-    const handleFocus = () => {
-      setIsTabActive(true);
-    };
-
     const handleKeyDown = (e) => {
-      // Detectar tentativas de abrir ferramentas de desenvolvedor
       if (e.key === 'F12' || 
           (e.ctrlKey && e.shiftKey && e.key === 'I') ||
           (e.ctrlKey && e.shiftKey && e.key === 'C') ||
@@ -71,78 +52,29 @@ const IntelligentQuiz = () => {
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('blur', handleBlur);
-    window.addEventListener('focus', handleFocus);
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleBlur);
-      window.removeEventListener('focus', handleFocus);
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [gameState, currentQuestion, questions, answers]);
 
   // Handle fraud detection
   const handleFraudDetection = (reason) => {
-    if (fraudDetected) return; // Evitar múltiplas detecções
+    if (fraudDetected || showFeedback) return;
 
-    const newFraudCount = fraudCount + 1;
-    setFraudCount(newFraudCount);
+    setFraudDetected(true);
+    alert(`⚠️ ATENÇÃO: ${reason}. A questão atual será marcada como incorreta.`);
 
-    if (newFraudCount >= 3) {
-      setFraudDetected(true);
-      alert(`⚠️ ATENÇÃO: Comportamento suspeito detectado múltiplas vezes (${reason}). O quiz será finalizado e sua pontuação será invalidada.`);
-      finishGame();
-    } else {
-      alert(`⚠️ AVISO ${newFraudCount}/3: ${reason}. Mantenha o foco no quiz. Mais ${3 - newFraudCount} avisos resultarão na invalidação do teste.`);
+    if (currentQuestion < questions.length) {
+      const newAnswers = [...answers];
+      newAnswers[currentQuestion] = -1; // -1 indicates incorrect due to fraud
+      setAnswers(newAnswers);
+      setShowFeedback(true);
+      setSelectedAnswer(null);
     }
-  };
-
-  // Generate a question based on difficulty level
-  const generateQuestion = (difficulty) => {
-    const availableConcepts = [];
-    
-    knowledgeBase.syllabus.chapters.forEach(chapter => {
-      chapter.sections.forEach(section => {
-        section.concepts.forEach(concept => {
-          if (concept.level === difficulty) {
-            availableConcepts.push(concept);
-          }
-        });
-      });
-    });
-
-    if (availableConcepts.length === 0) return null;
-
-    const selectedConcept = availableConcepts[Math.floor(Math.random() * availableConcepts.length)];
-    
-    // Generate distractors from other concepts of the same level
-    const distractors = [];
-    while (distractors.length < 3) {
-      const randomConcept = availableConcepts[Math.floor(Math.random() * availableConcepts.length)];
-      if (randomConcept !== selectedConcept && !distractors.includes(randomConcept.description)) {
-        distractors.push(randomConcept.description);
-      }
-    }
-
-    const options = [selectedConcept.description, ...distractors];
-    // Shuffle options
-    for (let i = options.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [options[i], options[j]] = [options[j], options[i]];
-    }
-
-    const correctAnswerIndex = options.indexOf(selectedConcept.description);
-
-    return {
-      question: `Qual é a definição ou principal característica de '${selectedConcept.title}'?`,
-      options: options,
-      correctAnswer: correctAnswerIndex,
-      correctFeedback: `Correto! ${selectedConcept.description} (LO: ${selectedConcept.id}).`,
-      incorrectFeedback: `Incorreto. A resposta correta é: ${selectedConcept.description} (LO: ${selectedConcept.id}).`,
-      LO: selectedConcept.id,
-      level: selectedConcept.level
-    };
   };
 
   // Start the game
@@ -152,92 +84,32 @@ const IntelligentQuiz = () => {
       return;
     }
 
-    const generatedQuestions = [];
-    const difficultyCounts = { junior: 7, pleno: 7, senior: 6 }; // 20 questions total
+    // Show rules warning
+    const rulesAccepted = window.confirm(
+      `📜 **Regras do Quiz Inteligente ISTQB CTFL 4.0**
 
-    for (const level in difficultyCounts) {
-      const count = difficultyCounts[level];
-      const availableConceptsForLevel = [];
-      knowledgeBase.syllabus.chapters.forEach(chapter => {
-        chapter.sections.forEach(section => {
-          section.concepts.forEach(concept => {
-            if (concept.level === level) {
-              availableConceptsForLevel.push(concept);
-            }
-          });
-        });
-      });
+- Você terá 20 minutos para responder 20 questões (níveis júnior, pleno e sênior).
+- Não saia da aba ou minimize o navegador, pois isso marcará a questão atual como incorreta.
+- Feedback detalhado será fornecido após cada resposta.
+- **Materiais recomendados para estudo:**
+  - ISTQB CTFL 4.0 Syllabus (disponível em: https://www.istqb.org/certifications/certified-tester-foundation-level)
+  - Livro *Foundations of Software Testing* de Rex Black, Erik van Veenendaal e Dorothy Graham
+  - Artigos do blog QA Play (disponíveis em: https://www.qaplay.com.br/blog)
+- Seu nível será determinado ao final com base na pontuação.
 
-      // Shuffle available concepts for the current level to pick random ones
-      for (let i = availableConceptsForLevel.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [availableConceptsForLevel[i], availableConceptsForLevel[j]] = [availableConceptsForLevel[j], availableConceptsForLevel[i]];
-      }
+Clique em OK para aceitar as regras e iniciar o quiz.`
+    );
 
-      for (let i = 0; i < count; i++) {
-        if (availableConceptsForLevel[i]) {
-          const selectedConcept = availableConceptsForLevel[i];
-          // Generate distractors from other concepts of the same level
-          const distractors = [];
-          const tempAvailableConcepts = availableConceptsForLevel.filter(c => c !== selectedConcept);
-          while (distractors.length < 3 && tempAvailableConcepts.length > 0) {
-            const randomConceptIndex = Math.floor(Math.random() * tempAvailableConcepts.length);
-            const randomConcept = tempAvailableConcepts.splice(randomConceptIndex, 1)[0];
-            distractors.push(randomConcept.description);
-          }
+    if (!rulesAccepted) return;
 
-          const options = [selectedConcept.description, ...distractors];
-          // Shuffle options
-          for (let k = options.length - 1; k > 0; k--) {
-            const l = Math.floor(Math.random() * (k + 1));
-            [options[k], options[l]] = [options[l], options[k]];
-          }
+    // Select 20 random questions
+    const shuffledQuestions = [...questionsData.questions].sort(() => Math.random() - 0.5);
+    const selectedQuestions = shuffledQuestions.slice(0, 20).map(q => ({
+      ...q,
+      question: q.question.replace(/^De acordo com o ISTQB CTFL 4.0, /, '')
+    }));
 
-          const correctAnswerIndex = options.indexOf(selectedConcept.description);
-
-          // Criar feedback didático mais robusto
-          const correctFeedback = `✅ **Correto!** 
-
-**Conceito:** ${selectedConcept.title}
-**Definição:** ${selectedConcept.description}
-
-**Por que esta é a resposta correta:** Este conceito é fundamental no ISTQB CTFL 4.0 e representa uma das bases do conhecimento em Quality Assurance.
-
-**📚 Para aprofundar:** Estude o Learning Objective ${selectedConcept.id} no syllabus ISTQB CTFL 4.0.`;
-
-          const incorrectFeedback = `❌ **Incorreto.** 
-
-**A resposta correta é:** ${selectedConcept.description}
-
-**Explicação:** ${selectedConcept.title} é um conceito ${selectedConcept.level} em Quality Assurance que você precisa dominar.
-
-**💡 Dica de estudo:** Revise o capítulo correspondente ao Learning Objective ${selectedConcept.id} no syllabus ISTQB CTFL 4.0. Foque especialmente nos conceitos de nível ${selectedConcept.level}.
-
-**🎯 Próximos passos:** Pratique mais questões sobre este tópico e certifique-se de entender a diferença entre os conceitos relacionados.`;
-
-          generatedQuestions.push({
-            question: `Qual é a definição ou principal característica de '${selectedConcept.title}'?`,
-            options: options,
-            correctAnswer: correctAnswerIndex,
-            correctFeedback: correctFeedback,
-            incorrectFeedback: incorrectFeedback,
-            LO: selectedConcept.id,
-            level: selectedConcept.level
-          });
-        } else {
-          console.warn(`Não há conceitos suficientes para o nível ${level} para gerar ${count} questões.`);
-          break;
-        }
-      }
-    }
-
-    // Shuffle the entire list of generated questions to mix levels
-    for (let i = generatedQuestions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [generatedQuestions[i], generatedQuestions[j]] = [generatedQuestions[j], generatedQuestions[i]];
-    }
-
-    setQuestions(generatedQuestions);
+    setQuestions(selectedQuestions);
     setAnswers(new Array(20).fill(null));
     setCurrentQuestion(0);
     setScore(0);
@@ -245,6 +117,7 @@ const IntelligentQuiz = () => {
     setGameState('playing');
     setShowFeedback(false);
     setSelectedAnswer(null);
+    setFraudDetected(false);
   };
 
   // Handle answer selection
@@ -276,6 +149,7 @@ const IntelligentQuiz = () => {
       setCurrentQuestion(currentQuestion + 1);
       setShowFeedback(false);
       setSelectedAnswer(null);
+      setFraudDetected(false);
     } else {
       finishGame();
     }
@@ -297,8 +171,7 @@ const IntelligentQuiz = () => {
     setShowFeedback(false);
     setSelectedAnswer(null);
     setFraudDetected(false);
-    setFraudCount(0);
-    setIsTabActive(true);
+    setBadgeUrl(null);
   };
 
   // Format time
@@ -350,31 +223,28 @@ const IntelligentQuiz = () => {
     const percentage = getPercentage();
     const { level, message } = getPerformanceResult();
     
-    // Criar texto mais rico para o LinkedIn
-    const shareText = `🎯 Acabei de completar o Quiz Inteligente ISTQB CTFL 4.0!
+    const shareText = `🎯 Acabei de completar o Quiz Inteligente ISTQB CTFL 4.0 no QA Play!
 
 📊 Meus resultados:
 • Pontuação: ${score}/20 (${percentage}%)
-• Nível alcançado: ${level}
+• Nível alcançado: ${fraudDetected ? "INVALIDADO" : level}
 • Tempo: ${formatTime(1200 - timeLeft)} utilizado
 
 ${message}
 
 💡 Este quiz avalia conhecimentos em Quality Assurance baseado no syllabus oficial ISTQB CTFL 4.0, com questões dinâmicas que misturam níveis júnior, pleno e sênior.
 
-Que tal testar seus conhecimentos também? 🚀
+Que tal testar seus conhecimentos também? 🚀 Acesse: https://www.qaplay.com.br
 
 #QualityAssurance #ISTQB #Testing #QA #SoftwareTesting #TechSkills #ProfessionalDevelopment`;
 
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}`;
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://www.qaplay.com.br')}&text=${encodeURIComponent(shareText)}`;
     
-    // Abrir LinkedIn em nova aba
     window.open(url, "_blank");
     
-    // Mostrar instruções para anexar a badge
     if (badgeUrl) {
       setTimeout(() => {
-        alert("💡 Dica: Após abrir o LinkedIn, você pode anexar sua badge personalizada que foi gerada! Use o botão 'Baixar Badge' para salvá-la e anexá-la ao seu post.");
+        alert("💡 Dica: Após abrir o LinkedIn, você pode anexar sua badge personalizada! Use o botão 'Baixar Badge' para salvá-la e anexá-la ao seu post.");
       }, 1000);
     }
   };
@@ -389,7 +259,7 @@ Que tal testar seus conhecimentos também? 🚀
     if (badgeUrl) {
       const link = document.createElement('a');
       link.href = badgeUrl;
-      link.download = `qa-badge-${playerName.replace(/\s+/g, '-').toLowerCase()}-${getPercentage()}%.png`;
+      link.download = `qa-play-badge-${playerName.replace(/\s+/g, '-').toLowerCase()}-${getPercentage()}%.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -428,9 +298,9 @@ Que tal testar seus conhecimentos também? 🚀
               <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-1">
                 <li>• 20 questões (júnior, pleno e sênior)</li>
                 <li>• 20 minutos para completar</li>
-                <li>• Não saia da aba ou minimize o navegador, ou a questão será marcada como incorreta.</li>
+                <li>• Não saia da aba ou minimize o navegador, ou a questão será marcada como incorreta</li>
                 <li>• Feedback didático após cada resposta</li>
-                <li>• Estude: <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank" className="underline">ISTQB CTFL 4.0 Syllabus</a> e <i>Foundations of Software Testing</i></li>
+                <li>• Estude: <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank" className="underline">ISTQB CTFL 4.0 Syllabus</a>, <i>Foundations of Software Testing</i>, e artigos do <a href="https://www.qaplay.com.br/blog" target="_blank" className="underline">blog QA Play</a></li>
                 <li>• Seu nível será determinado ao final</li>
               </ul>
             </div>
@@ -453,7 +323,6 @@ Que tal testar seus conhecimentos também? 🚀
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 p-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header compacto */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 mb-4">
             <div className="flex justify-between items-center text-sm">
               <div className="flex items-center space-x-4">
@@ -465,25 +334,19 @@ Que tal testar seus conhecimentos também? 🚀
                   <Trophy className="w-4 h-4 text-yellow-600" />
                   <span className="font-semibold text-gray-800 dark:text-white">{score}/20</span>
                 </div>
-                {fraudCount > 0 && (
-                  <div className="flex items-center space-x-1">
-                    <span className="text-red-600 font-semibold">⚠️ {fraudCount}/3</span>
-                  </div>
-                )}
               </div>
               <div className="flex items-center space-x-2">
                 <div className="text-gray-600 dark:text-gray-300">
                   {currentQuestion + 1}/20
                 </div>
-                {!isTabActive && (
+                {fraudDetected && (
                   <div className="text-red-600 text-xs font-semibold">
-                    🔍 MONITORADO
+                    🔍 FRAUDE DETECTADA
                   </div>
                 )}
               </div>
             </div>
             
-            {/* Progress Bar */}
             <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
               <div
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
@@ -492,7 +355,6 @@ Que tal testar seus conhecimentos também? 🚀
             </div>
           </div>
 
-          {/* Question */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
             <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 dark:text-white leading-tight">
               {currentQ.question}
@@ -505,7 +367,7 @@ Que tal testar seus conhecimentos também? 🚀
                 if (showFeedback) {
                   if (index === currentQ.correctAnswer) {
                     buttonClass += "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300";
-                  } else if (index === selectedAnswer && index !== currentQ.correctAnswer) {
+                  } else if (index === selectedAnswer || (answers[currentQuestion] === -1 && index !== currentQ.correctAnswer)) {
                     buttonClass += "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300";
                   } else {
                     buttonClass += "border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-400";
@@ -533,7 +395,7 @@ Que tal testar seus conhecimentos também? 🚀
                       {showFeedback && index === currentQ.correctAnswer && (
                         <CheckCircle className="w-5 h-5 text-green-600 ml-2" />
                       )}
-                      {showFeedback && index === selectedAnswer && index !== currentQ.correctAnswer && (
+                      {showFeedback && (index === selectedAnswer || answers[currentQuestion] === -1) && index !== currentQ.correctAnswer && (
                         <XCircle className="w-5 h-5 text-red-600 ml-2" />
                       )}
                     </div>
@@ -581,7 +443,7 @@ Que tal testar seus conhecimentos também? 🚀
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900 p-4">
         <div className="w-full max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6">
           <div className="text-center">
-            <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+            <img src="/qa-play-logo.png" alt="QA Play Logo" className="w-20 h-20 mx-auto mb-4" />
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-2">
               Parabéns, {playerName}!
             </h1>
@@ -645,6 +507,7 @@ Que tal testar seus conhecimentos também? 🚀
                 score={score}
                 percentage={percentage}
                 level={level}
+                logoUrl="/qa-play-logo.png"
                 onBadgeGenerated={handleBadgeGenerated}
               />
               {badgeUrl && (
@@ -653,17 +516,17 @@ Que tal testar seus conhecimentos também? 🚀
                     🎖️ Sua Badge de Certificação está Pronta!
                   </h3>
                   <p className="text-sm text-blue-700 dark:text-blue-200 text-center mb-4">
-                    Baixe sua badge personalizada e compartilhe sua conquista no LinkedIn
+                    Baixe sua badge personalizada com o logo QA Play e compartilhe sua conquista!
                   </p>
                   <button
                     onClick={downloadBadge}
                     className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                   >
                     <Download className="w-5 h-5" />
-                    <span className="font-semibold">Baixar Badge e Postar no LinkedIn</span>
+                    <span className="font-semibold">Baixar Badge</span>
                   </button>
                   <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
-                    💡 Dica: Após baixar, anexe a imagem ao seu post no LinkedIn junto com o texto compartilhado
+                    💡 Dica: Anexe a badge ao seu post no LinkedIn para destacar sua conquista!
                   </p>
                 </div>
               )}
