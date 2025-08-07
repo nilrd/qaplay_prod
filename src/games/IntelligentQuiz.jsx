@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Trophy, Share2, CheckCircle, XCircle, RotateCcw, Download } from 'lucide-react';
 import questionsData from '../data/ctfl_150_questions.json';
-import BadgeGenerator from '../../components/BadgeGenerator';
+import BadgeGenerator from '../components/BadgeGenerator'; //
 
 const IntelligentQuiz = () => {
   const [gameState, setGameState] = useState("menu"); // 'menu', 'playing', 'finished'
