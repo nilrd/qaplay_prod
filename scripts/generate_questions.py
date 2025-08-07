@@ -11,7 +11,7 @@ def generate_question(knowledge_base, difficulty):
                     available_concepts.append(concept)
 
     if not available_concepts:
-        return None # No concepts found for this difficulty
+        return None  # No concepts found for this difficulty
 
     # Select a random concept
     selected_concept = random.choice(available_concepts)
@@ -52,20 +52,6 @@ def generate_question(knowledge_base, difficulty):
         "level": selected_concept["level"]
     }
 
-# Example usage (for testing the function):
-# with open("/home/ubuntu/qaplay_prod/src/data/knowledge_base.json", "r", encoding="utf-8") as f:
-#     kb = json.load(f)
-
-# for _ in range(5):
-#     q = generate_question(kb, "junior")
-#     if q:
-#         print(json.dumps(q, indent=2, ensure_ascii=False))
-#     else:
-#         print("No question generated.")
-
-
-
-
 if __name__ == "__main__":
     with open("/home/ubuntu/qaplay_prod/src/data/knowledge_base.json", "r", encoding="utf-8") as f:
         kb = json.load(f)
@@ -93,5 +79,3 @@ if __name__ == "__main__":
         print(json.dumps(q_senior, indent=2, ensure_ascii=False))
     else:
         print("No senior question generated.")
-
-
