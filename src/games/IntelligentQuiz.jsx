@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Trophy, Share2, CheckCircle, XCircle, RotateCcw, Download } from 'lucide-react';
-import knowledgeBase from '../data/knowledge_base.json';
-import BadgeGenerator from '../components/BadgeGenerator';
+import knowledgeBase from '../../data/knowledge_base.json';
+import BadgeGenerator from '../../components/BadgeGenerator';
 
 const IntelligentQuiz = () => {
   const [gameState, setGameState] = useState("menu"); // 'menu', 'playing', 'finished'
@@ -36,6 +36,14 @@ const IntelligentQuiz = () => {
       if (document.hidden) {
         setIsTabActive(false);
         handleFraudDetection('Troca de aba/minimização detectada');
+        // Marcar questão como incorreta imediatamente
+        if (currentQuestion < questions.length) {
+          const newAnswers = [...answers];
+          newAnswers[currentQuestion] = -1; // -1 indica incorreta por fraude
+          setAnswers(newAnswers);
+          setShowFeedback(true);
+          setSelectedAnswer(null);
+        }
       } else {
         setIsTabActive(true);
       }
@@ -72,7 +80,7 @@ const IntelligentQuiz = () => {
       window.removeEventListener('focus', handleFocus);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [gameState]);
+  }, [gameState, currentQuestion, questions, answers]);
 
   // Handle fraud detection
   const handleFraudDetection = (reason) => {
@@ -127,7 +135,7 @@ const IntelligentQuiz = () => {
     const correctAnswerIndex = options.indexOf(selectedConcept.description);
 
     return {
-      question: `De acordo com o ISTQB CTFL 4.0, qual é a definição ou principal característica de '${selectedConcept.title}'?`,
+      question: `Qual é a definição ou principal característica de '${selectedConcept.title}'?`,
       options: options,
       correctAnswer: correctAnswerIndex,
       correctFeedback: `Correto! ${selectedConcept.description} (LO: ${selectedConcept.id}).`,
@@ -208,7 +216,7 @@ const IntelligentQuiz = () => {
 **🎯 Próximos passos:** Pratique mais questões sobre este tópico e certifique-se de entender a diferença entre os conceitos relacionados.`;
 
           generatedQuestions.push({
-            question: `De acordo com o ISTQB CTFL 4.0, qual é a definição ou principal característica de '${selectedConcept.title}'?`,
+            question: `Qual é a definição ou principal característica de '${selectedConcept.title}'?`,
             options: options,
             correctAnswer: correctAnswerIndex,
             correctFeedback: correctFeedback,
@@ -420,7 +428,9 @@ Que tal testar seus conhecimentos também? 🚀
               <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-1">
                 <li>• 20 questões (júnior, pleno e sênior)</li>
                 <li>• 20 minutos para completar</li>
+                <li>• Não saia da aba ou minimize o navegador, ou a questão será marcada como incorreta.</li>
                 <li>• Feedback didático após cada resposta</li>
+                <li>• Estude: <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank" className="underline">ISTQB CTFL 4.0 Syllabus</a> e <i>Foundations of Software Testing</i></li>
                 <li>• Seu nível será determinado ao final</li>
               </ul>
             </div>
@@ -429,7 +439,7 @@ Que tal testar seus conhecimentos também? 🚀
               onClick={startGame}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
             >
-              Iniciar Jogo
+              Aceitar e Iniciar
             </button>
           </div>
         </div>
@@ -545,7 +555,7 @@ Que tal testar seus conhecimentos também? 🚀
             {showFeedback && (
               <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <div className="text-sm text-gray-800 dark:text-gray-200 whitespace-pre-line">
-                  {selectedAnswer === currentQ.correctAnswer
+                  {selectedAnswer === currentQ.correctAnswer || answers[currentQuestion] === -1
                     ? currentQ.correctFeedback
                     : currentQ.incorrectFeedback}
                 </div>
