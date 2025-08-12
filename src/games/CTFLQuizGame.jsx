@@ -205,15 +205,6 @@ const CTFLQuizGame = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-900 mb-2">Sobre o Jogo</h3>
-              <p className="text-sm text-blue-800 text-left">
-                Este jogo foi desenvolvido para ajudar você a se preparar para a certificação ISTQB CTFL 4.0. 
-                Com 150 questões cuidadosamente elaboradas baseadas no syllabus oficial, você pode praticar 
-                em dois modos diferentes para maximizar seu aprendizado.
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Button onClick={() => startGame('simulado')} size="lg" className="w-full">
                 <Target className="mr-2 h-5 w-5" />
@@ -226,33 +217,12 @@ const CTFLQuizGame = () => {
             </div>
             
             <div className="space-y-4">
-              <h3 className="font-semibold">Regras do Jogo:</h3>
+              <h3 className="font-semibold">Regras:</h3>
               <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• <strong>Modo Simulado:</strong> 20 questões, 20 minutos, feedback apenas no final.</li>
-                <li>• <strong>Modo Aprendizado:</strong> 20 questões, tempo livre, feedback imediato.</li>
-                <li>• Questões randomizadas e balanceadas por nível (8 básicas, 8 intermediárias, 4 avançadas).</li>
-                <li>• Alternativas embaralhadas para evitar padrões previsíveis.</li>
+                <li>• Modo Simulado: 20 questões, 20 minutos, feedback apenas no final.</li>
+                <li>• Modo Aprendizado: 20 questões, tempo livre, feedback imediato.</li>
+                <li>• Questões randomizadas e balanceadas por nível.</li>
               </ul>
-            </div>
-
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-900 mb-2">Sugestões de Estudo</h3>
-              <ul className="text-sm text-green-800 space-y-1 text-left">
-                <li>• Estude o Syllabus ISTQB CTFL 4.0 oficial</li>
-                <li>• Pratique com exames de amostra do ISTQB</li>
-                <li>• Revise os conceitos fundamentais de teste de software</li>
-                <li>• Participe de grupos de estudo e fóruns especializados</li>
-                <li>• Faça cursos preparatórios reconhecidos pelo ISTQB</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-              <p className="text-xs text-gray-600 text-center">
-                Baseado no Syllabus ISTQB® CTFL 4.0 | 
-                <a href="https://www.istqb.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
-                  International Software Testing Qualifications Board
-                </a>
-              </p>
             </div>
           </CardContent>
         </Card>
@@ -346,18 +316,11 @@ const CTFLQuizGame = () => {
           Pergunta {currentQuestionIndex + 1} de {shuffledQuestions.length}
         </Badge>
         {timeLeft !== null && (
-          <div className="flex items-center space-x-2 bg-white p-2 rounded-lg border shadow-sm">
+          <div className="flex items-center space-x-2">
             <Clock className="h-4 w-4" />
-            <span className={`font-mono text-lg font-bold ${timeLeft <= 300 && timeLeft > 60 ? 'text-orange-500' : timeLeft <= 60 && timeLeft > 0 ? 'text-red-500 animate-pulse' : 'text-blue-600'}`}>
+            <span className={`font-mono text-lg ${timeLeft <= 60 && timeLeft > 0 ? 'text-red-500 font-bold' : ''}`}>
               {formatTime(timeLeft)}
             </span>
-            <span className="text-xs text-gray-500">restante</span>
-          </div>
-        )}
-        {timeLeft === null && (
-          <div className="flex items-center space-x-2 bg-green-50 p-2 rounded-lg border border-green-200">
-            <BookOpen className="h-4 w-4 text-green-600" />
-            <span className="text-sm text-green-700 font-medium">Tempo Livre</span>
           </div>
         )}
       </div>
