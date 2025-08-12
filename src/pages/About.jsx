@@ -13,76 +13,115 @@ const About = () => {
     'Testes Unitários',
     'Testes de Integração',
     'Selenium WebDriver',
-    'Cypress.io',
+    'Playwright',
+    'Cypress',
     'JUnit',
     'Testes Manuais',
     'Casos de Teste',
     'Java',
     'JavaScript',
     'SQL',
+    'MySQL',
     'Git/GitHub',
     'BDD e Gherkin',
     'Postman',
+    'Jira',
+    'Qase',
     'Metodologias Ágeis (Scrum)'
   ]
 
   const experiences = [
     {
-      title: 'Quality Assurance Engineer',
-      company: 'Freelancer',
-      period: '2023 - Presente',
-      description: 'Desenvolvimento de estratégias de teste, automação com Selenium WebDriver e Cypress, implementação de testes de API e colaboração em metodologias ágeis.',
+      title: 'Analista de Testes de Software',
+      company: 'E2E Coders',
+      period: '05/2022 - atual',
+      description: 'Planejamento e execução de testes manuais e automatizados, com foco na qualidade e no cumprimento de requisitos técnicos e funcionais. Desenvolvimento de scripts de testes em Step by Step e Gherkin, garantindo a cobertura total dos cenários de teste.',
       achievements: [
-        'Criação do QAPlay - plataforma gamificada de ensino de QA',
-        'Implementação de frameworks de automação de testes',
-        'Mentoria e treinamento de novos profissionais de QA'
-      ]
-    },
-    {
-      title: 'Analista de Testes',
-      company: 'Projetos Diversos',
-      period: '2022 - 2023',
-      description: 'Execução de testes manuais e automatizados, validação de APIs REST/SOAP, criação de casos de teste e documentação técnica.',
-      achievements: [
-        'Redução de 40% no tempo de execução de testes',
-        'Implementação de testes automatizados com Selenium',
-        'Integração de testes com pipelines CI/CD'
+        'Estimativa e priorização de casos de teste para otimizar os processos de qualidade',
+        'Utilização de técnicas de testes como caixa preta, caixa branca, particionamento de equivalência, análise de valor limite, tabela de decisão e transição de estados',
+        'Automação de testes com Java, utilizando frameworks como Selenium, Cucumber e Junit',
+        'Organização de pacotes seguindo o padrão Page Objects para melhorar a estrutura e manutenção do código',
+        'Realização de testes de API com Postman e abertura, reteste e acompanhamento de bugs na ferramenta JIRA',
+        'Gestão de repositórios de testes automatizados no Git e GitHub',
+        'Preparação de ambiente de teste em servidor Localhost para garantir o isolamento e controle do ambiente de execução dos testes'
       ]
     }
   ]
 
   const certifications = [
     {
-      title: 'Certificação E2E Treinamentos',
+      title: 'Certificação em Qualidade de Software e Lógica de Programação',
       issuer: 'E2E Treinamentos',
       year: '2024',
-      description: 'Aprimoramento contínuo em QA e Qualidade de Software'
+      description: 'Certificação especializada em Quality Assurance e desenvolvimento de lógica de programação'
     },
-    // Removido: CTFL Foundation Level
+    {
+      title: 'Formação Back-end Oracle Next Education',
+      issuer: 'Alura',
+      year: '2023',
+      description: 'Formação completa em desenvolvimento back-end'
+    },
+    {
+      title: 'Formação: Iniciante em Programação',
+      issuer: 'Alura',
+      year: '2023',
+      description: 'Fundamentos de programação e lógica'
+    },
+    {
+      title: 'Lógica de Programação com JavaScript',
+      issuer: 'Alura',
+      year: '2023',
+      description: 'Desenvolvimento de lógica de programação utilizando JavaScript'
+    },
+    {
+      title: 'HTML e CSS',
+      issuer: 'Alura',
+      year: '2023',
+      description: 'Desenvolvimento front-end com HTML e CSS'
+    },
+    {
+      title: 'Git e GitHub: Colaboração em Projetos',
+      issuer: 'Alura',
+      year: '2023',
+      description: 'Controle de versão e colaboração em projetos'
+    }
   ]
 
   const projects = [
     {
-      title: 'QAPlay',
-      description: 'Plataforma gamificada para ensino de Quality Assurance',
-      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Node.js'],
+      title: 'QA Play',
+      description: 'Criador do QA Play, plataforma gamificada para meu portfólio e treino de questões sobre Qualidade de software, metodologias ágeis e Lógica de Programação em Java e JavaScript. Em desenvolvimento - testes de software manual e automatizados em construção.',
+      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Node.js', 'Vite'],
       highlights: [
-        '3.2k+ usuários ativos',
-        '15k+ partidas jogadas',
-        '100+ perguntas de QA',
-        'Sistema de certificação'
+        'Plataforma educacional gamificada',
+        'Questões sobre Quality Assurance',
+        'Metodologias ágeis',
+        'Lógica de Programação em Java e JavaScript',
+        'Testes manuais e automatizados em desenvolvimento'
       ]
     },
     {
-      title: 'Framework de Automação',
-      description: 'Framework personalizado para automação de testes web',
-      technologies: ['Selenium', 'Java', 'TestNG', 'Maven'],
+      title: 'Site Toque Ideal',
+      description: 'Desenvolvimento e testes do site www.toqueideal.com - Site institucional da Toque Ideal, empresa especializada em decoração em vidro. Projeto completo incluindo desenvolvimento do CMS via Sanity.',
+      technologies: ['React 18', 'Vite', 'Tailwind CSS', 'Sanity CMS', 'Lucide React', 'React Router', 'Context API'],
       highlights: [
-        'Redução de 60% no tempo de execução',
-        'Relatórios automatizados',
-        'Integração com CI/CD',
-        'Suporte multi-browser'
+        'Site institucional completo',
+        'Catálogo com mais de 287 produtos',
+        'Sistema de busca e filtros avançados',
+        'Orçamento online integrado com WhatsApp',
+        'CMS desenvolvido com Sanity',
+        'Design responsivo para desktop e mobile',
+        'Testes manuais e automatizados implementados'
       ]
+    }
+  ]
+
+  const education = [
+    {
+      title: 'Ciência da Computação',
+      institution: 'Impacta Tecnologia',
+      status: 'Ensino Superior Incompleto',
+      description: 'Formação em Ciência da Computação com foco em desenvolvimento de software'
     }
   ]
 
@@ -112,7 +151,7 @@ const About = () => {
               <div className="space-y-1.5 text-sm">
                 <div className="flex items-center justify-center lg:justify-start space-x-1.5 text-muted-foreground">
                   <MapPin className="h-4 w-4" />
-                  <span>São Paulo, Brasil</span>
+                  <span>São Paulo, SP</span>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start space-x-1.5 text-muted-foreground">
                   <Mail className="h-4 w-4" />
@@ -120,7 +159,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center justify-center lg:justify-start space-x-1.5 text-muted-foreground">
                   <Phone className="h-4 w-4" />
-                  <span>+55 (11) 94082-5120</span>
+                  <span>(11) 94082-5120</span>
                 </div>
               </div>
             </div>
@@ -132,15 +171,16 @@ const About = () => {
                   Nilson da Silva Brites
                 </h1>
                 <h2 className="text-xl font-semibold text-primary">
-                  Quality Assurance Engineer
+                  Analista de Testes QA
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Profissional especializado em Quality Assurance com ampla experiência em automação de testes, 
-                  metodologias ágeis e garantia de qualidade de software. Criador do QAPlay e apaixonado por 
-                  compartilhar conhecimento na comunidade de QA.
+                  Profissional hands-on, autodidata e comprometido com o aprendizado contínuo, sempre buscando 
+                  qualidade e superação de desafios, mesmo diante de novas tecnologias. Com perfil analítico e boa 
+                  comunicação, atuo como Analista de Testes em times ágeis com framework Scrum.
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Desenvolvimento do site QAPlay – plataforma idealizada e desenvolvida por mim.
+                  Criador do QA Play, plataforma para meu portfólio e treino de questões sobre Qualidade de software, 
+                  metodologias ágeis e Lógica de Programação em Java e JavaScript.
                 </p>
               </div>
               
@@ -183,18 +223,21 @@ const About = () => {
             <CardContent className="p-6">
               <div className="space-y-3 text-muted-foreground leading-relaxed text-sm">
                 <p>
-                  <strong className="text-foreground">Quality Assurance Engineer</strong> com sólida experiência em garantir a excelência de software 
-                  em todas as etapas do ciclo de desenvolvimento. Especialista em automação de testes utilizando 
-                  <strong className="text-foreground"> Selenium WebDriver, Cypress, JUnit</strong> e integração com <strong className="text-foreground">Cucumber para BDD</strong>.
+                  Profissional hands-on, autodidata e comprometido com o aprendizado contínuo, sempre buscando 
+                  qualidade e superação de desafios, mesmo diante de novas tecnologias. Com perfil analítico e boa 
+                  comunicação, atuo como <strong className="text-foreground">Analista de Testes em times ágeis com framework Scrum</strong>, 
+                  participando de todo o ciclo de desenvolvimento (SDLC), desde o refinamento das histórias de usuário até a entrega final.
                 </p>
                 <p>
-                  Experiência comprovada em <strong className="text-foreground">testes de APIs REST e SOAP</strong>, utilizando ferramentas como 
-                  <strong className="text-foreground"> Postman e Swagger</strong>. Proativo na adoção de <strong className="text-foreground">metodologias ágeis (Scrum)</strong> 
-                  e na promoção da cultura de <strong className="text-foreground">"shift-left testing"</strong>.
+                  Nessa fase inicial, colaboro para garantir que os requisitos estejam claros, completos e livres de ambiguidades, 
+                  contribuindo com o time de desenvolvimento na prevenção de erros através do conceito de <strong className="text-foreground">shift left testing</strong>. 
+                  Tenho experiência com <strong className="text-foreground">testes manuais e automatizados</strong>, aplicando técnicas de testes de caixa preta 
+                  como Particionamento de Equivalência, Análise de Valor Limite, Tabela de Decisão e Transição de Estado.
                 </p>
                 <p>
-                  Criador do <strong className="text-foreground">QAPlay</strong>, plataforma gamificada que democratiza o ensino de Quality Assurance, 
-                  demonstrando paixão por educação e compartilhamento de conhecimento na comunidade de QA.
+                  Elaboro e executo testes funcionais, não funcionais, positivos, negativos e regressivos, além de manter 
+                  scripts de automação e executar casos de teste em pipelines. Também sou responsável pelo reporte de bugs 
+                  e sugestões de melhoria ao time técnico.
                 </p>
               </div>
             </CardContent>
@@ -225,7 +268,7 @@ const About = () => {
                 <CardContent className="space-y-3">
                   <p className="text-muted-foreground text-sm">{exp.description}</p>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1.5 text-sm">Principais Conquistas:</h4>
+                    <h4 className="font-semibold text-foreground mb-1.5 text-sm">Principais Atividades:</h4>
                     <ul className="space-y-1">
                       {exp.achievements.map((achievement, idx) => (
                         <li key={idx} className="flex items-start space-x-2 text-xs text-muted-foreground">
@@ -282,11 +325,39 @@ const About = () => {
           </div>
         </section>
 
-        {/* Certificações */}
+        {/* Formação Acadêmica */}
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
             <GraduationCap className="mr-2 h-7 w-7 text-primary" />
-            Certificações e Formação
+            Formação Acadêmica
+          </h2>
+          <div className="grid grid-cols-1 gap-5">
+            {education.map((edu, index) => (
+              <Card key={index} className="hover:shadow-lg transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg text-foreground">{edu.title}</CardTitle>
+                      <CardDescription className="font-medium text-primary text-sm">{edu.institution}</CardDescription>
+                    </div>
+                    <Badge variant="outline" className="ml-1.5 text-xs">
+                      {edu.status}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="text-sm">
+                  <p className="text-muted-foreground">{edu.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Certificações e Formação Complementar */}
+        <section>
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+            <Award className="mr-2 h-7 w-7 text-primary" />
+            Certificações e Formação Complementar
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {certifications.map((cert, index) => (
@@ -314,7 +385,7 @@ const About = () => {
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
             <Target className="mr-2 h-7 w-7 text-primary" />
-            Habilidades Técnicas
+            Ferramentas e Tecnologias
           </h2>
           <Card>
             <CardContent className="p-6">
@@ -322,7 +393,7 @@ const About = () => {
                 <div>
                   <h3 className="font-semibold text-foreground mb-3 text-base">Automação de Testes</h3>
                   <div className="flex flex-wrap gap-1.5">
-                    {['Selenium WebDriver', 'Cypress.io', 'JUnit', 'TestNG'].map((skill, idx) => (
+                    {['Selenium', 'Playwright', 'Cypress', 'JUnit'].map((skill, idx) => (
                       <Badge key={idx} variant="secondary" className="text-xs">
                         {skill}
                       </Badge>
@@ -332,7 +403,7 @@ const About = () => {
                 <div>
                   <h3 className="font-semibold text-foreground mb-3 text-base">Linguagens & Ferramentas</h3>
                   <div className="flex flex-wrap gap-1.5">
-                    {['Java', 'JavaScript', 'SQL', 'Git/GitHub', 'Postman'].map((skill, idx) => (
+                    {['Java', 'JavaScript', 'MySQL', 'Git', 'Postman'].map((skill, idx) => (
                       <Badge key={idx} variant="secondary" className="text-xs">
                         {skill}
                       </Badge>
@@ -340,9 +411,9 @@ const About = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-3 text-base">Metodologias</h3>
+                  <h3 className="font-semibold text-foreground mb-3 text-base">Gestão & Metodologias</h3>
                   <div className="flex flex-wrap gap-1.5">
-                    {['Scrum', 'BDD/Gherkin', 'Shift-Left Testing', 'CI/CD'].map((skill, idx) => (
+                    {['Jira', 'Qase', 'Scrum', 'BDD/Gherkin'].map((skill, idx) => (
                       <Badge key={idx} variant="secondary" className="text-xs">
                         {skill}
                       </Badge>
@@ -371,5 +442,4 @@ const About = () => {
 };
 
 export default About;
-
 
