@@ -98,7 +98,9 @@ const About = () => {
         'Metodologias ágeis',
         'Lógica de Programação em Java e JavaScript',
         'Testes manuais e automatizados em desenvolvimento'
-      ]
+      ],
+      link: 'https://qaplay.vercel.app/',
+      image: '/images/logo_QAPlay.png'
     },
     {
       title: 'Site Toque Ideal',
@@ -112,7 +114,9 @@ const About = () => {
         'CMS desenvolvido com Sanity',
         'Design responsivo para desktop e mobile',
         'Testes manuais e automatizados implementados'
-      ]
+      ],
+      link: 'http://www.toqueideal.com/',
+      image: '/images/logo_ToqueIdeal.png'
     }
   ]
 
@@ -294,7 +298,18 @@ const About = () => {
             {projects.map((project, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-foreground">{project.title}</CardTitle>
+                  <div className="flex items-center gap-2">
+                    {project.image && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <img src={project.image} alt={`${project.title} logo`} className="h-8 w-8 object-contain" />
+                      </a>
+                    )}
+                    <CardTitle className="text-lg text-foreground">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        {project.title}
+                      </a>
+                    </CardTitle>
+                  </div>
                   <CardDescription className="text-sm">{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
