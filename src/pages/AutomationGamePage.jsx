@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ProgrammingChallengeGame from '../games/ProgrammingChallengeGame';
+
 
 const AutomationGamePage = () => {
   return (
@@ -20,7 +20,7 @@ const AutomationGamePage = () => {
         </div>
       </div>
       
-      <ProgrammingChallengeGame />
+
     </div>
   );
 };
