@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import BDDGame from '../games/BDDGame';
+
 
 const AgileGamePage = () => {
   return (
@@ -20,7 +20,7 @@ const AgileGamePage = () => {
         </div>
       </div>
       
-      <BDDGame />
+
     </div>
   );
 };
