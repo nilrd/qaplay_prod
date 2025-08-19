@@ -12,7 +12,7 @@ const Header = () => {
     { name: 'Início', href: '/', icon: Home },
     { name: 'Jogar', href: '/jogos', icon: Gamepad2 },
     { name: 'Treinar', href: '/treinar', icon: Target },
-    { name: 'Programar', href: '/programar', icon: Code },
+
     { name: 'Conteúdos', href: '/conteudos', icon: Video },
     { name: 'Blog', href: '/blog', icon: FileText },
     { name: 'Sobre', href: '/sobre', icon: User },

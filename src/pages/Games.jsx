@@ -9,54 +9,10 @@ const Games = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('all')
 
   const games = [
-    {
-      id: 'intelligent-quiz',
-      title: 'Quiz Inteligente ISTQB CTFL 4.0',
-      description: 'Teste seus conhecimentos com questões geradas dinamicamente baseadas no syllabus oficial ISTQB CTFL 4.0. Três níveis de dificuldade disponíveis.',
-      icon: '🧠',
-      difficulty: 'Todos os Níveis',
-      estimatedTime: '20 min',
-      players: '1.5k+',
-      rating: 4.9,
-      status: 'available',
-      color: 'from-purple-500 to-blue-600'
-    },
-    {
-      id: 'programming-challenge',
-      title: 'Desafios de Programação',
-      description: 'Teste suas habilidades em lógica de programação e automação de testes.',
-      icon: '💻',
-      difficulty: 'Avançado',
-      estimatedTime: '10-15 min',
-      players: '50+',
-      rating: 4.9,
-      status: 'available',
-      color: 'from-green-500 to-teal-600'
-    },
-    {
-      id: 'bdd-challenge',
-      title: 'Desafio BDD',
-      description: 'Pratique a escrita de cenários em linguagem Gherkin baseados em documentos de negócio.',
-      icon: '📄',
-      difficulty: 'Intermediário',
-      estimatedTime: '10-15 min',
-      players: '75+',
-      rating: 4.7,
-      status: 'available',
-      color: 'from-orange-500 to-red-600'
-    },
-    {
-      id: 'logic-programming',
-      title: 'Desafios de Lógica de Programação',
-      description: 'Aprimore suas habilidades de resolução de problemas com desafios de lógica.',
-      icon: '🧠',
-      difficulty: 'Intermediário',
-      estimatedTime: '10-20 min',
-      players: '30+',
-      rating: 4.6,
-      status: 'available',
-      color: 'from-pink-500 to-red-600'
-    },
+
+
+
+
     {
       id: 'automation-master',
       title: 'Mestre da Automação',

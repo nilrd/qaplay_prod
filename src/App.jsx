@@ -9,7 +9,7 @@ import BlogPostPage from './pages/BlogPostPage'
 import About from './pages/About'
 import Train from './pages/Train'
 import TrainContent from './pages/TrainContent'
-import Program from './pages/Program'
+
 
 import CTFL100Quiz from './pages/CTFL100Quiz'
 import { ThemeProvider } from './contexts/ThemeContext'
@@ -21,11 +21,11 @@ import AutomationGamePage from './pages/AutomationGamePage'
 import AgileGamePage from './pages/AgileGamePage'
 import SpecificTestsGamePage from './pages/SpecificTestsGamePage'
 
-import ProgramGamePage from './pages/ProgramGamePage'
-import LogicGamePage from './pages/LogicGamePage'
-import BDDGamePage from './pages/BDDGamePage'
+
+
+
 import AutomationMasterGame from './games/AutomationMasterGame'
-import IntelligentQuiz from './games/IntelligentQuiz'
+
 import './App.css'
 
 function App() {
@@ -39,10 +39,10 @@ function App() {
             <Route path="jogos" element={<Games />} />
 
             <Route path="jogos/ctfl-100-quiz" element={<CTFL100Quiz />} />
-            <Route path="jogos/intelligent-quiz" element={<IntelligentQuiz />} />
-            <Route path="jogos/programming-challenge" element={<ProgramGamePage />} />
-            <Route path="jogos/logic-programming" element={<LogicGamePage />} />
-            <Route path="jogos/bdd-challenge" element={<BDDGamePage />} />
+
+
+
+
             <Route path="jogos/automation-master" element={<AutomationMasterGame />} />
             <Route path="treinar" element={<Train />} />
             <Route path="treinar/exercicios" element={<TrainContent />} />
@@ -51,7 +51,7 @@ function App() {
             <Route path="treinar/jogo/automacao-frameworks" element={<AutomationGamePage />} />
             <Route path="treinar/jogo/metodologias-ageis" element={<AgileGamePage />} />
             <Route path="treinar/jogo/testes-especificos" element={<SpecificTestsGamePage />} />
-            <Route path="programar" element={<Program />} />
+
             <Route path="/sobre-jogos" element={<AboutGames />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPostPage />} />
