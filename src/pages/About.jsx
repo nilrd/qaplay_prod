@@ -216,6 +216,33 @@ const About = () => {
         </div>
       </section>
 
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
+          <Award className="mr-2 h-7 w-7 text-primary" />
+          Destaques e Conquistas
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card className="text-center p-6 bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-500/10 dark:to-orange-500/10 border-yellow-200/50 dark:border-yellow-500/20 shadow-md">
+            <CardContent className="p-0">
+              <div className="text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">10+</div>
+              <p className="text-muted-foreground">Anos de Experiência em QA</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-500/10 dark:to-teal-500/10 border-green-200/50 dark:border-green-500/20 shadow-md">
+            <CardContent className="p-0">
+              <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">50+</div>
+              <p className="text-muted-foreground">Projetos de Teste Concluídos</p>
+            </CardContent>
+          </Card>
+          <Card className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 border-blue-200/50 dark:border-blue-500/20 shadow-md">
+            <CardContent className="p-0">
+              <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">95%</div>
+              <p className="text-muted-foreground">Taxa de Sucesso em Automação</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       <div className="max-w-6xl mx-auto px-4 py-12 space-y-12">
         {/* Resumo Profissional */}
         <section>
@@ -242,6 +269,9 @@ const About = () => {
                   Elaboro e executo testes funcionais, não funcionais, positivos, negativos e regressivos, além de manter 
                   scripts de automação e executar casos de teste em pipelines. Também sou responsável pelo reporte de bugs 
                   e sugestões de melhoria ao time técnico.
+                </p>
+                <p>
+                  Minha paixão por Quality Assurance me levou a criar o QAPlay, uma plataforma gamificada para compartilhar conhecimento e treinar habilidades em QA, reforçando meu compromisso com a comunidade e a evolução da área.
                 </p>
               </div>
             </CardContent>
