@@ -30,9 +30,9 @@ const Home = () => {
           {/* Botões de Ação Melhorados */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-3">
             <Button size="lg" className="px-6 py-3 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300" asChild>
-              <Link to="/jogos">
+              <Link to="/jogos/automation-master">
                 <Play className="mr-2 h-5 w-5" />
-                Jogar Agora
+                Jogar Mestre da Automação
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="px-6 py-3 text-lg border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300" asChild>
@@ -117,11 +117,7 @@ const Home = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Desafios de Programação e Automação</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Desafios BDD e Gherkin</span>
+                  <span className="text-xs text-muted-foreground">Mestre da Automação</span>
                 </div>
               </div>
               
@@ -213,56 +209,7 @@ const Home = () => {
             </CardContent>
           </Card>
 
-          {/* Seção Programar - Direita */}
-          <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-500/10 dark:to-indigo-500/10 border-purple-200/50 dark:border-purple-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
-            <CardHeader className="text-center pb-3">
-              <div className="mx-auto w-14 h-14 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center mb-3 shadow-lg">
-                <Code className="h-7 w-7 text-gray-900 dark:text-white" />
-              </div>
-              <CardTitle className="text-xl text-foreground">Desafios de Programação</CardTitle>
-              <CardDescription className="text-muted-foreground text-sm">
-                Desenvolva habilidades em automação de testes
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <Code className="h-4 w-4 text-purple-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Lógica de programação aplicada</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Lightbulb className="h-4 w-4 text-purple-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Automação de testes práticos</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Target className="h-4 w-4 text-purple-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Desafios progressivos</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Trophy className="h-4 w-4 text-purple-500 flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">Ranking de desenvolvedores</span>
-                </div>
-              </div>
-              
-              <div className="bg-white/50 dark:bg-card/50 p-3 rounded-lg border border-purple-200/50 dark:border-purple-500/20">
-                <h4 className="font-semibold text-foreground mb-2">Tecnologias Abordadas:</h4>
-                <div className="flex flex-wrap gap-1.5">
-                  <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">JavaScript</Badge>
-                  <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">Python</Badge>
-                  <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">Selenium</Badge>
-                  <Badge variant="outline" className="text-xs border-purple-300 text-purple-700 dark:border-purple-500 dark:text-purple-300">Cypress</Badge>
-                </div>
-              </div>
-              
-              <Button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300" asChild>
-                <Link to="/programar">
-                  <Code className="mr-2 h-4 w-4" />
-                  Começar Desafios
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+
         </div>
       </section>
 
