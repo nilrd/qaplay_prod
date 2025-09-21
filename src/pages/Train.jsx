@@ -1,4 +1,3 @@
-import TrainingGameEnhanced from '../games/TrainingGameEnhanced'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -19,7 +18,24 @@ const Train = () => {
         </div>
       </div>
       
-      <TrainingGameEnhanced />
+      <div className="bg-muted/50 p-8 rounded-lg text-center">
+        <h2 className="text-xl font-semibold mb-2">Treinamento em Desenvolvimento</h2>
+        <p className="text-muted-foreground mb-4">
+          O sistema de treinamento está sendo atualizado. Enquanto isso, você pode praticar com nossos quizzes disponíveis.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild>
+            <Link to="/quizzes">
+              Ver Quizzes Disponíveis
+            </Link>
+          </Button>
+          <Button variant="outline" asChild>
+            <Link to="/jogos/ctfl-100-quiz">
+              Quiz CTFL 4.0
+            </Link>
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }

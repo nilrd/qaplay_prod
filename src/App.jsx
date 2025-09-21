@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Games from './pages/Games'
+import Quizzes from './pages/Quizzes'
 import Blog from './pages/Blog'
 import Content from './pages/Content'
 import AboutGames from './pages/AboutGames'
@@ -9,8 +10,6 @@ import BlogPostPage from './pages/BlogPostPage'
 import About from './pages/About'
 import Train from './pages/Train'
 import TrainContent from './pages/TrainContent'
-
-
 import CTFL100Quiz from './pages/CTFL100Quiz'
 import { ThemeProvider } from './contexts/ThemeContext'
 
@@ -20,9 +19,6 @@ import SDLCGamePage from './pages/SDLCGamePage'
 import AutomationGamePage from './pages/AutomationGamePage'
 import AgileGamePage from './pages/AgileGamePage'
 import SpecificTestsGamePage from './pages/SpecificTestsGamePage'
-
-
-
 
 import AutomationMasterGame from './games/AutomationMasterGame'
 
@@ -37,12 +33,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="conteudos" element={<Content />} />
             <Route path="jogos" element={<Games />} />
+            <Route path="quizzes" element={<Quizzes />} />
 
             <Route path="jogos/ctfl-100-quiz" element={<CTFL100Quiz />} />
-
-
-
-
             <Route path="jogos/automation-master" element={<AutomationMasterGame />} />
             <Route path="treinar" element={<Train />} />
             <Route path="treinar/exercicios" element={<TrainContent />} />

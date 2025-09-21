@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart, MessageCircle, Instagram, Phone } from 'lucide-react'
 import AdBannerFooter from './ads/AdBannerFooter'
 
 const Footer = () => {
@@ -49,29 +49,50 @@ const Footer = () => {
 
           {/* Contato */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contato</h3>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/nilrd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Github className="h-5 w-5" />
-              </a>
+            <h3 className="text-lg font-semibold">Redes Sociais</h3>
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href="https://www.linkedin.com/in/nilsondasilvabrites/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-4 w-4" />
+                <span className="text-sm">LinkedIn</span>
+              </a>
+              <a
+                href="https://github.com/nilrd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                <span className="text-sm">GitHub</span>
+              </a>
+              <a
+                href="https://wa.me/5511940825120"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span className="text-sm">WhatsApp</span>
+              </a>
+              <a
+                href="https://instagram.com/nilsbrites"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Instagram className="h-4 w-4" />
+                <span className="text-sm">Instagram</span>
               </a>
               <a
                 href="mailto:nilson.brites@gmail.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors col-span-2"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-4 w-4" />
+                <span className="text-sm">nilson.brites@gmail.com</span>
               </a>
             </div>
           </div>

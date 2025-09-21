@@ -1,0 +1,2404 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Qual das seguintes afirmações descreve melhor um objetivo de teste válido?",
+      "options": [
+        "Provar que não existem defeitos não corrigidos no sistema sob teste.",
+        "Provar que não ocorrerão falhas após a implementação do sistema em produção.",
+        "Reduzir o nível de risco do objeto de teste e construir confiança no seu nível de qualidade.",
+        "Verificar que não existem combinações de entradas não testadas no sistema."
+      ],
+      "correctAnswer": "Reduzir o nível de risco do objeto de teste e construir confiança no seu nível de qualidade.",
+      "explanation": "Correto. Um dos principais objetivos do teste é fornecer informações aos stakeholders para que tomem decisões informadas, o que inclui avaliar o nível de risco e aumentar a confiança na qualidade. As opções A, B e D são impossíveis de alcançar, conforme os princípios de teste 'Teste exaustivo é impossível' e 'O teste mostra a presença de defeitos, não a ausência'. Conforme o syllabus CTFL 4.0, seção 1.1.1."
+    },
+    {
+      "id": 2,
+      "question": "Durante a execução de um teste, o resultado observado difere do resultado esperado. Isso representa um(a):",
+      "options": [
+        "Erro",
+        "Defeito",
+        "Falha",
+        "Causa Raiz"
+      ],
+      "correctAnswer": "Falha",
+      "explanation": "Correto. Uma falha é a manifestação externa e observável de um defeito durante a execução do software. O defeito (B) é a anomalia no código que causa a falha. O erro (A) é a ação humana que introduziu o defeito. A causa raiz (D) é a razão fundamental pela qual o erro ocorreu. Conforme o syllabus CTFL 4.0, seção 1.2.3."
+    },
+    {
+      "id": 3,
+      "question": "Uma equipe de testes executa o mesmo conjunto de testes de regressão a cada ciclo, sem atualizá-los. Com o tempo, eles percebem que esses testes não encontram mais novos defeitos. Qual princípio de teste isso ilustra?",
+      "options": [
+        "Testes exaustivos são impossíveis.",
+        "Os defeitos se agrupam.",
+        "Falácia da ausência de erros.",
+        "Os testes se desgastam (Paradoxo do Pesticida)."
+      ],
+      "correctAnswer": "Os testes se desgastam (Paradoxo do Pesticida).",
+      "explanation": "Correto. Este princípio, também conhecido como Paradoxo do Pesticida, afirma que se os mesmos testes são repetidos continuamente, eles perdem a eficácia para encontrar novos defeitos. Para superar isso, os casos de teste precisam ser regularmente revisados e atualizados. Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 4,
+      "question": "Qual é a principal diferença entre teste e depuração (debugging)?",
+      "options": [
+        "O teste é realizado por testadores, enquanto a depuração é realizada por desenvolvedores.",
+        "O teste tem como objetivo encontrar falhas, enquanto a depuração tem como objetivo encontrar, analisar e remover a causa dessas falhas (o defeito).",
+        "O teste é uma atividade planejada, enquanto a depuração é uma atividade não planejada que ocorre espontaneamente.",
+        "O teste é focado em testes dinâmicos, enquanto a depuração é focada em testes estáticos."
+      ],
+      "correctAnswer": "O teste tem como objetivo encontrar falhas, enquanto a depuração tem como objetivo encontrar, analisar e remover a causa dessas falhas (o defeito).",
+      "explanation": "Correto. Testar é o processo de identificar falhas. Depurar é a atividade de desenvolvimento que ocorre após uma falha ser identificada, para localizar o defeito no código e corrigi-lo. Embora a opção A seja frequentemente verdadeira, não é a definição da diferença fundamental. Conforme o syllabus CTFL 4.0, seção 1.1.2."
+    },
+    {
+      "id": 5,
+      "question": "Qual das seguintes atividades é um exemplo da abordagem 'Shift-Left'?",
+      "options": [
+        "Aumentar a quantidade de testes de regressão no final do ciclo de desenvolvimento.",
+        "Realizar uma revisão de requisitos com a participação de testadores antes do início da codificação.",
+        "Mover a data de lançamento do produto para a esquerda no calendário do projeto.",
+        "Adiar o teste de performance para a fase de pré-produção para simular o ambiente real."
+      ],
+      "correctAnswer": "Realizar uma revisão de requisitos com a participação de testadores antes do início da codificação.",
+      "explanation": "Correto. 'Shift-Left' significa mover as atividades de teste para fases mais iniciais do ciclo de vida de desenvolvimento. Envolver testadores na revisão de requisitos é um exemplo clássico, pois permite encontrar defeitos na base de teste antes mesmo de qualquer código ser escrito, o que é muito mais barato de corrigir. Conforme o syllabus CTFL 4.0, seção 2.1.5."
+    },
+    {
+      "id": 6,
+      "question": "Qual nível de teste se concentra em verificar o comportamento de todo o sistema em relação aos requisitos funcionais e não funcionais?",
+      "options": [
+        "Teste de Componente",
+        "Teste de Integração",
+        "Teste de Sistema",
+        "Teste de Aceite"
+      ],
+      "correctAnswer": "Teste de Sistema",
+      "explanation": "Correto. O Teste de Sistema avalia o sistema como um todo. Seu objetivo é validar o comportamento de ponta a ponta do software integrado em relação às especificações definidas. O Teste de Componente foca em unidades isoladas, o de Integração foca nas interfaces entre componentes, e o de Aceite foca na perspectiva do usuário/negócio. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 7,
+      "question": "O que é um 'teste de regressão'?",
+      "options": [
+        "Um teste para verificar se um defeito que foi corrigido anteriormente não reapareceu.",
+        "Um teste realizado após modificações no software para garantir que funcionalidades existentes não foram afetadas negativamente.",
+        "Um teste focado em regredir o software para uma versão anterior para comparar o comportamento.",
+        "Um teste realizado para confirmar que uma correção de defeito foi bem-sucedida."
+      ],
+      "correctAnswer": "Um teste realizado após modificações no software para garantir que funcionalidades existentes não foram afetadas negativamente.",
+      "explanation": "Correto. O teste de regressão é executado para descobrir defeitos introduzidos ou descobertos em áreas do software que não deveriam ter sido alteradas. O seu objetivo é verificar se as modificações não causaram efeitos colaterais indesejados. A opção D descreve o teste de confirmação. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 8,
+      "question": "Qual dos seguintes é um exemplo de teste não funcional?",
+      "options": [
+        "Verificar se o usuário consegue se cadastrar com um e-mail válido.",
+        "Verificar se o sistema consegue processar 1000 transações por minuto.",
+        "Verificar se o cálculo de juros de um empréstimo está correto.",
+        "Verificar se o sistema permite a exportação de um relatório em formato PDF."
+      ],
+      "correctAnswer": "Verificar se o sistema consegue processar 1000 transações por minuto.",
+      "explanation": "Correto. Testes não funcionais avaliam 'como' o sistema funciona (características de qualidade), e não 'o que' ele faz (funcionalidades). A opção B é um teste de performance. As opções A, C e D são exemplos de testes funcionais, pois verificam funções específicas do sistema. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 9,
+      "question": "Qual é o principal objetivo de uma 'Inspeção' de software?",
+      "options": [
+        "Discutir informalmente um documento para compartilhar conhecimento entre os membros da equipe.",
+        "Obter consenso sobre uma solução técnica apresentada pelo autor do documento.",
+        "Educar os participantes sobre o conteúdo do produto de trabalho que está sendo revisado.",
+        "Encontrar o máximo de defeitos possível através de um processo formal e rigoroso com papéis definidos."
+      ],
+      "correctAnswer": "Encontrar o máximo de defeitos possível através de um processo formal e rigoroso com papéis definidos.",
+      "explanation": "Correto. A Inspeção é o tipo de revisão mais formal. Seu objetivo primário é a detecção de defeitos. Ela segue um processo definido com papéis (Moderador, Relator, Autor, Revisor), preparação individual e uso de métricas. A opção A descreve uma revisão informal, B uma revisão técnica e C um walkthrough. Conforme o syllabus CTFL 4.0, seção 3.2.4."
+    },
+    {
+      "id": 10,
+      "question": "Ao testar um campo de entrada que aceita valores inteiros de 1 a 100, qual técnica de teste de caixa-preta seria mais eficiente para selecionar valores de teste?",
+      "options": [
+        "Teste de Transição de Estado",
+        "Particionamento de Equivalência e Análise de Valor Limite",
+        "Suposição de Erro",
+        "Teste de Tabela de Decisão"
+      ],
+      "correctAnswer": "Particionamento de Equivalência e Análise de Valor Limite",
+      "explanation": "Correto. O Particionamento de Equivalência (EP) dividiria as entradas em partições válidas (1-100) e inválidas (<1, >100). A Análise de Valor Limite (BVA) focaria nos limites dessas partições (e.g., 0, 1, 2, 99, 100, 101). Juntas, essas técnicas são muito eficientes para testar campos de entrada com intervalos. Conforme o syllabus CTFL 4.0, seção 4.2."
+    },
+    {
+      "id": 11,
+      "question": "O que a cobertura de ramificação (branch coverage) de 100% garante?",
+      "options": [
+        "Que cada linha de código executável foi executada pelo menos uma vez.",
+        "Que cada resultado possível de cada ponto de decisão no código (e.g., if/else) foi exercitado.",
+        "Que todas as combinações de caminhos através do código foram testadas.",
+        "Que o software está completamente livre de defeitos lógicos."
+      ],
+      "correctAnswer": "Que cada resultado possível de cada ponto de decisão no código (e.g., if/else) foi exercitado.",
+      "explanation": "Correto. A cobertura de ramificação, ou cobertura de decisão, é uma técnica de teste de caixa-branca que garante que todos os possíveis resultados de uma decisão (ramo verdadeiro e ramo falso) foram testados. Atingir 100% de cobertura de ramificação também garante 100% de cobertura de instrução (A), mas o contrário não é verdadeiro. Conforme o syllabus CTFL 4.0, seção 4.3.2."
+    },
+    {
+      "id": 12,
+      "question": "Qual das seguintes opções descreve melhor o 'Teste Exploratório'?",
+      "options": [
+        "Seguir rigorosamente um script de teste pré-definido sem desvios.",
+        "Executar testes aleatórios sem nenhum objetivo ou planejamento.",
+        "O aprendizado, o projeto de teste e a execução de teste ocorrem simultaneamente, guiados pela experiência e curiosidade do testador.",
+        "Uma técnica de automação que explora a interface do usuário para encontrar links quebrados."
+      ],
+      "correctAnswer": "O aprendizado, o projeto de teste e a execução de teste ocorrem simultaneamente, guiados pela experiência e curiosidade do testador.",
+      "explanation": "Correto. O Teste Exploratório é uma abordagem onde o testador projeta e executa testes dinamicamente enquanto aprende sobre o sistema. Não é aleatório (B), pois pode ser estruturado com cartas de teste, e é o oposto de seguir um script rígido (A). É uma técnica baseada na experiência. Conforme o syllabus CTFL 4.0, seção 4.4.2."
+    },
+    {
+      "id": 13,
+      "question": "Qual é a principal finalidade de um Plano de Teste?",
+      "options": [
+        "Documentar os resultados de todos os testes executados.",
+        "Fornecer um guia detalhado passo a passo para a execução de um teste específico.",
+        "Descrever a estratégia, escopo, cronograma, recursos e riscos do esforço de teste.",
+        "Listar todos os defeitos encontrados e seu status atual."
+      ],
+      "correctAnswer": "Descrever a estratégia, escopo, cronograma, recursos e riscos do esforço de teste.",
+      "explanation": "Correto. O Plano de Teste é o documento de gerenciamento central para o processo de teste. Ele define a abordagem geral e responde a perguntas como 'o que será testado?', 'como?', 'quando?', 'por quem?' e 'o que é necessário?'. A opção A descreve um relatório de resultados, B um procedimento de teste e D um relatório de defeitos. Conforme o syllabus CTFL 4.0, seção 5.1.1."
+    },
+    {
+      "id": 14,
+      "question": "Qual dos seguintes é um exemplo de um risco de PRODUTO?",
+      "options": [
+        "A equipe de teste pode não ter o hardware necessário para o teste de performance.",
+        "A entrega do ambiente de teste pode atrasar, impactando o cronograma do projeto.",
+        "O software pode falhar ao processar transações com valores negativos.",
+        "Um testador experiente pode deixar o projeto no meio do ciclo de teste."
+      ],
+      "correctAnswer": "O software pode falhar ao processar transações com valores negativos.",
+      "explanation": "Correto. Riscos de produto estão relacionados à qualidade do software em si - a possibilidade de ele não funcionar como esperado. Uma falha no processamento de transações é um risco de qualidade do produto. As opções A, B e D são exemplos de riscos de PROJETO, que afetam a capacidade da equipe de executar o projeto com sucesso. Conforme o syllabus CTFL 4.0, seção 5.2.2."
+    },
+    {
+      "id": 15,
+      "question": "Ao escrever um relatório de defeito, qual é a importância de incluir a 'severidade' e a 'prioridade'?",
+      "options": [
+        "Severidade e prioridade são a mesma coisa e servem para indicar a urgência da correção.",
+        "Severidade indica o impacto técnico do defeito no sistema, enquanto prioridade indica a urgência de negócio para a correção.",
+        "Prioridade é definida pelo desenvolvedor, enquanto severidade é definida pelo gerente de projeto.",
+        "Severidade indica a urgência da correção, enquanto prioridade indica o impacto técnico do defeito no sistema."
+      ],
+      "correctAnswer": "Severidade indica o impacto técnico do defeito no sistema, enquanto prioridade indica a urgência de negócio para a correção.",
+      "explanation": "Correto. Severidade está relacionada ao impacto que o defeito tem na operação do software (e.g., crash, corrupção de dados). Prioridade está relacionada à ordem em que o defeito deve ser corrigido, o que é uma decisão de negócio. Um defeito pode ter alta severidade mas baixa prioridade (e.g., um crash em uma função raramente usada), ou vice-versa. Conforme o syllabus CTFL 4.0, seção 5.5."
+    },
+    {
+      "id": 16,
+      "question": "Qual é um dos principais RISCOS da automação de testes?",
+      "options": [
+        "Reduzir a necessidade de testadores manuais, liberando-os para tarefas mais complexas.",
+        "Executar testes de regressão de forma mais rápida e consistente do que seria possível manualmente.",
+        "As expectativas sobre os benefícios da ferramenta podem ser irreais, e o esforço de manutenção do testware pode ser subestimado.",
+        "Fornecer uma avaliação objetiva da cobertura de código alcançada."
+      ],
+      "correctAnswer": "As expectativas sobre os benefícios da ferramenta podem ser irreais, e o esforço de manutenção do testware pode ser subestimado.",
+      "explanation": "Correto. Um risco significativo é subestimar o esforço contínuo necessário para manter os scripts de teste funcionando à medida que o software evolui. Expectativas infladas podem levar à decepção e ao fracasso do projeto de automação. As opções A, B e D são benefícios, não riscos, da automação de testes. Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 17,
+      "question": "O que é uma 'base de teste' (test basis)?",
+      "options": [
+        "O conjunto de ferramentas de automação utilizadas no projeto.",
+        "O documento que contém todos os casos de teste a serem executados.",
+        "O conjunto de documentos (requisitos, histórias de usuário, design) a partir do qual os testes são derivados.",
+        "A versão do software que está atualmente em teste."
+      ],
+      "correctAnswer": "O conjunto de documentos (requisitos, histórias de usuário, design) a partir do qual os testes são derivados.",
+      "explanation": "Correto. A base de teste é a fonte de informação para derivar as condições de teste. É o 'o quê' que o sistema deve fazer, contra o qual os resultados dos testes serão comparados. Sem uma base de teste clara, o teste se torna subjetivo. Conforme o syllabus CTFL 4.0, seção 1.4.1."
+    },
+    {
+      "id": 18,
+      "question": "No ciclo de vida em V, as atividades de projeto do teste de sistema ocorrem em paralelo com qual atividade de desenvolvimento?",
+      "options": [
+        "Codificação",
+        "Projeto de Arquitetura (Projeto de Alto Nível)",
+        "Projeto Detalhado",
+        "Análise de Requisitos"
+      ],
+      "correctAnswer": "Projeto de Arquitetura (Projeto de Alto Nível)",
+      "explanation": "Correto. No modelo V, cada fase de desenvolvimento no lado esquerdo tem uma fase de teste correspondente no lado direito. O teste de sistema (lado direito) é projetado com base no projeto de arquitetura de alto nível (lado esquerdo). O teste de aceite é baseado nos requisitos; o teste de integração no projeto detalhado; e o teste de componente na codificação. Conforme o syllabus CTFL 4.0, seção 2.1."
+    },
+    {
+      "id": 19,
+      "question": "Um sistema de login bloqueia o acesso após 3 tentativas de senha inválidas. Qual técnica de teste seria mais apropriada para verificar esse comportamento?",
+      "options": [
+        "Teste de Tabela de Decisão",
+        "Particionamento de Equivalência",
+        "Análise de Valor Limite",
+        "Teste de Transição de Estado"
+      ],
+      "correctAnswer": "Teste de Transição de Estado",
+      "explanation": "Correto. O sistema tem estados claros (e.g., 'Não Logado', '1 Tentativa Falha', '2 Tentativas Falhas', 'Bloqueado', 'Logado') e eventos que causam transições entre eles (e.g., 'senha correta', 'senha incorreta'). O Teste de Transição de Estado é ideal para modelar e testar esse tipo de comportamento sequencial e com memória de estado. Conforme o syllabus CTFL 4.0, seção 4.2.4."
+    },
+    {
+      "id": 20,
+      "question": "Qual das seguintes opções melhor descreve a 'abordagem de equipe completa' (whole team approach) em um contexto ágil?",
+      "options": [
+        "Apenas os testadores são responsáveis pela qualidade, mas eles trabalham em um mesmo espaço físico.",
+        "A responsabilidade pela qualidade é compartilhada por toda a equipe (desenvolvedores, testadores, POs, etc.), que colaboram em todas as atividades.",
+        "Uma equipe separada de QA é responsável por todos os testes, mas eles se reúnem com a equipe de desenvolvimento diariamente.",
+        "Os desenvolvedores escrevem o código e os testadores o testam, sem interação direta para manter a independência."
+      ],
+      "correctAnswer": "A responsabilidade pela qualidade é compartilhada por toda a equipe (desenvolvedores, testadores, POs, etc.), que colaboram em todas as atividades.",
+      "explanation": "Correto. A abordagem de equipe completa, fundamental em metodologias ágeis, prega que a qualidade não é responsabilidade de um único papel, mas sim de todos. A colaboração contínua entre diferentes papéis é incentivada para construir qualidade no produto desde o início. Conforme o syllabus CTFL 4.0, seção 1.5.2."
+    },
+    {
+      "id": 21,
+      "question": "Qual das seguintes afirmações sobre o teste de manutenção é VERDADEIRA?",
+      "options": [
+        "O teste de manutenção só é necessário quando grandes funcionalidades são adicionadas a um sistema legado.",
+        "O teste de manutenção é acionado por modificações, migrações ou aposentadoria de um sistema de software existente.",
+        "O escopo do teste de manutenção é sempre menor do que o teste de um novo sistema.",
+        "O teste de manutenção não requer teste de regressão, pois foca apenas na nova funcionalidade."
+      ],
+      "correctAnswer": "O teste de manutenção é acionado por modificações, migrações ou aposentadoria de um sistema de software existente.",
+      "explanation": "Correto. O teste de manutenção é realizado para testar as mudanças em um sistema operacional. Isso inclui modificações (hot fixes, melhorias), migrações para novos ambientes e até mesmo a aposentadoria do sistema (garantindo o arquivamento de dados). O teste de manutenção pode ser acionado por pequenas alterações (A), seu escopo pode ser grande (C), e ele depende fortemente de testes de regressão (D). Conforme o syllabus CTFL 4.0, seção 2.3."
+    },
+    {
+      "id": 22,
+      "question": "Um defeito é encontrado, corrigido pelo desenvolvedor e uma nova build é entregue à equipe de teste. Qual é o PRIMEIRO tipo de teste que a equipe de QA deve realizar?",
+      "options": [
+        "Teste de regressão completo.",
+        "Teste exploratório em áreas não relacionadas.",
+        "Teste de confirmação.",
+        "Teste de usabilidade."
+      ],
+      "correctAnswer": "Teste de confirmação.",
+      "explanation": "Correto. O teste de confirmação (ou re-teste) tem o objetivo específico de verificar se a correção do defeito foi bem-sucedida. É a primeira e mais focada atividade a ser realizada após receber uma correção. O teste de regressão (A) viria depois, para garantir que a correção não introduziu novos problemas em outras áreas. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 23,
+      "question": "O que o princípio 'falácia da ausência de erros' significa?",
+      "options": [
+        "É impossível encontrar todos os erros em um software complexo.",
+        "Se nenhum erro for encontrado durante os testes, o software está pronto para ser lançado.",
+        "Apenas encontrar e corrigir defeitos não garante o sucesso de um sistema se ele não atender às necessidades e expectativas dos usuários.",
+        "Os erros tendem a se agrupar em certas áreas do código."
+      ],
+      "correctAnswer": "Apenas encontrar e corrigir defeitos não garante o sucesso de um sistema se ele não atender às necessidades e expectativas dos usuários.",
+      "explanation": "Correto. Este princípio alerta que um software tecnicamente perfeito (sem bugs) pode ser um fracasso comercial se for inútil ou difícil de usar. A validação (garantir que estamos construindo o produto certo) é tão importante quanto a verificação (garantir que estamos construindo o produto corretamente). Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 24,
+      "question": "No contexto da gestão de riscos, o que é 'mitigação de risco'?",
+      "options": [
+        "Decidir aceitar o risco sem tomar nenhuma ação para reduzi-lo.",
+        "Desenvolver um plano de backup para ser usado caso o risco se materialize.",
+        "Tomar ações para reduzir a probabilidade de ocorrência de um risco ou o seu impacto.",
+        "Transferir o risco para outra parte, como através de um seguro."
+      ],
+      "correctAnswer": "Tomar ações para reduzir a probabilidade de ocorrência de um risco ou o seu impacto.",
+      "explanation": "Correto. Mitigação de risco envolve a implementação de medidas para diminuir a probabilidade ou o impacto de um risco identificado. No contexto de testes, isso pode envolver a realização de mais testes em uma área de alto risco. A opção A é aceitação de risco. A opção B é um plano de contingência. A opção D é transferência de risco. Conforme o syllabus CTFL 4.0, seção 5.2.4."
+    },
+    {
+      "id": 25,
+      "question": "Qual o propósito principal de uma retrospectiva em um projeto Ágil?",
+      "options": [
+        "Apresentar a funcionalidade concluída aos stakeholders para aprovação.",
+        "Planejar as tarefas e histórias para a próxima iteração.",
+        "Identificar o que deu certo, o que deu errado e como a equipe pode melhorar seus processos na próxima iteração.",
+        "Atribuir culpa pelos defeitos encontrados durante a iteração."
+      ],
+      "correctAnswer": "Identificar o que deu certo, o que deu errado e como a equipe pode melhorar seus processos na próxima iteração.",
+      "explanation": "Correto. A retrospectiva é uma reunião focada na melhoria contínua do processo da equipe. A equipe reflete sobre a iteração que acabou de terminar para identificar ações de melhoria. A opção A descreve a 'Sprint Review'. A opção B descreve a 'Sprint Planning'. A opção D é contra os princípios ágeis de colaboração e responsabilidade compartilhada. Conforme o syllabus CTFL 4.0, seção 2.1.6."
+    },
+    {
+      "id": 26,
+      "question": "Ao aplicar a Análise de Valor Limite (BVA) de 3 valores a um campo que aceita o intervalo [10, 20], quais valores seriam testados para o limite inferior (10)?",
+      "options": [
+        "9, 10, 11",
+        "10, 11",
+        "9, 10",
+        "10"
+      ],
+      "correctAnswer": "9, 10, 11",
+      "explanation": "Correto. A BVA de 3 valores testa o valor no limite, o valor imediatamente antes e o valor imediatamente depois. Para o limite inferior de 10, os valores a serem testados são 9 (inválido, imediatamente antes), 10 (válido, no limite) e 11 (válido, imediatamente depois). Conforme o syllabus CTFL 4.0, seção 4.2.2."
+    },
+    {
+      "id": 27,
+      "question": "Qual das seguintes atividades NÃO faz parte do processo de teste formal?",
+      "options": [
+        "Planejamento e controle de teste",
+        "Análise e projeto de teste",
+        "Implementação e execução de teste",
+        "Depuração e correção do código"
+      ],
+      "correctAnswer": "Depuração e correção do código",
+      "explanation": "Correto. O processo de teste inclui planejamento, análise, projeto, implementação, execução e conclusão. A depuração (debugging) é a atividade de encontrar e corrigir a causa de uma falha no código, sendo uma responsabilidade do desenvolvimento, não do teste. O teste identifica a falha, a depuração a corrige. Conforme o syllabus CTFL 4.0, seção 1.1.2."
+    },
+    {
+      "id": 28,
+      "question": "Qual dos quadrantes de teste ágil (modelo de Brian Marick) foca em testes de negócio que apoiam a equipe, como testes funcionais e exemplos baseados em histórias de usuário?",
+      "options": [
+        "Quadrante Q1",
+        "Quadrante Q2",
+        "Quadrante Q3",
+        "Quadrante Q4"
+      ],
+      "correctAnswer": "Quadrante Q2",
+      "explanation": "Correto. O Quadrante Q2 é voltado para o negócio e apoia a equipe de desenvolvimento. Ele contém testes que confirmam que o software faz o que o negócio espera, como testes funcionais, ATDD e BDD. Q1 é tecnologia apoiando a equipe (testes de unidade). Q3 é negócio criticando o produto (testes exploratórios). Q4 é tecnologia criticando o produto (testes não funcionais). Conforme o syllabus CTFL 4.0, seção 5.1.7."
+    },
+    {
+      "id": 29,
+      "question": "O que é um 'oráculo de teste'?",
+      "options": [
+        "Uma ferramenta de software que gera automaticamente dados de teste.",
+        "Um membro sênior da equipe de teste que aprova todos os casos de teste.",
+        "O mecanismo ou fonte de informação usado para determinar o resultado esperado de um teste.",
+        "O ambiente de hardware e software onde os testes são executados."
+      ],
+      "correctAnswer": "O mecanismo ou fonte de informação usado para determinar o resultado esperado de um teste.",
+      "explanation": "Correto. Um oráculo de teste é qualquer fonte (documentação, um sistema legado, um cálculo manual, o conhecimento de um especialista) que informa ao testador qual deve ser o resultado correto de um teste. É fundamental para comparar o resultado real com o esperado e determinar se um teste passou ou falhou."
+    },
+    {
+      "id": 30,
+      "question": "Qual a principal vantagem da independência nos testes?",
+      "options": [
+        "Testadores independentes são sempre mais rápidos na execução de testes.",
+        "A independência reduz os custos do projeto ao eliminar a necessidade de comunicação com os desenvolvedores.",
+        "Testadores independentes são mais objetivos e menos propensos a vieses cognitivos que podem afetar quem escreveu o código.",
+        "A independência garante que o testador tenha um conhecimento mais profundo da implementação interna do código."
+      ],
+      "correctAnswer": "Testadores independentes são mais objetivos e menos propensos a vieses cognitivos que podem afetar quem escreveu o código.",
+      "explanation": "Correto. O principal benefício da independência é a objetividade. Um testador independente não tem o mesmo apego ao código que o autor e pode questionar suposições que o desenvolvedor fez, levando a uma detecção de defeitos mais eficaz. Conforme o syllabus CTFL 4.0, seção 1.5.3."
+    },
+    {
+      "id": 31,
+      "question": "Qual das seguintes métricas de teste é mais útil para relatar a qualidade do produto?",
+      "options": [
+        "Número de casos de teste planejados versus executados.",
+        "Horas gastas na execução de testes.",
+        "Densidade de defeitos (e.g., defeitos por KLOC ou por história de usuário).",
+        "Porcentagem de testes automatizados."
+      ],
+      "correctAnswer": "Densidade de defeitos (e.g., defeitos por KLOC ou por história de usuário).",
+      "explanation": "Correto. A densidade de defeitos é uma métrica de qualidade do produto, pois normaliza o número de defeitos em relação ao tamanho do software, permitindo uma avaliação mais objetiva da sua qualidade. As outras opções são métricas de progresso ou de processo, que indicam o andamento do trabalho, mas não diretamente a qualidade do produto. Conforme o syllabus CTFL 4.0, seção 5.3.1."
+    },
+    {
+      "id": 32,
+      "question": "O 'Teste de Usabilidade' é um tipo de:",
+      "options": [
+        "Teste Funcional",
+        "Teste Não Funcional",
+        "Teste de Componente",
+        "Teste Estrutural"
+      ],
+      "correctAnswer": "Teste Não Funcional",
+      "explanation": "Correto. O teste de usabilidade avalia características de qualidade como facilidade de aprendizado, eficiência de uso e satisfação do usuário. Essas são qualidades não funcionais, pois descrevem 'como' o sistema se comporta para o usuário, em vez de 'o que' ele faz funcionalmente. Conforme o syllabus CTFL 4.0, seção 2.2.2 e a norma ISO/IEC 25010."
+    },
+    {
+      "id": 33,
+      "question": "O que a 'pirâmide de teste' de Mike Cohn sugere sobre a distribuição de testes automatizados?",
+      "options": [
+        "Que a maioria dos testes deve ser de UI de ponta a ponta para simular o usuário.",
+        "Que deve haver uma grande base de testes de unidade, menos testes de serviço e um número muito pequeno de testes de UI.",
+        "Que todos os níveis de teste devem ter a mesma quantidade de testes automatizados.",
+        "Que a automação de testes de unidade deve ser evitada em favor de testes manuais exploratórios."
+      ],
+      "correctAnswer": "Que deve haver uma grande base de testes de unidade, menos testes de serviço e um número muito pequeno de testes de UI.",
+      "explanation": "Correto. A pirâmide de teste é um modelo que orienta uma estratégia de automação eficaz. Ela recomenda ter a maioria dos testes na base (testes de unidade), pois são rápidos, estáveis e baratos. A quantidade de testes diminui à medida que se sobe na pirâmide (serviço/API e, no topo, UI), pois esses testes são mais lentos e frágeis. Conforme o syllabus CTFL 4.0, seção 5.1.6."
+    },
+    {
+      "id": 34,
+      "question": "Um sistema deve conceder um bônus se um funcionário tiver mais de 5 anos de serviço E uma avaliação de desempenho 'Excelente'. Qual técnica é mais adequada para testar essa regra?",
+      "options": [
+        "Teste de Transição de Estado",
+        "Análise de Valor Limite",
+        "Teste de Tabela de Decisão",
+        "Suposição de Erro"
+      ],
+      "correctAnswer": "Teste de Tabela de Decisão",
+      "explanation": "Correto. O Teste de Tabela de Decisão é ideal para testar a lógica de negócio onde múltiplas condições (anos de serviço, avaliação) se combinam para gerar diferentes ações (conceder bônus, não conceder bônus). Ele ajuda a garantir que todas as combinações de condições sejam consideradas sistematicamente. Conforme o syllabus CTFL 4.0, seção 4.2.3."
+    },
+    {
+      "id": 35,
+      "question": "Qual dos seguintes é um exemplo de um 'critério de entrada' para a fase de teste de sistema?",
+      "options": [
+        "95% dos casos de teste de sistema foram executados.",
+        "O ambiente de teste de sistema está configurado, verificado e disponível para uso.",
+        "Nenhum defeito crítico permanece em aberto no final da fase de teste.",
+        "O relatório de conclusão do teste de sistema foi aprovado pelos stakeholders."
+      ],
+      "correctAnswer": "O ambiente de teste de sistema está configurado, verificado e disponível para uso.",
+      "explanation": "Correto. Critérios de entrada são as condições prévias que devem ser atendidas para que uma atividade de teste possa começar. A disponibilidade de um ambiente de teste pronto é uma condição fundamental para iniciar a execução dos testes de sistema. As opções A, C e D são exemplos de 'critérios de saída'. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 36,
+      "question": "Qual é a principal característica que diferencia o Teste de Aceite do Usuário (UAT) do Teste de Sistema?",
+      "options": [
+        "O UAT é sempre automatizado, enquanto o Teste de Sistema é sempre manual.",
+        "O UAT é focado em verificar a adequação para o uso no ambiente do usuário de negócio, enquanto o Teste de Sistema verifica o sistema em relação aos requisitos especificados.",
+        "O UAT é realizado pelos desenvolvedores, enquanto o Teste de Sistema é realizado pela equipe de teste independente.",
+        "O UAT busca encontrar defeitos de baixo nível no código, enquanto o Teste de Sistema busca encontrar defeitos de integração."
+      ],
+      "correctAnswer": "O UAT é focado em verificar a adequação para o uso no ambiente do usuário de negócio, enquanto o Teste de Sistema verifica o sistema em relação aos requisitos especificados.",
+      "explanation": "Correto. A principal diferença é a perspectiva. O Teste de Sistema é sobre verificação (o sistema foi construído corretamente de acordo com as especificações?). O UAT é sobre validação (o sistema atende às necessidades do negócio e está pronto para ser usado no mundo real?). Geralmente, o UAT é realizado por usuários finais ou seus representantes. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 37,
+      "question": "O que é 'gerenciamento de configuração' no contexto de testes?",
+      "options": [
+        "O processo de configurar o ambiente de teste antes de cada execução.",
+        "A disciplina de identificar, controlar e rastrear os itens de teste e testware, como versões de software e scripts de teste.",
+        "A atividade de configurar as permissões de usuário dentro do aplicativo em teste.",
+        "O ato de gerenciar o orçamento e os recursos para o projeto de teste."
+      ],
+      "correctAnswer": "A disciplina de identificar, controlar e rastrear os itens de teste e testware, como versões de software e scripts de teste.",
+      "explanation": "Correto. O gerenciamento de configuração (CM) é crucial para garantir que os testes sejam repetíveis e que haja um controle claro sobre as versões de todos os artefatos envolvidos (código, requisitos, casos de teste, ambiente, etc.). Isso garante consistência e rastreabilidade. Conforme o syllabus CTFL 4.0, seção 5.4."
+    },
+    {
+      "id": 38,
+      "question": "Qual dos seguintes descreve corretamente a relação entre o teste de instrução e o teste de ramificação?",
+      "options": [
+        "Se 100% de cobertura de instrução é alcançada, então 100% de cobertura de ramificação também é alcançada.",
+        "Se 100% de cobertura de ramificação é alcançada, então 100% de cobertura de instrução também é alcançada.",
+        "As duas métricas de cobertura são idênticas e medem a mesma coisa.",
+        "Ambas são técnicas de teste de caixa-preta."
+      ],
+      "correctAnswer": "Se 100% de cobertura de ramificação é alcançada, então 100% de cobertura de instrução também é alcançada.",
+      "explanation": "Correto. A cobertura de ramificação é uma métrica mais forte. Para testar todos os ramos de uma decisão (e.g., o bloco `if` e o bloco `else`), você necessariamente precisa executar as instruções dentro desses blocos. O contrário não é verdadeiro: você pode ter 100% de cobertura de instrução testando apenas o caminho `if` e ignorando o `else`. Conforme o syllabus CTFL 4.0, seção 4.3.2."
+    },
+    {
+      "id": 39,
+      "question": "Se um caso de teste tem uma severidade alta e uma prioridade baixa, o que isso geralmente significa?",
+      "options": [
+        "O defeito associado é trivial e pode ser ignorado.",
+        "O defeito tem um grande impacto técnico no sistema (e.g., um memory leak), mas afeta uma funcionalidade raramente usada ou tem uma solução de contorno fácil.",
+        "O defeito afeta uma funcionalidade crítica do negócio, mas tem um impacto técnico pequeno no sistema.",
+        "O defeito deve ser corrigido imediatamente porque impede a continuação dos testes."
+      ],
+      "correctAnswer": "O defeito tem um grande impacto técnico no sistema (e.g., um memory leak), mas afeta uma funcionalidade raramente usada ou tem uma solução de contorno fácil.",
+      "explanation": "Correto. Severidade refere-se ao impacto técnico, enquanto prioridade refere-se à urgência do negócio. Um defeito de alta severidade (tecnicamente grave) pode receber baixa prioridade se afetar uma parte não crítica do sistema, se ocorrer em uma condição muito rara, ou se houver uma maneira fácil para o usuário contornar o problema."
+    },
+    {
+      "id": 40,
+      "question": "Qual é a principal desvantagem de depender exclusivamente de testes de caixa-preta?",
+      "options": [
+        "Exigem conhecimento profundo da estrutura interna do código.",
+        "Podem deixar caminhos de código e lógicas internas não testados se não forem acionados por entradas externas.",
+        "São muito mais caros e demorados para automatizar do que os testes de caixa-branca.",
+        "Não podem ser usados para testar requisitos não funcionais, como performance."
+      ],
+      "correctAnswer": "Podem deixar caminhos de código e lógicas internas não testados se não forem acionados por entradas externas.",
+      "explanation": "Correto. Como o teste de caixa-preta foca no comportamento externo sem conhecimento da implementação, é possível que certas lógicas internas, condições de erro ou caminhos de código nunca sejam exercitados. É por isso que uma combinação de técnicas é geralmente recomendada para uma cobertura mais completa."
+    },
+    {
+      "id": 41,
+      "question": "Qual das seguintes atividades é a principal responsabilidade de um Gerente de Teste?",
+      "options": [
+        "Escrever scripts de automação de teste.",
+        "Realizar a depuração do código para encontrar a causa raiz dos defeitos.",
+        "Elaborar o plano de teste mestre, definindo a estratégia e os recursos.",
+        "Executar manualmente os testes de aceitação do usuário."
+      ],
+      "correctAnswer": "Elaborar o plano de teste mestre, definindo a estratégia e os recursos.",
+      "explanation": "Correto. A principal responsabilidade do Gerente de Teste é o planejamento estratégico, o gerenciamento de recursos e o monitoramento do esforço de teste, o que é formalizado no plano de teste. As outras opções descrevem tarefas de outros papéis (Engenheiro de Automação, Desenvolvedor, Testador). Conforme o syllabus CTFL 4.0, seção 1.4.5 e 5.1.1."
+    },
+    {
+      "id": 42,
+      "question": "O que é um 'falso positivo' no contexto da análise estática?",
+      "options": [
+        "Um defeito real que a ferramenta não conseguiu detectar.",
+        "Um item reportado pela ferramenta como um defeito, mas que não é um problema real.",
+        "Um defeito que só ocorre sob condições muito específicas.",
+        "Um alerta sobre uma violação de padrão de codificação que não afeta a funcionalidade."
+      ],
+      "correctAnswer": "Um item reportado pela ferramenta como um defeito, mas que não é um problema real.",
+      "explanation": "Correto. Um 'falso positivo' é um resultado em que a ferramenta de análise reporta incorretamente uma anomalia que, após investigação humana, se revela não ser um defeito. A opção A descreve um 'falso negativo'. Conforme o syllabus CTFL 4.0, capítulo 3."
+    },
+    {
+      "id": 43,
+      "question": "No contexto do DevOps, o que significa a sigla CI/CD?",
+      "options": [
+        "Continuous Improvement / Continuous Deployment",
+        "Code Integration / Code Delivery",
+        "Continuous Integration / Continuous Delivery (or Deployment)",
+        "Customer Interaction / Customer Delegation"
+      ],
+      "correctAnswer": "Continuous Integration / Continuous Delivery (or Deployment)",
+      "explanation": "Correto. CI (Integração Contínua) é a prática de mesclar automaticamente as alterações de código em um repositório central. CD (Entrega Contínua ou Implantação Contínua) refere-se à automação da liberação de software para ambientes de teste ou produção. Conforme o syllabus CTFL 4.0, seção 2.1.4."
+    },
+    {
+      "id": 44,
+      "question": "Qual é a finalidade da rastreabilidade entre requisitos e casos de teste?",
+      "options": [
+        "Garantir que todos os casos de teste sejam automatizados.",
+        "Avaliar a performance dos testadores.",
+        "Assegurar a cobertura dos requisitos e facilitar a análise de impacto de mudanças.",
+        "Reduzir o número total de defeitos encontrados."
+      ],
+      "correctAnswer": "Assegurar a cobertura dos requisitos e facilitar a análise de impacto de mudanças.",
+      "explanation": "Correto. A rastreabilidade permite verificar que todos os requisitos foram cobertos por testes e, quando um requisito muda, ajuda a identificar quais testes precisam ser atualizados ou re-executados. Conforme o syllabus CTFL 4.0, seção 1.4.4."
+    },
+    {
+      "id": 45,
+      "question": "Um sistema de e-commerce oferece frete grátis para compras acima de R$ 150. Usando a Análise de Valor Limite (BVA) de 2 valores, quais valores seriam os mais importantes para testar?",
+      "options": [
+        "149.99, 150.00",
+        "150.00, 150.01",
+        "149.99, 150.00, 150.01",
+        "149.00, 150.00, 151.00"
+      ],
+      "correctAnswer": "149.99, 150.00, 150.01",
+      "explanation": "Esta é uma questão que pode gerar debate, mas a BVA mais completa testa o valor no limite, o valor imediatamente abaixo e o valor imediatamente acima. O Syllabus CTFL 4.0 descreve tanto a BVA de 2 valores (valor limite e o vizinho adjacente) quanto a de 3 valores. A opção C representa a abordagem de 3 valores, que é a mais robusta. Para 2 valores, seria 149.99 e 150.00 (ou 150.00 e 150.01 dependendo da interpretação), mas C é a melhor opção entre as apresentadas para testar o limite efetivamente. A rigor, para 2-valor BVA, seria 149.99 (último da partição 'sem frete') e 150.00 (primeiro da partição 'com frete'). A opção C é a mais segura."
+    },
+    {
+      "id": 46,
+      "question": "Qual das seguintes afirmações melhor descreve o 'teste de fumaça' (smoke testing)?",
+      "options": [
+        "Um conjunto exaustivo de testes que cobre todas as funcionalidades.",
+        "Um conjunto rápido de testes de alto nível para verificar a estabilidade de uma nova build.",
+        "Um teste para avaliar a performance do sistema sob alta carga.",
+        "Testes realizados por usuários finais em seu próprio ambiente."
+      ],
+      "correctAnswer": "Um conjunto rápido de testes de alto nível para verificar a estabilidade de uma nova build.",
+      "explanation": "Correto. O teste de fumaça é um teste superficial e rápido para garantir que a build é estável e as funcionalidades principais funcionam. Se falhar, a build é rejeitada sem testes mais detalhados. A opção A descreve um teste de regressão completo, C um teste de estresse, e D um teste beta."
+    },
+    {
+      "id": 47,
+      "question": "Qual a principal característica do teste de 'caixa-branca'?",
+      "options": [
+        "O teste é baseado apenas nos requisitos funcionais.",
+        "O testador não tem conhecimento da estrutura interna do sistema.",
+        "O teste é projetado com base no conhecimento da estrutura interna do código.",
+        "O teste é realizado exclusivamente por usuários finais."
+      ],
+      "correctAnswer": "O teste é projetado com base no conhecimento da estrutura interna do código.",
+      "explanation": "Correto. O teste de caixa-branca (ou estrutural) utiliza o conhecimento da implementação interna do software para derivar casos de teste, com o objetivo de garantir que os componentes internos foram adequadamente exercitados. As opções A e B descrevem o teste de caixa-preta. Conforme o syllabus CTFL 4.0, seção 4.3."
+    },
+    {
+      "id": 48,
+      "question": "No teste de transição de estado, o que é o objetivo da cobertura de 0-switch (cobertura de transição)?",
+      "options": [
+        "Garantir que cada estado seja visitado pelo menos uma vez.",
+        "Garantir que cada transição válida entre estados seja exercitada pelo menos uma vez.",
+        "Garantir que todas as sequências de duas transições sejam testadas.",
+        "Garantir que todas as transições inválidas sejam tentadas."
+      ],
+      "correctAnswer": "Garantir que cada transição válida entre estados seja exercitada pelo menos uma vez.",
+      "explanation": "Correto. A cobertura de 0-switch, ou cobertura de transição, exige que cada transição individual e válida no diagrama de estados seja testada. A opção A é a cobertura de estado. A opção C é a cobertura de 1-switch. Conforme o syllabus CTFL 4.0, seção 4.2.4."
+    },
+    {
+      "id": 49,
+      "question": "Qual dos seguintes é um exemplo de um 'critério de saída' para a fase de teste de sistema?",
+      "options": [
+        "A equipe de teste de sistema recebeu o treinamento necessário.",
+        "Nenhum defeito crítico permanece em aberto.",
+        "O ambiente de teste está totalmente configurado e pronto para uso.",
+        "Os casos de teste de sistema foram projetados e revisados."
+      ],
+      "correctAnswer": "Nenhum defeito crítico permanece em aberto.",
+      "explanation": "Correto. Critérios de saída definem as condições para concluir uma atividade de teste. Um limiar de defeitos em aberto (e.g., nenhum defeito crítico) é um critério de saída comum. As opções A, C e D são exemplos de 'critérios de entrada', condições que precisam ser satisfeitas para iniciar a fase de teste. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 50,
+      "question": "Qual das seguintes atividades é a principal responsabilidade de um Gerente de Teste?",
+      "options": [
+        "Escrever scripts de automação de teste.",
+        "Realizar a depuração do código para encontrar a causa raiz dos defeitos.",
+        "Elaborar o plano de teste mestre, definindo a estratégia e os recursos.",
+        "Executar manualmente os testes de aceitação do usuário."
+      ],
+      "correctAnswer": "Elaborar o plano de teste mestre, definindo a estratégia e os recursos.",
+      "explanation": "Correto. A principal responsabilidade do Gerente de Teste é o planejamento estratégico, o gerenciamento de recursos e o monitoramento do esforço de teste, o que é formalizado no plano de teste. As outras opções descrevem tarefas de outros papéis (Engenheiro de Automação, Desenvolvedor, Testador). Conforme o syllabus CTFL 4.0, seção 1.4.5 e 5.1.1."
+    },
+    {
+      "id": 51,
+      "question": "Qual é o principal objetivo da Análise de Causa Raiz (Root Cause Analysis)?",
+      "options": [
+        "Apenas registrar o número de defeitos encontrados para relatórios de métricas.",
+        "Identificar o desenvolvedor responsável pelo defeito para fins de avaliação.",
+        "Entender as razões fundamentais pelas quais um defeito ocorreu para melhorar o processo e prevenir defeitos futuros.",
+        "Acelerar a correção de defeitos, focando apenas nos sintomas e não nas causas subjacentes."
+      ],
+      "correctAnswer": "Entender as razões fundamentais pelas quais um defeito ocorreu para melhorar o processo e prevenir defeitos futuros.",
+      "explanation": "Correto. A Análise de Causa Raiz vai além da simples correção de um defeito. Ela busca identificar a origem do problema no processo (e.g., requisito ambíguo, falta de revisão de código, processo de desenvolvimento falho) para que melhorias possam ser implementadas e a recorrência de defeitos semelhantes seja evitada. Conforme o syllabus CTFL 4.0, seção 1.2.3."
+    },
+    {
+      "id": 52,
+      "question": "O que é 'Testware'?",
+      "options": [
+        "O hardware específico usado para executar os testes, como servidores e dispositivos móveis.",
+        "O software que está sendo testado, também conhecido como objeto de teste.",
+        "Todos os artefatos produzidos durante o processo de teste, como planos de teste, casos de teste, scripts, dados de teste e relatórios.",
+        "Ferramentas de software usadas para apoiar as atividades de teste, como ferramentas de automação e gerenciamento de defeitos."
+      ],
+      "correctAnswer": "Todos os artefatos produzidos durante o processo de teste, como planos de teste, casos de teste, scripts, dados de teste e relatórios.",
+      "explanation": "Correto. Testware é um termo abrangente que engloba todos os produtos de trabalho gerados durante o processo de teste. É o conjunto de materiais necessários para planejar, projetar e executar os testes. Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 53,
+      "question": "Qual nível de teste é geralmente o primeiro a ser executado e é focado em testar as menores partes do software de forma isolada?",
+      "options": [
+        "Teste de Integração",
+        "Teste de Sistema",
+        "Teste de Aceite",
+        "Teste de Componente (ou Unidade)"
+      ],
+      "correctAnswer": "Teste de Componente (ou Unidade)",
+      "explanation": "Correto. O Teste de Componente, também conhecido como Teste de Unidade, é o primeiro nível de teste dinâmico. Ele se concentra em testar módulos, classes ou funções individuais para garantir que funcionem corretamente de forma isolada, antes de serem integrados com outras partes do sistema. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 54,
+      "question": "Um testador está usando seu conhecimento sobre erros comuns de programação (como divisão por zero e null pointers) para criar casos de teste. Qual técnica baseada na experiência está sendo usada?",
+      "options": [
+        "Teste Exploratório",
+        "Teste baseado em Checklist",
+        "Suposição de Erro (Error Guessing)",
+        "Teste de Tabela de Decisão"
+      ],
+      "correctAnswer": "Suposição de Erro (Error Guessing)",
+      "explanation": "Correto. A Suposição de Erro é uma técnica que se baseia na experiência e intuição do testador para antecipar defeitos que podem não ser facilmente encontrados por técnicas mais formais. O testador usa seu conhecimento sobre como os sistemas costumam falhar e os erros típicos que os desenvolvedores cometem. Conforme o syllabus CTFL 4.0, seção 4.4.1."
+    },
+    {
+      "id": 55,
+      "question": "O que é um 'plano de contingência' no contexto do planejamento de testes?",
+      "options": [
+        "Um plano detalhado para automatizar todos os testes manuais.",
+        "Um plano de ações a serem tomadas caso os riscos identificados no projeto se materializem.",
+        "O orçamento total alocado para todas as atividades de teste do projeto.",
+        "A lista de todos os testadores e suas respectivas responsabilidades."
+      ],
+      "correctAnswer": "Um plano de ações a serem tomadas caso os riscos identificados no projeto se materializem.",
+      "explanation": "Correto. Um plano de contingência é uma parte crucial do gerenciamento de riscos. Ele descreve as ações de backup ou alternativas que a equipe tomará se um risco previsto ocorrer (e.g., 'se o ambiente de teste atrasar, usaremos um ambiente virtualizado com capacidades reduzidas'). Conforme o syllabus CTFL 4.0, seção 5.2.4."
+    },
+    {
+      "id": 56,
+      "question": "Qual das seguintes opções melhor descreve o Teste de Aceite Alpha?",
+      "options": [
+        "Teste realizado por usuários finais ou clientes em seu próprio local de trabalho.",
+        "Teste realizado por potenciais clientes em um ambiente de mercado, antes do lançamento final.",
+        "Teste realizado no ambiente de desenvolvimento pela equipe interna, mas fora da equipe de desenvolvimento, para simular o uso real.",
+        "Teste realizado por uma equipe de teste independente em um laboratório especializado."
+      ],
+      "correctAnswer": "Teste realizado no ambiente de desenvolvimento pela equipe interna, mas fora da equipe de desenvolvimento, para simular o uso real.",
+      "explanation": "Correto. O Teste Alpha é um tipo de teste de aceite realizado internamente (no local do desenvolvedor), mas não pelos desenvolvedores que criaram o software. O objetivo é obter um feedback inicial sobre a usabilidade e funcionalidade em um ambiente controlado, antes de expor o software a clientes externos. A opção A/B descreve o Teste Beta. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 57,
+      "question": "Por que a 'psicologia do teste' é importante?",
+      "options": [
+        "Porque ajuda os testadores a escrever código de automação mais eficiente.",
+        "Porque permite que os gerentes de teste avaliem a personalidade dos membros da equipe.",
+        "Porque ajuda a comunicar descobertas de defeitos de forma construtiva, evitando conflitos e promovendo uma colaboração eficaz entre testadores e desenvolvedores.",
+        "Porque é um requisito para obter qualquer certificação em teste de software."
+      ],
+      "correctAnswer": "Porque ajuda a comunicar descobertas de defeitos de forma construtiva, evitando conflitos e promovendo uma colaboração eficaz entre testadores e desenvolvedores.",
+      "explanation": "Correto. Testadores frequentemente são vistos como portadores de más notícias. A psicologia do teste aborda a importância da comunicação. Apontar um defeito pode ser percebido como uma crítica pessoal. Comunicar os resultados de forma objetiva, colaborativa e focada no objetivo comum de melhorar a qualidade do produto é essencial para manter um bom relacionamento e um ambiente de trabalho produtivo. Conforme o syllabus CTFL 4.0, seção 1.5.1."
+    },
+    {
+      "id": 58,
+      "question": "Qual a principal diferença entre um modelo de ciclo de vida sequencial (como o Cascata) e um iterativo-incremental (como o Ágil)?",
+      "options": [
+        "Modelos sequenciais não incluem uma fase de teste, enquanto modelos iterativos sim.",
+        "Em modelos sequenciais, as fases ocorrem em uma ordem estrita sem sobreposição, enquanto em modelos iterativos, o software é desenvolvido e entregue em pequenas partes funcionais.",
+        "Modelos sequenciais são adequados para todos os tipos de projeto, enquanto modelos iterativos são apenas para projetos pequenos.",
+        "Em modelos sequenciais, o feedback do cliente só é obtido no final do projeto, enquanto em modelos iterativos, ele é obtido no início e nunca mais."
+      ],
+      "correctAnswer": "Em modelos sequenciais, as fases ocorrem em uma ordem estrita sem sobreposição, enquanto em modelos iterativos, o software é desenvolvido e entregue em pequenas partes funcionais.",
+      "explanation": "Correto. A principal característica de um modelo sequencial é a progressão linear e sequencial das fases (requisitos -> projeto -> implementação -> teste -> implantação). Em um modelo iterativo-incremental, este ciclo completo é repetido várias vezes para pequenas partes do sistema, permitindo feedback frequente e entrega de valor contínua. Conforme o syllabus CTFL 4.0, seção 2.1."
+    },
+    {
+      "id": 59,
+      "question": "Um aplicativo bancário deve calcular juros compostos. O teste que verifica se a fórmula matemática foi implementada corretamente é um exemplo de teste de:",
+      "options": [
+        "Correção funcional",
+        "Usabilidade",
+        "Performance",
+        "Segurança"
+      ],
+      "correctAnswer": "Correção funcional",
+      "explanation": "Correto. O teste funcional avalia se as funções que um componente ou sistema deve executar estão corretas. Verificar a precisão de um cálculo de acordo com as regras de negócio é um exemplo clássico de teste de correção funcional. As outras opções são tipos de testes não funcionais. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 60,
+      "question": "Ao realizar uma revisão de um documento, qual é o papel do 'Moderador'?",
+      "options": [
+        "É o autor do documento que está sendo revisado.",
+        "É responsável por registrar todas as anomalias e decisões da reunião.",
+        "É responsável por garantir o andamento eficaz da reunião, mediar discussões e manter o foco.",
+        "É o gerente que decide qual documento será revisado e aloca os recursos."
+      ],
+      "correctAnswer": "É responsável por garantir o andamento eficaz da reunião, mediar discussões e manter o foco.",
+      "explanation": "Correto. O Moderador (ou facilitador) é o líder da reunião de revisão. Sua função é garantir que o processo de revisão seja seguido corretamente, que o tempo seja gerenciado e que a reunião seja produtiva e colaborativa. O autor é o papel (A), o relator é o papel (B) e o gerente é o papel (D). Conforme o syllabus CTFL 4.0, seção 3.2.3."
+    },
+    {
+      "id": 61,
+      "question": "Se um conjunto de testes alcançou 100% de cobertura de instrução, o que isso implica sobre a qualidade do software?",
+      "options": [
+        "O software está 100% correto e não possui mais defeitos.",
+        "Todas as linhas de código executáveis foram exercitadas, mas isso não garante a ausência de defeitos.",
+        "Todas as decisões lógicas (if/else) foram testadas para ambos os resultados (verdadeiro e falso).",
+        "A performance do software atende a todos os requisitos não funcionais."
+      ],
+      "correctAnswer": "Todas as linhas de código executáveis foram exercitadas, mas isso não garante a ausência de defeitos.",
+      "explanation": "Correto. 100% de cobertura de instrução significa apenas que cada linha de código foi executada pelo menos uma vez. Isso não prova que o código está correto (um defeito pode existir em uma linha executada), nem que todas as decisões foram testadas (C), e não diz nada sobre a qualidade não funcional (D). É uma medida de rigor do teste, não uma prova de qualidade. Conforme o syllabus CTFL 4.0, seção 4.3.1."
+    },
+    {
+      "id": 62,
+      "question": "Em uma equipe ágil, qual documento é usado para gerenciar e priorizar o trabalho a ser feito em todo o projeto?",
+      "options": [
+        "O Plano de Teste",
+        "O Backlog do Produto (Product Backlog)",
+        "O Backlog da Sprint (Sprint Backlog)",
+        "O Relatório de Conclusão de Teste"
+      ],
+      "correctAnswer": "O Backlog do Produto (Product Backlog)",
+      "explanation": "Correto. O Backlog do Produto é a lista mestra, dinâmica e priorizada de tudo o que é conhecido que pode ser necessário no produto. É a única fonte de requisitos para quaisquer mudanças a serem feitas no produto. O Backlog da Sprint (C) é um subconjunto do Backlog do Produto selecionado para uma única sprint."
+    },
+    {
+      "id": 63,
+      "question": "Qual é um dos principais benefícios de se usar a técnica de desenvolvimento orientado por testes de aceite (ATDD)?",
+      "options": [
+        "Elimina a necessidade de comunicação entre testadores, desenvolvedores e stakeholders de negócio.",
+        "Melhora a compreensão compartilhada dos requisitos e cria testes executáveis que validam o comportamento do negócio.",
+        "Garante que 100% do código seja coberto por testes de unidade.",
+        "Foca exclusivamente no teste da interface do usuário (UI) para garantir a melhor experiência."
+      ],
+      "correctAnswer": "Melhora a compreensão compartilhada dos requisitos e cria testes executáveis que validam o comportamento do negócio.",
+      "explanation": "Correto. O ATDD é uma prática colaborativa onde a equipe inteira (negócio, desenvolvimento, teste) define os critérios de aceite na forma de testes antes do desenvolvimento. Isso garante que todos tenham a mesma compreensão do que precisa ser construído e resulta em uma suíte de testes que valida diretamente os requisitos de negócio. Conforme o syllabus CTFL 4.0, seção 4.5.3."
+    },
+    {
+      "id": 64,
+      "question": "Qual é a finalidade de usar a técnica de estimativa 'Planning Poker' em equipes ágeis?",
+      "options": [
+        "Determinar o custo exato em dinheiro para desenvolver cada história de usuário.",
+        "Criar uma competição entre os membros da equipe para ver quem faz a melhor estimativa.",
+        "Fornecer uma estimativa final e inalterável para o esforço de uma tarefa.",
+        "Facilitar uma discussão colaborativa para chegar a um consenso sobre a estimativa de esforço relativo para uma tarefa."
+      ],
+      "correctAnswer": "Facilitar uma discussão colaborativa para chegar a um consenso sobre a estimativa de esforço relativo para uma tarefa.",
+      "explanation": "Correto. O Planning Poker é uma técnica baseada em consenso para estimar o esforço. Ao revelar as estimativas simultaneamente, ele evita que uma pessoa influencie as outras e força a discussão sobre as diferenças, levando a uma compreensão mais profunda e uma estimativa mais precisa. Conforme o syllabus CTFL 4.0, seção 5.1.4."
+    },
+    {
+      "id": 65,
+      "question": "O que é 'testabilidade' (testability)?",
+      "options": [
+        "A quantidade de testes automatizados que cobrem o sistema.",
+        "O grau em que um sistema ou componente facilita o estabelecimento de critérios de teste e a realização de testes para determinar se esses critérios foram atendidos.",
+        "A habilidade de um testador em encontrar defeitos difíceis no software.",
+        "O processo de garantir que o ambiente de teste seja idêntico ao ambiente de produção."
+      ],
+      "correctAnswer": "O grau em que um sistema ou componente facilita o estabelecimento de critérios de teste e a realização de testes para determinar se esses critérios foram atendidos.",
+      "explanation": "Correto. Testabilidade é uma característica de qualidade do software que indica quão fácil (ou difícil) é testá-lo. Um software com alta testabilidade é mais fácil de controlar, observar e analisar durante os testes. Isso é influenciado por fatores como modularidade, instrumentação (logs) e documentação."
+    },
+    {
+      "id": 66,
+      "question": "Qual das seguintes opções melhor descreve o Teste de Portabilidade?",
+      "options": [
+        "Testar se o software pode ser facilmente traduzido para diferentes idiomas.",
+        "Testar se um usuário pode transportar facilmente seus dados de uma versão do software para outra.",
+        "Testar a facilidade com que o software pode ser transferido de um ambiente de hardware ou software para outro.",
+        "Testar se o software é fácil de usar em dispositivos portáteis como smartphones."
+      ],
+      "correctAnswer": "Testar a facilidade com que o software pode ser transferido de um ambiente de hardware ou software para outro.",
+      "explanation": "Correto. O teste de portabilidade é um tipo de teste não funcional que avalia a capacidade do software de ser executado em diferentes ambientes, como sistemas operacionais (Windows, macOS, Linux), navegadores ou configurações de hardware. Conforme o syllabus CTFL 4.0, seção 2.2.2 e a norma ISO/IEC 25010."
+    },
+    {
+      "id": 67,
+      "question": "Qual das seguintes ferramentas de teste seria mais útil para gerenciar o ciclo de vida dos defeitos, desde o seu relato até o fechamento?",
+      "options": [
+        "Uma ferramenta de execução de testes automatizados.",
+        "Uma ferramenta de análise estática de código.",
+        "Uma ferramenta de gerenciamento de defeitos (ou de incidentes).",
+        "Uma ferramenta de teste de performance."
+      ],
+      "correctAnswer": "Uma ferramenta de gerenciamento de defeitos (ou de incidentes).",
+      "explanation": "Correto. Ferramentas de gerenciamento de defeitos (como Jira, Bugzilla) são projetadas especificamente para registrar, rastrear e gerenciar o fluxo de trabalho de defeitos, garantindo que eles não sejam perdidos e que seu status seja visível para toda a equipe. Conforme o syllabus CTFL 4.0, seção 6.1."
+    },
+    {
+      "id": 68,
+      "question": "O que o princípio de teste 'Os defeitos se agrupam' sugere?",
+      "options": [
+        "Que os defeitos são distribuídos uniformemente por todo o software.",
+        "Que um pequeno número de módulos ou componentes geralmente contém a maioria dos defeitos.",
+        "Que corrigir um defeito nunca introduzirá outros defeitos.",
+        "Que todos os defeitos encontrados em um módulo terão a mesma severidade."
+      ],
+      "correctAnswer": "Que um pequeno número de módulos ou componentes geralmente contém a maioria dos defeitos.",
+      "explanation": "Correto. Este princípio, relacionado ao Princípio de Pareto (80/20), observa que a maioria dos defeitos tende a se concentrar em uma pequena parte do sistema. Isso ajuda as equipes de teste a focar seus esforços nas áreas mais problemáticas. Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 69,
+      "question": "No final de um projeto, a equipe de teste arquiva o testware (planos, casos de teste, scripts) e documenta as lições aprendidas. Esta atividade pertence a qual grupo do processo de teste?",
+      "options": [
+        "Planejamento de Teste",
+        "Execução de Teste",
+        "Monitoramento e Controle de Teste",
+        "Atividades de Conclusão de Teste"
+      ],
+      "correctAnswer": "Atividades de Conclusão de Teste",
+      "explanation": "Correto. As atividades de conclusão de teste ocorrem em marcos do projeto, como o final de um ciclo de liberação. Elas incluem a consolidação e arquivamento do testware, a elaboração de um relatório de conclusão de teste e a análise das lições aprendidas para melhorar processos futuros. Conforme o syllabus CTFL 4.0, seção 1.4.1."
+    },
+    {
+      "id": 70,
+      "question": "Qual é a principal motivação para usar abordagens de teste baseadas em risco?",
+      "options": [
+        "Garantir que 100% do software seja testado com o mesmo nível de rigor.",
+        "Eliminar completamente a necessidade de testes de regressão.",
+        "Concentrar o esforço de teste nas áreas do produto que apresentam o maior risco de falha e o maior impacto para o negócio.",
+        "Testar apenas as funcionalidades que foram solicitadas diretamente pelo cliente."
+      ],
+      "correctAnswer": "Concentrar o esforço de teste nas áreas do produto que apresentam o maior risco de falha e o maior impacto para o negócio.",
+      "explanation": "Correto. Como o teste exaustivo é impossível, o teste baseado em risco fornece uma abordagem pragmática para priorizar e focar os recursos de teste limitados. As áreas de maior risco são testadas mais intensamente, otimizando o retorno sobre o investimento em teste. Conforme o syllabus CTFL 4.0, seção 5.2."
+    },
+    {
+      "id": 71,
+      "question": "Qual a diferença fundamental entre teste estático e teste dinâmico?",
+      "options": [
+        "O teste estático é sempre manual, enquanto o dinâmico é sempre automatizado.",
+        "O teste estático é realizado no início do projeto, e o dinâmico no final.",
+        "O teste estático examina os produtos de trabalho (código, requisitos) sem executá-los, enquanto o teste dinâmico requer a execução do software.",
+        "O teste estático encontra apenas defeitos de documentação, enquanto o dinâmico encontra apenas defeitos de codificação."
+      ],
+      "correctAnswer": "O teste estático examina os produtos de trabalho (código, requisitos) sem executá-los, enquanto o teste dinâmico requer a execução do software.",
+      "explanation": "Correto. Esta é a definição central da diferença. Teste estático inclui revisões e análise estática de código. Teste dinâmico envolve a execução do software para observar seu comportamento e comparar com os resultados esperados. Conforme o syllabus CTFL 4.0, seção 3.1.3."
+    },
+    {
+      "id": 72,
+      "question": "Um sistema de caixa eletrônico permite sacar, depositar e verificar o saldo. Após uma atualização para adicionar a função de pagamento de contas, a equipe executa testes para garantir que as funções de saque, depósito e verificação de saldo ainda funcionam corretamente. Que tipo de teste é esse?",
+      "options": [
+        "Teste de confirmação",
+        "Teste de novas funcionalidades",
+        "Teste de regressão",
+        "Teste de sistema"
+      ],
+      "correctAnswer": "Teste de regressão",
+      "explanation": "Correto. O teste de regressão é realizado para garantir que as alterações (neste caso, a adição de uma nova funcionalidade) não impactaram negativamente as funcionalidades existentes e que continuam a funcionar como esperado. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 73,
+      "question": "Qual das seguintes afirmações sobre o Teste de Aceite do Usuário (UAT) é a mais precisa?",
+      "options": [
+        "O UAT é realizado principalmente para medir a performance do sistema sob carga.",
+        "O objetivo do UAT é validar se o sistema é adequado para uso e atende às necessidades do negócio a partir da perspectiva do usuário.",
+        "O UAT é sempre a primeira fase de teste realizada em um projeto de software.",
+        "O UAT é realizado pelos desenvolvedores para garantir que a cobertura de código seja de 100%."
+      ],
+      "correctAnswer": "O objetivo do UAT é validar se o sistema é adequado para uso e atende às necessidades do negócio a partir da perspectiva do usuário.",
+      "explanation": "Correto. O Teste de Aceite do Usuário é a fase de validação final, onde os usuários de negócio verificam se o sistema atende aos seus requisitos e processos de trabalho em um ambiente que simula a produção. É a última verificação antes do software ser liberado. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 74,
+      "question": "Um testador está avaliando a facilidade com que novos usuários conseguem aprender a usar um software e a eficiência com que realizam tarefas comuns. Que tipo de teste está sendo realizado?",
+      "options": [
+        "Teste de Segurança",
+        "Teste de Performance",
+        "Teste de Compatibilidade",
+        "Teste de Usabilidade"
+      ],
+      "correctAnswer": "Teste de Usabilidade",
+      "explanation": "Correto. O teste de usabilidade foca em quão fácil, eficiente e satisfatório é usar um produto. As atividades descritas, como avaliar a curva de aprendizado e a eficiência na realização de tarefas, são centrais para o teste de usabilidade. Conforme o syllabus CTFL 4.0, seção 2.2.2 e a norma ISO/IEC 25010."
+    },
+    {
+      "id": 75,
+      "question": "Qual das seguintes opções é uma desvantagem potencial de um alto nível de independência da equipe de teste?",
+      "options": [
+        "A equipe de teste pode encontrar mais defeitos devido à sua objetividade.",
+        "A equipe de teste pode se tornar um gargalo ou ser isolada da equipe de desenvolvimento, prejudicando a colaboração.",
+        "Os desenvolvedores podem se sentir mais responsáveis pela qualidade do seu próprio trabalho.",
+        "A equipe de teste pode validar suposições que os desenvolvedores fizeram durante a implementação."
+      ],
+      "correctAnswer": "A equipe de teste pode se tornar um gargalo ou ser isolada da equipe de desenvolvimento, prejudicando a colaboração.",
+      "explanation": "Correto. Embora a independência traga objetividade (opções A e D são benefícios), uma desvantagem é o risco de isolamento. Se a comunicação for pobre, a equipe de teste pode se tornar um gargalo, e uma relação adversária pode surgir entre testadores e desenvolvedores. Conforme o syllabus CTFL 4.0, seção 1.5.3."
+    },
+    {
+      "id": 76,
+      "question": "Um site de viagens calcula o preço de um pacote com base no destino, número de noites e classe do hotel. Se houver 5 destinos, 3 opções de duração e 4 classes de hotel, quantas combinações de teste seriam necessárias para testar exaustivamente todas as opções?",
+      "options": [
+        "12",
+        "20",
+        "60",
+        "24"
+      ],
+      "correctAnswer": "60",
+      "explanation": "Correto. Para testar exaustivamente todas as combinações de parâmetros independentes, você multiplica o número de opções para cada parâmetro. Neste caso, 5 destinos * 3 durações * 4 classes de hotel = 60 combinações. Isso ilustra por que o teste exaustivo é geralmente impossível e por que técnicas como o particionamento de equivalência são necessárias."
+    },
+    {
+      "id": 77,
+      "question": "Qual é a principal saída (output) da atividade de 'Análise de Teste'?",
+      "options": [
+        "Casos de teste detalhados e prontos para execução.",
+        "Scripts de teste automatizados.",
+        "Um relatório de conclusão de teste.",
+        "Condições de teste identificadas e priorizadas."
+      ],
+      "correctAnswer": "Condições de teste identificadas e priorizadas.",
+      "explanation": "Correto. A atividade de Análise de Teste foca em revisar a base de teste (e.g., requisitos) para identificar 'o que' precisa ser testado. O resultado são as condições de teste (itens ou eventos que podem ser verificados). A criação de casos de teste detalhados (A) ocorre na fase de 'Projeto de Teste'. Conforme o syllabus CTFL 4.0, seção 1.4.1."
+    },
+    {
+      "id": 78,
+      "question": "Qual das seguintes afirmações melhor descreve o Desenvolvimento Orientado por Teste (TDD)?",
+      "options": [
+        "Uma abordagem onde os testes de aceitação são escritos antes do desenvolvimento para guiar a implementação da funcionalidade.",
+        "Uma prática de desenvolvimento onde um desenvolvedor escreve um pequeno teste de unidade automatizado que falha, depois escreve o código de produção para fazê-lo passar, e então refatora o código.",
+        "Uma abordagem onde os testes são orientados pelo comportamento esperado do software, usando uma linguagem natural como Gherkin (Dado/Quando/Então).",
+        "Uma metodologia onde a equipe de teste é responsável por escrever todos os testes antes que qualquer código seja desenvolvido."
+      ],
+      "correctAnswer": "Uma prática de desenvolvimento onde um desenvolvedor escreve um pequeno teste de unidade automatizado que falha, depois escreve o código de produção para fazê-lo passar, e então refatora o código.",
+      "explanation": "Correto. TDD é um ciclo de desenvolvimento conhecido como 'Red-Green-Refactor'. O foco está em usar testes de unidade para guiar o projeto do código em pequenos passos. A opção A descreve o ATDD. A opção C descreve o BDD. Conforme o syllabus CTFL 4.0, seção 2.1.3."
+    },
+    {
+      "id": 79,
+      "question": "No final de uma iteração Ágil, a equipe demonstra o incremento de software funcional para o Product Owner e outros stakeholders. Como se chama essa cerimônia?",
+      "options": [
+        "Retrospectiva da Sprint (Sprint Retrospective)",
+        "Reunião Diária (Daily Stand-up)",
+        "Planejamento da Sprint (Sprint Planning)",
+        "Revisão da Sprint (Sprint Review)"
+      ],
+      "correctAnswer": "Revisão da Sprint (Sprint Review)",
+      "explanation": "Correto. A Revisão da Sprint (Sprint Review) é a cerimônia realizada no final da sprint para inspecionar o incremento e adaptar o Backlog do Produto se necessário. É uma sessão informal, não uma demonstração de status, onde a equipe colabora com os stakeholders sobre o que foi feito. A Retrospectiva (A) é para melhorar o processo da equipe."
+    },
+    {
+      "id": 80,
+      "question": "Um sistema de RH deve gerar um alerta se um funcionário se aproxima de 40 horas de trabalho na semana. O alerta deve ser gerado exatamente quando o total atinge 38 horas. Qual técnica de teste é a mais indicada para verificar este requisito específico?",
+      "options": [
+        "Teste Exploratório",
+        "Análise de Valor Limite (BVA)",
+        "Particionamento de Equivalência (EP)",
+        "Teste de Tabela de Decisão"
+      ],
+      "correctAnswer": "Análise de Valor Limite (BVA)",
+      "explanation": "Correto. O requisito define um limite claro (38 horas). A Análise de Valor Limite é a técnica mais eficaz para testar em torno deste ponto. Os testes focariam em valores como 37.9, 38.0 e 38.1 horas para garantir que o comportamento mude exatamente no limite especificado. Conforme o syllabus CTFL 4.0, seção 4.2.2."
+    },
+    {
+      "id": 81,
+      "question": "A capacidade de um software ser modificado para correções, melhorias ou adaptações a mudanças no ambiente ou nos requisitos é conhecida como:",
+      "options": [
+        "Confiabilidade",
+        "Usabilidade",
+        "Manutenibilidade",
+        "Portabilidade"
+      ],
+      "correctAnswer": "Manutenibilidade",
+      "explanation": "Correto. Manutenibilidade é uma característica de qualidade não funcional que se refere à facilidade com que um software pode ser mantido (corrigido, melhorado, adaptado). Um código bem estruturado, modular e bem documentado geralmente tem alta manutenibilidade. Conforme a norma ISO/IEC 25010, citada no syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 82,
+      "question": "Qual das seguintes é uma das principais atividades do CONTROLE de teste?",
+      "options": [
+        "Coletar métricas e comparar o progresso real com o planejado.",
+        "Tomar ações corretivas com base nas informações do monitoramento para realinhar o projeto com seus objetivos.",
+        "Escrever o plano de teste inicial para o projeto.",
+        "Arquivar o testware no final do projeto."
+      ],
+      "correctAnswer": "Tomar ações corretivas com base nas informações do monitoramento para realinhar o projeto com seus objetivos.",
+      "explanation": "Correto. O processo de gerenciamento de teste consiste em monitoramento e controle. O monitoramento (A) é a coleta de dados. O controle é a parte da ação: com base nesses dados, o gerente de teste toma decisões e ações para ajustar o plano, re-priorizar testes, alocar mais recursos, etc., para garantir que os objetivos do teste sejam alcançados. Conforme o syllabus CTFL 4.0, seção 5.3."
+    },
+    {
+      "id": 83,
+      "question": "Qual é um dos principais benefícios do feedback inicial e frequente em projetos ágeis?",
+      "options": [
+        "Garante que o orçamento do projeto nunca será excedido.",
+        "Evita mal-entendidos nos requisitos, permitindo correções de curso mais cedo e com menor custo.",
+        "Elimina a necessidade de documentação do projeto.",
+        "Permite que a equipe de teste trabalhe de forma completamente independente da equipe de desenvolvimento."
+      ],
+      "correctAnswer": "Evita mal-entendidos nos requisitos, permitindo correções de curso mais cedo e com menor custo.",
+      "explanation": "Correto. Em projetos ágeis, o software é entregue em pequenos incrementos, o que permite que os stakeholders forneçam feedback em cada iteração. Isso ajuda a garantir que o produto que está sendo construído está alinhado com as necessidades reais e permite que quaisquer desvios sejam corrigidos rapidamente. Conforme o syllabus CTFL-AT, seção 1.1.3."
+    },
+    {
+      "id": 84,
+      "question": "Qual é o principal foco do Teste de Segurança?",
+      "options": [
+        "Garantir que o sistema seja fácil de usar para todos os tipos de usuários.",
+        "Avaliar a robustez do sistema, sua resiliência a falhas e a proteção de dados contra ameaças.",
+        "Verificar se o sistema funciona corretamente em diferentes navegadores e sistemas operacionais.",
+        "Medir o tempo de resposta do sistema sob condições de carga específicas."
+      ],
+      "correctAnswer": "Avaliar a robustez do sistema, sua resiliência a falhas e a proteção de dados contra ameaças.",
+      "explanation": "Correto. O teste de segurança é um tipo de teste não funcional que se concentra em identificar vulnerabilidades e garantir que o sistema proteja os dados e mantenha sua funcionalidade contra intenções maliciosas. Isso inclui testar a confidencialidade, integridade, autenticação, etc. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 85,
+      "question": "Em um walkthrough, quem normalmente lidera a reunião?",
+      "options": [
+        "O gerente do projeto.",
+        "Um moderador treinado e neutro.",
+        "O autor do produto de trabalho que está sendo revisado.",
+        "O testador mais sênior da equipe."
+      ],
+      "correctAnswer": "O autor do produto de trabalho que está sendo revisado.",
+      "explanation": "Correto. Diferente de uma inspeção, que é liderada por um moderador, um walkthrough é tipicamente conduzido pelo próprio autor. O objetivo muitas vezes é educar a equipe sobre o conteúdo, obter feedback e buscar consenso, além de encontrar defeitos. Conforme o syllabus CTFL 4.0, seção 3.2.4."
+    },
+    {
+      "id": 86,
+      "question": "Qual das seguintes afirmações sobre testes estáticos é FALSA?",
+      "options": [
+        "Testes estáticos podem encontrar defeitos que são difíceis de encontrar com testes dinâmicos.",
+        "Testes estáticos podem ser aplicados no início do ciclo de vida, antes da execução do código.",
+        "Testes estáticos podem encontrar falhas de performance no software.",
+        "Testes estáticos incluem revisões e análise estática."
+      ],
+      "correctAnswer": "Testes estáticos podem encontrar falhas de performance no software.",
+      "explanation": "Correto. Esta afirmação é falsa. Testes estáticos analisam o código e outros documentos sem executá-los. Portanto, eles não podem encontrar falhas que dependem da execução, como problemas de performance (e.g., tempo de resposta lento). Falhas de performance são encontradas através de testes dinâmicos. Conforme o syllabus CTFL 4.0, seção 3.1.3."
+    },
+    {
+      "id": 87,
+      "question": "A afirmação 'Indivíduos e interações mais que processos e ferramentas' é um dos valores de qual documento?",
+      "options": [
+        "A norma ISO 9001",
+        "O Guia PMBOK",
+        "O Manifesto Ágil",
+        "O syllabus do ISTQB Foundation Level"
+      ],
+      "correctAnswer": "O Manifesto Ágil",
+      "explanation": "Correto. Esta é uma das quatro declarações de valor do Manifesto para Desenvolvimento Ágil de Software. Ela enfatiza a importância da comunicação e colaboração humana sobre a adesão rígida a processos e a dependência de ferramentas. Conforme o syllabus CTFL-AT, seção 1.1.1."
+    },
+    {
+      "id": 88,
+      "question": "Qual dos seguintes seria um bom candidato para automação de testes?",
+      "options": [
+        "Testes de usabilidade que requerem feedback subjetivo de um usuário.",
+        "Testes exploratórios que dependem da intuição e criatividade do testador.",
+        "Testes de regressão estáveis que precisam ser executados repetidamente a cada nova build.",
+        "Um novo recurso complexo que está sendo testado pela primeira vez e cujos requisitos ainda estão mudando."
+      ],
+      "correctAnswer": "Testes de regressão estáveis que precisam ser executados repetidamente a cada nova build.",
+      "explanation": "Correto. Os melhores candidatos para automação são testes repetitivos, que consomem muito tempo manualmente e que testam funcionalidades estáveis. Testes de regressão se encaixam perfeitamente nesse perfil. Testes que requerem julgamento humano (A, B) ou que testam funcionalidades instáveis (D) não são bons candidatos para automação. Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 89,
+      "question": "Um testador está analisando um documento de requisitos para identificar ambiguidades, omissões e contradições. Que tipo de teste ele está realizando?",
+      "options": [
+        "Teste de caixa-preta",
+        "Teste de caixa-branca",
+        "Teste dinâmico",
+        "Teste estático"
+      ],
+      "correctAnswer": "Teste estático",
+      "explanation": "Correto. O testador está realizando um teste estático, especificamente uma revisão. O teste estático envolve o exame de produtos de trabalho sem executá-los. Isso pode ser feito em qualquer fase do ciclo de vida e é uma forma eficaz de encontrar defeitos precocemente. Conforme o syllabus CTFL 4.0, capítulo 3."
+    },
+    {
+      "id": 90,
+      "question": "O que o termo 'Definição de Feito' (Definition of Done - DoD) significa em um contexto Ágil?",
+      "options": [
+        "A data final em que o projeto deve ser entregue ao cliente.",
+        "Uma lista de critérios acordada pela equipe que uma história de usuário deve atender para ser considerada completa.",
+        "O momento em que todos os testes para uma sprint foram executados, independentemente dos resultados.",
+        "Uma lista de pré-requisitos que uma história de usuário deve ter antes de poder ser incluída em uma sprint."
+      ],
+      "correctAnswer": "Uma lista de critérios acordada pela equipe que uma história de usuário deve atender para ser considerada completa.",
+      "explanation": "Correto. A 'Definição de Feito' é uma checklist compartilhada de atividades necessárias para que um incremento de produto seja considerado 'liberável'. Isso cria transparência e garante que todos na equipe tenham o mesmo entendimento sobre qualidade e completude. A opção D descreve a 'Definição de Pronto' (Definition of Ready). Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 91,
+      "question": "Qual das seguintes afirmações melhor descreve o Teste de Integração 'Big Bang'?",
+      "options": [
+        "Os componentes são integrados e testados um a um, de baixo para cima.",
+        "Os componentes são integrados e testados um a um, de cima para baixo, usando stubs.",
+        "Todos ou a maioria dos componentes são integrados de uma só vez e então testados como um todo.",
+        "A integração é feita continuamente a cada novo commit de código."
+      ],
+      "correctAnswer": "Todos ou a maioria dos componentes são integrados de uma só vez e então testados como um todo.",
+      "explanation": "Correto. A abordagem 'Big Bang' espera que todos os componentes estejam desenvolvidos para então integrá-los e testá-los juntos. A principal desvantagem é que é muito difícil localizar a causa das falhas, pois elas podem estar em qualquer um dos componentes ou em suas interfaces."
+    },
+    {
+      "id": 92,
+      "question": "O que são 'stubs' e 'drivers' no contexto de testes de integração?",
+      "options": [
+        "Stubs são os casos de teste e drivers são os resultados dos testes.",
+        "Stubs e drivers são componentes de software simulados usados para facilitar o teste de outros componentes de forma isolada.",
+        "Stubs são ferramentas de teste de performance e drivers são ferramentas de teste de segurança.",
+        "Stubs são defeitos de alta prioridade e drivers são defeitos de baixa prioridade."
+      ],
+      "correctAnswer": "Stubs e drivers são componentes de software simulados usados para facilitar o teste de outros componentes de forma isolada.",
+      "explanation": "Correto. Stubs e drivers são tipos de 'harnesses' de teste. Um 'driver' chama o componente que está sendo testado (usado em abordagens bottom-up). Um 'stub' é chamado pelo componente que está sendo testado, simulando o comportamento de um módulo ainda não desenvolvido (usado em abordagens top-down). Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 93,
+      "question": "Qual é a principal função de um 'Relatório de Conclusão de Teste'?",
+      "options": [
+        "Fornecer um status diário do progresso da execução dos testes.",
+        "Resumir todas as atividades e resultados de uma fase de teste ou de um projeto, e fornecer uma avaliação da qualidade do objeto de teste.",
+        "Listar detalhadamente todos os casos de teste que serão executados na próxima fase de teste.",
+        "Descrever os passos para reproduzir um defeito específico encontrado pela equipe."
+      ],
+      "correctAnswer": "Resumir todas as atividades e resultados de uma fase de teste ou de um projeto, e fornecer uma avaliação da qualidade do objeto de teste.",
+      "explanation": "Correto. O Relatório de Conclusão de Teste é gerado no final de um nível de teste ou do projeto. Ele resume o que foi testado, os resultados obtidos, os desvios do plano, as métricas finais (como cobertura e defeitos restantes) e fornece uma avaliação geral da confiança na qualidade do produto. Conforme o syllabus CTFL 4.0, seção 5.3.2."
+    },
+    {
+      "id": 94,
+      "question": "Qual das seguintes opções é uma característica do teste de caixa-preta?",
+      "options": [
+        "Os casos de teste são derivados da estrutura interna do software.",
+        "O objetivo principal é alcançar 100% de cobertura de ramificação.",
+        "O testador não precisa ter conhecimento da implementação interna para projetar os testes.",
+        "É usado principalmente para encontrar vazamentos de memória e problemas de performance."
+      ],
+      "correctAnswer": "O testador não precisa ter conhecimento da implementação interna para projetar os testes.",
+      "explanation": "Correto. O teste de caixa-preta (ou comportamental) foca no comportamento externo do software. Os casos de teste são derivados da base de teste (requisitos, especificações) sem qualquer conhecimento de como o sistema é implementado internamente. Conforme o syllabus CTFL 4.0, seção 4.2."
+    },
+    {
+      "id": 95,
+      "question": "Em um projeto de software, a equipe decide que o desenvolvimento de uma história de usuário só pode começar se ela tiver critérios de aceite claros e for pequena o suficiente para ser concluída em uma sprint. Como é chamado este conjunto de critérios?",
+      "options": [
+        "Definição de Feito (Definition of Done)",
+        "Critérios de Saída (Exit Criteria)",
+        "Escopo do Projeto",
+        "Definição de Pronto (Definition of Ready)"
+      ],
+      "correctAnswer": "Definição de Pronto (Definition of Ready)",
+      "explanation": "Correto. A 'Definição de Pronto' é uma checklist de critérios que uma história de usuário deve atender antes de ser considerada pronta para ser puxada para o desenvolvimento em uma sprint. Isso garante que a equipe tenha tudo o que precisa para começar a trabalhar sem impedimentos. A 'Definição de Feito' (A) refere-se aos critérios para considerar uma história como concluída. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 96,
+      "question": "O que é 'diligência de teste' (test thoroughness)?",
+      "options": [
+        "A velocidade com que os testes são executados pela equipe.",
+        "A quantidade de dinheiro gasta em ferramentas de automação de teste.",
+        "O grau em que um conjunto de testes cobriu o produto, medido em relação a um critério de cobertura definido.",
+        "A experiência e habilidade geral da equipe de teste."
+      ],
+      "correctAnswer": "O grau em que um conjunto de testes cobriu o produto, medido em relação a um critério de cobertura definido.",
+      "explanation": "Correto. Diligência ou rigor de teste se refere a quão completamente o software foi testado. Isso é frequentemente medido usando métricas de cobertura, como porcentagem de requisitos cobertos, porcentagem de cobertura de código (instrução, ramificação), etc. Uma maior diligência geralmente leva a uma maior confiança na qualidade."
+    },
+    {
+      "id": 97,
+      "question": "Qual das seguintes afirmações sobre o Teste de Performance é VERDADEIRA?",
+      "options": [
+        "É um tipo de teste funcional que verifica se os cálculos de performance estão corretos.",
+        "É um tipo de teste não funcional que avalia a estabilidade e o tempo de resposta do sistema sob uma carga de trabalho específica.",
+        "Geralmente é a primeira atividade de teste realizada em um projeto, antes mesmo do teste de componente.",
+        "Seu principal objetivo é encontrar defeitos de segurança no sistema."
+      ],
+      "correctAnswer": "É um tipo de teste não funcional que avalia a estabilidade e o tempo de resposta do sistema sob uma carga de trabalho específica.",
+      "explanation": "Correto. O teste de performance (que inclui teste de carga, estresse, escalabilidade) é um tipo de teste não funcional que mede como o sistema se comporta em termos de responsividade e estabilidade sob várias cargas. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 98,
+      "question": "Um desenvolvedor corrige um defeito que causava um crash no sistema. A equipe de teste executa o caso de teste original que encontrou o defeito para verificar se ele não ocorre mais. Como se chama esta atividade?",
+      "options": [
+        "Teste de Regressão",
+        "Teste de Confirmação (Re-teste)",
+        "Teste de Sistema",
+        "Teste de Fumaça"
+      ],
+      "correctAnswer": "Teste de Confirmação (Re-teste)",
+      "explanation": "Correto. O teste de confirmação é executado especificamente para verificar se uma correção de defeito foi bem-sucedida. Após o teste de confirmação ser aprovado, a equipe normalmente executaria testes de regressão (A) para verificar se a correção não introduziu novos problemas. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 99,
+      "question": "Qual das seguintes opções é uma técnica de teste de caixa-branca?",
+      "options": [
+        "Particionamento de Equivalência",
+        "Análise de Valor Limite",
+        "Cobertura de Decisão (Ramificação)",
+        "Teste de Casos de Uso"
+      ],
+      "correctAnswer": "Cobertura de Decisão (Ramificação)",
+      "explanation": "Correto. A cobertura de decisão é uma técnica de teste de caixa-branca (estrutural) porque requer conhecimento da estrutura interna do código para garantir que todos os resultados de todas as decisões (e.g., if-then-else) sejam testados. As outras opções são técnicas de teste de caixa-preta (comportamental). Conforme o syllabus CTFL 4.0, seção 4.3.2."
+    },
+    {
+      "id": 100,
+      "question": "Qual o principal benefício de realizar revisões (um tipo de teste estático) em documentos de requisitos?",
+      "options": [
+        "Medir o tempo de resposta do sistema que será construído.",
+        "Encontrar e remover ambiguidades, omissões e inconsistências antes do início do desenvolvimento, o que é muito mais barato.",
+        "Garantir que todos os desenvolvedores tenham lido e entendido os requisitos.",
+        "Automatizar a validação dos requisitos para acelerar o processo."
+      ],
+      "correctAnswer": "Encontrar e remover ambiguidades, omissões e inconsistências antes do início do desenvolvimento, o que é muito mais barato.",
+      "explanation": "Correto. O principal benefício do teste estático, especialmente no início do ciclo de vida, é a prevenção de defeitos. Encontrar um problema em um documento de requisitos é ordens de magnitude mais barato de corrigir do que encontrar o mesmo problema lógico no software já implementado. Conforme o syllabus CTFL 4.0, seção 3.1.2."
+    },
+    {
+      "id": 101,
+      "question": "Qual dos seguintes é um benefício chave da automação de testes?",
+      "options": [
+        "A automação de testes pode encontrar todos os tipos de defeitos, incluindo os de usabilidade.",
+        "A automação de testes elimina completamente a necessidade de testes manuais.",
+        "A automação é ideal para executar testes de regressão repetitivos de forma rápida e consistente.",
+        "O custo inicial para implementar a automação de testes é sempre menor do que o custo do teste manual."
+      ],
+      "correctAnswer": "A automação é ideal para executar testes de regressão repetitivos de forma rápida e consistente.",
+      "explanation": "Correto. Um dos maiores benefícios da automação é sua capacidade de executar grandes conjuntos de testes repetitivos (como os de regressão) de forma muito mais rápida e confiável do que um ser humano. Isso libera os testadores manuais para se concentrarem em atividades mais exploratórias e criativas. A automação não é boa para todos os tipos de defeitos (A), não elimina o teste manual (B) e geralmente tem um custo inicial alto (D). Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 102,
+      "question": "Um testador está analisando um documento de requisitos para identificar ambiguidades, omissões e contradições. Que tipo de teste ele está realizando?",
+      "options": [
+        "Teste de caixa-preta",
+        "Teste de caixa-branca",
+        "Teste dinâmico",
+        "Teste estático"
+      ],
+      "correctAnswer": "Teste estático",
+      "explanation": "Correto. O testador está realizando um teste estático, especificamente uma revisão. O teste estático envolve o exame de produtos de trabalho sem executá-los. Isso pode ser feito em qualquer fase do ciclo de vida e é uma forma eficaz de encontrar defeitos precocemente. Conforme o syllabus CTFL 4.0, capítulo 3."
+    },
+    {
+      "id": 103,
+      "question": "O que o termo 'Definição de Feito' (Definition of Done - DoD) significa em um contexto Ágil?",
+      "options": [
+        "A data final em que o projeto deve ser entregue ao cliente.",
+        "Uma lista de critérios acordada pela equipe que uma história de usuário deve atender para ser considerada completa.",
+        "O momento em que todos os testes para uma sprint foram executados, independentemente dos resultados.",
+        "Uma lista de pré-requisitos que uma história de usuário deve ter antes de poder ser incluída em uma sprint."
+      ],
+      "correctAnswer": "Uma lista de critérios acordada pela equipe que uma história de usuário deve atender para ser considerada completa.",
+      "explanation": "Correto. A 'Definição de Feito' é uma checklist compartilhada de atividades necessárias para que um incremento de produto seja considerado 'liberável'. Isso cria transparência e garante que todos na equipe tenham o mesmo entendimento sobre qualidade e completude. A opção D descreve a 'Definição de Pronto' (Definition of Ready). Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 104,
+      "question": "Qual das seguintes afirmações melhor descreve o Teste de Integração 'Big Bang'?",
+      "options": [
+        "Os componentes são integrados e testados um a um, de baixo para cima.",
+        "Os componentes são integrados e testados um a um, de cima para baixo, usando stubs.",
+        "Todos ou a maioria dos componentes são integrados de uma só vez e então testados como um todo.",
+        "A integração é feita continuamente a cada novo commit de código."
+      ],
+      "correctAnswer": "Todos ou a maioria dos componentes são integrados de uma só vez e então testados como um todo.",
+      "explanation": "Correto. A abordagem 'Big Bang' espera que todos os componentes estejam desenvolvidos para então integrá-los e testá-los juntos. A principal desvantagem é que é muito difícil localizar a causa das falhas, pois elas podem estar em qualquer um dos componentes ou em suas interfaces."
+    },
+    {
+      "id": 105,
+      "question": "O que são 'stubs' e 'drivers' no contexto de testes de integração?",
+      "options": [
+        "Stubs são os casos de teste e drivers são os resultados dos testes.",
+        "Stubs e drivers são componentes de software simulados usados para facilitar o teste de outros componentes de forma isolada.",
+        "Stubs são ferramentas de teste de performance e drivers são ferramentas de teste de segurança.",
+        "Stubs são defeitos de alta prioridade e drivers são defeitos de baixa prioridade."
+      ],
+      "correctAnswer": "Stubs e drivers são componentes de software simulados usados para facilitar o teste de outros componentes de forma isolada.",
+      "explanation": "Correto. Stubs e drivers são tipos de 'harnesses' de teste. Um 'driver' chama o componente que está sendo testado (usado em abordagens bottom-up). Um 'stub' é chamado pelo componente que está sendo testado, simulando o comportamento de um módulo ainda não desenvolvido (usado em abordagens top-down). Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 106,
+      "question": "Qual é a principal função de um 'Relatório de Conclusão de Teste'?",
+      "options": [
+        "Fornecer um status diário do progresso da execução dos testes.",
+        "Resumir todas as atividades e resultados de uma fase de teste ou de um projeto, e fornecer uma avaliação da qualidade do objeto de teste.",
+        "Listar detalhadamente todos os casos de teste que serão executados na próxima fase de teste.",
+        "Descrever os passos para reproduzir um defeito específico encontrado pela equipe."
+      ],
+      "correctAnswer": "Resumir todas as atividades e resultados de uma fase de teste ou de um projeto, e fornecer uma avaliação da qualidade do objeto de teste.",
+      "explanation": "Correto. O Relatório de Conclusão de Teste é gerado no final de um nível de teste ou do projeto. Ele resume o que foi testado, os resultados obtidos, os desvios do plano, as métricas finais (como cobertura e defeitos restantes) e fornece uma avaliação geral da confiança na qualidade do produto. Conforme o syllabus CTFL 4.0, seção 5.3.2."
+    },
+    {
+      "id": 107,
+      "question": "Qual das seguintes opções é uma característica do teste de caixa-preta?",
+      "options": [
+        "Os casos de teste são derivados da estrutura interna do software.",
+        "O objetivo principal é alcançar 100% de cobertura de ramificação.",
+        "O testador não precisa ter conhecimento da implementação interna para projetar os testes.",
+        "É usado principalmente para encontrar vazamentos de memória e problemas de performance."
+      ],
+      "correctAnswer": "O testador não precisa ter conhecimento da implementação interna para projetar os testes.",
+      "explanation": "Correto. O teste de caixa-preta (ou comportamental) foca no comportamento externo do software. Os casos de teste são derivados da base de teste (requisitos, especificações) sem qualquer conhecimento de como o sistema é implementado internamente. Conforme o syllabus CTFL 4.0, seção 4.2."
+    },
+    {
+      "id": 108,
+      "question": "Em um projeto de software, a equipe decide que o desenvolvimento de uma história de usuário só pode começar se ela tiver critérios de aceite claros e for pequena o suficiente para ser concluída em uma sprint. Como é chamado este conjunto de critérios?",
+      "options": [
+        "Definição de Feito (Definition of Done)",
+        "Critérios de Saída (Exit Criteria)",
+        "Escopo do Projeto",
+        "Definição de Pronto (Definition of Ready)"
+      ],
+      "correctAnswer": "Definição de Pronto (Definition of Ready)",
+      "explanation": "Correto. A 'Definição de Pronto' é uma checklist de critérios que uma história de usuário deve atender antes de ser considerada pronta para ser puxada para o desenvolvimento em uma sprint. Isso garante que a equipe tenha tudo o que precisa para começar a trabalhar sem impedimentos. A 'Definição de Feito' (A) refere-se aos critérios para considerar uma história como concluída. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 109,
+      "question": "O que é 'diligência de teste' (test thoroughness)?",
+      "options": [
+        "A velocidade com que os testes são executados pela equipe.",
+        "A quantidade de dinheiro gasta em ferramentas de automação de teste.",
+        "O grau em que um conjunto de testes cobriu o produto, medido em relação a um critério de cobertura definido.",
+        "A experiência e habilidade geral da equipe de teste."
+      ],
+      "correctAnswer": "O grau em que um conjunto de testes cobriu o produto, medido em relação a um critério de cobertura definido.",
+      "explanation": "Correto. Diligência ou rigor de teste se refere a quão completamente o software foi testado. Isso é frequentemente medido usando métricas de cobertura, como porcentagem de requisitos cobertos, porcentagem de cobertura de código (instrução, ramificação), etc. Uma maior diligência geralmente leva a uma maior confiança na qualidade."
+    },
+    {
+      "id": 110,
+      "question": "Qual das seguintes afirmações sobre o Teste de Performance é VERDADEIRA?",
+      "options": [
+        "É um tipo de teste funcional que verifica se os cálculos de performance estão corretos.",
+        "É um tipo de teste não funcional que avalia a estabilidade e o tempo de resposta do sistema sob uma carga de trabalho específica.",
+        "Geralmente é a primeira atividade de teste realizada em um projeto, antes mesmo do teste de componente.",
+        "Seu principal objetivo é encontrar defeitos de segurança no sistema."
+      ],
+      "correctAnswer": "É um tipo de teste não funcional que avalia a estabilidade e o tempo de resposta do sistema sob uma carga de trabalho específica.",
+      "explanation": "Correto. O teste de performance (que inclui teste de carga, estresse, escalabilidade) é um tipo de teste não funcional que mede como o sistema se comporta em termos de responsividade e estabilidade sob várias cargas. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 111,
+      "question": "Um desenvolvedor corrige um defeito que causava um crash no sistema. A equipe de teste executa o caso de teste original que encontrou o defeito para verificar se ele não ocorre mais. Como se chama esta atividade?",
+      "options": [
+        "Teste de Regressão",
+        "Teste de Confirmação (Re-teste)",
+        "Teste de Sistema",
+        "Teste de Fumaça"
+      ],
+      "correctAnswer": "Teste de Confirmação (Re-teste)",
+      "explanation": "Correto. O teste de confirmação é executado especificamente para verificar se uma correção de defeito foi bem-sucedida. Após o teste de confirmação ser aprovado, a equipe normalmente executaria testes de regressão (A) para verificar se a correção não introduziu novos problemas. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 112,
+      "question": "Qual das seguintes opções é uma técnica de teste de caixa-branca?",
+      "options": [
+        "Particionamento de Equivalência",
+        "Análise de Valor Limite",
+        "Cobertura de Decisão (Ramificação)",
+        "Teste de Casos de Uso"
+      ],
+      "correctAnswer": "Cobertura de Decisão (Ramificação)",
+      "explanation": "Correto. A cobertura de decisão é uma técnica de teste de caixa-branca (estrutural) porque requer conhecimento da estrutura interna do código para garantir que todos os resultados de todas as decisões (e.g., if-then-else) sejam testados. As outras opções são técnicas de teste de caixa-preta (comportamental). Conforme o syllabus CTFL 4.0, seção 4.3.2."
+    },
+    {
+      "id": 113,
+      "question": "Qual o principal benefício de realizar revisões (um tipo de teste estático) em documentos de requisitos?",
+      "options": [
+        "Medir o tempo de resposta do sistema que será construído.",
+        "Encontrar e remover ambiguidades, omissões e inconsistências antes do início do desenvolvimento, o que é muito mais barato.",
+        "Garantir que todos os desenvolvedores tenham lido e entendido os requisitos.",
+        "Automatizar a validação dos requisitos para acelerar o processo."
+      ],
+      "correctAnswer": "Encontrar e remover ambiguidades, omissões e inconsistências antes do início do desenvolvimento, o que é muito mais barato.",
+      "explanation": "Correto. O principal benefício do teste estático, especialmente no início do ciclo de vida, é a prevenção de defeitos. Encontrar um problema em um documento de requisitos é ordens de magnitude mais barato de corrigir do que encontrar o mesmo problema lógico no software já implementado. Conforme o syllabus CTFL 4.0, seção 3.1.2."
+    },
+    {
+      "id": 114,
+      "question": "A afirmação 'Indivíduos e interações mais que processos e ferramentas' é um dos valores de qual documento?",
+      "options": [
+        "A norma ISO 9001",
+        "O Guia PMBOK",
+        "O Manifesto Ágil",
+        "O syllabus do ISTQB Foundation Level"
+      ],
+      "correctAnswer": "O Manifesto Ágil",
+      "explanation": "Correto. Esta é uma das quatro declarações de valor do Manifesto para Desenvolvimento Ágil de Software. Ela enfatiza a importância da comunicação e colaboração humana sobre a adesão rígida a processos e a dependência de ferramentas. Conforme o syllabus CTFL-AT, seção 1.1.1."
+    },
+    {
+      "id": 115,
+      "question": "Qual dos seguintes seria um bom candidato para automação de testes?",
+      "options": [
+        "Testes de usabilidade que requerem feedback subjetivo de um usuário.",
+        "Testes exploratórios que dependem da intuição e criatividade do testador.",
+        "Testes de regressão estáveis que precisam ser executados repetidamente a cada nova build.",
+        "Um novo recurso complexo que está sendo testado pela primeira vez e cujos requisitos ainda estão mudando."
+      ],
+      "correctAnswer": "Testes de regressão estáveis que precisam ser executados repetidamente a cada nova build.",
+      "explanation": "Correto. Os melhores candidatos para automação são testes repetitivos, que consomem muito tempo manualmente e que testam funcionalidades estáveis. Testes de regressão se encaixam perfeitamente nesse perfil. Testes que requerem julgamento humano (A, B) ou que testam funcionalidades instáveis (D) não são bons candidatos para automação. Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 116,
+      "question": "Qual das seguintes afirmações melhor descreve o Teste de Integração 'Top-Down'?",
+      "options": [
+        "Todos os módulos são integrados de uma só vez e testados juntos.",
+        "O teste começa com os módulos de nível mais baixo e sobe na hierarquia, usando 'drivers' para simular os módulos de nível superior.",
+        "O teste começa com o módulo de nível mais alto e desce na hierarquia, usando 'stubs' para simular os módulos de nível inferior que ainda não estão prontos.",
+        "Apenas as interfaces entre os módulos são testadas, sem testar a funcionalidade dos próprios módulos."
+      ],
+      "correctAnswer": "O teste começa com o módulo de nível mais alto e desce na hierarquia, usando 'stubs' para simular os módulos de nível inferior que ainda não estão prontos.",
+      "explanation": "Correto. Na abordagem Top-Down, a integração começa a partir do topo da arquitetura do sistema. Módulos de nível inferior que ainda não foram desenvolvidos são substituídos por 'stubs' (simuladores simples) para permitir que os testes dos módulos de nível superior prossigam. A opção B descreve a abordagem 'Bottom-Up'."
+    },
+    {
+      "id": 117,
+      "question": "Qual é a principal saída da atividade de 'Projeto de Teste'?",
+      "options": [
+        "O plano de teste mestre para todo o projeto.",
+        "Um relatório de defeitos detalhando as anomalias encontradas.",
+        "Condições de teste identificadas a partir dos requisitos.",
+        "Casos de teste de alto nível e de baixo nível, e a identificação dos dados e ambiente de teste necessários."
+      ],
+      "correctAnswer": "Casos de teste de alto nível e de baixo nível, e a identificação dos dados e ambiente de teste necessários.",
+      "explanation": "Correto. A atividade de Projeto de Teste pega as condições de teste (saída da Análise de Teste) e as transforma em casos de teste concretos. Esta fase responde à pergunta 'COMO testar?', especificando os passos, dados e configurações do ambiente. Conforme o syllabus CTFL 4.0, seção 1.4.1."
+    },
+    {
+      "id": 118,
+      "question": "Qual o principal propósito do 'Teste Beta'?",
+      "options": [
+        "Encontrar defeitos básicos na estabilidade da build antes de testes mais detalhados.",
+        "Obter feedback de usuários reais no ambiente deles antes do lançamento comercial do produto.",
+        "Verificar se todos os componentes individuais do software funcionam corretamente.",
+        "Garantir que a equipe interna tenha um entendimento compartilhado do produto."
+      ],
+      "correctAnswer": "Obter feedback de usuários reais no ambiente deles antes do lançamento comercial do produto.",
+      "explanation": "Correto. O Teste Beta é uma forma de teste de aceite externo. O software é disponibilizado para um grupo de usuários finais reais que o utilizam em seus próprios ambientes. O objetivo é descobrir defeitos, problemas de usabilidade e obter feedback geral em condições de mundo real. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 119,
+      "question": "O que o termo 'cobertura de teste' (test coverage) mede?",
+      "options": [
+        "A porcentagem de testadores certificados na equipe de teste.",
+        "O grau em que a base de teste foi exercitada pelos testes, expresso como uma porcentagem.",
+        "O número total de casos de teste que foram executados em um ciclo de teste.",
+        "O tempo total gasto pela equipe de teste durante o projeto."
+      ],
+      "correctAnswer": "O grau em que a base de teste foi exercitada pelos testes, expresso como uma porcentagem.",
+      "explanation": "Correto. Cobertura de teste é uma métrica usada para medir a extensão do teste. Ela pode ser baseada em diferentes aspectos da base de teste, como cobertura de requisitos (quantos requisitos foram testados?), cobertura de código (quantas linhas/ramos foram executados?) ou cobertura de riscos. Conforme o syllabus CTFL 4.0, seção 1.4.4."
+    },
+    {
+      "id": 120,
+      "question": "Se um defeito tem baixa severidade, mas alta prioridade, qual das seguintes situações é a mais provável?",
+      "options": [
+        "Um crash do sistema que ocorre em uma funcionalidade raramente usada.",
+        "Um erro de digitação no nome da empresa na página inicial do site.",
+        "Um cálculo financeiro incorreto que afeta apenas 1 em 1 milhão de transações.",
+        "Uma vulnerabilidade de segurança que é muito difícil de explorar."
+      ],
+      "correctAnswer": "Um erro de digitação no nome da empresa na página inicial do site.",
+      "explanation": "Correto. Severidade refere-se ao impacto técnico, enquanto prioridade refere-se à urgência do negócio. Um erro de digitação (baixa severidade, não quebra o sistema) na página inicial tem um grande impacto na imagem da empresa e, portanto, alta prioridade para ser corrigido rapidamente. A opção A é alta severidade e baixa prioridade."
+    },
+    {
+      "id": 121,
+      "question": "Qual das seguintes NÃO é uma das sete fases do Processo de Teste Fundamental do ISTQB?",
+      "options": [
+        "Planejamento de Teste",
+        "Análise de Teste",
+        "Gerenciamento de Configuração",
+        "Execução de Teste"
+      ],
+      "correctAnswer": "Gerenciamento de Configuração",
+      "explanation": "Correto. O processo de teste fundamental inclui Planejamento, Monitoramento e Controle, Análise, Projeto, Implementação, Execução e Conclusão. O Gerenciamento de Configuração é uma atividade de suporte muito importante para o teste, mas não é considerada uma das fases principais do processo de teste em si. Conforme o syllabus CTFL 4.0, seção 1.4.1 e 5.4."
+    },
+    {
+      "id": 122,
+      "question": "O que é 'Teste de Estresse' (Stress Testing)?",
+      "options": [
+        "Testar o sistema com um número crescente de usuários para ver como ele se comporta.",
+        "Testar o sistema sob condições extremas, além dos limites de sua carga de trabalho esperada, para ver como ele se recupera.",
+        "Testar o sistema por um longo período de tempo com uma carga de trabalho normal.",
+        "Verificar se o sistema pode ser estressado pelos desenvolvedores durante a codificação."
+      ],
+      "correctAnswer": "Testar o sistema sob condições extremas, além dos limites de sua carga de trabalho esperada, para ver como ele se recupera.",
+      "explanation": "Correto. O teste de estresse é um tipo de teste de performance que avalia o comportamento do sistema quando ele é levado além dos seus limites operacionais normais. O objetivo é entender como e quando ele falha e se ele pode se recuperar graciosamente. A opção A descreve o teste de carga. A opção C descreve o teste de resistência (soak testing)."
+    },
+    {
+      "id": 123,
+      "question": "Qual o principal objetivo da automação da Integração Contínua (CI)?",
+      "options": [
+        "Substituir todas as revisões manuais de código.",
+        "Implantar automaticamente todas as novas builds diretamente no ambiente de produção.",
+        "Construir e testar automaticamente o software cada vez que um desenvolvedor faz commit de uma alteração, para fornecer feedback rápido sobre a qualidade da integração.",
+        "Gerar automaticamente relatórios de progresso de teste para a gerência sênior."
+      ],
+      "correctAnswer": "Construir e testar automaticamente o software cada vez que um desenvolvedor faz commit de uma alteração, para fornecer feedback rápido sobre a qualidade da integração.",
+      "explanation": "Correto. A Integração Contínua (CI) é uma prática de DevOps onde o código de múltiplos desenvolvedores é integrado em um repositório compartilhado várias vezes ao dia. Cada integração é verificada por uma build e testes automatizados, permitindo que as equipes detectem problemas de integração o mais cedo possível. Conforme o syllabus CTFL 4.0, seção 2.1.4."
+    },
+    {
+      "id": 124,
+      "question": "Em qual tipo de revisão o autor do documento o apresenta para um grupo, e o principal objetivo é o compartilhamento de conhecimento e a coleta de feedback informal?",
+      "options": [
+        "Revisão por Pares",
+        "Inspeção",
+        "Revisão Técnica",
+        "Walkthrough"
+      ],
+      "correctAnswer": "Walkthrough",
+      "explanation": "Correto. Um walkthrough é uma reunião liderada pelo autor do produto de trabalho. Ele 'caminha' através do documento com os participantes para explicar seu conteúdo, obter feedback e alcançar um entendimento comum. É menos formal que uma inspeção. Conforme o syllabus CTFL 4.0, seção 3.2.4."
+    },
+    {
+      "id": 125,
+      "question": "Um campo de formulário web aceita um CEP no formato 'NNNNN-NNN'. Qual técnica de teste de caixa-preta seria mais útil para testar a sintaxe deste campo?",
+      "options": [
+        "Análise de Valor Limite",
+        "Particionamento de Equivalência",
+        "Teste de Transição de Estado",
+        "Suposição de Erro"
+      ],
+      "correctAnswer": "Particionamento de Equivalência",
+      "explanation": "Correto. O Particionamento de Equivalência é ideal aqui. Você pode criar partições para entradas válidas (e.g., '12345-678') e várias partições para entradas inválidas, como: formato incorreto ('12345678'), uso de letras ('ABCDE-FGH'), menos dígitos ('123-45'), mais dígitos ('12345-6789'), etc. Cada teste de uma partição representa todos os outros casos naquela partição. Conforme o syllabus CTFL 4.0, seção 4.2.1."
+    },
+    {
+      "id": 126,
+      "question": "Qual das seguintes afirmações descreve corretamente a abordagem de teste baseada na colaboração?",
+      "options": [
+        "Os testadores trabalham isoladamente para garantir a máxima objetividade em seus relatórios.",
+        "A equipe de teste colabora apenas entre si para desenvolver os melhores casos de teste.",
+        "Testadores, desenvolvedores e stakeholders de negócio trabalham juntos para criar um entendimento compartilhado dos requisitos e definir critérios de aceite.",
+        "A colaboração se limita ao uso de uma ferramenta compartilhada de gerenciamento de defeitos."
+      ],
+      "correctAnswer": "Testadores, desenvolvedores e stakeholders de negócio trabalham juntos para criar um entendimento compartilhado dos requisitos e definir critérios de aceite.",
+      "explanation": "Correto. As abordagens baseadas na colaboração, como o ATDD e a escrita colaborativa de histórias de usuário, enfatizam a comunicação e a cooperação entre diferentes papéis para prevenir defeitos, em vez de apenas encontrá-los. O objetivo é construir qualidade desde o início através de um entendimento comum. Conforme o syllabus CTFL 4.0, seção 4.5."
+    },
+    {
+      "id": 127,
+      "question": "Qual o principal objetivo do teste de acessibilidade?",
+      "options": [
+        "Garantir que o software seja acessível apenas por usuários autorizados.",
+        "Garantir que o software possa ser usado pelo maior número possível de pessoas, incluindo aquelas com deficiências.",
+        "Garantir que o banco de dados do software seja facilmente acessível por outros sistemas.",
+        "Garantir que o software tenha um tempo de acesso (login) muito rápido."
+      ],
+      "correctAnswer": "Garantir que o software possa ser usado pelo maior número possível de pessoas, incluindo aquelas com deficiências.",
+      "explanation": "Correto. O teste de acessibilidade é um tipo de teste de usabilidade que foca em garantir que pessoas com deficiências (visuais, auditivas, motoras, cognitivas) possam usar o software. Isso envolve verificar a conformidade com padrões como o WCAG, testar com leitores de tela, navegação por teclado, etc."
+    },
+    {
+      "id": 128,
+      "question": "Qual dos seguintes é um exemplo de um item de 'testware'?",
+      "options": [
+        "O documento de requisitos do software.",
+        "O código-fonte do programa que está sendo testado.",
+        "Um script de teste automatizado.",
+        "O servidor onde o ambiente de teste está hospedado."
+      ],
+      "correctAnswer": "Um script de teste automatizado.",
+      "explanation": "Correto. Testware refere-se a todos os artefatos produzidos durante o processo de teste. Isso inclui planos de teste, casos de teste, dados de teste e scripts de teste. O documento de requisitos (A) é a base de teste, e o código-fonte (B) é o objeto de teste. Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 129,
+      "question": "Qual é a principal diferença entre um risco de produto e um risco de projeto?",
+      "options": [
+        "Riscos de produto afetam a qualidade do software, enquanto riscos de projeto afetam o cronograma, orçamento e recursos do projeto.",
+        "Riscos de produto são gerenciados pela equipe de teste, enquanto riscos de projeto são gerenciados pela equipe de desenvolvimento.",
+        "Riscos de produto só podem ser identificados após o software ser lançado, enquanto riscos de projeto são conhecidos desde o início.",
+        "Não há diferença; os termos são intercambiáveis."
+      ],
+      "correctAnswer": "Riscos de produto afetam a qualidade do software, enquanto riscos de projeto afetam o cronograma, orçamento e recursos do projeto.",
+      "explanation": "Correto. Esta é a distinção fundamental. Um risco de produto é um problema potencial com o software em si (e.g., 'o cálculo de frete pode estar incorreto'). Um risco de projeto é um problema potencial com a maneira como o projeto é executado (e.g., 'a equipe pode perder um membro chave'). Conforme o syllabus CTFL 4.0, seção 5.2.2."
+    },
+    {
+      "id": 130,
+      "question": "Qual o objetivo de usar 'personas' no teste de software?",
+      "options": [
+        "Substituir completamente os testadores humanos por perfis automatizados.",
+        "Ajudar a equipe a focar nos requisitos e no comportamento de arquétipos de usuários reais, tornando os testes mais realistas e centrados no usuário.",
+        "Gerar nomes de usuários e senhas aleatórios para testes de segurança.",
+        "Criar um personagem fictício para culpar quando os defeitos não são encontrados."
+      ],
+      "correctAnswer": "Ajudar a equipe a focar nos requisitos e no comportamento de arquétipos de usuários reais, tornando os testes mais realistas e centrados no usuário.",
+      "explanation": "Correto. Personas são perfis de usuários fictícios, mas realistas, criados para representar os diferentes grupos de usuários de um produto. Usar personas ajuda a equipe a empatizar com os usuários e a projetar casos de teste que reflitam seus objetivos, comportamentos e expectativas, especialmente útil em testes de usabilidade e aceitação."
+    },
+    {
+      "id": 131,
+      "question": "O que é 'dívida técnica' (technical debt)?",
+      "options": [
+        "O custo financeiro total para desenvolver um software.",
+        "O retrabalho futuro implícito causado pela escolha de uma solução fácil ou de baixa qualidade agora, em vez de uma abordagem melhor que levaria mais tempo.",
+        "A quantidade de defeitos que são intencionalmente deixados no software para serem corrigidos em versões futuras.",
+        "O tempo que a equipe leva para pagar as licenças de software e ferramentas utilizadas."
+      ],
+      "correctAnswer": "O retrabalho futuro implícito causado pela escolha de uma solução fácil ou de baixa qualidade agora, em vez de uma abordagem melhor que levaria mais tempo.",
+      "explanation": "Correto. A dívida técnica é uma metáfora para as consequências de longo prazo de decisões de projeto ou codificação de curto prazo. Fazer 'gambiarras' ou ignorar boas práticas para acelerar a entrega cria uma 'dívida' que terá que ser 'paga' mais tarde com juros (esforço extra para fazer manutenção ou adicionar novos recursos)."
+    },
+    {
+      "id": 132,
+      "question": "Qual das seguintes afirmações descreve uma boa prática de teste que se aplica a todos os ciclos de vida de desenvolvimento?",
+      "options": [
+        "Todos os testes devem ser 100% automatizados desde o primeiro dia do projeto.",
+        "Para cada atividade de desenvolvimento, deve haver uma atividade de teste correspondente.",
+        "A equipe de teste deve trabalhar de forma completamente isolada para manter a independência.",
+        "O teste dinâmico só deve começar depois que todo o código do sistema estiver completo."
+      ],
+      "correctAnswer": "Para cada atividade de desenvolvimento, deve haver uma atividade de teste correspondente.",
+      "explanation": "Correto. Esta é uma boa prática universal. Por exemplo, a análise de requisitos (desenvolvimento) corresponde à revisão de requisitos e ao projeto do teste de aceite (teste). O projeto de arquitetura corresponde ao projeto do teste de sistema. A codificação corresponde ao teste de componente. Isso garante que a qualidade seja verificada em todas as fases. Conforme o syllabus CTFL 4.0, seção 2.1.2."
+    },
+    {
+      "id": 133,
+      "question": "A capacidade de um sistema proteger informações e dados de modo que pessoas ou sistemas não autorizados não possam lê-los ou modificá-los, e que pessoas ou sistemas autorizados não tenham o acesso negado, refere-se a qual característica de qualidade?",
+      "options": [
+        "Confiabilidade",
+        "Eficiência de Performance",
+        "Segurança",
+        "Usabilidade"
+      ],
+      "correctAnswer": "Segurança",
+      "explanation": "Correto. Segurança é a característica de qualidade não funcional que lida com a proteção contra ameaças, garantindo confidencialidade, integridade, autenticidade e não repúdio. Conforme a norma ISO/IEC 25010, citada no syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 134,
+      "question": "Qual das seguintes opções descreve uma 'heurística de teste'?",
+      "options": [
+        "Um script de teste automatizado detalhado que deve ser seguido passo a passo.",
+        "Uma regra geral ou 'dica' que ajuda a guiar o testador na descoberta de problemas, mas que não é garantida para funcionar sempre.",
+        "O resultado esperado formalmente documentado para um caso de teste.",
+        "Um requisito de negócio que foi formalmente aprovado pelo cliente."
+      ],
+      "correctAnswer": "Uma regra geral ou 'dica' que ajuda a guiar o testador na descoberta de problemas, mas que não é garantida para funcionar sempre.",
+      "explanation": "Correto. Heurísticas são atalhos mentais ou regras práticas usadas, especialmente no teste exploratório, para focar a atenção em áreas propensas a defeitos. Um exemplo é a heurística 'CRUD' (Create, Read, Update, Delete) para testar funcionalidades de gerenciamento de dados."
+    },
+    {
+      "id": 135,
+      "question": "O que é um 'ambiente de teste'?",
+      "options": [
+        "A sala física onde a equipe de teste trabalha.",
+        "O conjunto de software, hardware e configurações de rede no qual o objeto de teste é executado.",
+        "O documento que descreve o plano para configurar o ambiente de produção.",
+        "O conjunto de casos de teste que serão usados para validar o ambiente."
+      ],
+      "correctAnswer": "O conjunto de software, hardware e configurações de rede no qual o objeto de teste é executado.",
+      "explanation": "Correto. O ambiente de teste é a plataforma controlada onde os testes são realizados. Ele deve, idealmente, simular o ambiente de produção o mais fielmente possível para que os resultados dos testes sejam confiáveis. Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 136,
+      "question": "Qual das seguintes é a melhor descrição de uma história de usuário (user story)?",
+      "options": [
+        "Um documento técnico detalhado que descreve a arquitetura do sistema.",
+        "Uma descrição curta e simples de uma funcionalidade contada da perspectiva da pessoa que deseja o novo recurso, geralmente um usuário ou cliente do sistema.",
+        "Um caso de teste formal que descreve os passos para validar uma funcionalidade.",
+        "Um contrato legal que especifica todas as funcionalidades a serem entregues no projeto."
+      ],
+      "correctAnswer": "Uma descrição curta e simples de uma funcionalidade contada da perspectiva da pessoa que deseja o novo recurso, geralmente um usuário ou cliente do sistema.",
+      "explanation": "Correto. Uma história de usuário é uma forma ágil de capturar requisitos. Ela foca no 'quem', 'o quê' e 'porquê' de um recurso, geralmente seguindo o formato: 'Como um [tipo de usuário], eu quero [algum objetivo] para que [algum motivo]'. Conforme o syllabus CTFL 4.0, seção 4.5.1."
+    },
+    {
+      "id": 137,
+      "question": "Qual das seguintes ferramentas de teste seria mais útil para encontrar problemas como 'código morto' (unreachable code) ou violações de padrões de codificação?",
+      "options": [
+        "Ferramenta de gerenciamento de testes",
+        "Ferramenta de análise estática",
+        "Ferramenta de teste de carga",
+        "Ferramenta de gerenciamento de configuração"
+      ],
+      "correctAnswer": "Ferramenta de análise estática",
+      "explanation": "Correto. Ferramentas de análise estática examinam o código-fonte sem executá-lo. Elas são excelentes para encontrar automaticamente defeitos estruturais, violações de regras de codificação, vulnerabilidades de segurança e código que nunca pode ser executado. Conforme o syllabus CTFL 4.0, seção 3.1."
+    },
+    {
+      "id": 138,
+      "question": "O que o princípio de teste 'Testes antecipados economizam tempo e dinheiro' implica?",
+      "options": [
+        "Que os testes devem ser a primeira atividade em qualquer projeto, antes mesmo do levantamento de requisitos.",
+        "Que encontrar e corrigir defeitos no início do ciclo de vida (e.g., na fase de requisitos ou design) é significativamente mais barato do que corrigi-los mais tarde (e.g., em produção).",
+        "Que as equipes devem comprar ferramentas de teste caras o mais cedo possível no projeto.",
+        "Que o teste de performance deve ser realizado antes do teste funcional."
+      ],
+      "correctAnswer": "Que encontrar e corrigir defeitos no início do ciclo de vida (e.g., na fase de requisitos ou design) é significativamente mais barato do que corrigi-los mais tarde (e.g., em produção).",
+      "explanation": "Correto. Este princípio destaca o valor econômico de atividades como revisões de requisitos e design (testes estáticos). Um defeito encontrado em um documento de requisitos pode ser corrigido com uma simples edição, enquanto o mesmo defeito lógico encontrado no software em produção pode exigir um esforço enorme de correção e re-teste. Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 139,
+      "question": "Qual é um dos papéis de um testador em uma revisão de produto de trabalho (e.g., uma especificação de requisitos)?",
+      "options": [
+        "Aprovar o orçamento para a próxima fase do projeto.",
+        "Avaliar a testabilidade do que está sendo descrito e identificar ambiguidades que possam levar a defeitos.",
+        "Escrever o código para implementar os requisitos descritos no documento.",
+        "Liderar a reunião como moderador e garantir que todos sigam o processo."
+      ],
+      "correctAnswer": "Avaliar a testabilidade do que está sendo descrito e identificar ambiguidades que possam levar a defeitos.",
+      "explanation": "Correto. Um testador traz uma perspectiva única para uma revisão. Eles são treinados para pensar em casos de borda, ambiguidades e como um requisito pode ser verificado. Sua contribuição principal é garantir que os requisitos sejam claros, completos, consistentes e, crucialmente, testáveis. Conforme o syllabus CTFL 4.0, capítulo 3."
+    },
+    {
+      "id": 140,
+      "question": "Qual é a principal diferença entre um 'Walkthrough' e uma 'Inspeção'?",
+      "options": [
+        "Walkthroughs são sempre mais demorados do que Inspeções.",
+        "Inspeções são processos informais liderados pelo autor, enquanto Walkthroughs são processos formais liderados por um moderador.",
+        "Walkthroughs são geralmente menos formais, liderados pelo autor com o objetivo de compartilhar conhecimento, enquanto Inspeções são o tipo mais formal de revisão, com foco na detecção de defeitos.",
+        "Não há diferença, os termos são sinônimos para o mesmo tipo de revisão formal."
+      ],
+      "correctAnswer": "Walkthroughs são geralmente menos formais, liderados pelo autor com o objetivo de compartilhar conhecimento, enquanto Inspeções são o tipo mais formal de revisão, com foco na detecção de defeitos.",
+      "explanation": "Correto. A principal distinção está no nível de formalidade e no objetivo. Uma Inspeção é altamente estruturada e focada em encontrar o máximo de defeitos possível. Um Walkthrough é mais colaborativo e flexível, muitas vezes usado para educar a equipe e obter feedback, além de encontrar defeitos. Conforme o syllabus CTFL 4.0, seção 3.2.4."
+    },
+    {
+      "id": 141,
+      "question": "Um sistema de e-commerce tem uma regra: 'Clientes VIP com compras acima de R$ 500 recebem 10% de desconto'. Que tipo de teste é mais adequado para verificar se essa regra foi implementada corretamente?",
+      "options": [
+        "Teste de Usabilidade",
+        "Teste de Performance",
+        "Teste Funcional",
+        "Teste de Instalação"
+      ],
+      "correctAnswer": "Teste Funcional",
+      "explanation": "Correto. O teste funcional tem como objetivo verificar se o software executa suas funções conforme especificado. A implementação de uma regra de negócio, como a concessão de um desconto sob condições específicas, é uma funcionalidade do sistema. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 142,
+      "question": "Qual das seguintes opções descreve uma 'abordagem de teste reativa'?",
+      "options": [
+        "Uma abordagem onde todos os testes são projetados e documentados em detalhes antes do início da execução.",
+        "Uma abordagem onde os testes são projetados e executados após o software ter sido produzido, reagindo ao estado do sistema.",
+        "Uma abordagem que reage às mudanças nos requisitos, automatizando todos os testes de regressão.",
+        "Uma abordagem focada em reagir rapidamente aos relatórios de defeitos dos clientes em produção."
+      ],
+      "correctAnswer": "Uma abordagem onde os testes são projetados e executados após o software ter sido produzido, reagindo ao estado do sistema.",
+      "explanation": "Correto. Em uma abordagem reativa, os testes são projetados e modificados 'em tempo real' à medida que o software é executado. O teste exploratório é um exemplo clássico de uma abordagem reativa. Isso contrasta com abordagens proativas, onde o projeto de teste ocorre no início do ciclo de vida, antes da codificação."
+    },
+    {
+      "id": 143,
+      "question": "O que a técnica de teste de transição de estado é projetada para encontrar?",
+      "options": [
+        "Defeitos em cálculos matemáticos complexos.",
+        "Defeitos na forma como o sistema lida com limites de dados de entrada.",
+        "Defeitos na lógica de decisão que envolve múltiplas condições de negócio.",
+        "Defeitos na forma como o sistema se move entre diferentes estados em resposta a eventos."
+      ],
+      "correctAnswer": "Defeitos na forma como o sistema se move entre diferentes estados em resposta a eventos.",
+      "explanation": "Correto. Esta técnica modela o software como uma máquina de estados finitos. É ideal para encontrar defeitos em sistemas que têm 'memória', onde a resposta a um evento depende não apenas do evento em si, mas também do estado atual do sistema (e.g., um caixa eletrônico, um editor de texto). Conforme o syllabus CTFL 4.0, seção 4.2.4."
+    },
+    {
+      "id": 144,
+      "question": "Em um contexto ágil, por que o feedback do cliente é considerado tão valioso?",
+      "options": [
+        "Porque o feedback do cliente substitui a necessidade de testes automatizados.",
+        "Porque ele permite que a equipe de desenvolvimento valide suas suposições e ajuste o produto em cada iteração para melhor atender às necessidades do mercado.",
+        "Porque o feedback do cliente é usado para definir o orçamento final do projeto.",
+        "Porque o feedback do cliente é a única forma de encontrar defeitos de segurança."
+      ],
+      "correctAnswer": "Porque ele permite que a equipe de desenvolvimento valide suas suposições e ajuste o produto em cada iteração para melhor atender às necessidades do mercado.",
+      "explanation": "Correto. Um dos princípios ágeis é a 'Colaboração com o cliente mais que negociação de contratos'. O feedback frequente em cerimônias como a Sprint Review garante que a equipe esteja construindo o produto certo e permite uma rápida adaptação às mudanças, maximizando o valor entregue. Conforme o syllabus CTFL-AT, seção 1.1.1."
+    },
+    {
+      "id": 145,
+      "question": "O que é 'teste de sanidade' (sanity testing)?",
+      "options": [
+        "Um sinônimo exato para 'teste de fumaça', verificando a estabilidade geral da build.",
+        "Um tipo de teste de regressão que cobre todas as funcionalidades do sistema.",
+        "Um subconjunto muito rápido e superficial de testes de regressão executado para verificar se uma funcionalidade específica ou uma correção de bug funciona basicamente como esperado.",
+        "Testes realizados para verificar a saúde mental da equipe de teste."
+      ],
+      "correctAnswer": "Um subconjunto muito rápido e superficial de testes de regressão executado para verificar se uma funcionalidade específica ou uma correção de bug funciona basicamente como esperado.",
+      "explanation": "Correto. O teste de sanidade é um teste rápido e focado. Diferente do teste de fumaça que verifica a estabilidade geral da build, o teste de sanidade é mais específico, geralmente aplicado a uma área do software que foi alterada, para decidir rapidamente se a alteração é 'sã' e se a build pode ser aceita para testes mais rigorosos. É um subconjunto dos testes de regressão."
+    },
+    {
+      "id": 146,
+      "question": "Qual das seguintes opções descreve uma boa prática para escrever um relatório de defeito eficaz?",
+      "options": [
+        "Usar um título vago como 'Sistema quebrou' para permitir que o desenvolvedor investigue livremente.",
+        "Combinar múltiplos problemas não relacionados em um único relatório para economizar tempo.",
+        "Incluir informações objetivas e fatos, como passos para reproduzir, resultados esperados e reais, e anexar logs ou screenshots.",
+        "Escrever o relatório de forma emocional e subjetiva para enfatizar a frustração do usuário."
+      ],
+      "correctAnswer": "Incluir informações objetivas e fatos, como passos para reproduzir, resultados esperados e reais, e anexar logs ou screenshots.",
+      "explanation": "Correto. Um bom relatório de defeito é objetivo, claro e, o mais importante, reproduzível. Fornecer informações precisas e factuais ajuda o desenvolvedor a entender e corrigir o problema de forma eficiente, evitando idas e vindas de comunicação. Conforme o syllabus CTFL 4.0, seção 5.5."
+    },
+    {
+      "id": 147,
+      "question": "Qual é a principal limitação do teste baseado em experiência, como a suposição de erro?",
+      "options": [
+        "Ele requer um conhecimento profundo da estrutura interna do código.",
+        "Sua eficácia é altamente dependente da experiência e do conhecimento do testador.",
+        "É impossível de aplicar em projetos de software ágeis.",
+        "Ele sempre encontra menos defeitos do que as técnicas formais de caixa-preta."
+      ],
+      "correctAnswer": "Sua eficácia é altamente dependente da experiência e do conhecimento do testador.",
+      "explanation": "Correto. Técnicas baseadas na experiência são poderosas, mas sua qualidade e cobertura são subjetivas e dependem diretamente das habilidades do indivíduo que as aplica. Um testador inexperiente pode não ter a intuição necessária para 'adivinhar' os erros mais prováveis. Conforme o syllabus CTFL 4.0, seção 4.4."
+    },
+    {
+      "id": 148,
+      "question": "Qual das seguintes opções é uma meta da gestão de configuração (CM) em um projeto de teste?",
+      "options": [
+        "Garantir que todos os testadores reportem o mesmo número de defeitos por dia.",
+        "Garantir que todos os itens de teste e testware sejam unicamente identificados, versionados e que as relações entre eles sejam mantidas.",
+        "Configurar o ambiente de teste para ser o mais lento possível, a fim de encontrar gargalos de performance.",
+        "Decidir qual estratégia de teste (e.g., baseada em risco, reativa) será usada no projeto."
+      ],
+      "correctAnswer": "Garantir que todos os itens de teste e testware sejam unicamente identificados, versionados e que as relações entre eles sejam mantidas.",
+      "explanation": "Correto. A gestão de configuração é essencial para o controle e a repetibilidade. Ela garante que saibamos exatamente qual versão do software foi testada com qual versão dos casos de teste, em qual ambiente, etc. Isso é fundamental para a rastreabilidade e para a análise de falhas. Conforme o syllabus CTFL 4.0, seção 5.4."
+    },
+    {
+      "id": 149,
+      "question": "A 'pirâmide de teste' e os 'quadrantes de teste' são modelos que ajudam a equipe a:",
+      "options": [
+        "Calcular o custo exato do esforço de teste.",
+        "Decidir qual ferramenta de automação de teste comprar.",
+        "Estruturar e balancear as diferentes atividades e tipos de teste ao longo do projeto.",
+        "Eliminar completamente a necessidade de testes manuais."
+      ],
+      "correctAnswer": "Estruturar e balancear as diferentes atividades e tipos de teste ao longo do projeto.",
+      "explanation": "Correto. Ambos são modelos heurísticos que ajudam as equipes, especialmente as ágeis, a pensar sobre sua estratégia de teste. A pirâmide ajuda a balancear a quantidade de testes automatizados em diferentes níveis (unidade, serviço, UI). Os quadrantes ajudam a garantir que diferentes tipos de teste (funcional, não funcional, exploratório, etc.) sejam considerados. Conforme o syllabus CTFL 4.0, seções 5.1.6 e 5.1.7."
+    },
+    {
+      "id": 150,
+      "question": "Qual das seguintes atividades de teste é mais focada em 'validação' do que em 'verificação'?",
+      "options": [
+        "Revisão de código para garantir a conformidade com os padrões de codificação.",
+        "Teste de componente para garantir que uma função retorna o valor correto.",
+        "Teste de integração para garantir que a interface entre dois módulos está funcionando.",
+        "Teste de aceite do usuário (UAT) para garantir que o software atende às necessidades do negócio."
+      ],
+      "correctAnswer": "Teste de aceite do usuário (UAT) para garantir que o software atende às necessidades do negócio.",
+      "explanation": "Correto. Validação é responder à pergunta 'Estamos construindo o produto certo?'. O UAT é o principal exemplo, pois envolve os usuários finais validando se o software é útil e atende aos seus objetivos de negócio. As outras opções são exemplos de verificação ('Estamos construindo o produto corretamente, de acordo com as especificações?'). Conforme o syllabus CTFL 4.0, seção 1.1."
+    },
+    {
+      "id": 151,
+      "question": "Qual é a principal diferença entre 'teste funcional' e 'teste não funcional'?",
+      "options": [
+        "Teste funcional é realizado por testadores e teste não funcional por desenvolvedores.",
+        "Teste funcional verifica 'o que' o sistema faz, enquanto teste não funcional verifica 'como' o sistema se comporta.",
+        "Teste funcional é sempre manual e teste não funcional é sempre automatizado.",
+        "Teste funcional foca em encontrar defeitos, enquanto teste não funcional foca em medir performance."
+      ],
+      "correctAnswer": "Teste funcional verifica 'o que' o sistema faz, enquanto teste não funcional verifica 'como' o sistema se comporta.",
+      "explanation": "Correto. Teste funcional valida as funções e regras de negócio do software. Teste não funcional avalia as características de qualidade do sistema, como performance, usabilidade, segurança e confiabilidade. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 152,
+      "question": "Um sistema de e-commerce oferece um desconto de 10% para compras acima de R$ 200. Que valores de teste seriam selecionados usando a Análise de Valor Limite (BVA) de 3 valores?",
+      "options": [
+        "199.99, 200.00, 200.01",
+        "199.00, 200.00, 201.00",
+        "200.00, 250.00, 300.00",
+        "100.00, 200.00"
+      ],
+      "correctAnswer": "199.99, 200.00, 200.01",
+      "explanation": "Correto. A BVA de 3 valores testa o valor exato do limite (200.00), o valor imediatamente anterior (199.99) e o valor imediatamente posterior (200.01) para verificar se o comportamento muda precisamente no limite. Conforme o syllabus CTFL 4.0, seção 4.2.2."
+    },
+    {
+      "id": 153,
+      "question": "O que é 'teste de caixa-cinza' (grey-box testing)?",
+      "options": [
+        "Um teste realizado sem nenhum conhecimento da estrutura interna do sistema.",
+        "Um teste que combina abordagens de caixa-preta e caixa-branca, onde o testador tem um conhecimento limitado da estrutura interna.",
+        "Um teste focado exclusivamente na interface do usuário de cor cinza.",
+        "Um teste realizado por testadores que não são nem desenvolvedores nem usuários finais."
+      ],
+      "correctAnswer": "Um teste que combina abordagens de caixa-preta e caixa-branca, onde o testador tem um conhecimento limitado da estrutura interna.",
+      "explanation": "Correto. No teste de caixa-cinza, o testador tem algum conhecimento da implementação interna, como acesso a estruturas de banco de dados ou a algoritmos, para projetar testes mais eficazes, mas ainda testa o sistema a partir da perspectiva do usuário (caixa-preta)."
+    },
+    {
+      "id": 154,
+      "question": "Qual das seguintes é uma característica chave da metodologia Scrum?",
+      "options": [
+        "As fases de desenvolvimento são longas e sequenciais, com entregas apenas no final do projeto.",
+        "O trabalho é organizado em iterações de tempo fixo chamadas Sprints, com cerimônias como a Daily Scrum, Sprint Planning, Sprint Review e Sprint Retrospective.",
+        "Não há papéis definidos, e a equipe se organiza de forma completamente fluida a cada dia.",
+        "O foco principal é a documentação detalhada de cada etapa do processo."
+      ],
+      "correctAnswer": "O trabalho é organizado em iterações de tempo fixo chamadas Sprints, com cerimônias como a Daily Scrum, Sprint Planning, Sprint Review e Sprint Retrospective.",
+      "explanation": "Correto. O Scrum é um framework ágil que estrutura o desenvolvimento em ciclos curtos (Sprints) para permitir feedback rápido e adaptação. Ele prescreve papéis (Product Owner, Scrum Master, Equipe de Desenvolvimento) e eventos (cerimônias) para organizar o trabalho. Conforme o syllabus CTFL-AT, seção 1.2.1."
+    },
+    {
+      "id": 155,
+      "question": "Qual é o principal objetivo de um 'caso de uso' no contexto de testes?",
+      "options": [
+        "Descrever em detalhes a estrutura interna de um módulo de software.",
+        "Servir como uma base para derivar casos de teste que simulam interações realistas entre um ator (usuário) e o sistema para alcançar um objetivo.",
+        "Listar todos os defeitos conhecidos no sistema e suas soluções de contorno.",
+        "Documentar os resultados da execução de um script de teste automatizado."
+      ],
+      "correctAnswer": "Servir como uma base para derivar casos de teste que simulam interações realistas entre um ator (usuário) e o sistema para alcançar um objetivo.",
+      "explanation": "Correto. Casos de uso descrevem as interações passo a passo entre um usuário (ator) e o sistema para atingir um objetivo específico. Eles são uma excelente base de teste para o teste de sistema e o teste de aceite, pois ajudam a criar cenários de ponta a ponta que refletem o uso real."
+    },
+    {
+      "id": 156,
+      "question": "O que significa o termo 'rastreabilidade bidirecional'?",
+      "options": [
+        "Que os testes podem ser executados tanto para frente quanto para trás no tempo.",
+        "Que cada requisito pode ser rastreado até os seus casos de teste correspondentes, e cada caso de teste pode ser rastreado de volta para os requisitos que ele cobre.",
+        "Que a equipe de teste e a equipe de desenvolvimento podem rastrear o progresso uma da outra.",
+        "Que os defeitos podem ser rastreados tanto para o módulo onde foram encontrados quanto para o desenvolvedor que os corrigiu."
+      ],
+      "correctAnswer": "Que cada requisito pode ser rastreado até os seus casos de teste correspondentes, e cada caso de teste pode ser rastreado de volta para os requisitos que ele cobre.",
+      "explanation": "Correto. A rastreabilidade bidirecional (ou para frente e para trás) é crucial para o gerenciamento de testes. Rastrear 'para frente' (requisito -> teste) garante a cobertura. Rastrear 'para trás' (teste -> requisito) ajuda a entender o propósito de um teste e a avaliar o impacto se um teste falhar."
+    },
+    {
+      "id": 157,
+      "question": "Qual das seguintes opções é um exemplo de 'teste de robustez'?",
+      "options": [
+        "Testar se o sistema se comporta corretamente com entradas válidas e esperadas.",
+        "Testar como o sistema lida com condições inesperadas ou inválidas, como entradas de dados malformadas ou falta de recursos (memória, disco).",
+        "Testar se a interface do usuário é esteticamente agradável e fácil de navegar.",
+        "Testar se o sistema atende aos objetivos de negócio definidos pelo cliente."
+      ],
+      "correctAnswer": "Testar como o sistema lida com condições inesperadas ou inválidas, como entradas de dados malformadas ou falta de recursos (memória, disco).",
+      "explanation": "Correto. O teste de robustez, um aspecto da confiabilidade, avalia o comportamento do sistema sob condições de erro ou estresse. O objetivo é verificar se o sistema pode lidar com entradas inválidas ou situações adversas sem travar ou corromper dados, recuperando-se de forma graciosa."
+    },
+    {
+      "id": 158,
+      "question": "Em um contexto de teste, o que é um 'falso negativo'?",
+      "options": [
+        "Um teste que passa incorretamente, não detectando um defeito que está presente no software.",
+        "Um teste que falha, mas após a análise, descobre-se que não há nenhum defeito no software (o teste está errado).",
+        "Um resultado de teste que é negativo para o projeto, indicando que a qualidade é baixa.",
+        "Um defeito que foi relatado como corrigido, mas que ainda está presente no software."
+      ],
+      "correctAnswer": "Um teste que passa incorretamente, não detectando um defeito que está presente no software.",
+      "explanation": "Correto. Um 'falso negativo' é uma situação perigosa onde um defeito real 'escapa' porque o teste projetado para encontrá-lo não foi eficaz e retornou um status de 'passou'. Isso dá uma falsa sensação de segurança. A opção B descreve um 'falso positivo'."
+    },
+    {
+      "id": 159,
+      "question": "Qual das seguintes afirmações sobre o gerenciamento de defeitos é uma boa prática?",
+      "options": [
+        "Os defeitos devem ser relatados o mais tarde possível para não interromper o desenvolvimento.",
+        "Cada relatório de defeito deve ser único, objetivo, claro e fornecer informações suficientes para a reprodução.",
+        "Apenas os desenvolvedores devem ter permissão para registrar defeitos no sistema de gerenciamento.",
+        "A prioridade de um defeito deve ser sempre igual à sua severidade."
+      ],
+      "correctAnswer": "Cada relatório de defeito deve ser único, objetivo, claro e fornecer informações suficientes para a reprodução.",
+      "explanation": "Correto. A qualidade dos relatórios de defeitos é crucial para um processo de correção eficiente. Um bom relatório evita ambiguidades e permite que o desenvolvedor entenda e reproduza o problema rapidamente. Conforme o syllabus CTFL 4.0, seção 5.5."
+    },
+    {
+      "id": 160,
+      "question": "Qual é a principal desvantagem da abordagem de teste exploratório?",
+      "options": [
+        "É menos eficaz para encontrar defeitos do que os testes com script.",
+        "Requer um planejamento e documentação muito extensos antes da execução.",
+        "Pode ser difícil de reproduzir exatamente os passos que levaram a uma falha, e a cobertura pode ser difícil de medir.",
+        "Não pode ser usado em projetos que seguem metodologias ágeis."
+      ],
+      "correctAnswer": "Pode ser difícil de reproduzir exatamente os passos que levaram a uma falha, e a cobertura pode ser difícil de medir.",
+      "explanation": "Correto. Como o teste exploratório é dinâmico e não segue um script rígido, pode ser um desafio para o testador lembrar e documentar a sequência exata de ações que revelou um defeito. Além disso, medir e relatar a cobertura de forma precisa é mais complexo do que com testes baseados em script. Conforme o syllabus CTFL 4.0, seção 4.4.2."
+    },
+    {
+      "id": 161,
+      "question": "O que o princípio 'Teste depende do contexto' significa?",
+      "options": [
+        "A mesma abordagem de teste, técnicas e documentação devem ser usadas para todos os projetos para garantir consistência.",
+        "O teste deve ser adaptado ao contexto específico do projeto, como o domínio do negócio, os riscos, o ciclo de vida e as restrições.",
+        "O contexto do projeto não tem influência sobre como o teste deve ser realizado.",
+        "Apenas o contexto do desenvolvedor que escreveu o código é relevante para o teste."
+      ],
+      "correctAnswer": "O teste deve ser adaptado ao contexto específico do projeto, como o domínio do negócio, os riscos, o ciclo de vida e as restrições.",
+      "explanation": "Correto. Não existe uma abordagem de teste única que sirva para todos. O teste de um site de e-commerce é muito diferente do teste de um software de aviação. A estratégia de teste deve ser customizada para se adequar ao contexto único de cada projeto. Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 162,
+      "question": "Qual das seguintes opções é um exemplo de um critério de cobertura estrutural (caixa-branca)?",
+      "options": [
+        "Cobertura de Requisitos",
+        "Cobertura de Casos de Uso",
+        "Cobertura de Instrução (Statement Coverage)",
+        "Cobertura de Riscos"
+      ],
+      "correctAnswer": "Cobertura de Instrução (Statement Coverage)",
+      "explanation": "Correto. A cobertura de instrução é uma métrica de teste de caixa-branca que mede a porcentagem de linhas de código executáveis que foram exercitadas pelos testes. As outras opções são exemplos de critérios de cobertura de caixa-preta ou baseados em risco. Conforme o syllabus CTFL 4.0, seção 4.3.1."
+    },
+    {
+      "id": 163,
+      "question": "Qual é o principal objetivo da automação de testes?",
+      "options": [
+        "Substituir completamente os testadores humanos e o pensamento crítico.",
+        "Encontrar mais defeitos do que o teste manual em todas as situações.",
+        "Aumentar a eficiência e a confiabilidade da execução de testes, especialmente os repetitivos, e liberar os testadores para atividades de maior valor.",
+        "Garantir que o software seja 100% livre de defeitos antes do lançamento."
+      ],
+      "correctAnswer": "Aumentar a eficiência e a confiabilidade da execução de testes, especialmente os repetitivos, e liberar os testadores para atividades de maior valor.",
+      "explanation": "Correto. A automação de testes é uma ferramenta para auxiliar o processo de teste. Seu maior valor está em assumir tarefas repetitivas e demoradas (como testes de regressão), executando-as de forma mais rápida e consistente. Isso permite que os testadores humanos se concentrem em testes que exigem criatividade e cognição, como o teste exploratório. Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 164,
+      "question": "Em um processo de revisão formal, qual papel é responsável por decidir o que será revisado e por alocar os recursos necessários?",
+      "options": [
+        "Autor",
+        "Moderador",
+        "Revisor",
+        "Gerente"
+      ],
+      "correctAnswer": "Gerente",
+      "explanation": "Correto. O gerente é responsável pelo planejamento da revisão, incluindo a decisão sobre o objeto da revisão, a alocação de tempo e pessoal, e a garantia de que o processo de revisão seja seguido. Conforme o syllabus CTFL 4.0, seção 3.2.3."
+    },
+    {
+      "id": 165,
+      "question": "Um sistema de controle de acesso permite a entrada se um usuário apresentar um crachá válido OU inserir um código PIN correto. Qual técnica de teste é a mais adequada para cobrir as diferentes combinações dessas condições?",
+      "options": [
+        "Teste de Tabela de Decisão",
+        "Teste de Transição de Estado",
+        "Análise de Valor Limite",
+        "Particionamento de Equivalência"
+      ],
+      "correctAnswer": "Teste de Tabela de Decisão",
+      "explanation": "Correto. A Tabela de Decisão é a técnica ideal para testar a lógica de negócio que envolve múltiplas condições. Neste caso, as condições seriam 'Crachá Válido' (Sim/Não) e 'PIN Correto' (Sim/Não), e as ações seriam 'Permitir Entrada' e 'Negar Entrada'. Isso garante que todas as 4 combinações lógicas sejam testadas. Conforme o syllabus CTFL 4.0, seção 4.2.3."
+    },
+    {
+      "id": 166,
+      "question": "O que é 'teste de confirmação' (confirmation testing)?",
+      "options": [
+        "Um teste realizado para confirmar que as novas funcionalidades atendem aos requisitos do cliente.",
+        "Um teste realizado para confirmar que o ambiente de teste está configurado corretamente.",
+        "Um teste realizado após uma correção de defeito para garantir que a correção foi eficaz.",
+        "Um teste realizado para confirmar que nenhuma funcionalidade existente foi quebrada por uma mudança."
+      ],
+      "correctAnswer": "Um teste realizado após uma correção de defeito para garantir que a correção foi eficaz.",
+      "explanation": "Correto. O teste de confirmação, também chamado de re-teste, tem o objetivo único de executar novamente o caso de teste que falhou para verificar se a correção implementada pelo desenvolvedor resolveu o problema original. A opção D descreve o teste de regressão. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 167,
+      "question": "Qual das seguintes é uma característica fundamental do teste de integração 'bottom-up'?",
+      "options": [
+        "O teste começa com os módulos de nível mais alto, usando stubs para simular os módulos de nível inferior.",
+        "O teste começa com os módulos de nível mais baixo, que são integrados e testados em grupos progressivamente maiores, usando drivers para simular os módulos de nível superior.",
+        "Todos os módulos são integrados ao mesmo tempo, e o sistema é testado de uma só vez.",
+        "A integração é focada apenas em componentes de terceiros e APIs externas."
+      ],
+      "correctAnswer": "O teste começa com os módulos de nível mais baixo, que são integrados e testados em grupos progressivamente maiores, usando drivers para simular os módulos de nível superior.",
+      "explanation": "Correto. Na abordagem bottom-up, os componentes na base da arquitetura são testados primeiro e depois combinados para testar níveis mais altos de integração. Como os módulos de nível superior que chamam esses componentes podem não estar prontos, são necessários 'drivers' para simular essas chamadas e conduzir os testes."
+    },
+    {
+      "id": 168,
+      "question": "A capacidade de um sistema continuar operando corretamente na presença de falhas ou condições inválidas é chamada de:",
+      "options": [
+        "Usabilidade",
+        "Eficiência",
+        "Confiabilidade",
+        "Portabilidade"
+      ],
+      "correctAnswer": "Confiabilidade",
+      "explanation": "Correto. A confiabilidade é a característica de qualidade que se refere à capacidade do sistema de desempenhar suas funções sob condições estabelecidas por um período de tempo. Isso inclui aspectos como maturidade, tolerância a falhas e recuperabilidade. Conforme a norma ISO/IEC 25010, citada no syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 169,
+      "question": "Qual é a principal responsabilidade do Product Owner (PO) em uma equipe Scrum?",
+      "options": [
+        "Garantir que a equipe siga os processos e as cerimônias do Scrum.",
+        "Gerenciar e priorizar o Backlog do Produto para maximizar o valor entregue pelo produto.",
+        "Escrever o código para as histórias de usuário selecionadas na sprint.",
+        "Executar todos os testes de aceitação no final da sprint."
+      ],
+      "correctAnswer": "Gerenciar e priorizar o Backlog do Produto para maximizar o valor entregue pelo produto.",
+      "explanation": "Correto. O Product Owner é a voz do cliente e dos stakeholders. Sua principal função é definir o que precisa ser construído e em que ordem, mantendo o Backlog do Produto claro, transparente e priorizado para otimizar o trabalho da equipe de desenvolvimento. A opção A é responsabilidade do Scrum Master."
+    },
+    {
+      "id": 170,
+      "question": "O que o termo 'análise de impacto' significa no contexto de teste de manutenção?",
+      "options": [
+        "A análise do impacto financeiro que um defeito pode causar se não for corrigido.",
+        "A avaliação de quais partes do sistema podem ser afetadas por uma mudança, para ajudar a definir o escopo do teste de regressão.",
+        "A medição do impacto na performance do sistema após a aplicação de uma correção.",
+        "A análise do impacto emocional que um defeito crítico tem na equipe de desenvolvimento."
+      ],
+      "correctAnswer": "A avaliação de quais partes do sistema podem ser afetadas por uma mudança, para ajudar a definir o escopo do teste de regressão.",
+      "explanation": "Correto. A análise de impacto é uma atividade crucial antes de testar uma mudança. Ela ajuda a identificar as consequências e os riscos potenciais da modificação em outras áreas do sistema, permitindo que a equipe de teste planeje um conjunto de testes de regressão mais focado e eficiente. Conforme o syllabus CTFL 4.0, seção 2.3."
+    },
+    {
+      "id": 171,
+      "question": "Qual das seguintes é a melhor descrição de uma estratégia de teste?",
+      "options": [
+        "Um documento que lista todos os casos de teste a serem executados em uma noite.",
+        "A abordagem de alto nível para o teste, definindo os níveis de teste, os tipos de teste e as técnicas a serem aplicadas.",
+        "O conjunto de ferramentas de automação que serão usadas no projeto.",
+        "O relatório final que resume os resultados de todo o esforço de teste."
+      ],
+      "correctAnswer": "A abordagem de alto nível para o teste, definindo os níveis de teste, os tipos de teste e as técnicas a serem aplicadas.",
+      "explanation": "Correto. A estratégia de teste (ou abordagem de teste) é uma parte do plano de teste que descreve como o teste será realizado. Ela documenta as decisões de alto nível sobre os métodos de teste, critérios de entrada/saída, e como o teste será organizado para atingir os objetivos do projeto. Conforme o syllabus CTFL 4.0, seção 5.1.1."
+    },
+    {
+      "id": 172,
+      "question": "Qual é a principal diferença entre um erro, um defeito e uma falha?",
+      "options": [
+        "Erro é a ação humana, defeito é a anomalia no código e falha é o resultado incorreto observado.",
+        "Erro é o resultado incorreto, defeito é a ação humana e falha é a anomalia no código.",
+        "Erro é a anomalia no código, defeito é o resultado incorreto e falha é a ação humana.",
+        "Os três termos são sinônimos e podem ser usados de forma intercambiável."
+      ],
+      "correctAnswer": "Erro é a ação humana, defeito é a anomalia no código e falha é o resultado incorreto observado.",
+      "explanation": "Correto. A cadeia causal é: um ser humano comete um erro (engano), que introduz um defeito (bug, falha) no código ou em um documento. Quando esse defeito é executado, ele pode causar uma falha (comportamento incorreto do sistema). Conforme o syllabus CTFL 4.0, seção 1.2.3."
+    },
+    {
+      "id": 173,
+      "question": "Qual dos seguintes é um exemplo de um objetivo típico de teste?",
+      "options": [
+        "Provar que o software não tem defeitos.",
+        "Garantir que 100% do código foi testado.",
+        "Fornecer informações aos stakeholders para que possam tomar decisões informadas sobre a qualidade do produto.",
+        "Escrever o máximo de casos de teste possível dentro do prazo do projeto."
+      ],
+      "correctAnswer": "Fornecer informações aos stakeholders para que possam tomar decisões informadas sobre a qualidade do produto.",
+      "explanation": "Correto. O teste não prova a ausência de defeitos (A) nem é viável testar 100% de tudo (B). O objetivo principal do teste é fornecer informações objetivas sobre a qualidade do software, permitindo que os stakeholders (gerentes, clientes) decidam, por exemplo, se o software está pronto para ser lançado. Conforme o syllabus CTFL 4.0, seção 1.1.1."
+    },
+    {
+      "id": 174,
+      "question": "O que o teste de caixa-branca avalia?",
+      "options": [
+        "O comportamento externo do software com base em seus requisitos.",
+        "A estrutura interna do software, como caminhos de código, ramificações e instruções.",
+        "A experiência do usuário ao interagir com a interface do sistema.",
+        "A compatibilidade do software com diferentes sistemas operacionais."
+      ],
+      "correctAnswer": "A estrutura interna do software, como caminhos de código, ramificações e instruções.",
+      "explanation": "Correto. O teste de caixa-branca (ou estrutural) baseia-se no conhecimento da implementação interna do software. Seu objetivo é garantir que os componentes internos foram adequadamente exercitados, usando métricas como cobertura de instrução e de ramificação. Conforme o syllabus CTFL 4.0, seção 4.3."
+    },
+    {
+      "id": 175,
+      "question": "Em qual nível de teste a equipe se concentraria em verificar se o backup e a restauração do sistema funcionam conforme o esperado?",
+      "options": [
+        "Teste de Componente",
+        "Teste de Integração",
+        "Teste de Sistema",
+        "Teste de Aceite Operacional"
+      ],
+      "correctAnswer": "Teste de Aceite Operacional",
+      "explanation": "Correto. O Teste de Aceite Operacional (OAT) é focado em validar os aspectos operacionais do sistema, garantindo que a equipe de operações possa mantê-lo em produção. Isso inclui testes de backup, restauração, monitoramento, instalação e outros procedimentos operacionais. Conforme o syllabus CTFL 4.0, seção 2.2.1."
+    },
+    {
+      "id": 176,
+      "question": "Qual das seguintes opções descreve uma técnica de teste baseada na experiência?",
+      "options": [
+        "Particionamento de Equivalência",
+        "Cobertura de Ramificação",
+        "Teste Exploratório",
+        "Teste de Transição de Estado"
+      ],
+      "correctAnswer": "Teste Exploratório",
+      "explanation": "Correto. O teste exploratório é uma técnica que depende fortemente do conhecimento, habilidade e intuição do testador. As outras opções são técnicas formais: A, D são de caixa-preta e B é de caixa-branca. Conforme o syllabus CTFL 4.0, seção 4.4."
+    },
+    {
+      "id": 177,
+      "question": "Qual é a principal responsabilidade de um testador em uma equipe ágil?",
+      "options": [
+        "Apenas executar os casos de teste que os desenvolvedores criam.",
+        "Trabalhar isoladamente para garantir uma avaliação imparcial do software.",
+        "Colaborar continuamente com desenvolvedores e o Product Owner para construir qualidade no produto desde o início.",
+        "Escrever toda a documentação do projeto, incluindo os manuais do usuário."
+      ],
+      "correctAnswer": "Colaborar continuamente com desenvolvedores e o Product Owner para construir qualidade no produto desde o início.",
+      "explanation": "Correto. Em uma equipe ágil, o testador é um colaborador ativo em todo o ciclo de vida da sprint. Eles participam de discussões de requisitos, ajudam a definir critérios de aceite, fornecem feedback rápido e trabalham em conjunto com os desenvolvedores, muitas vezes em pares, para prevenir defeitos. Conforme o syllabus CTFL 4.0, seção 1.5.2."
+    },
+    {
+      "id": 178,
+      "question": "Qual dos seguintes é o melhor exemplo de um critério de saída para um ciclo de teste?",
+      "options": [
+        "O orçamento do projeto foi totalmente gasto.",
+        "A data de lançamento do produto foi alcançada.",
+        "A cobertura de risco planejada de 95% foi atingida e não há defeitos críticos em aberto.",
+        "Todos os desenvolvedores confirmaram que suas correções foram concluídas."
+      ],
+      "correctAnswer": "A cobertura de risco planejada de 95% foi atingida e não há defeitos críticos em aberto.",
+      "explanation": "Correto. Critérios de saída devem ser mensuráveis e baseados na qualidade e no risco. Atingir uma meta de cobertura e ter um número aceitável de defeitos em aberto são critérios objetivos que ajudam os stakeholders a decidir se o teste pode ser concluído. As opções A e B são restrições que podem forçar o fim do teste, mas não são critérios de qualidade. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 179,
+      "question": "A técnica de criar casos de teste com base em um diagrama que mostra os diferentes estados de um objeto e como os eventos causam mudanças entre esses estados é chamada de:",
+      "options": [
+        "Teste de Tabela de Decisão",
+        "Teste de Transição de Estado",
+        "Particionamento de Equivalência",
+        "Teste de Casos de Uso"
+      ],
+      "correctAnswer": "Teste de Transição de Estado",
+      "explanation": "Correto. O Teste de Transição de Estado usa um modelo de estados e transições para derivar testes que cobrem a sequência de eventos e as mudanças de estado do sistema, sendo ideal para sistemas com comportamento sequencial complexo. Conforme o syllabus CTFL 4.0, seção 4.2.4."
+    },
+    {
+      "id": 180,
+      "question": "Qual das seguintes afirmações sobre o modelo de ciclo de vida em V é verdadeira?",
+      "options": [
+        "É um modelo iterativo que permite mudanças de requisitos em qualquer fase.",
+        "Ele enfatiza a relação entre cada fase de desenvolvimento e sua fase de teste correspondente, promovendo testes antecipados.",
+        "O teste só começa após a fase de codificação ser completamente concluída.",
+        "A documentação não é uma parte importante do modelo V."
+      ],
+      "correctAnswer": "Ele enfatiza a relação entre cada fase de desenvolvimento e sua fase de teste correspondente, promovendo testes antecipados.",
+      "explanation": "Correto. A principal característica do modelo V é que ele ilustra como as atividades de teste (o lado direito do V) podem ser integradas em cada fase do ciclo de vida de desenvolvimento (o lado esquerdo do V). O planejamento e o projeto de teste começam em paralelo com as fases de desenvolvimento correspondentes. Conforme o syllabus CTFL 4.0, seção 2.1."
+    },
+    {
+      "id": 181,
+      "question": "O que é 'teste de compatibilidade'?",
+      "options": [
+        "Testar se o software é compatível com as expectativas do usuário.",
+        "Testar se o software pode coexistir e operar corretamente com outro software em um ambiente compartilhado.",
+        "Testar se os membros da equipe de desenvolvimento são compatíveis entre si.",
+        "Testar se a documentação do software é compatível com as normas da empresa."
+      ],
+      "correctAnswer": "Testar se o software pode coexistir e operar corretamente com outro software em um ambiente compartilhado.",
+      "explanation": "Correto. O teste de compatibilidade (ou coexistência) avalia a capacidade do software de funcionar em um ambiente onde outros softwares e hardwares estão presentes, sem afetá-los negativamente e sem ser afetado por eles. Também se refere à portabilidade entre diferentes sistemas operacionais, navegadores, etc. Conforme o syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 182,
+      "question": "Qual das seguintes é uma das principais atividades de um testador durante uma sessão de teste exploratório?",
+      "options": [
+        "Seguir um script de teste detalhado e pré-aprovado sem desvios.",
+        "Documentar os resultados de cada passo do teste em um sistema de gerenciamento de testes.",
+        "Aprender sobre o sistema, projetar novos testes, executá-los e registrar as descobertas simultaneamente.",
+        "Aguardar instruções do gerente de teste sobre o que testar a seguir."
+      ],
+      "correctAnswer": "Aprender sobre o sistema, projetar novos testes, executá-los e registrar as descobertas simultaneamente.",
+      "explanation": "Correto. O teste exploratório é uma abordagem simultânea e interativa. O testador usa sua liberdade e conhecimento para explorar o software, e cada descoberta informa o próximo teste a ser executado. É uma atividade altamente cognitiva e criativa. Conforme o syllabus CTFL 4.0, seção 4.4.2."
+    },
+    {
+      "id": 183,
+      "question": "Qual é a principal razão para realizar testes de regressão?",
+      "options": [
+        "Para testar exaustivamente todas as novas funcionalidades adicionadas em uma versão.",
+        "Para encontrar defeitos em funcionalidades existentes que podem ter sido introduzidos por mudanças recentes.",
+        "Para confirmar que um defeito específico foi corrigido com sucesso.",
+        "Para avaliar a performance do sistema sob carga máxima."
+      ],
+      "correctAnswer": "Para encontrar defeitos em funcionalidades existentes que podem ter sido introduzidos por mudanças recentes.",
+      "explanation": "Correto. O objetivo do teste de regressão é gerenciar o risco de que as mudanças (correções ou novas funcionalidades) tenham introduzido efeitos colaterais indesejados em partes do sistema que antes funcionavam. Conforme o syllabus CTFL 4.0, seção 2.2.3."
+    },
+    {
+      "id": 184,
+      "question": "Uma 'heurística' de teste é:",
+      "options": [
+        "Um procedimento de teste formal que deve ser seguido rigorosamente.",
+        "Uma regra ou guia prático que ajuda a focar os testes em áreas propensas a erros.",
+        "Uma métrica de cobertura que deve ser 100% alcançada.",
+        "O resultado esperado de um caso de teste."
+      ],
+      "correctAnswer": "Uma regra ou guia prático que ajuda a focar os testes em áreas propensas a erros.",
+      "explanation": "Correto. Heurísticas são 'regras de bolso' ou atalhos que ajudam os testadores, especialmente no teste exploratório, a identificar potenciais problemas. Um exemplo é a heurística 'Goldilocks' - testar com valores muito pequenos, médios e muito grandes."
+    },
+    {
+      "id": 185,
+      "question": "Qual dos seguintes é um exemplo de um risco de PROJETO?",
+      "options": [
+        "O software pode calcular incorretamente os descontos para clientes VIP.",
+        "O sistema pode ser vulnerável a ataques de cross-site scripting (XSS).",
+        "A estimativa de tempo para as atividades de teste foi excessivamente otimista.",
+        "A interface do usuário pode ser confusa e difícil de usar."
+      ],
+      "correctAnswer": "A estimativa de tempo para as atividades de teste foi excessivamente otimista.",
+      "explanation": "Correto. Riscos de projeto estão ligados ao gerenciamento e à execução do projeto. Uma estimativa incorreta é um risco de planejamento que pode impactar o cronograma e o orçamento. As outras opções são riscos de PRODUTO, relacionados à qualidade do software em si. Conforme o syllabus CTFL 4.0, seção 5.2.2."
+    },
+    {
+      "id": 186,
+      "question": "Qual o propósito do teste de integração 'de cima para baixo' (top-down)?",
+      "options": [
+        "Testar os módulos de nível mais baixo primeiro e integrá-los gradualmente para cima.",
+        "Integrar todos os módulos de uma vez e testar o sistema como um todo.",
+        "Começar testando a interface do usuário ou os módulos de controle de alto nível, usando 'stubs' para simular os módulos de nível inferior.",
+        "Focar apenas no teste das interfaces de banco de dados."
+      ],
+      "correctAnswer": "Começar testando a interface do usuário ou os módulos de controle de alto nível, usando 'stubs' para simular os módulos de nível inferior.",
+      "explanation": "Correto. A integração top-down permite que a lógica de controle principal e a arquitetura do sistema sejam testadas cedo. Como os módulos dependentes de nível inferior podem não estar prontos, são usados stubs para simular suas respostas, permitindo que o teste prossiga."
+    },
+    {
+      "id": 187,
+      "question": "O que o princípio 'Teste exaustivo é impossível' implica na prática?",
+      "options": [
+        "Que não devemos tentar testar o software, pois nunca encontraremos todos os defeitos.",
+        "Que devemos usar técnicas de teste e análise de risco para focar o esforço de teste nas áreas mais importantes.",
+        "Que apenas o teste automatizado pode alcançar o teste exaustivo.",
+        "Que o teste deve ser limitado a um número fixo de casos de teste, independentemente da complexidade do software."
+      ],
+      "correctAnswer": "Que devemos usar técnicas de teste e análise de risco para focar o esforço de teste nas áreas mais importantes.",
+      "explanation": "Correto. Como testar todas as combinações de entradas, pré-condições e caminhos é inviável para qualquer software não trivial, a abordagem prática é priorizar. Usamos a análise de risco para identificar o que é mais importante testar e técnicas de projeto de teste para selecionar um subconjunto de testes com a maior probabilidade de encontrar defeitos. Conforme o syllabus CTFL 4.0, seção 1.3."
+    },
+    {
+      "id": 188,
+      "question": "Qual das seguintes opções é uma métrica de teste e não uma métrica de desenvolvimento?",
+      "options": [
+        "Linhas de código escritas por dia.",
+        "Complexidade ciclomática de um módulo.",
+        "Porcentagem de requisitos cobertos pelos casos de teste.",
+        "Número de commits no repositório de código."
+      ],
+      "correctAnswer": "Porcentagem de requisitos cobertos pelos casos de teste.",
+      "explanation": "Correto. A cobertura de requisitos é uma métrica fundamental do processo de teste, usada para medir o progresso e a completude do esforço de teste. As outras opções são métricas tipicamente associadas ao processo de desenvolvimento e à análise do código. Conforme o syllabus CTFL 4.0, seção 5.3.1."
+    },
+    {
+      "id": 189,
+      "question": "Qual é a principal desvantagem do teste manual em comparação com o teste automatizado?",
+      "options": [
+        "O teste manual é incapaz de encontrar defeitos de usabilidade.",
+        "O teste manual pode ser propenso a erros humanos e é mais lento e caro para tarefas repetitivas.",
+        "O teste manual não requer nenhum tipo de planejamento ou documentação.",
+        "O teste manual não pode ser usado para testar novas funcionalidades."
+      ],
+      "correctAnswer": "O teste manual pode ser propenso a erros humanos e é mais lento e caro para tarefas repetitivas.",
+      "explanation": "Correto. Para testes que precisam ser executados muitas vezes, como os de regressão, o teste manual se torna lento, caro e suscetível a erros por repetição. A automação se destaca nesses cenários pela sua velocidade e consistência. No entanto, o teste manual é superior em áreas que exigem cognição e subjetividade (A). Conforme o syllabus CTFL 4.0, seção 6.2."
+    },
+    {
+      "id": 190,
+      "question": "O que é um 'script de teste'?",
+      "options": [
+        "Um documento de alto nível que descreve a estratégia de teste.",
+        "Uma lista de todos os defeitos encontrados em um sistema.",
+        "Um conjunto de instruções para a execução de um teste, que pode ser manual (procedimento de teste) ou automatizado.",
+        "O código-fonte do software que está sendo testado."
+      ],
+      "correctAnswer": "Um conjunto de instruções para a execução de um teste, que pode ser manual (procedimento de teste) ou automatizado.",
+      "explanation": "Correto. Um script de teste contém as instruções passo a passo para a execução de um ou mais casos de teste. Para testes manuais, isso é chamado de procedimento de teste. Para testes automatizados, é o código executável pela ferramenta de automação. Conforme o syllabus CTFL 4.0, seção 1.4.3."
+    },
+    {
+      "id": 191,
+      "question": "O que é 'teste de carga' (load testing)?",
+      "options": [
+        "Um teste para ver quanto peso físico um hardware pode suportar.",
+        "Um teste de performance que mede o comportamento de um sistema sob uma carga de trabalho normal e de pico esperada.",
+        "Um teste para carregar o banco de dados com dados de teste antes da execução.",
+        "Um teste para verificar se o sistema pode carregar em diferentes sistemas operacionais."
+      ],
+      "correctAnswer": "Um teste de performance que mede o comportamento de um sistema sob uma carga de trabalho normal e de pico esperada.",
+      "explanation": "Correto. O teste de carga é um tipo de teste de performance que simula um número esperado de usuários simultâneos ou transações para avaliar o comportamento do sistema (e.g., tempo de resposta, uso de recursos) sob carga. O objetivo é garantir que ele atenda aos requisitos de performance."
+    },
+    {
+      "id": 192,
+      "question": "Em um processo de revisão, qual é o papel do 'Autor'?",
+      "options": [
+        "Liderar a reunião de revisão e garantir que ela seja produtiva.",
+        "Registrar todas as anomalias e decisões tomadas durante a reunião.",
+        "Criar o produto de trabalho que está sendo revisado e corrigir os defeitos encontrados nele.",
+        "Fornecer uma perspectiva externa e imparcial sobre o produto de trabalho."
+      ],
+      "correctAnswer": "Criar o produto de trabalho que está sendo revisado e corrigir os defeitos encontrados nele.",
+      "explanation": "Correto. O autor é a pessoa ou equipe que criou o artefato (documento de requisitos, código, plano de teste, etc.) que é o objeto da revisão. Eles também são geralmente responsáveis por implementar as correções com base no feedback da revisão. Conforme o syllabus CTFL 4.0, seção 3.2.3."
+    },
+    {
+      "id": 193,
+      "question": "Qual das seguintes opções é um benefício de ter critérios de entrada bem definidos para o teste?",
+      "options": [
+        "Garante que não serão encontrados defeitos durante a fase de teste.",
+        "Ajuda a evitar que o teste comece com um objeto de teste de baixa qualidade ou sem os recursos necessários, o que seria ineficiente e frustrante.",
+        "Permite que a equipe de teste pare de testar assim que o prazo do projeto for atingido.",
+        "Reduz a quantidade de documentação de teste necessária."
+      ],
+      "correctAnswer": "Ajuda a evitar que o teste comece com um objeto de teste de baixa qualidade ou sem os recursos necessários, o que seria ineficiente e frustrante.",
+      "explanation": "Correto. Critérios de entrada atuam como um portão de qualidade. Eles garantem que as condições mínimas para um teste produtivo sejam atendidas (e.g., a build passou no teste de fumaça, a documentação está disponível, o ambiente está pronto). Começar o teste sem que esses critérios sejam atendidos leva a desperdício de tempo e esforço. Conforme o syllabus CTFL 4.0, seção 5.1.3."
+    },
+    {
+      "id": 194,
+      "question": "Um testador descobre que, ao inserir 31/02/2023 em um campo de data, o sistema trava. Qual técnica de teste de caixa-preta ele provavelmente usou para pensar neste caso de teste?",
+      "options": [
+        "Teste de Tabela de Decisão",
+        "Particionamento de Equivalência",
+        "Teste de Transição de Estado",
+        "Análise de Valor Limite"
+      ],
+      "correctAnswer": "Particionamento de Equivalência",
+      "explanation": "Correto. Embora BVA também seja relevante para datas, a ideia de testar uma data sintaticamente correta mas semanticamente inválida (fevereiro não tem 31 dias) vem do Particionamento de Equivalência. O testador criou uma partição de 'datas inválidas' que inclui combinações impossíveis como esta. Conforme o syllabus CTFL 4.0, seção 4.2.1."
+    },
+    {
+      "id": 195,
+      "question": "O que é 'Teste de Confiabilidade' (Reliability Testing)?",
+      "options": [
+        "Testar se podemos confiar nas estimativas de tempo fornecidas pela equipe de desenvolvimento.",
+        "Testar a capacidade do software de operar sem falhas por um período de tempo especificado em um ambiente estabelecido.",
+        "Testar se o software é confiável o suficiente para ser usado por usuários inexperientes.",
+        "Testar se as senhas dos usuários são armazenadas de forma confiável e segura."
+      ],
+      "correctAnswer": "Testar a capacidade do software de operar sem falhas por um período de tempo especificado em um ambiente estabelecido.",
+      "explanation": "Correto. O teste de confiabilidade é um tipo de teste não funcional que mede a capacidade do sistema de funcionar continuamente sem falhas. Métricas como o Tempo Médio Entre Falhas (MTBF) são usadas para avaliar a confiabilidade. Conforme a norma ISO/IEC 25010, citada no syllabus CTFL 4.0, seção 2.2.2."
+    },
+    {
+      "id": 196,
+      "question": "Qual das seguintes é a principal razão pela qual o envolvimento de testadores nas revisões de requisitos é valioso?",
+      "options": [
+        "Para que os testadores possam começar a escrever o código de automação imediatamente.",
+        "Para identificar e remover defeitos (como ambiguidades) nos requisitos antes que eles se propaguem para o código, quando seriam muito mais caros de corrigir.",
+        "Para que os testadores possam dar sua opinião sobre o design da interface do usuário.",
+        "Para garantir que os desenvolvedores não participem da revisão, mantendo a independência."
+      ],
+      "correctAnswer": "Para identificar e remover defeitos (como ambiguidades) nos requisitos antes que eles se propaguem para o código, quando seriam muito mais caros de corrigir.",
+      "explanation": "Correto. Esta é a essência do princípio de 'testes antecipados'. Envolver testadores nas revisões iniciais permite que eles apliquem sua mentalidade crítica para encontrar problemas na base de teste. Corrigir um requisito ambíguo em um documento é trivial em comparação com corrigir uma funcionalidade inteira construída com base nessa ambiguidade. Conforme o syllabus CTFL 4.0, seção 3.1.2."
+    },
+    {
+      "id": 197,
+      "question": "Qual das seguintes opções descreve uma abordagem de teste 'baseada em risco'?",
+      "options": [
+        "Uma abordagem que tenta testar 100% de todas as funcionalidades com o mesmo nível de detalhe.",
+        "Uma abordagem onde o esforço e a prioridade dos testes são direcionados pelas probabilidades e impactos das potenciais falhas do produto.",
+        "Uma abordagem que evita testar áreas de alto risco para não encontrar problemas difíceis de corrigir.",
+        "Uma abordagem onde apenas os riscos do projeto (como atrasos no cronograma) são considerados para o planejamento do teste."
+      ],
+      "correctAnswer": "Uma abordagem onde o esforço e a prioridade dos testes são direcionados pelas probabilidades e impactos das potenciais falhas do produto.",
+      "explanation": "Correto. O teste baseado em risco usa os riscos do produto para guiar o planejamento, o projeto e a execução dos testes. As áreas com maior risco (maior probabilidade de falha e/ou maior impacto de negócio se falharem) recebem mais atenção e são testadas mais cedo e com mais rigor. Conforme o syllabus CTFL 4.0, seção 5.2."
+    },
+    {
+      "id": 198,
+      "question": "Se um software é extremamente complexo e a documentação de requisitos é pobre ou inexistente, qual abordagem de teste seria mais eficaz?",
+      "options": [
+        "Teste baseado em requisitos",
+        "Teste Exploratório",
+        "Automação de testes de regressão",
+        "Teste de caixa-branca baseado em cobertura de código"
+      ],
+      "correctAnswer": "Teste Exploratório",
+      "explanation": "Correto. O teste exploratório é particularmente útil em situações onde as especificações são fracas ou ausentes. Ele permite que o testador aprenda sobre o software e o teste simultaneamente, usando sua experiência e criatividade para descobrir defeitos que não seriam encontrados seguindo um plano rígido. Conforme o syllabus CTFL 4.0, seção 4.4.2."
+    },
+    {
+      "id": 199,
+      "question": "O que a 'complexidade ciclomática' mede?",
+      "options": [
+        "O número de linhas de código em um programa.",
+        "O número de defeitos encontrados por testador.",
+        "A complexidade estrutural de um programa, medindo o número de caminhos linearmente independentes através do código.",
+        "A complexidade da interface do usuário de um aplicativo."
+      ],
+      "correctAnswer": "A complexidade estrutural de um programa, medindo o número de caminhos linearmente independentes através do código.",
+      "explanation": "Correto. A complexidade ciclomática é uma métrica de software de caixa-branca. Um número maior geralmente indica um código mais complexo, com mais decisões (if, while, for), o que o torna mais difícil de testar e manter, e mais propenso a defeitos. Ela pode ser usada para determinar o número mínimo de testes necessários para a cobertura de ramificação."
+    },
+    {
+      "id": 200,
+      "question": "Qual é a principal responsabilidade do Scrum Master em uma equipe ágil?",
+      "options": [
+        "Priorizar o backlog do produto e decidir o que será construído a seguir.",
+        "Garantir que a equipe adira às práticas do Scrum, remover impedimentos e facilitar os eventos do Scrum.",
+        "Escrever o código para as histórias de usuário e garantir a qualidade técnica.",
+        "Aceitar ou rejeitar o trabalho concluído no final da Sprint."
+      ],
+      "correctAnswer": "Garantir que a equipe adira às práticas do Scrum, remover impedimentos e facilitar os eventos do Scrum.",
+      "explanation": "Correto. O Scrum Master é um líder servidor para a equipe Scrum. Seu papel não é gerenciar a equipe, mas sim atuar como um coach, ajudando a equipe a entender e aplicar o Scrum, removendo quaisquer obstáculos que estejam impedindo seu progresso. A opção A é do Product Owner, C é da Equipe de Desenvolvimento e D é do Product Owner durante a Sprint Review."
+    }
+  ]
+}

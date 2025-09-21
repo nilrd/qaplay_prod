@@ -4,11 +4,14 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target, BookOpen } from 'lucide-react'
-import questionsData from '../data/ctfl_150_questions.json'
+import questionsData from '../data/quiz-ctfl.json'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import CertificateModal from '@/components/CertificateModal';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import QuizConfigModal from '@/components/QuizConfigModal';
+import UserInfoModal from '@/components/UserInfoModal';
+import { useQuizTimer, calculateQuizTime, formatQuizTime, getTimeLeftClasses } from '../hooks/useQuizTimer';
 
 const CTFLQuizGame = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -16,7 +19,6 @@ const CTFLQuizGame = () => {
   const [score, setScore] = useState(0)
   const [showExplanation, setShowExplanation] = useState(false)
   const [gameFinished, setGameFinished] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutos para 20 questões (60 * 20 = 1200 segundos)
   const [gameStarted, setGameStarted] = useState(false)
   const [shuffledQuestions, setShuffledQuestions] = useState([])
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
@@ -24,7 +26,18 @@ const CTFLQuizGame = () => {
   const [fullName, setFullName] = useState('');
   const [linkedinProfile, setLinkedinProfile] = useState('');
   const [gameMode, setGameMode] = useState('');
-  const timerRef = useRef(null);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [showConfigModal, setShowConfigModal] = useState(false);
+  const [totalQuestions, setTotalQuestions] = useState(20);
+  const [totalTime, setTotalTime] = useState(calculateQuizTime(20));
+
+  // Hook do temporizador padronizado
+  const { timeLeft, resetTimer } = useQuizTimer(
+    totalTime,
+    gameStarted,
+    gameFinished,
+    () => setGameFinished(true)
+  )
 
   // Fisher-Yates Shuffle algorithm
   const shuffleArray = (array) => {
@@ -39,31 +52,17 @@ const CTFLQuizGame = () => {
   const startGame = (mode) => {
     const allQuestions = questionsData.questions;
 
-    // Filtrar e embaralhar questões por nível
-    const basicQuestions = shuffleArray(allQuestions.filter(q => q.level === 'básico'));
-    const intermediateQuestions = shuffleArray(allQuestions.filter(q => q.level === 'intermediário'));
-    const advancedQuestions = shuffleArray(allQuestions.filter(q => q.level === 'avançado'));
+    // Embaralhar todas as questões e selecionar o número configurado
+    let questionsToUse = shuffleArray(allQuestions).slice(0, totalQuestions);
 
-    // Selecionar 20 questões: 8 básicas, 8 intermediárias, 4 avançadas
-    const selectedBasic = basicQuestions.slice(0, 8);
-    const selectedIntermediate = intermediateQuestions.slice(0, 8);
-    const selectedAdvanced = advancedQuestions.slice(0, 4);
-
-    let questionsToUse = shuffleArray([...selectedBasic, ...selectedIntermediate, ...selectedAdvanced]);
-
-    // Embaralhar as opções de cada questão e remapear a resposta correta
+    // Embaralhar as opções de cada questão
     const shuffledQWithOptions = questionsToUse.map(q => {
-      const originalCorrectAnswerIndex = q.correctAnswer;
-      const optionsWithOriginalIndex = q.options.map((option, index) => ({ text: option, originalIndex: index }));
-      const shuffledOptions = shuffleArray(optionsWithOriginalIndex);
+      const shuffledOptions = shuffleArray(q.options);
       
-      // Encontrar o novo índice da resposta correta após o embaralhamento
-      const newCorrectAnswerIndex = shuffledOptions.findIndex(option => option.originalIndex === originalCorrectAnswerIndex);
-
       return {
         ...q,
         options: shuffledOptions,
-        correctAnswer: newCorrectAnswerIndex, // Atualiza o índice da resposta correta
+        correctAnswer: q.correctAnswer // Manter como string para validação
       };
     });
 
@@ -75,32 +74,14 @@ const CTFLQuizGame = () => {
     setSelectedAnswerIndex(null);
     setShowExplanation(false);
     setGameFinished(false);
-    setTimeLeft(mode === 'simulado' ? 1200 : null); // 20 minutos para o modo simulado
+    if (mode === 'simulado') {
+      resetTimer(totalTime); // Usar tempo configurado para o modo simulado
+    }
     setIsCertificateModalOpen(false);
     setFullName('');
     setLinkedinProfile('');
-    if (mode === 'simulado') {
-      startTimer();
-    }
+    // O hook useQuizTimer já gerencia o temporizador automaticamente
   };
-
-  const startTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setTimeLeft(prevTime => {
-        if (prevTime <= 1) {
-          clearInterval(timerRef.current);
-          handleTimeUp();
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-  };
-
-  useEffect(() => {
-    return () => clearInterval(timerRef.current);
-  }, []);
 
   const handleTimeUp = () => {
     if (gameMode === 'simulado') {
@@ -117,7 +98,7 @@ const CTFLQuizGame = () => {
     setSelectedAnswerIndex(answerIndex);
     
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
-    const isCorrect = answerIndex === currentQuestion.correctAnswer;
+    const isCorrect = currentQuestion.options[answerIndex] === currentQuestion.correctAnswer;
 
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
@@ -157,12 +138,29 @@ const CTFLQuizGame = () => {
     setShowExplanation(false);
     setGameFinished(false);
     setShuffledQuestions([]);
-    setTimeLeft(1200);
+    resetTimer(totalTime); // Usar tempo configurado
     setIsTimeUpModalOpen(false);
     setIsCertificateModalOpen(false);
     setFullName('');
     setLinkedinProfile('');
     setGameMode('');
+  };
+
+  // Função para lidar com configuração do quiz
+  const handleQuizConfig = (questionCount, timeInSeconds) => {
+    setTotalQuestions(questionCount);
+    setTotalTime(timeInSeconds);
+    setShowConfigModal(false);
+    setShowUserModal(true);
+  };
+
+  // Função para lidar com informações do usuário
+  const handleUserInfo = (userData) => {
+    setFullName(userData.name);
+    setLinkedinProfile(userData.linkedinUrl);
+    setShowUserModal(false);
+    // Iniciar o jogo após coletar informações do usuário
+    startGame('simulado');
   };
 
   const getScoreMessage = () => {
@@ -184,12 +182,8 @@ const CTFLQuizGame = () => {
   const currentQ = shuffledQuestions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
 
-  const formatTime = (seconds) => {
-    if (seconds === null) return 'Livre';
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
+  // Função para formatar tempo (usando utilitário padronizado)
+  const formatTime = formatQuizTime;
 
   if (!gameStarted) {
     return (
@@ -215,9 +209,9 @@ const CTFLQuizGame = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Button onClick={() => startGame('simulado')} size="lg" className="w-full">
+              <Button onClick={() => setShowConfigModal(true)} size="lg" className="w-full">
                 <Target className="mr-2 h-5 w-5" />
-                Modo Simulado (20 min)
+                Modo Simulado Configurável
               </Button>
               <Button onClick={() => startGame('aprendizado')} size="lg" className="w-full" variant="outline">
                 <BookOpen className="mr-2 h-5 w-5" />
@@ -228,9 +222,9 @@ const CTFLQuizGame = () => {
             <div className="space-y-4">
               <h3 className="font-semibold">Regras do Jogo:</h3>
               <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• <strong>Modo Simulado:</strong> 20 questões, 20 minutos, feedback apenas no final.</li>
+                <li>• <strong>Modo Simulado:</strong> Configure 20, 50 ou 100 questões com tempo proporcional (60s por questão).</li>
                 <li>• <strong>Modo Aprendizado:</strong> 20 questões, tempo livre, feedback imediato.</li>
-                <li>• Questões randomizadas e balanceadas por nível (8 básicas, 8 intermediárias, 4 avançadas).</li>
+                <li>• Questões randomizadas e balanceadas por nível.</li>
                 <li>• Alternativas embaralhadas para evitar padrões previsíveis.</li>
               </ul>
             </div>
@@ -297,6 +291,7 @@ const CTFLQuizGame = () => {
                   placeholder="Seu Nome Completo"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  autoComplete="name"
                 />
               </div>
               <div className="grid gap-2">
@@ -307,6 +302,7 @@ const CTFLQuizGame = () => {
                   placeholder="https://linkedin.com/in/seuperfil"
                   value={linkedinProfile}
                   onChange={(e) => setLinkedinProfile(e.target.value)}
+                  autoComplete="url"
                 />
               </div>
               <Button onClick={handleGenerateCertificate} className="w-full">
@@ -348,7 +344,7 @@ const CTFLQuizGame = () => {
         {timeLeft !== null && (
           <div className="flex items-center space-x-2 bg-white p-2 rounded-lg border shadow-sm">
             <Clock className="h-4 w-4" />
-            <span className={`font-mono text-lg font-bold ${timeLeft <= 300 && timeLeft > 60 ? 'text-orange-500' : timeLeft <= 60 && timeLeft > 0 ? 'text-red-500 animate-pulse' : 'text-blue-600'}`}>
+            <span className={`font-mono text-lg font-bold ${getTimeLeftClasses(timeLeft)}`}>
               {formatTime(timeLeft)}
             </span>
             <span className="text-xs text-gray-500">restante</span>
@@ -373,7 +369,7 @@ const CTFLQuizGame = () => {
         <CardContent className="space-y-4">
           <div className="grid gap-3">
             {currentQ.options.map((option, index) => {
-              const isCorrectOption = index === currentQ.correctAnswer;
+              const isCorrectOption = option === currentQ.correctAnswer;
               const isSelected = selectedAnswerIndex === index;
 
               let buttonClass = "w-full text-left p-4 border rounded-lg transition-colors";
@@ -417,14 +413,7 @@ const CTFLQuizGame = () => {
           {showExplanation && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2">Explicação:</h4>
-              <p className="text-blue-800">{selectedAnswerIndex === currentQ.correctAnswer ? currentQ.correctFeedback : currentQ.incorrectFeedback}</p>
-              {currentQ.learningTip && (
-                <p className="text-blue-800 mt-2">
-                  <a href={currentQ.learningTip} target="_blank" rel="noopener noreferrer" className="underline">
-                    Dica de Aprendizado
-                  </a>
-                </p>
-              )}
+              <p className="text-blue-800">{currentQ.explanation}</p>
             </div>
           )}
 
@@ -453,6 +442,21 @@ const CTFLQuizGame = () => {
           <Button onClick={handleNextQuestion} className="w-full mt-4">Ver Resultado</Button>
         </DialogContent>
       </Dialog>
+
+      {/* Modal de Configuração do Quiz */}
+      <QuizConfigModal
+        isOpen={showConfigModal}
+        onClose={() => setShowConfigModal(false)}
+        onStart={handleQuizConfig}
+        quizTitle="CTFL 4.0"
+      />
+
+      {/* Modal de Informações do Usuário */}
+      <UserInfoModal
+        isOpen={showUserModal}
+        onClose={() => setShowUserModal(false)}
+        onSubmit={handleUserInfo}
+      />
     </div>
   );
 };

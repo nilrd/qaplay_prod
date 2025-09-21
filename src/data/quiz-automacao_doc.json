@@ -1,0 +1,2413 @@
+{
+  "questions": [
+    {
+      "pergunta": "No Selenium WebDriver, qual método é usado para encontrar o primeiro elemento que corresponde a um determinado critério de busca?",
+      "opcoes": [
+        "driver.findElements(By.id('...'))",
+        "driver.findElement(By.id('...'))",
+        "driver.getElement(By.id('...'))",
+        "driver.fetchAll(By.id('...'))"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `findElement` é usado para localizar o primeiro WebElement na página atual que corresponde ao critério do localizador. Se nenhum elemento for encontrado, ele lança uma exceção `NoSuchElementException`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual é a principal vantagem de usar `By.cssSelector` em vez de `By.xpath` no Selenium, quando possível?",
+      "opcoes": [
+        "Seletores CSS são universalmente mais rápidos para os navegadores processarem do que seletores XPath.",
+        "XPath não é suportado por todos os navegadores modernos, enquanto CSS é.",
+        "Seletores CSS podem navegar para cima na árvore do DOM (para elementos pai), enquanto XPath não pode.",
+        "XPath só pode selecionar elementos por ID, enquanto CSS tem mais opções."
+      ],
+      "indice_correto": "0",
+      "explicacao": "Embora ambos sejam poderosos, os seletores CSS geralmente têm um desempenho melhor, pois os motores dos navegadores são altamente otimizados para analisar CSS. O XPath, por ter uma sintaxe mais complexa e a capacidade de atravessar o DOM de maneiras mais complexas, pode ser mais lento.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/",
+      "tags": ["Selenium", "Boas Práticas", "Locators"]
+    },
+    {
+      "pergunta": "No Cypress, qual asserção é usada para verificar se um elemento contém um texto específico?",
+      "opcoes": [
+        "cy.get('p').should('have.text', 'Olá Mundo')",
+        "cy.get('p').should('contain', 'Olá Mundo')",
+        "cy.get('p').expect('text').to.equal('Olá Mundo')",
+        "cy.get('p').assert('contains.text', 'Olá Mundo')"
+      ],
+      "indice_correto": "1",
+      "explicacao": "A asserção `should('contain', '...')` é usada para verificar se o conteúdo de texto de um elemento inclui a string especificada. `should('have.text', '...')` seria para uma correspondência exata de todo o texto.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/references/assertions",
+      "tags": ["Cypress", "JavaScript", "Assertions"]
+    },
+    {
+      "pergunta": "Qual o propósito do comando `npx playwright codegen`?",
+      "opcoes": [
+        "Gerar um relatório de cobertura de código para os testes existentes.",
+        "Compilar os testes de TypeScript para JavaScript.",
+        "Abrir um navegador e gravar as interações do usuário, gerando o código de teste correspondente.",
+        "Criar arquivos de configuração padrão para um novo projeto Playwright."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O Test Generator (Codegen) do Playwright é uma ferramenta que monitora suas interações em uma página da web e gera o código em JavaScript, Python, .NET ou Java para replicar essas ações, acelerando a criação de novos scripts de teste.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/codegen",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Em BDD com Cucumber, qual é o propósito da palavra-chave 'Given' (Dado)?",
+      "opcoes": [
+        "Descrever a ação principal que o usuário realiza.",
+        "Descrever o resultado ou a verificação que deve ser observada.",
+        "Estabelecer o pré-requisito ou o contexto inicial do cenário.",
+        "Definir uma variável que será usada nos passos seguintes."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O passo 'Given' é usado para colocar o sistema em um estado conhecido antes que o usuário (ou o teste) comece a interagir com ele. Ele define o contexto e as pré-condições do cenário.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "O que é um 'teste flaky' (instável)?",
+      "opcoes": [
+        "Um teste que falha consistentemente todas as vezes que é executado.",
+        "Um teste que passa e falha intermitentemente sem nenhuma mudança no código-fonte da aplicação ou do teste.",
+        "Um teste que leva muito tempo para ser executado.",
+        "Um teste que verifica várias funcionalidades de uma só vez."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Testes 'flaky' são um grande problema em suítes de automação porque minam a confiança nos resultados. Eles geralmente são causados por problemas de concorrência, dependências externas, ou esperas (waits) inadequadas que não lidam corretamente com a natureza assíncrona da web.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/flaky_tests/",
+      "tags": ["Boas Práticas"]
+    },
+    {
+      "pergunta": "No Playwright, o que é um 'BrowserContext'?",
+      "opcoes": [
+        "É um sinônimo para a janela principal do navegador.",
+        "É uma instância do navegador, como Chrome ou Firefox.",
+        "É uma sessão de navegação isolada dentro de uma instância do navegador, similar a um perfil de navegador limpo.",
+        "É a ferramenta de desenvolvedor (DevTools) do navegador."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Um BrowserContext é como uma nova janela anônima. Cada contexto é isolado, com seus próprios cookies, armazenamento local e cache. Isso permite executar testes independentes e paralelos dentro da mesma instância de navegador sem interferência.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/core-concepts#browser-contexts",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual anotação do JUnit 5 é o equivalente ao `@Before` do JUnit 4?",
+      "opcoes": [
+        "@BeforeTest",
+        "@BeforeMethod",
+        "@BeforeEach",
+        "@Setup"
+      ],
+      "indice_correto": "2",
+      "explicacao": "No JUnit 5, a anotação `@BeforeEach` é usada para marcar um método que deve ser executado antes de cada método de teste (`@Test`) na classe. Isso é útil para inicializar objetos ou resetar o estado antes de cada teste.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Como você executa um comando do terminal (shell) de dentro de um teste Cypress?",
+      "opcoes": [
+        "cy.run()",
+        "cy.exec()",
+        "cy.shell()",
+        "cy.terminal()"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `cy.exec()` permite executar qualquer comando do sistema. Isso é extremamente útil para tarefas como 'seedar' um banco de dados, rodar um script de setup, ou qualquer outra operação externa necessária para preparar o ambiente do teste.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/exec",
+      "tags": ["Cypress", "CI/CD"]
+    },
+    {
+      "pergunta": "Qual é o propósito da classe 'Actions' no Selenium?",
+      "opcoes": [
+        "Agrupar múltiplos testes em uma única suíte de execução.",
+        "Gerenciar a configuração do WebDriver, como timeouts e capabilities.",
+        "Executar asserções complexas que envolvem múltiplos elementos.",
+        "Simular interações complexas do usuário, como passar o mouse (hover), clicar e segurar, e arrastar e soltar (drag and drop)."
+      ],
+      "indice_correto": "3",
+      "explicacao": "A classe `Actions` é usada para construir uma sequência de ações do usuário. Ela é necessária para eventos que não são um simples clique ou digitação, permitindo emular interações mais realistas e complexas com os componentes da página.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/actions_api/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, qual é a função do `async/await`?",
+      "opcoes": [
+        "Executar funções em paralelo para melhorar a performance.",
+        "Permitir a escrita de código baseado em Promises de uma maneira mais síncrona e legível.",
+        "Criar um novo 'thread' para operações de longa duração.",
+        "Declarar uma variável que não pode ser reatribuída."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`async/await` é uma 'syntactic sugar' sobre as Promises. A palavra-chave `async` antes de uma função permite que ela use `await`. `await` pausa a execução da função `async` até que a Promise seja resolvida, tornando o código assíncrono mais fácil de ler e escrever.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/async_function",
+      "tags": ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+      "pergunta": "No Playwright, como você pode simular um dispositivo móvel como um iPhone 13?",
+      "opcoes": [
+        "É necessário configurar manualmente o user-agent e o tamanho da viewport.",
+        "Usando o método `page.emulate('iPhone 13')`.",
+        "Não é possível simular dispositivos específicos, apenas tamanhos de tela genéricos.",
+        "Através da propriedade `...devices['iPhone 13']` na configuração do contexto do navegador."
+      ],
+      "indice_correto": "3",
+      "explicacao": "Playwright vem com uma lista de descritores de dispositivos pré-configurados. Para emular um dispositivo, você pode importar o objeto `devices` e usá-lo ao criar um novo contexto com `browser.newContext({ ...devices['iPhone 13'] })`. Isso configura automaticamente a viewport, user-agent, e outras propriedades.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/emulation",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual das opções abaixo representa um 'anti-pattern' no uso do Selenium Waits?",
+      "opcoes": [
+        "Usar `WebDriverWait` para esperar que um elemento se torne clicável.",
+        "Misturar esperas implícitas e explícitas no mesmo teste.",
+        "Configurar uma espera implícita no início da sessão do driver.",
+        "Criar métodos de espera reutilizáveis que aguardam por condições customizadas."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A documentação do Selenium adverte fortemente contra a mistura de esperas implícitas e explícitas. Isso pode causar tempos de espera imprevisíveis e longos, pois os timeouts podem se somar de maneiras inesperadas. A prática recomendada é usar exclusivamente esperas explícitas.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/",
+      "tags": ["Selenium", "Waits", "Boas Práticas"]
+    },
+    {
+      "pergunta": "No Cypress, como você pode visitar uma página em seu teste?",
+      "opcoes": [
+        "cy.get('https://minha-url.com')",
+        "cy.navigate('https://minha-url.com')",
+        "cy.visit('https://minha-url.com')",
+        "cy.open('https://minha-url.com')"
+      ],
+      "indice_correto": "2",
+      "explicacao": "O comando `cy.visit()` é usado para navegar o navegador para uma URL específica. Ele também espera a página carregar (disparar o evento `load`) antes de prosseguir para o próximo comando.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/visit",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Qual a principal função do Selenium Grid?",
+      "opcoes": [
+        "Fornecer uma IDE para escrever e depurar testes Selenium.",
+        "Gerar relatórios de teste detalhados com screenshots e vídeos.",
+        "Permitir a execução de testes em paralelo em múltiplas máquinas, navegadores e sistemas operacionais.",
+        "Gerenciar dependências do projeto Selenium, como o WebDriver e bibliotecas de asserção."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Selenium Grid resolve o problema de minimizar o tempo de execução dos testes e abranger uma ampla variedade de ambientes. Ele usa uma arquitetura hub-node onde os testes são enviados para um hub central, que os distribui para diferentes nós (máquinas com os navegadores) para execução paralela.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/grid/",
+      "tags": ["Selenium", "CI/CD"]
+    },
+    {
+      "pergunta": "Em TestNG, qual anotação é usada para fornecer dados a um método de teste, permitindo que ele seja executado múltiplas vezes com diferentes valores?",
+      "opcoes": [
+        "@ParameterizedTest",
+        "@DataSource",
+        "@DataProvider",
+        "@TestValues"
+      ],
+      "indice_correto": "2",
+      "explicacao": "A anotação `@DataProvider` marca um método que fornece dados para um método de teste. O método de teste, por sua vez, declara que usará esse provedor de dados através do atributo `dataProvider` em sua anotação `@Test`.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "Como o Playwright garante que um elemento está pronto para ser clicado antes de executar a ação `page.click()`?",
+      "opcoes": [
+        "Ele pausa a execução por 500ms fixos antes de cada clique.",
+        "Ele não garante; o desenvolvedor deve adicionar uma espera manual antes de cada clique.",
+        "Ele realiza uma série de verificações de 'acionabilidade' (actionability checks) automáticas, como esperar o elemento estar visível, estável e habilitado.",
+        "Ele verifica apenas se o elemento existe no DOM, mesmo que esteja oculto ou desabilitado."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O Playwright possui um mecanismo de espera automática (auto-waiting) robusto. Antes de executar ações como clique, ele espera automaticamente que o elemento passe em várias verificações, garantindo que um usuário real pudesse interagir com ele. Isso torna os testes muito mais confiáveis.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/actionability",
+      "tags": ["Playwright", "Waits"]
+    },
+    {
+      "pergunta": "No arquivo de configuração `cypress.config.js`, qual propriedade define a URL base para os seus testes?",
+      "opcoes": [
+        "rootUrl",
+        "baseUrl",
+        "testUrl",
+        "url"
+      ],
+      "indice_correto": "1",
+      "explicacao": "A propriedade `baseUrl` no objeto de configuração `e2e` permite definir um prefixo para comandos como `cy.visit()` e `cy.request()`. Em vez de escrever a URL completa em cada teste, você pode usar `cy.visit('/login')`, tornando os testes mais limpos e fáceis de manter.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/references/configuration#e2e",
+      "tags": ["Cypress", "Configuration"]
+    },
+    {
+      "pergunta": "Em Cucumber, o que é um 'Step Definition' (Definição de Passo)?",
+      "opcoes": [
+        "Uma linha em um arquivo `.feature` que descreve uma ação ou verificação.",
+        "O arquivo de configuração do Cucumber.",
+        "Um bloco de código (em Java, JavaScript, etc.) que conecta um passo Gherkin legível por humanos a uma ação de automação executável.",
+        "Um relatório gerado após a execução dos testes."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A 'Step Definition' é a ponte entre o Gherkin (linguagem natural) e o código de automação. Cada passo `Given`, `When` ou `Then` no arquivo de cenário deve corresponder a um método anotado em uma classe de 'step definition' que executa a lógica de teste correspondente.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é uma prática recomendada para nomear métodos de teste em Java com JUnit?",
+      "opcoes": [
+        "test1, test2, test3",
+        "testLogin, testLogout",
+        "deveRetornarErro_QuandoUsuarioInvalido_ParaLogin",
+        "login_com_usuario_invalido_retorna_erro"
+      ],
+      "indice_correto": "2",
+      "explicacao": "Nomes de teste descritivos são cruciais para a manutenibilidade. Um padrão comum é `[o que está sendo testado]_[em que circunstância]_[qual o resultado esperado]`. Isso torna claro o propósito do teste apenas pela leitura do nome do método, sem precisar ler o código.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java", "Boas Práticas"]
+    },
+    {
+      "pergunta": "O que o princípio 'DRY' (Don't Repeat Yourself) significa no contexto de automação de testes?",
+      "opcoes": [
+        "Cada teste deve ser executado em um ambiente completamente limpo (seco).",
+        "Evitar a duplicação de código criando métodos reutilizáveis, usando Page Objects e outras abstrações.",
+        "Os testes não devem depender de dados externos.",
+        "Os relatórios de teste devem ser concisos e diretos (secos)."
+      ],
+      "indice_correto": "1",
+      "explicacao": "DRY é um princípio fundamental do desenvolvimento de software que se aplica diretamente à automação. Repetir o mesmo código de localização de elementos ou sequências de ações em múltiplos testes leva a uma manutenção difícil. Abstrair esse código em métodos compartilhados ou classes Page Object torna a suíte de testes mais robusta e fácil de atualizar.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/",
+      "tags": ["Boas Práticas"]
+    },
+    {
+      "pergunta": "No Selenium, como você interage com um elemento dentro de um `<iframe>`?",
+      "opcoes": [
+        "Não é possível interagir com elementos em iframes.",
+        "Usando `driver.switchTo().frame()` com o ID, nome ou WebElement do iframe.",
+        "Usando `driver.findElement(By.cssSelector('iframe #elementId'))` diretamente.",
+        "Usando a classe `IframeActions` para manipular o conteúdo."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Iframes representam um contexto de documento separado dentro da página. Para interagir com elementos dentro dele, você deve primeiro mudar o foco do driver para o iframe usando `driver.switchTo().frame()`. Após interagir, você pode retornar ao contexto principal com `driver.switchTo().defaultContent()`.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/interactions/frames/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual comando do Cypress é usado para definir manualmente o tamanho da janela de visualização (viewport)?",
+      "opcoes": [
+        "cy.setViewport()",
+        "cy.viewport()",
+        "cy.windowSize()",
+        "cy.resize()"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `cy.viewport()` permite definir a largura e a altura da viewport em pixels ou usar predefinições de dispositivos (como 'iphone-6'). Isso é essencial para testes de design responsivo.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/viewport",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "No Playwright, qual a diferença entre `page.locator()` e `page.$()`?",
+      "opcoes": [
+        "`page.$()` é para seletores CSS e `page.locator()` é para XPath.",
+        "`page.locator()` cria um objeto localizador que pode ser reutilizado, enquanto `page.$()` (ou `querySelector`) retorna um `ElementHandle` imediatamente.",
+        "Não há diferença, são apenas aliases um do outro.",
+        "`page.locator()` espera automaticamente pelo elemento, enquanto `page.$()` não."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`locator` é a maneira recomendada e mais moderna de acessar elementos no Playwright. Ele cria um objeto que encapsula a lógica de como encontrar o elemento. Ações no localizador (como `.click()`) esperam automaticamente. `page.$()` é um método legado que retorna um handle para o elemento, exigindo mais manipulação manual.",
+      "dificuldade": "Difícil",
+      "referencias": "https://playwright.dev/docs/locators",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual é o objetivo principal dos testes de regressão automatizados em um pipeline de CI/CD?",
+      "opcoes": [
+        "Verificar se novas funcionalidades foram implementadas corretamente.",
+        "Garantir que as novas alterações de código não quebraram funcionalidades existentes.",
+        "Testar o desempenho da aplicação sob carga pesada.",
+        "Substituir completamente a necessidade de testes manuais exploratórios."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Testes de regressão são uma rede de segurança. A cada novo commit ou merge, a suíte de regressão automatizada é executada para verificar se as funcionalidades que antes funcionavam continuam funcionando. Isso permite que os desenvolvedores façam alterações com confiança, detectando efeitos colaterais indesejados rapidamente.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/software_testing_basics/#regression-testing",
+      "tags": ["Boas Práticas", "CI/CD"]
+    },
+    {
+      "pergunta": "Qual seletor de CSS localiza um elemento `input` que tem um atributo `name` igual a 'username'?",
+      "opcoes": [
+        "input[name='username']",
+        "input.name.username",
+        "input#username",
+        "input:contains('username')"
+      ],
+      "indice_correto": "0",
+      "explicacao": "A sintaxe para seletores de atributo em CSS usa colchetes `[]`. `tag[atributo='valor']` é o padrão para encontrar um elemento com base no valor exato de um de seus atributos.",
+      "dificuldade": "Fácil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Attribute_selectors",
+      "tags": ["Selenium", "Cypress", "Playwright", "Locators"]
+    },
+    {
+      "pergunta": "No Cypress, como você pode 'viajar no tempo' para inspecionar o estado do DOM em um momento específico do teste?",
+      "opcoes": [
+        "Usando o comando `cy.rewind()` no código do teste.",
+        "É um recurso automático do Test Runner; basta passar o mouse sobre os comandos no log para ver snapshots do DOM.",
+        "Editando o arquivo de configuração para habilitar o 'time travel mode'.",
+        "Não é possível, o Cypress apenas mostra o estado final do DOM."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O 'Time Travel' é uma das características mais marcantes do Cypress. O Test Runner interativo captura snapshots do DOM antes e depois de cada comando. Ao passar o mouse sobre um comando na barra lateral, a visualização da aplicação reverte para aquele exato momento, facilitando enormemente a depuração.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/cypress-app#Features",
+      "tags": ["Cypress", "Debugging"]
+    },
+    {
+      "pergunta": "Em Java, qual a diferença entre `==` e `.equals()` ao comparar Strings?",
+      "opcoes": [
+        "Não há diferença, ambos comparam o conteúdo das strings.",
+        "`==` compara as referências dos objetos (se são o mesmo objeto na memória), enquanto `.equals()` compara o conteúdo das strings.",
+        "`.equals()` compara as referências dos objetos, enquanto `==` compara o conteúdo.",
+        "`==` é mais rápido e deve ser sempre preferido para comparar strings."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Este é um conceito fundamental em Java, crucial para asserções corretas. `==` verifica se duas variáveis apontam para o mesmo local na memória. `.equals()` é um método da classe String que compara os valores literais, caractere por caractere. Em testes, você quase sempre deve usar `.equals()` para verificar o texto de um elemento, por exemplo.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#equals(java.lang.Object)",
+      "tags": ["Java", "Selenium"]
+    },
+    {
+      "pergunta": "Como você lida com uma nova aba ou janela que é aberta após um clique no Selenium?",
+      "opcoes": [
+        "O WebDriver automaticamente muda o foco para a nova janela.",
+        "É preciso usar `driver.switchTo().window()` com o 'handle' da nova janela.",
+        "É impossível para o Selenium controlar múltiplas janelas.",
+        "Você deve fechar a janela original para que o driver possa ver a nova."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O Selenium mantém o foco na janela original. Para interagir com a nova janela, você precisa obter a lista de todos os 'window handles' (identificadores únicos) com `driver.getWindowHandles()`, iterar sobre eles para encontrar o novo handle e então usar `driver.switchTo().window(newWindowHandle)`.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/interactions/windows/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "No Playwright, o que a opção `headless: false` faz ao iniciar um navegador?",
+      "opcoes": [
+        "Desabilita o JavaScript na página.",
+        "Executa o navegador em modo de segurança, sem extensões.",
+        "Executa o navegador com a interface gráfica visível, em vez de em segundo plano.",
+        "Impede que o navegador armazene cookies."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Por padrão, o Playwright executa os navegadores em modo 'headless' (sem cabeça), o que significa que não há uma janela de navegador visível. Isso é ideal para ambientes de CI. Para depuração local, definir `headless: false` inicia o navegador normalmente, permitindo que você observe a execução do teste em tempo real.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-browsertype#browser-type-launch-option-headless",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual o propósito da anotação `@AfterAll` no JUnit 5?",
+      "opcoes": [
+        "Executar um método depois de cada teste na classe.",
+        "Executar um método após todos os testes em todas as classes da suíte.",
+        "Executar um método uma única vez, depois que todos os testes na classe atual tiverem sido executados.",
+        "Marcar um teste como o último a ser executado."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A anotação `@AfterAll` é usada para métodos de 'tear down' que precisam ser executados apenas uma vez por classe, no final. É ideal para limpar recursos compartilhados que foram configurados em um método `@BeforeAll`, como fechar uma conexão com o banco de dados ou parar um servidor web embutido.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Em Cypress, como você pode acessar e manipular cookies do navegador?",
+      "opcoes": [
+        "cy.getCookie() e cy.setCookie()",
+        "cy.cookie.get() e cy.cookie.set()",
+        "cy.cookies()",
+        "Não é possível manipular cookies diretamente com Cypress."
+      ],
+      "indice_correto": "0",
+      "explicacao": "Cypress fornece comandos diretos para gerenciar cookies. `cy.getCookie('nome_do_cookie')` recupera um cookie específico, `cy.getCookies()` recupera todos, `cy.setCookie('nome', 'valor')` define um cookie e `cy.clearCookie()` ou `cy.clearCookies()` os removem. Isso é muito útil para, por exemplo, fazer login programaticamente.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/getcookie",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "A pirâmide de testes de automação, popularizada por Mike Cohn, sugere qual distribuição de testes?",
+      "opcoes": [
+        "Uma grande base de testes de UI (E2E), poucos testes de serviço e menos ainda de unidade.",
+        "Uma distribuição igual entre testes de unidade, serviço e UI.",
+        "Apenas testes de UI e testes de unidade, sem a camada de serviço.",
+        "Uma grande base de testes de unidade, uma camada menor de testes de serviço/integração e um pequeno topo de testes de UI (E2E)."
+      ],
+      "indice_correto": "3",
+      "explicacao": "A pirâmide de testes é um conceito fundamental que preconiza que a maioria dos testes deve ser de unidade, pois são rápidos, baratos e isolados. A camada intermediária de testes de integração/serviço verifica a colaboração entre componentes. O topo, com poucos testes de UI, valida o fluxo completo do sistema, sendo mais lentos e frágeis.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/software_testing_basics/#the-testing-pyramid",
+      "tags": ["Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções NÃO é um tipo de localizador (`By`) nativo do Selenium?",
+      "opcoes": [
+        "By.id()",
+        "By.className()",
+        "By.tagName()",
+        "By.text()"
+      ],
+      "indice_correto": "3",
+      "explicacao": "Os localizadores nativos do Selenium incluem `id`, `name`, `className`, `tagName`, `linkText`, `partialLinkText`, `cssSelector` e `xpath`. Não existe um `By.text()` direto, embora essa funcionalidade possa ser alcançada com XPath (ex: `//button[text()='Login']`).",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/",
+      "tags": ["Selenium", "Locators"]
+    },
+    {
+      "pergunta": "O que o comando `cy.request()` faz no Cypress?",
+      "opcoes": [
+        "Intercepta uma requisição feita pela aplicação.",
+        "Faz uma requisição HTTP diretamente do ambiente de teste (Node.js), fora do navegador.",
+        "Recarrega a página, fazendo uma nova requisição para a URL atual.",
+        "Aguarda por uma requisição específica ser completada."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Diferente de `cy.intercept()`, que espiona requisições do front-end, `cy.request()` faz uma requisição HTTP real para um endpoint. É comumente usado para tarefas de setup/teardown, como criar dados de teste via API antes de visitar uma página, ou para testar a própria API.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/request",
+      "tags": ["Cypress", "API Testing"]
+    },
+    {
+      "pergunta": "Em Playwright, como se pode tirar uma captura de tela (screenshot) da página inteira?",
+      "opcoes": [
+        "page.captureScreenshot({ fullPage: true })",
+        "page.screenshot({ path: 'screenshot.png', fullPage: true })",
+        "page.saveAsImage({ fullPage: true })",
+        "page.takeScreenshot('full')"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `page.screenshot()` é usado para capturar a tela. Por padrão, ele captura apenas a área visível (viewport). Para capturar a página inteira, rolando-a se necessário, a opção `fullPage: true` deve ser passada.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/screenshots",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Em Gherkin, qual é a finalidade da tabela 'Examples' (Exemplos) após um 'Scenario Outline' (Esquema do Cenário)?",
+      "opcoes": [
+        "Fornecer uma documentação de exemplo sobre como o cenário funciona.",
+        "Executar o mesmo cenário múltiplas vezes com diferentes conjuntos de dados de entrada e saída.",
+        "Definir os 'step definitions' que serão usados no cenário.",
+        "Listar cenários alternativos que devem ser executados."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`Scenario Outline` é um template de cenário. A tabela `Examples` fornece os valores que preencherão os placeholders (`<placeholder>`) no template. O Cucumber executará o cenário uma vez para cada linha de dados na tabela `Examples` (exceto o cabeçalho).",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "Qual é a principal função de um Mock em testes automatizados?",
+      "opcoes": [
+        "Substituir um banco de dados real por um banco de dados em memória.",
+        "Criar uma cópia exata de um objeto para fins de backup.",
+        "Simular o comportamento de dependências reais (como uma API externa ou um módulo complexo) para isolar a unidade sob teste.",
+        "Aumentar a velocidade de execução dos testes de UI."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Mocks são objetos simulados que imitam dependências. Eles permitem testar um componente em isolamento, controlando as respostas das suas dependências. Por exemplo, você pode 'mockar' uma API para que ela retorne um erro 500, e então verificar se a sua UI lida com esse erro corretamente, sem precisar que a API real esteja de fato fora do ar.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/software_testing_basics/#stubs-and-mocks",
+      "tags": ["Boas Práticas", "JUnit", "TestNG"]
+    },
+    {
+      "pergunta": "Como você executa um script JavaScript customizado na página usando Selenium WebDriver?",
+      "opcoes": [
+        "Não é possível executar JavaScript arbitrário por razões de segurança.",
+        "driver.execute('return document.title;')",
+        "((JavascriptExecutor) driver).executeScript('return document.title;');",
+        "driver.runJavascript('return document.title;')"
+      ],
+      "indice_correto": "2",
+      "explicacao": "O Selenium permite a execução de JavaScript no contexto da página através da interface `JavascriptExecutor`. Primeiro, é necessário fazer o 'cast' do objeto `driver` para `JavascriptExecutor` e então usar o método `executeScript` para rodar o código desejado.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/js_executor/",
+      "tags": ["Selenium", "Java", "JavaScript"]
+    },
+    {
+      "pergunta": "No Cypress, o que o arquivo `support/e2e.js` geralmente contém?",
+      "opcoes": [
+        "As variáveis de ambiente do projeto.",
+        "A lista de todos os arquivos de teste a serem executados.",
+        "Código que é executado antes de cada arquivo de teste, como a importação de comandos customizados ou a definição de hooks globais.",
+        "Os resultados da última execução de teste."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O arquivo `support/e2e.js` (ou `.ts`) é o local ideal para colocar comportamentos globais. Ele é processado antes de cada arquivo de especificação. Usos comuns incluem importar comandos customizados (de `support/commands.js`), configurar hooks `beforeEach` globais ou sobrescrever comportamentos padrão do Cypress.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Support-file",
+      "tags": ["Cypress", "Configuration"]
+    },
+    {
+      "pergunta": "Qual o benefício de usar o `playwright.selectors.setTestIdAttribute()`?",
+      "opcoes": [
+        "Muda o ID de todos os elementos na página para 'test-id'.",
+        "Permite que o Playwright use um atributo customizado, como `data-testid`, para localizar elementos de forma mais robusta.",
+        "Define um ID único para cada execução de teste, para evitar conflitos.",
+        "Desabilita o uso de seletores de ID nos testes."
+      ],
+      "indice_correto": "1",
+      "explicacao": "É uma boa prática usar atributos dedicados para testes, como `data-testid`, pois eles são independentes de estilo (classes CSS) e implementação (IDs dinâmicos). Ao configurar `setTestIdAttribute('data-testid')`, você pode usar `page.getByTestId('meu-id')`, tornando os localizadores mais limpos e resilientes.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/locators#locate-by-test-id",
+      "tags": ["Playwright", "Boas Práticas", "Locators"]
+    },
+    {
+      "pergunta": "Em uma asserção do JUnit (`assertEquals(expected, actual)`), qual é a ordem correta dos parâmetros?",
+      "opcoes": [
+        "Não importa a ordem.",
+        "`assertEquals(valorAtual, valorEsperado)`",
+        "`assertEquals(mensagemDeErro, valorEsperado, valorAtual)`",
+        "`assertEquals(valorEsperado, valorAtual)`"
+      ],
+      "indice_correto": "3",
+      "explicacao": "A convenção padrão na maioria dos frameworks de teste, incluindo JUnit, é colocar o valor esperado primeiro e o valor atual (obtido da aplicação) em segundo. Isso torna as mensagens de falha mais claras e intuitivas, geralmente formatadas como 'expected: <valorEsperado> but was: <valorAtual>'.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual é a diferença entre uma verificação (verification) e uma asserção (assertion) em testes automatizados?",
+      "opcoes": [
+        "São termos sinônimos e não possuem diferença prática.",
+        "Uma asserção, se falhar, interrompe a execução do teste imediatamente. Uma verificação registra a falha mas permite que o teste continue até o final.",
+        "Uma verificação é usada apenas para checar texto, enquanto uma asserção pode checar qualquer condição.",
+        "Apenas asserções podem ser usadas em frameworks xUnit, enquanto verificações são para BDD."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Essa distinção é importante. Uma 'hard assertion' (asserção dura), padrão na maioria dos frameworks, aborta o teste na primeira falha. Uma 'soft assertion' (ou verificação) coleta todas as falhas em um teste e reporta todas no final. Isso é útil quando você quer verificar múltiplos campos em um formulário sem parar no primeiro erro.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/asserts/",
+      "tags": ["Boas Práticas", "JUnit", "TestNG"]
+    },
+    {
+      "pergunta": "Como você faz o upload de um arquivo em um elemento `<input type='file'>` usando Selenium em Java?",
+      "opcoes": [
+        "É preciso usar a classe `Actions` para arrastar o arquivo para o elemento.",
+        "Não é possível automatizar o upload de arquivos por segurança.",
+        "Você usa `element.click()` para abrir a janela de diálogo e depois uma ferramenta de automação de desktop.",
+        "Você usa `element.sendKeys('/caminho/para/o/arquivo.txt')` diretamente no elemento input."
+      ],
+      "indice_correto": "3",
+      "explicacao": "A maneira correta e mais simples de lidar com uploads de arquivo é enviar o caminho absoluto do arquivo para o elemento `<input type='file'>` usando o método `sendKeys`. O Selenium manipula a interação com o diálogo de arquivo do sistema operacional diretamente, sem a necessidade de abri-lo.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/file_uploads/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "No Cypress, qual é a função do `Cypress.env()`?",
+      "opcoes": [
+        "Definir o ambiente de execução do Node.js (desenvolvimento ou produção).",
+        "Acessar e definir variáveis de ambiente que podem ser usadas para configurar os testes.",
+        "Criptografar dados sensíveis usados nos testes.",
+        "Mudar a URL base da aplicação durante a execução de um teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Variáveis de ambiente são uma forma poderosa de configurar seus testes para diferentes ambientes (local, staging, produção) sem modificar o código. Elas podem ser definidas no arquivo de configuração, via linha de comando ou plugins, e acessadas dentro do teste com `Cypress.env('nome_da_variavel')`.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/guides/environment-variables",
+      "tags": ["Cypress", "Configuration", "CI/CD"]
+    },
+    {
+      "pergunta": "Qual método do Playwright é usado para interceptar requisições de rede, semelhante ao `cy.intercept` do Cypress?",
+      "opcoes": [
+        "page.route()",
+        "page.intercept()",
+        "page.handleNetwork()",
+        "page.mockRequest()"
+      ],
+      "indice_correto": "0",
+      "explicacao": "O método `page.route(url, handler)` é a ferramenta do Playwright para interceptar requisições de rede. Ele permite que você forneça uma função 'handler' que pode modificar, abortar ou continuar requisições que correspondam a um padrão de URL, sendo essencial para mockar APIs.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/network#modify-requests",
+      "tags": ["Playwright", "API Testing"]
+    },
+    {
+      "pergunta": "O que o método `driver.quit()` faz no Selenium, e como ele difere de `driver.close()`?",
+      "opcoes": [
+        "`quit()` fecha a janela atual, enquanto `close()` fecha todas as janelas e encerra a sessão.",
+        "`close()` fecha a janela do navegador atualmente em foco. `quit()` fecha todas as janelas associadas e encerra a sessão do WebDriver.",
+        "São sinônimos e executam a mesma ação.",
+        "`quit()` apenas minimiza o navegador, enquanto `close()` o fecha."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`driver.close()` fecha a janela/aba que o driver está controlando no momento. `driver.quit()` é mais abrangente: ele fecha todas as janelas e abas que foram abertas durante a sessão do WebDriver e encerra o processo do driver de forma segura. É a chamada correta para o final de uma suíte de testes.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/browser/windows/#close-window-or-quit-browser",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções do JUnit 5 permite ordenar a execução dos métodos de teste?",
+      "opcoes": [
+        "Não é possível ordenar os testes em JUnit 5.",
+        "Anotando a classe de teste com `@TestMethodOrder(MethodOrderer.OrderAnnotation.class)` e cada teste com `@Order(n)`.",
+        "Renomeando os testes em ordem alfabética, como `testA()`, `testB()`.",
+        "Usando a anotação `@DependsOn`."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Embora testes independentes sejam a melhor prática, às vezes a ordenação é necessária. JUnit 5 fornece a anotação `@TestMethodOrder` para a classe, que aceita diferentes estratégias de ordenação. `MethodOrderer.OrderAnnotation` permite que você defina a ordem explícita de cada teste com a anotação `@Order`.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual das seguintes `ExpectedConditions` do Selenium aguarda até que um elemento não esteja mais visível na página?",
+      "opcoes": [
+        "invisibilityOfElementLocated(By locator)",
+        "elementToBeInvisible(By locator)",
+        "stalenessOf(WebElement element)",
+        "absenceOfElement(By locator)"
+      ],
+      "indice_correto": "0",
+      "explicacao": "`invisibilityOfElementLocated` é a condição correta para esperar que um elemento se torne invisível (ex: após uma ação, um spinner de carregamento deve desaparecer). `stalenessOf` é diferente; ela espera que um elemento específico seja removido do DOM.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/#expected-conditions",
+      "tags": ["Selenium", "Waits", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, o que a função `JSON.parse(string)` faz?",
+      "opcoes": [
+        "Converte um objeto JavaScript em uma string no formato JSON.",
+        "Verifica se uma string é um JSON válido.",
+        "Analisa uma string no formato JSON e a converte em um objeto JavaScript.",
+        "Extrai todos os valores de uma string JSON para um array."
+      ],
+      "indice_correto": "2",
+      "explicacao": "`JSON.parse()` é o inverso de `JSON.stringify()`. É usado para deserializar uma string JSON, que pode ter vindo de uma resposta de API ou de um arquivo de fixture, transformando-a em um objeto ou array JavaScript com o qual você pode interagir em seu código de teste.",
+      "dificuldade": "Fácil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+      "tags": ["JavaScript", "API Testing"]
+    },
+    {
+      "pergunta": "No Playwright, o que a asserção `expect(locator).toHaveCount(3)` verifica?",
+      "opcoes": [
+        "Que o texto do elemento contém o número 3.",
+        "Que o localizador corresponde a exatamente 3 elementos na página.",
+        "Que o teste foi executado 3 vezes.",
+        "Que o elemento tem 3 elementos filhos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Esta asserção é usada para verificar o número de elementos que correspondem a um determinado localizador. Ela espera automaticamente até que o número de elementos correspondentes seja o esperado ou até que o tempo limite seja atingido.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-count",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é uma vantagem de usar 'Data-Driven Testing'?",
+      "opcoes": [
+        "Reduz o tempo total de execução dos testes.",
+        "Permite executar o mesmo fluxo de teste com múltiplos conjuntos de dados, aumentando a cobertura e separando a lógica do teste dos dados de teste.",
+        "Garante que os testes não serão instáveis (flaky).",
+        "Elimina a necessidade de usar o padrão Page Object Model."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Em vez de escrever um teste separado para cada variação de dados (usuário válido, inválido, senha curta, etc.), você escreve um único teste e o alimenta com dados de uma fonte externa (como um DataProvider em TestNG ou uma tabela `Examples` em Cucumber). Isso reduz a duplicação de código e torna mais fácil adicionar novos casos de teste.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/data-driven-testing/",
+      "tags": ["Boas Práticas", "TestNG", "Cucumber"]
+    },
+    {
+      "pergunta": "No Cypress, qual a maneira correta de lidar com a assincronicidade e obter um valor de um comando para usá-lo posteriormente?",
+      "opcoes": [
+        "const text = cy.get('p').text();",
+        "cy.get('p').then(($p) => { const text = $p.text(); /* usar text aqui */ })",
+        "let text; cy.get('p').invoke('text', (t) => { text = t; });",
+        "async function() { const text = await cy.get('p').text(); }"
+      ],
+      "indice_correto": "1",
+      "explicacao": "Os comandos do Cypress são enfileirados e executados de forma assíncrona. Você não pode atribuir o resultado deles a uma variável diretamente. A maneira correta de trabalhar com os valores que eles produzem é usando o comando `.then()`, que recebe uma função de callback com o valor resolvido (o elemento jQuery, no caso) como argumento.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/variables-and-aliases",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Qual seletor XPath encontraria um elemento `<a>` cujo texto visível é exatamente 'Login'?",
+      "opcoes": [
+        "//a[contains(.,'Login')]",
+        "//a[@text='Login']",
+        "//a[.='Login']",
+        "//a/text()='Login'"
+      ],
+      "indice_correto": "2",
+      "explicacao": "Em XPath, `.` representa o nó de texto do elemento atual. `//a[.='Login']` seleciona uma tag `<a>` cujo nó de texto é exatamente igual a 'Login'. `contains(.,'Login')` faria uma correspondência parcial.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/#xpath",
+      "tags": ["Selenium", "Locators", "XPath"]
+    },
+    {
+      "pergunta": "No Cypress, como você pode encadear múltiplos comandos em um único elemento?",
+      "opcoes": [
+        "cy.get('#login').click(); cy.get('#login').type('user');",
+        "cy.get('#login').then(el => { el.click(); el.type('user'); });",
+        "cy.get('#login').click().type('user');",
+        "É preciso usar `cy.and()` para conectar os comandos."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A maioria dos comandos do Cypress retorna o 'sujeito' (o elemento, no caso de `cy.get`) para o próximo comando na cadeia. Isso permite um encadeamento fluente e legível, como `cy.get(...).find(...).click().should(...)`, onde cada comando opera no resultado do anterior.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Chaining-Commands",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Qual a finalidade de um hook `@Before` no Cucumber?",
+      "opcoes": [
+        "Executar código antes de cada passo `Given`, `When` ou `Then`.",
+        "Executar código uma única vez antes de todos os cenários serem executados.",
+        "Executar código antes de cada Cenário.",
+        "Definir o contexto inicial em Gherkin, sendo um sinônimo para `Given`."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Hooks são blocos de código que rodam em pontos específicos do ciclo de vida da execução. Um hook `@Before` (ou `Before` em JavaScript) é executado antes do primeiro passo de cada cenário, sendo ideal para tarefas de setup como iniciar um driver, limpar um banco de dados ou fazer login via API.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "O que a anotação `@Disabled` do JUnit 5 faz?",
+      "opcoes": [
+        "Faz com que o teste falhe imediatamente com uma mensagem específica.",
+        "Executa o teste, mas ignora o seu resultado no relatório final.",
+        "Impede que um método de teste ou uma classe de teste seja executado.",
+        "Executa o teste apenas se uma determinada condição for atendida."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A anotação `@Disabled` (anteriormente `@Ignore` no JUnit 4) é usada para desabilitar temporariamente um teste ou uma classe inteira de testes. Isso é útil quando uma funcionalidade está quebrada ou em refatoração, evitando que a build falhe desnecessariamente. Pode-se incluir uma string opcional para explicar o motivo.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é uma característica do Playwright que o diferencia do Selenium?",
+      "opcoes": [
+        "Playwright só suporta o navegador Chrome.",
+        "Playwright usa o protocolo WebDriver para se comunicar com os navegadores.",
+        "Playwright usa o protocolo Chrome DevTools e oferece recursos como interceptação de rede e emulação de dispositivos de forma nativa.",
+        "Playwright só pode ser usado com a linguagem JavaScript."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Enquanto o Selenium se baseia no padrão W3C WebDriver, o Playwright (assim como o Puppeteer e o Cypress) se comunica com os navegadores através de seus protocolos de depuração nativos (como o Chrome DevTools Protocol). Isso permite um controle mais granular e acesso a funcionalidades avançadas que não fazem parte do escopo do WebDriver.",
+      "dificuldade": "Difícil",
+      "referencias": "https://playwright.dev/docs/intro",
+      "tags": ["Playwright", "Selenium"]
+    },
+    {
+      "pergunta": "Como você lida com um 'StaleElementReferenceException' no Selenium?",
+      "opcoes": [
+        "Aumentando o tempo de espera implícita.",
+        "Atualizando a página (refresh) antes de interagir com o elemento.",
+        "Reencontrando o elemento na página antes de tentar interagir com ele novamente.",
+        "Isso é um bug no WebDriver e não pode ser corrigido no código de teste."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Essa exceção ocorre quando o elemento, que foi encontrado anteriormente e armazenado em uma variável, foi removido ou alterado no DOM. A referência na variável se torna 'velha' (stale). A solução é localizar o elemento novamente com `driver.findElement()` justo antes da interação, para obter uma referência nova e atualizada.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception",
+      "tags": ["Selenium", "Java", "Debugging"]
+    },
+    {
+      "pergunta": "Qual comando do Cypress pode ser usado para depurar seu código de teste, pausando a execução e permitindo a inspeção?",
+      "opcoes": [
+        "cy.stop()",
+        "cy.debug()",
+        "cy.pause()",
+        "cy.inspect()"
+      ],
+      "indice_correto": "2",
+      "explicacao": "O comando `cy.pause()` pausa o Test Runner, permitindo que você inspecione a aplicação, os logs e o estado do teste naquele ponto. A execução pode ser resumida passo a passo ou continuada através da interface do Cypress. `cy.debug()` é usado para imprimir informações de depuração no console.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/pause",
+      "tags": ["Cypress", "Debugging"]
+    },
+    {
+      "pergunta": "Em Playwright, o que a asserção `expect(locator).toBeVisible()` verifica?",
+      "opcoes": [
+        "Que o elemento existe no DOM, mesmo que com `display: none`.",
+        "Que o elemento existe no DOM e não possui `visibility: hidden` ou `display: none`.",
+        "Que o elemento está dentro da área visível da tela (viewport).",
+        "Que o elemento é clicável."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A asserção `toBeVisible()` verifica se o elemento está anexado ao DOM e se ele, e seus ancestrais, são visíveis (não possuem propriedades CSS que os ocultem). Ela não garante que o elemento esteja atualmente na viewport. Para isso, seria usada a asserção `toBeInViewport()`.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-visible",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "O que é 'Continuous Integration' (CI) e qual o papel da automação de testes nela?",
+      "opcoes": [
+        "É o processo de entregar o software para produção manualmente a cada seis meses.",
+        "É a prática de integrar as mudanças de código de múltiplos desenvolvedores em um repositório central frequentemente, onde testes automatizados são executados para validar cada integração.",
+        "É uma metodologia de desenvolvimento que proíbe o uso de testes manuais.",
+        "É uma ferramenta que escreve testes de unidade automaticamente baseada no código de produção."
+      ],
+      "indice_correto": "1",
+      "explicacao": "CI é uma prática de DevOps que visa detectar problemas de integração o mais cedo possível. Toda vez que um desenvolvedor envia código, um processo automatizado (pipeline) constrói a aplicação e executa a suíte de testes (unidade, integração, E2E). Se os testes falham, a 'build' é considerada quebrada, e a equipe é notificada para corrigir o problema rapidamente.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/ci_cd/",
+      "tags": ["CI/CD", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual seletor XPath localiza o elemento pai de um elemento com `id='username'`?",
+      "opcoes": [
+        "//*[@id='username']/parent",
+        "//*[@id='username']/..",
+        "parent::*[@id='username']",
+        "ancestor::(//*[@id='username'])"
+      ],
+      "indice_correto": "1",
+      "explicacao": "Em XPath, `..` é a abreviação para o eixo `parent::node()`, que seleciona o elemento pai do nó de contexto atual. Portanto, `//*[@id='username']/..` primeiro encontra o elemento com id 'username' e depois navega para o seu pai direto.",
+      "dificuldade": "Difícil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/XPath/Axes",
+      "tags": ["Selenium", "Locators", "XPath"]
+    },
+    {
+      "pergunta": "O que o comando `cy.origin()` do Cypress permite fazer?",
+      "opcoes": [
+        "Executar testes em um navegador que não seja o Chrome.",
+        "Automatizar o fluxo de trabalho de login social (OAuth) que redireciona para um domínio diferente e depois retorna.",
+        "Garantir que todos os recursos da página (imagens, scripts) venham da mesma origem (domínio).",
+        "Executar o código de teste na máquina de origem (CI) em vez da máquina do desenvolvedor."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Por padrão, o Cypress tem uma política de segurança de mesma origem que impede visitar múltiplos superdomínios em um único teste. O comando `cy.origin()` cria um bloco de código onde os comandos do Cypress podem ser executados em um domínio diferente, resolvendo o desafio de testar fluxos que envolvem redirecionamentos para outros sites.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/api/commands/origin",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Em Playwright, qual é a maneira recomendada de filtrar múltiplos elementos para encontrar um específico?",
+      "opcoes": [
+        "Usar `page.querySelectorAll` e depois iterar com um loop `for` em JavaScript.",
+        "Encadear múltiplos localizadores, como `page.getByRole('listitem').filter({ hasText: 'Item 3' })`.",
+        "Escrever um seletor XPath ou CSS muito longo e complexo.",
+        "Não é possível filtrar; você deve selecionar todos e depois verificar em seu código."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Playwright incentiva a criação de localizadores por encadeamento e filtragem. Isso torna o código mais legível e manutenível. Você pode começar com um localizador amplo (`getByRole`) e depois refiná-lo com filtros como `filter`, `first`, `last`, ou combinando-o com outros localizadores.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/locators#filtering-locators",
+      "tags": ["Playwright", "Locators"]
+    },
+    {
+      "pergunta": "Qual o propósito da anotação `@Test(expected = SomeException.class)` em JUnit 4?",
+      "opcoes": [
+        "Garante que o teste só será executado se uma exceção específica tiver ocorrido antes.",
+        "Faz o teste passar se a exceção `SomeException` (ou uma de suas subclasses) for lançada durante a execução do teste.",
+        "Converte todas as exceções do tipo `SomeException` em falhas de teste.",
+        "Ignora qualquer exceção do tipo `SomeException` que ocorrer durante o teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Este era o método padrão para testar exceções no JUnit 4. Ele declara que o teste é considerado um sucesso se, e somente se, uma exceção do tipo especificado for lançada. Se nenhuma exceção for lançada, ou se uma exceção diferente for lançada, o teste falha. No JUnit 5, a abordagem preferida é `assertThrows`.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "No Selenium, qual é a função da 'FluentWait'?",
+      "opcoes": [
+        "É uma espera que permite uma escrita mais fluente e legível, mas funcionalmente idêntica à `WebDriverWait`.",
+        "É um tipo de espera explícita que permite configurar a frequência de verificação (polling) e ignorar tipos específicos de exceções durante a espera.",
+        "É uma espera que automaticamente se ajusta com base na velocidade da rede do usuário.",
+        "É um nome antigo para a espera implícita."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`FluentWait` é a implementação mais configurável de espera explícita. Além do timeout máximo, você pode definir de quanto em quanto tempo a condição deve ser checada (`pollingEvery`) e quais exceções (como `NoSuchElementException`) devem ser ignoradas durante as tentativas, oferecendo um controle mais fino do que `WebDriverWait`.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/#fluentwait",
+      "tags": ["Selenium", "Waits", "Java"]
+    },
+    {
+      "pergunta": "Como o Cypress lida com iframes?",
+      "opcoes": [
+        "Ele lida com iframes de forma transparente, e `cy.get()` pode encontrar elementos dentro deles sem qualquer comando extra.",
+        "Não é possível interagir com iframes no Cypress.",
+        "É necessário usar um plugin, como `cypress-iframe`, e comandos customizados para interagir com o conteúdo de um iframe.",
+        "Usa-se o comando `cy.iframe()` para mudar o contexto para dentro do iframe."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Devido à sua arquitetura, o Cypress não possui um comando nativo para trabalhar com iframes de forma simples como o `switchTo().frame()` do Selenium. A solução recomendada pela comunidade e pela documentação é o uso de plugins que fornecem comandos customizados (como `cy.frameLoaded()` e `cy.iframe()`) para facilitar essa interação.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/api/commands/iframe",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "O que a opção `baseURL` no arquivo `playwright.config.ts` faz?",
+      "opcoes": [
+        "Define a URL do servidor do Trace Viewer.",
+        "Especifica a pasta base onde os arquivos de teste estão localizados.",
+        "Configura uma URL base para ações de navegação como `page.goto('/')`, tornando os testes independentes do ambiente.",
+        "Limita os testes a serem executados apenas em URLs que comecem com a `baseURL`."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Semelhante à `baseUrl` do Cypress, a `baseURL` na configuração do Playwright permite que você use URLs relativas em seus testes (ex: `page.goto('/login')`). Isso é uma prática recomendada, pois permite que a mesma suíte de testes seja executada em diferentes ambientes (local, staging, prod) apenas mudando a `baseURL` por meio de variáveis de ambiente.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/test-webserver#configure-baseurl",
+      "tags": ["Playwright", "Configuration"]
+    },
+    {
+      "pergunta": "Em JavaScript moderno (ES6+), qual é a principal vantagem de usar `let` e `const` em vez de `var`?",
+      "opcoes": [
+        "`let` e `const` têm escopo de bloco (`{}`), enquanto `var` tem escopo de função, o que ajuda a evitar bugs de 'hoisting' e re-declaração.",
+        "`var` é mais rápido em termos de performance.",
+        "`let` e `const` podem ser usados fora de funções, enquanto `var` só pode ser usado dentro delas.",
+        "Não há nenhuma vantagem, é apenas uma preferência de estilo."
+      ],
+      "indice_correto": "0",
+      "explicacao": "O escopo de bloco de `let` e `const` significa que a variável só existe dentro do bloco em que foi declarada (ex: um loop `for` ou um `if`). `var` vaza para a função inteira, o que pode levar a comportamentos inesperados. `const` adiciona a vantagem de que a variável não pode ser reatribuída, tornando o código mais seguro e previsível.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/let",
+      "tags": ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+      "pergunta": "Qual das seguintes asserções do TestNG verificará se duas arrays de bytes são idênticas?",
+      "opcoes": [
+        "Assert.assertEquals(byteArray1, byteArray2)",
+        "Assert.assertTrue(byteArray1 == byteArray2)",
+        "Assert.assertSame(byteArray1, byteArray2)",
+        "Assert.assertEquals(new String(byteArray1), new String(byteArray2))"
+      ],
+      "indice_correto": "0",
+      "explicacao": "TestNG fornece sobrecargas do método `Assert.assertEquals` para tipos primitivos e seus arrays. A versão `assertEquals(byte[] actual, byte[] expected)` compara o conteúdo das duas arrays byte por byte, que é a maneira correta de verificar se são iguais.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java", "Assertions"]
+    },
+    {
+      "pergunta": "No Selenium, `WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));` cria que tipo de espera?",
+      "opcoes": [
+        "Uma espera implícita de 10 segundos.",
+        "Uma espera fixa que pausa o teste por 10 segundos.",
+        "Um objeto de espera explícita configurado com um timeout máximo de 10 segundos.",
+        "Uma espera que só se aplica a comandos de clique."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Esta linha de código instancia a classe `WebDriverWait`, que é a principal ferramenta para criar esperas explícitas. Ela define um timeout máximo, mas a espera só durará o tempo necessário para que a condição passada ao método `.until()` seja satisfeita.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/#explicit-wait",
+      "tags": ["Selenium", "Waits", "Java"]
+    },
+    {
+      "pergunta": "O que o comando `cy.fixture()` faz no Cypress?",
+      "opcoes": [
+        "Tira uma 'foto' (fixture) do estado atual do DOM para comparação futura.",
+        "Carrega um arquivo de dados (geralmente JSON) da pasta `cypress/fixtures` para ser usado no teste.",
+        "Corrige (fixes) automaticamente testes que estão instáveis (flaky).",
+        "Define um ponto de ancoragem fixo na página para facilitar a seleção de elementos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`cy.fixture()` é a maneira padrão de carregar dados estáticos em seus testes. Isso separa os dados do código do teste, tornando-os mais limpos e reutilizáveis. É comumente usado para mockar respostas de API ou para preencher formulários com dados consistentes.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/fixture",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Ao usar o Page Object Model, onde as asserções (assertions) devem ser colocadas?",
+      "opcoes": [
+        "Dentro dos métodos da classe Page Object.",
+        "No código do teste, nunca na Page Object.",
+        "Em uma classe separada chamada 'Assertions'.",
+        "Tanto no teste quanto na Page Object, dependendo da complexidade."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Uma boa prática do POM é manter as Page Objects livres de lógica de verificação. A Page Object é responsável por representar e interagir com a página. O teste, por outro lado, é responsável por orquestrar essas interações e então fazer as asserções para verificar se o estado da aplicação está correto. Isso mantém uma separação clara de responsabilidades.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/",
+      "tags": ["POM", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual a principal limitação do Cypress que ferramentas como Playwright e Selenium não possuem?",
+      "opcoes": [
+        "Cypress não pode tirar screenshots.",
+        "Cypress não suporta o navegador Firefox.",
+        "Cypress executa dentro do navegador e está limitado pela política de mesma origem, e não pode controlar múltiplos navegadores ou abas simultaneamente em um único teste.",
+        "Cypress não pode testar requisições de API."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A arquitetura do Cypress, que o injeta na página, traz muitas vantagens (velocidade, depuração), mas também limitações. Ele não pode controlar nativamente múltiplas abas ou janelas, e tem restrições com múltiplos domínios (embora `cy.origin` ajude). Ferramentas como Playwright e Selenium operam fora do navegador, dando-lhes controle total sobre o processo do navegador, permitindo o controle de múltiplas abas e janelas sem restrições.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/guides/references/trade-offs",
+      "tags": ["Cypress", "Playwright", "Selenium"]
+    },
+    {
+      "pergunta": "Qual é um dos benefícios de usar o localizador `getByRole` do Playwright?",
+      "opcoes": [
+        "É a maneira mais rápida de localizar elementos.",
+        "Alinha os testes com a forma como usuários de tecnologias assistivas (como leitores de tela) percebem a página, melhorando a acessibilidade.",
+        "Funciona em navegadores mais antigos que não suportam seletores CSS3.",
+        "É a única maneira de encontrar elementos que não têm ID ou classe."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Playwright incentiva fortemente o uso de localizadores baseados em acessibilidade, como `getByRole`. Ao selecionar elementos por sua função (role) na página (ex: 'button', 'navigation', 'heading'), você não apenas cria testes mais resilientes, mas também garante que sua aplicação está sendo construída de forma acessível.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/locators#locate-by-role",
+      "tags": ["Playwright", "Boas Práticas", "Acessibilidade"]
+    },
+    {
+      "pergunta": "Em Java, o que é a anotação `@Override`?",
+      "opcoes": [
+        "Indica que um método deve ser executado várias vezes.",
+        "É um comentário para o compilador e para outros desenvolvedores que indica que o método está sobrescrevendo um método de sua superclasse.",
+        "Instrui o compilador a ignorar aquele método durante a compilação.",
+        "Marca um método como obsoleto (deprecated)."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A anotação `@Override` é uma forma de garantir que você está de fato sobrescrevendo um método e não criando um novo por engano (ex: por um erro de digitação no nome do método). Se o método anotado não sobrescrever corretamente um método da superclasse, o compilador emitirá um erro. É uma boa prática de programação defensiva.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Override.html",
+      "tags": ["Java"]
+    },
+    {
+      "pergunta": "No Selenium, como você pode pegar o valor de um atributo de um elemento, como o `href` de uma tag `<a>`?",
+      "opcoes": [
+        "element.getText()",
+        "element.getAttribute('href')",
+        "element.getValue()",
+        "element.getProperty('href')"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `getAttribute('attributeName')` é usado para obter o valor de qualquer atributo de um WebElement. Isso é útil para verificar links, classes, estados (como 'disabled') ou qualquer outro metadado associado a um elemento.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/information/#get-attribute",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "O que o comando `cy.contains()` faz no Cypress?",
+      "opcoes": [
+        "Verifica se a URL atual contém uma string específica.",
+        "Encontra um elemento no DOM que contém o texto especificado.",
+        "Verifica se um array contém um determinado valor.",
+        "Define o conteúdo de um arquivo de fixture."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`cy.contains()` é um comando poderoso e conveniente que pode encontrar um elemento com base em seu conteúdo de texto. Ele pode ser encadeado com um seletor (`cy.get('.nav').contains('Home')`) para restringir a busca ou usado globalmente (`cy.contains('Submit')`) para encontrar o primeiro elemento na página com aquele texto.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/contains",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "No Playwright, como você pode gravar um vídeo da execução de seus testes?",
+      "opcoes": [
+        "É preciso usar uma ferramenta de gravação de tela de terceiros.",
+        "Adicionando o comando `page.startRecording()` no início do teste.",
+        "Definindo a opção `video: 'on'` no arquivo de configuração `playwright.config.ts`.",
+        "Passando o argumento `--record-video` na linha de comando."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Playwright oferece gravação de vídeo como um recurso de primeira classe. Ao configurar a opção `video` no seu arquivo de configuração (com valores como 'on', 'off' ou 'retain-on-failure'), o Playwright irá gravar automaticamente um vídeo de cada teste executado, o que é extremamente útil para depurar falhas em ambientes de CI.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/videos",
+      "tags": ["Playwright", "CI/CD"]
+    },
+    {
+      "pergunta": "Qual anotação do TestNG é usada para fazer um método de teste depender de outro?",
+      "opcoes": [
+        "@Test(dependsOnMethods = { 'nomeDoMetodo' })",
+        "@Test(requires = 'nomeDoMetodo')",
+        "@DependsOn('nomeDoMetodo')",
+        "@Test(after = 'nomeDoMetodo')"
+      ],
+      "indice_correto": "0",
+      "explicacao": "TestNG permite definir dependências explícitas entre os métodos de teste usando o atributo `dependsOnMethods`. Se o método do qual ele depende falhar, o método dependente será pulado (skipped), não executado. Isso é útil para criar fluxos de teste, embora deva ser usado com cautela para não criar testes excessivamente acoplados.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "Qual é a principal diferença na arquitetura entre Selenium 3 e Selenium 4?",
+      "opcoes": [
+        "Selenium 4 removeu o suporte para o navegador Firefox.",
+        "Selenium 4 tornou o Selenium IDE a principal ferramenta para automação.",
+        "Selenium 4 adotou o padrão W3C WebDriver como seu protocolo principal, eliminando a necessidade do protocolo JSON Wire na comunicação direta com navegadores modernos.",
+        "Selenium 4 só pode ser usado com Java 11 ou superior."
+      ],
+      "indice_correto": "2",
+      "explicacao": "No Selenium 3, a comunicação entre o script e o driver do navegador passava por uma tradução do protocolo JSON Wire para o protocolo W3C WebDriver. No Selenium 4, a comunicação é feita diretamente usando o padrão W3C WebDriver, que agora é suportado por todos os principais navegadores. Isso torna a comunicação mais direta, estável e padronizada.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/how_it_works/",
+      "tags": ["Selenium"]
+    },
+    {
+      "pergunta": "No Cypress, como você pode aguardar explicitamente por um tempo fixo (uma prática geralmente desencorajada)?",
+      "opcoes": [
+        "cy.sleep(2000)",
+        "cy.wait(2000)",
+        "cy.pause(2000)",
+        "cy.delay(2000)"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `cy.wait(milisegundos)` pausa a execução por um número fixo de milissegundos. A documentação do Cypress desencoraja fortemente seu uso para esperar por elementos aparecerem, pois isso leva a testes lentos e instáveis ('flaky'). Seu uso principal é para aguardar por requisições de rede interceptadas com um alias.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/wait",
+      "tags": ["Cypress", "Waits", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual comando do Playwright permite depurar a execução do teste passo a passo no navegador?",
+      "opcoes": [
+        "page.debug()",
+        "page.pause()",
+        "page.inspect()",
+        "page.step()"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `page.pause()` abre o Playwright Inspector no navegador. Ele pausa a execução do teste e permite que você avance passo a passo, inspecione seletores e veja logs, proporcionando uma experiência de depuração interativa poderosa.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/debug#playwright-inspector",
+      "tags": ["Playwright", "Debugging"]
+    },
+    {
+      "pergunta": "No JUnit 5, como você pode executar o mesmo teste com diferentes argumentos (testes parametrizados)?",
+      "opcoes": [
+        "Usando a anotação `@Test` com um loop `for` dentro do método.",
+        "Criando uma classe de teste separada para cada conjunto de parâmetros.",
+        "Usando a anotação `@ParameterizedTest` em conjunto com uma fonte de argumentos como `@ValueSource` ou `@CsvSource`.",
+        "Usando a anotação `@RepeatedTest`."
+      ],
+      "indice_correto": "2",
+      "explicacao": "JUnit 5 tem um suporte robusto para testes parametrizados. A anotação `@ParameterizedTest` indica que o teste será executado várias vezes. As anotações de fonte (`@ValueSource` para valores simples, `@CsvSource` para valores CSV, `@MethodSource` para fontes mais complexas, etc.) fornecem os argumentos para cada invocação.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é um exemplo de um seletor CSS para um elemento `<div>` que é um filho direto (`>`) de um elemento com `id='main'`?",
+      "opcoes": [
+        "#main div",
+        "#main > div",
+        "#main + div",
+        "div < #main"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O combinador `>` em CSS é usado para selecionar um filho direto. `#main div` (com espaço) selecionaria qualquer `div` descendente de `#main`, não importando o nível. `#main > div` seleciona apenas os `div` que são filhos imediatos do elemento com `id='main'`.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Child_combinator",
+      "tags": ["Locators", "Cypress", "Selenium", "Playwright"]
+    },
+    {
+      "pergunta": "O que o `finally` block em um `try-catch-finally` em Java garante?",
+      "opcoes": [
+        "Que o código dentro dele só será executado se uma exceção for capturada.",
+        "Que o código dentro dele só será executado se nenhuma exceção ocorrer.",
+        "Que o código dentro dele será executado independentemente de uma exceção ter sido lançada ou não.",
+        "Que o programa terminará após sua execução."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O bloco `finally` é usado para colocar código de limpeza que deve ser executado sempre. Um caso de uso clássico em automação (sem o uso de frameworks como JUnit) seria garantir que `driver.quit()` seja chamado, mesmo que o teste lance uma exceção, para não deixar processos do navegador abertos.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Throwable.html",
+      "tags": ["Java", "Selenium"]
+    },
+    {
+      "pergunta": "No Cypress, como você pode selecionar um elemento com base em seu atributo `data-cy`?",
+      "opcoes": [
+        "cy.get('data-cy=submit-button')",
+        "cy.getByDataCy('submit-button')",
+        "cy.get('[data-cy=submit-button]')",
+        "cy.data('cy', 'submit-button')"
+      ],
+      "indice_correto": "2",
+      "explicacao": "A melhor prática recomendada pelo Cypress é usar atributos `data-*` dedicados para testes, pois eles não são afetados por mudanças de estilo ou JS. Para selecioná-los, você usa a sintaxe de seletor de atributo CSS padrão: `[nome-do-atributo=valor]`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/references/best-practices#Selecting-Elements",
+      "tags": ["Cypress", "Boas Práticas", "Locators"]
+    },
+    {
+      "pergunta": "No Playwright, como você pode esperar por uma resposta de rede específica antes de continuar?",
+      "opcoes": [
+        "page.waitFor(5000) // espera fixa",
+        "page.waitForNetworkResponse('/api/user')",
+        "page.waitForResponse(response => response.url().includes('/api/user') && response.status() === 200)",
+        "Não é possível esperar por respostas de rede, apenas por elementos do DOM."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O método `page.waitForResponse()` é uma ferramenta poderosa para sincronizar o teste com a atividade de rede. Ele aceita uma URL ou uma função predicado que permite inspecionar a resposta (URL, status, corpo) para determinar se é a resposta que o teste estava aguardando.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/events#waiting-for-a-response",
+      "tags": ["Playwright", "Waits"]
+    },
+    {
+      "pergunta": "Qual o principal objetivo do Gherkin, a linguagem usada pelo Cucumber?",
+      "opcoes": [
+        "Ser uma linguagem de programação completa para escrever a lógica de automação.",
+        "Servir como uma ponte entre stakeholders de negócio e desenvolvedores, descrevendo o comportamento do sistema em uma linguagem natural e estruturada que também serve como base para os testes automatizados.",
+        "Gerar documentação técnica da API automaticamente.",
+        "Executar testes de performance e carga."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Gherkin foi projetado para ser legível por humanos, permitindo que analistas de negócio, QAs e desenvolvedores colaborem na definição dos requisitos e critérios de aceite. Essa especificação legível (o arquivo `.feature`) se torna uma 'documentação viva' que é diretamente validada pelos testes automatizados.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "No Selenium, qual classe é usada para interagir com menus de seleção `<select>`?",
+      "opcoes": [
+        "DropdownHandler",
+        "Select",
+        "OptionSelector",
+        "Menu"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O Selenium fornece uma classe de ajuda chamada `Select` (no pacote `org.openqa.selenium.support.ui`) especificamente para facilitar a interação com elementos `<select>`. Após instanciá-la com o WebElement do select, você pode usar métodos como `selectByVisibleText()`, `selectByValue()` ou `selectByIndex()`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/interactions/#select-lists",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual das seguintes asserções do Cypress verifica se um elemento de input está desabilitado?",
+      "opcoes": [
+        "cy.get('input').should('be.disabled')",
+        "cy.get('input').should('have.property', 'disabled', true)",
+        "cy.get('input').should('have.attr', 'disabled')",
+        "cy.get('input').should('be.readonly')"
+      ],
+      "indice_correto": "0",
+      "explicacao": "Cypress usa a biblioteca de asserções Chai-jQuery, que fornece a asserção `be.disabled` para verificar o estado de elementos de formulário. Esta é a maneira mais idiomática e legível de realizar essa verificação no Cypress.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/references/assertions#State",
+      "tags": ["Cypress", "Assertions"]
+    },
+    {
+      "pergunta": "Em Playwright, o que `expect(page).toHaveURL('.../login')` faz?",
+      "opcoes": [
+        "Navega a página para a URL de login.",
+        "Verifica se a URL atual da página corresponde exatamente à string fornecida.",
+        "Cria um mock para a URL de login.",
+        "Verifica se a URL atual da página corresponde à string ou expressão regular fornecida."
+      ],
+      "indice_correto": "3",
+      "explicacao": "Esta é uma asserção web-first do Playwright que verifica a URL da página. Ela espera automaticamente por um timeout até que a URL corresponda. Pode receber uma string para correspondência exata ou uma expressão regular para correspondências mais flexíveis.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-pageassertions#page-assertions-to-have-url",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual o propósito da anotação `@Parameters` em TestNG?",
+      "opcoes": [
+        "É um sinônimo para `@DataProvider`.",
+        "Permite passar parâmetros simples para os métodos de teste a partir do arquivo de suíte XML (`testng.xml`).",
+        "Define os tipos de parâmetros de um método de teste para o compilador Java.",
+        "Extrai parâmetros da URL da aplicação em teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Enquanto `@DataProvider` é para conjuntos de dados complexos e múltiplos, `@Parameters` é usado para passar valores de configuração simples definidos no `testng.xml`. Isso é útil para passar informações como a URL do ambiente de teste ou o nome do navegador, permitindo configurar a execução da suíte sem alterar o código Java.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "Qual método do Selenium é usado para obter o texto visível de um elemento?",
+      "opcoes": [
+        "element.innerHTML()",
+        "element.value()",
+        "element.getText()",
+        "element.textContent()"
+      ],
+      "indice_correto": "2",
+      "explicacao": "O método `getText()` retorna o texto renderizado e visível do elemento e de seus sub-elementos, aproximando-se do que um usuário veria na tela. Ele ignora textos ocultos por CSS.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/information/#get-text",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "O que o comando `cy.clearLocalStorage()` faz?",
+      "opcoes": [
+        "Limpa apenas os cookies da sessão atual.",
+        "Limpa todo o `localStorage` do domínio atual.",
+        "Limpa o cache do navegador.",
+        "Restaura o `localStorage` para um estado salvo anteriormente."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `cy.clearLocalStorage()` é usado para limpar os dados armazenados no `localStorage` do navegador para a origem (domínio) que está sendo testada. Isso é útil para garantir que os testes comecem em um estado limpo, sem dados persistentes de execuções anteriores.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/clearlocalstorage",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Como você pode executar testes em paralelo com o Playwright Test runner?",
+      "opcoes": [
+        "É preciso configurar manualmente um Selenium Grid.",
+        "O Playwright executa testes em paralelo por padrão, utilizando 'workers'.",
+        "Adicionando a palavra-chave `parallel` no início de cada arquivo de teste.",
+        "Não é possível executar testes em paralelo com Playwright."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O test runner do Playwright (`@playwright/test`) é projetado para paralelismo desde o início. Por padrão, ele executa seus arquivos de teste em paralelo em processos 'worker' separados, o que acelera significativamente a execução da suíte de testes. O número de workers pode ser configurado no arquivo de configuração ou via linha de comando.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/test-parallel",
+      "tags": ["Playwright", "CI/CD"]
+    },
+    {
+      "pergunta": "Em JUnit 5, qual é a maneira recomendada para testar se um trecho de código lança uma exceção específica?",
+      "opcoes": [
+        "Envolver o código em um bloco `try-catch` e usar `fail()` se nenhuma exceção for capturada.",
+        "Usar a anotação `@Test(expected = ...)`.",
+        "Usar o método estático `assertThrows(ExpectedException.class, () -> { /* código que lança exceção */ });`",
+        "Usar `assertNull()` no resultado do método."
+      ],
+      "indice_correto": "2",
+      "explicacao": "A abordagem moderna e preferida no JUnit 5 é usar `assertThrows()`. Este método aceita a classe da exceção esperada e uma lambda expression contendo o código que deve lançá-la. É mais seguro e expressivo do que o `expected` do JUnit 4, pois garante que a exceção foi lançada pela linha de código específica dentro da lambda.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual seletor XPath localiza todos os elementos `<li>` que são descendentes de um `<ul>` com a classe `menu`?",
+      "opcoes": [
+        "//ul[@class='menu'] > li",
+        "//ul.menu/li",
+        "//ul[@class='menu']//li",
+        "//ul[class='menu']/li"
+      ],
+      "indice_correto": "2",
+      "explicacao": "Em XPath, `//` seleciona nós em qualquer lugar do documento, não importando a hierarquia. Portanto, `//ul[@class='menu']//li` primeiro encontra a lista `<ul>` com a classe `menu` e, a partir dela, encontra todos os elementos `<li>` que são seus descendentes em qualquer nível.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/#xpath",
+      "tags": ["Selenium", "Locators", "XPath"]
+    },
+    {
+      "pergunta": "Em JavaScript, qual a diferença entre `null` e `undefined`?",
+      "opcoes": [
+        "São exatamente a mesma coisa.",
+        "`undefined` significa que uma variável foi declarada mas não teve um valor atribuído. `null` é um valor de atribuição que representa a ausência intencional de qualquer valor de objeto.",
+        "`null` é usado para números e `undefined` para strings.",
+        "Uma função retorna `null` em caso de sucesso e `undefined` em caso de erro."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`undefined` é o valor padrão de uma variável que não foi inicializada. `null` deve ser atribuído explicitamente por um desenvolvedor para indicar que uma variável não tem valor. Em testes, é importante saber a diferença ao verificar o estado de variáveis ou o retorno de funções.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/null",
+      "tags": ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+      "pergunta": "Como você pode adicionar um comando customizado no Cypress?",
+      "opcoes": [
+        "Editando o código-fonte do Cypress.",
+        "Criando um arquivo `cypress/plugins/custom.js`.",
+        "Adicionando uma função a `Cypress.Commands.add('nomeDoComando', () => { ... })` no arquivo `cypress/support/commands.js`.",
+        "Declarando uma função global no arquivo `cypress.config.js`."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Comandos customizados são uma maneira poderosa de estender o Cypress com funcionalidades específicas do seu domínio de aplicação. Eles são definidos usando `Cypress.Commands.add()` no arquivo `support/commands.js` e podem ser encadeados como qualquer outro comando nativo, promovendo o reuso de código (princípio DRY).",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/cypress-api/custom-commands",
+      "tags": ["Cypress", "Boas Práticas"]
+    },
+    {
+      "pergunta": "O que `page.evaluate()` faz no Playwright?",
+      "opcoes": [
+        "Avalia a performance de carregamento da página.",
+        "Executa uma função JavaScript no contexto da página (navegador) e retorna o resultado para o script de teste (Node.js).",
+        "Verifica se um seletor corresponde a um elemento visível na página.",
+        "Executa o código de teste linha por linha no console do navegador."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `page.evaluate()` é a ponte para executar código JavaScript arbitrário no navegador. Ele é útil para acessar APIs do navegador (como `localStorage` ou `window.innerWidth`) ou extrair informações complexas do DOM que não são facilmente acessíveis através dos localizadores padrão.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/evaluating",
+      "tags": ["Playwright", "JavaScript"]
+    },
+    {
+      "pergunta": "Qual é um exemplo de uma 'Espera Explícita' (Explicit Wait) com Selenium?",
+      "opcoes": [
+        "driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));",
+        "Thread.sleep(10000);",
+        "new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id('myElement')))",
+        "while(!driver.findElement(By.id('myElement')).isDisplayed()){}"
+      ],
+      "indice_correto": "2",
+      "explicacao": "Uma espera explícita aguarda por uma condição específica. A opção 3 demonstra isso perfeitamente: ela cria um `WebDriverWait` que, por até 10 segundos, verificará repetidamente se o elemento localizado por `By.id('myElement')` está visível. Assim que a condição for verdadeira, o teste prossegue.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/#explicit-wait",
+      "tags": ["Selenium", "Waits", "Java"]
+    },
+    {
+      "pergunta": "Qual a finalidade do arquivo `cypress.env.json`?",
+      "opcoes": [
+        "Substituir o arquivo de configuração principal `cypress.config.js`.",
+        "Armazenar os resultados dos testes no formato JSON.",
+        "Definir ou sobrescrever variáveis de ambiente para os testes Cypress, sendo uma forma de evitar 'commitar' valores sensíveis.",
+        "Conter as definições de tipos TypeScript para o ambiente Cypress."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O arquivo `cypress.env.json` é uma das maneiras de fornecer variáveis de ambiente para o Cypress. Valores definidos nele estarão disponíveis através de `Cypress.env()`. Como este arquivo pode ser adicionado ao `.gitignore`, ele é ideal para armazenar chaves de API, senhas ou outras configurações específicas do ambiente local que não devem ir para o controle de versão.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/guides/environment-variables#JSON-file",
+      "tags": ["Cypress", "Configuration"]
+    },
+    {
+      "pergunta": "O que a propriedade `testMatch` no arquivo de configuração do Playwright faz?",
+      "opcoes": [
+        "Define quais asserções devem ser usadas nos testes.",
+        "Especifica um padrão de nome de arquivo (glob pattern) para que o test runner saiba quais arquivos são testes e devem ser executados.",
+        "Compara os resultados dos testes com uma execução anterior para detectar regressões.",
+        "Define o tempo máximo de execução para cada teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A opção `testMatch` permite que você customize como o Playwright descobre seus testes. Você pode definir um padrão para que ele encontre arquivos que terminem com `.spec.ts` ou que estejam em uma pasta específica, por exemplo. Isso ajuda a organizar a estrutura do seu projeto de testes.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-testconfig#test-config-test-match",
+      "tags": ["Playwright", "Configuration"]
+    },
+    {
+      "pergunta": "Em TestNG, como você pode executar um grupo específico de testes?",
+      "opcoes": [
+        "É preciso comentar todos os outros testes que não se deseja executar.",
+        "Usando a anotação `@Group('nomeDoGrupo')` nos métodos de teste.",
+        "Definindo os grupos a serem incluídos ou excluídos no arquivo `testng.xml`.",
+        "Não é possível, o TestNG sempre executa todos os testes."
+      ],
+      "indice_correto": "2",
+      "explicacao": "TestNG possui um poderoso sistema de agrupamento. Você anota seus métodos de teste com `@Test(groups = { 'smoke', 'regression' })`. Depois, no arquivo `testng.xml`, você pode especificar quais grupos devem ser executados (`<include name='smoke'/>`) ou evitados (`<exclude name='slow'/>`), permitindo execuções de suítes de teste flexíveis.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "O que o método `isDisplayed()` de um WebElement do Selenium verifica?",
+      "opcoes": [
+        "Se o elemento está presente no código-fonte HTML da página.",
+        "Se o elemento está presente no DOM e é visível na tela (não tem `display: none` ou `visibility: hidden`).",
+        "Se o elemento está habilitado para interação (não tem o atributo `disabled`).",
+        "Se o elemento foi criado dinamicamente via JavaScript."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`isDisplayed()` verifica se o elemento não está apenas no DOM, mas também se um usuário poderia vê-lo. Um elemento pode estar no DOM, mas oculto por CSS, e neste caso `isDisplayed()` retornaria `false`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/information/#is-displayed",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, o que o operador `...` (spread) faz quando usado em um array, como em `[...arr1, ...arr2]`?",
+      "opcoes": [
+        "Cria um novo array contendo apenas os elementos que existem em `arr1` e `arr2`.",
+        "Filtra os elementos duplicados de ambos os arrays.",
+        "Expande os elementos de `arr1` e `arr2` em uma nova lista, efetivamente concatenando os dois arrays.",
+        "Executa uma função para cada elemento dos arrays."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O operador de propagação (spread) permite que um iterável (como um array) seja expandido em lugares onde zero ou mais argumentos ou elementos são esperados. É uma maneira concisa e moderna de criar cópias de arrays ou de combiná-los.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax",
+      "tags": ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+      "pergunta": "Qual a função do Cypress Dashboard?",
+      "opcoes": [
+        "É uma interface local para escrever e organizar os testes.",
+        "É um serviço web que fornece acesso aos resultados gravados de suas execuções de teste, com análises, vídeos e paralelização.",
+        "É um plugin para o VS Code que ajuda a autocompletar os comandos do Cypress.",
+        "É o nome do processo em segundo plano que executa os testes Cypress."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O Cypress Dashboard é um serviço complementar (pago) que se integra com o Test Runner. Ao executar os testes com a flag `--record`, os resultados são enviados para o Dashboard, onde você pode ver o histórico de execuções, depurar falhas com screenshots e vídeos, e orquestrar a execução paralela em múltiplas máquinas de CI de forma otimizada.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/dashboard/introduction",
+      "tags": ["Cypress", "CI/CD"]
+    },
+    {
+      "pergunta": "No Playwright, o que é o 'Visual Comparison' (Snapshot Testing)?",
+      "opcoes": [
+        "É o ato de comparar visualmente o código de dois testes.",
+        "É uma técnica onde se tira um screenshot de uma página ou elemento e se compara com uma imagem de referência (baseline) para detectar regressões visuais.",
+        "É uma ferramenta que mostra lado a lado as execuções de teste em Chrome e Firefox.",
+        "É a comparação do texto extraído de um PDF com um texto de referência."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Testes de regressão visual com snapshots são um recurso poderoso do Playwright. Com `expect(page).toHaveScreenshot()`, o Playwright tira um screenshot e, na primeira vez, o salva como referência. Em execuções futuras, ele tira um novo screenshot e o compara pixel a pixel com o de referência, falhando se houver diferenças inesperadas.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/test-snapshots",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é uma limitação do padrão Page Object Model (POM) se não for bem implementado?",
+      "opcoes": [
+        "Ele torna os testes mais rápidos.",
+        "Ele pode levar a uma camada de abstração excessivamente complexa e com muitos métodos, tornando a navegação no código difícil.",
+        "Ele impede a reutilização de código entre os testes.",
+        "Ele só funciona para aplicações pequenas e simples."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Embora o POM seja uma excelente prática, se uma página for muito grande e complexa, a classe Page Object correspondente pode se tornar um 'God Object' (objeto divino), com centenas de localizadores e métodos. Uma boa implementação quebra páginas grandes em componentes menores e reutilizáveis, cada um com sua própria classe de objeto, evitando esse problema.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/",
+      "tags": ["POM", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual a principal diferença entre `element.clear()` e `element.sendKeys(\"\")` no Selenium?",
+      "opcoes": [
+        "Não há diferença, ambos limpam o campo.",
+        "`clear()` é mais confiável para limpar um campo de texto, enquanto `sendKeys(\"\")` pode não disparar eventos JavaScript associados à limpeza.",
+        "`sendKeys(\"\")` é mais rápido que `clear()`.",
+        "`clear()` só funciona em elementos `<textarea>`, enquanto `sendKeys` funciona em todos os inputs."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `clear()` foi projetado especificamente para limpar o conteúdo de elementos editáveis como `input` e `textarea`. Ele geralmente é mais robusto. Usar `sendKeys` com uma string vazia pode não funcionar em todos os cenários ou pode falhar em disparar os eventos `onchange` ou `onkeyup` que a aplicação pode estar escutando.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/interactions/#clear",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "No Cypress, o que `cy.wrap()` faz?",
+      "opcoes": [
+        "Envolve um elemento em uma borda vermelha para destacá-lo.",
+        "Cria um log customizado no Test Runner.",
+        "Pega um objeto ou variável comum do JavaScript (como um objeto, promise ou valor) e o transforma em um 'sujeito' do Cypress, permitindo que comandos e asserções sejam encadeados a ele.",
+        "Compacta os resultados do teste em um arquivo .zip."
+      ],
+      "indice_correto": "2",
+      "explicacao": "`cy.wrap()` é uma ponte entre o mundo do Cypress e o JavaScript padrão. Por exemplo, se você tem uma variável `const user = { name: 'John' }`, você pode usar `cy.wrap(user).its('name').should('eq', 'John')` para usar as asserções e comandos do Cypress sobre ela.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/wrap",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Como o Playwright permite testar APIs?",
+      "opcoes": [
+        "Apenas interceptando chamadas de API feitas pelo front-end.",
+        "Ele não possui suporte para testes de API.",
+        "Através de um objeto `request` que pode ser usado para fazer requisições HTTP (GET, POST, etc.) diretamente nos testes, de forma independente de uma página/UI.",
+        "É preciso instalar um pacote de terceiros, como o Axios, para fazer chamadas de API."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Playwright possui um cliente de API integrado e poderoso. Você pode usar `request.get()`, `request.post()`, etc., para interagir diretamente com seus endpoints. Isso permite escrever testes de API puros ou combinar testes de UI e API no mesmo arquivo, por exemplo, criando dados via API antes de verificar sua exibição na UI.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api-testing",
+      "tags": ["Playwright", "API Testing"]
+    },
+    {
+      "pergunta": "Qual anotação do JUnit 5 permite executar um teste múltiplas vezes?",
+      "opcoes": [
+        "@Test(count = 5)",
+        "@Loop(5)",
+        "@RepeatedTest(5)",
+        "@Run(5)"
+      ],
+      "indice_correto": "2",
+      "explicacao": "A anotação `@RepeatedTest` permite executar um teste um número fixo de vezes. Isso pode ser útil para testar funcionalidades que têm um componente de aleatoriedade ou para verificar a estabilidade de um teste que às vezes falha (embora não resolva a causa raiz de um teste 'flaky').",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "O que o seletor de CSS `:nth-child(n)` faz?",
+      "opcoes": [
+        "Seleciona todos os filhos de um elemento, exceto o n-ésimo.",
+        "Seleciona o n-ésimo elemento filho, entre um grupo de irmãos.",
+        "Seleciona um elemento que tem exatamente `n` filhos.",
+        "Seleciona o n-ésimo elemento do tipo especificado, entre um grupo de irmãos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A pseudo-classe `:nth-child(n)` seleciona elementos com base em sua posição entre os irmãos. Por exemplo, `tr:nth-child(2)` seleciona a segunda linha de uma tabela. `li:nth-child(odd)` selecionaria os itens de lista ímpares.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/:nth-child",
+      "tags": ["Locators", "Cypress", "Selenium", "Playwright"]
+    },
+    {
+      "pergunta": "Qual a finalidade de usar um 'headless browser' para automação em um ambiente de CI?",
+      "opcoes": [
+        "Navegadores headless não suportam JavaScript, tornando os testes mais simples.",
+        "Eles consomem significativamente menos recursos (memória e CPU) pois não precisam renderizar a UI, sendo ideais para servidores que não têm uma interface gráfica.",
+        "A execução é mais lenta, mas mais detalhada.",
+        "Apenas navegadores headless podem ser controlados pelo Selenium Grid."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Em um pipeline de CI, os testes rodam em servidores ou contêineres que geralmente não têm um monitor ou ambiente de desktop. A execução em modo headless permite que o navegador funcione inteiramente em memória, o que é mais eficiente e rápido, sendo o modo padrão para execuções automatizadas.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/browsers/chrome/#headless",
+      "tags": ["Boas Práticas", "CI/CD", "Selenium", "Playwright"]
+    },
+    {
+      "pergunta": "Em Cypress, como você pode arrastar um elemento e soltá-lo em outro?",
+      "opcoes": [
+        "Usando `cy.get(source).dragTo(target)`.",
+        "Cypress não suporta drag-and-drop nativamente, sendo necessário usar um plugin ou disparar eventos de mouse manualmente.",
+        "Usando `cy.get(source).move(target)`.",
+        "É um recurso automático, basta clicar e segurar e depois clicar no alvo."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Diferente do Selenium Actions, Cypress não tem um comando `dragAndDrop` de alto nível. A automação dessa interação complexa geralmente requer um plugin como `@4tw/cypress-drag-drop` ou a orquestração manual de eventos de mouse como `mousedown`, `mousemove` e `mouseup` no elemento.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/api/commands/trigger#Mouse-Events",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "No Playwright, o que a asserção `expect(locator).toBeFocused()` verifica?",
+      "opcoes": [
+        "Se o elemento está visível na tela.",
+        "Se o elemento tem a cor de fundo focada.",
+        "Se o elemento está atualmente com o foco ativo no DOM.",
+        "Se o texto do elemento está em negrito."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Esta asserção verifica se o elemento corresponde ao `document.activeElement`, ou seja, se ele é o elemento que receberia os eventos do teclado. É útil para testar a navegação por teclado e o comportamento de formulários.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-focused",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual a função da anotação `@Factory` em TestNG?",
+      "opcoes": [
+        "Criar instâncias de classes de teste dinamicamente em tempo de execução, permitindo a criação de testes mais complexos e orientados a dados.",
+        "É um sinônimo para a anotação `@BeforeSuite`.",
+        "Fornecer um ponto de entrada para a execução de testes a partir de uma fábrica de software.",
+        "Gerar dados de teste aleatórios para os testes."
+      ],
+      "indice_correto": "0",
+      "explicacao": "Uma fábrica (factory) é um método que retorna um array de objetos, onde cada objeto é uma instância de uma classe de teste. TestNG então executará todos os métodos de teste em cada uma dessas instâncias. Isso permite, por exemplo, criar uma instância da mesma classe de teste para cada linha de um arquivo de dados, passando os dados pelo construtor.",
+      "dificuldade": "Difícil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "Como o Selenium lida com certificados SSL inválidos (por exemplo, em ambientes de teste)?",
+      "opcoes": [
+        "Ele os recusa por padrão, impedindo a navegação.",
+        "Ele os aceita automaticamente sem nenhuma configuração.",
+        "É possível configurar as 'Capabilities' do navegador para aceitar certificados inseguros.",
+        "É necessário instalar manualmente o certificado na máquina que executa os testes."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Ambientes de desenvolvimento e teste frequentemente usam certificados auto-assinados. Para que a automação possa navegar nessas páginas, é preciso instruir o driver a ignorar os erros de certificado. Isso é feito através de opções ou capabilities específicas do navegador, como `setAcceptInsecureCerts(true)` nas `ChromeOptions`.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/drivers/options/",
+      "tags": ["Selenium", "Configuration"]
+    },
+    {
+      "pergunta": "Em JavaScript, qual método de array é usado para executar uma função em cada elemento e construir um novo array com os resultados?",
+      "opcoes": [
+        "forEach()",
+        "filter()",
+        "reduce()",
+        "map()"
+      ],
+      "indice_correto": "3",
+      "explicacao": "O método `map()` cria um novo array populado com os resultados da chamada de uma função de callback em cada elemento do array original. Por exemplo, `[1, 2, 3].map(n => n * 2)` resultaria em `[2, 4, 6]`. É extremamente útil para transformar listas de dados ou WebElements.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map",
+      "tags": ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+      "pergunta": "O que a opção `defaultCommandTimeout` no arquivo de configuração do Cypress controla?",
+      "opcoes": [
+        "O tempo total que uma suíte de testes pode levar para ser executada.",
+        "O tempo que o Cypress aguarda por um comando `cy.wait()` explícito.",
+        "O tempo máximo que a maioria dos comandos do Cypress aguardará para que suas asserções sejam bem-sucedidas antes de falhar.",
+        "O tempo de espera para a conexão com o Cypress Dashboard."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Esta é a configuração central para a 'retry-ability' do Cypress. Por padrão (geralmente 4000ms), comandos como `cy.get()` ou `cy.contains()` irão tentar novamente encontrar um elemento ou satisfazer uma condição por esse período. Aumentar esse valor pode ajudar a lidar com aplicações lentas, mas o ideal é ter esperas mais específicas quando possível.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/references/configuration#Timeouts",
+      "tags": ["Cypress", "Waits", "Configuration"]
+    },
+    {
+      "pergunta": "Qual localizador do Playwright é projetado para encontrar elementos de formulário por seu texto de rótulo (label)?",
+      "opcoes": [
+        "page.getByText()",
+        "page.getByPlaceholder()",
+        "page.getByLabel()",
+        "page.getByTitle()"
+      ],
+      "indice_correto": "2",
+      "explicacao": "`getByLabel()` é um localizador focado em acessibilidade que encontra um `<input>` com base no texto de sua tag `<label>` associada. Isso torna os testes mais robustos e legíveis, pois eles interagem com o formulário da mesma forma que um usuário faria.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/locators#locate-by-label",
+      "tags": ["Playwright", "Locators", "Acessibilidade"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções descreve corretamente o `WebElement.submit()` no Selenium?",
+      "opcoes": [
+        "É um método que deve ser chamado no elemento do formulário (`<form>`) ou em um de seus elementos internos para submetê-lo.",
+        "É um sinônimo para `WebElement.click()` e pode ser usado em qualquer elemento.",
+        "Envia o formulário apenas se o botão de submit estiver visível na tela.",
+        "Valida os campos do formulário antes de enviá-lo."
+      ],
+      "indice_correto": "0",
+      "explicacao": "O método `.submit()` pode ser chamado em qualquer elemento dentro de um formulário. O Selenium irá percorrer a árvore do DOM para encontrar o formulário ao qual o elemento pertence e então acionar o evento de submissão. É uma alternativa a encontrar e clicar explicitamente no botão de submit.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/interactions/#submit",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em Cypress, como você pode interceptar uma requisição `POST` para `/api/users` e fornecer uma resposta mockada (stub)?",
+      "opcoes": [
+        "cy.intercept('POST', '/api/users', { statusCode: 201, body: { id: 101 } })",
+        "cy.mock('POST', '/api/users', { id: 101 })",
+        "cy.route('POST', '/api/users').reply({ id: 101 })",
+        "cy.stub('POST', '/api/users').returns({ id: 101 })"
+      ],
+      "indice_correto": "0",
+      "explicacao": "O comando `cy.intercept()` recebe o método HTTP e um padrão de URL como primeiros argumentos. O terceiro argumento opcional, um objeto `RouteHandler`, permite definir a resposta mockada, incluindo o `statusCode`, `body`, `headers`, etc. Isso impede que a requisição real chegue ao servidor.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/intercept#Stubbing-a-response",
+      "tags": ["Cypress", "API Testing"]
+    },
+    {
+      "pergunta": "O que o `test.skip()` faz no test runner do Playwright?",
+      "opcoes": [
+        "Executa o teste, mas o marca como 'pulado' se ele falhar.",
+        "Faz o teste falhar intencionalmente.",
+        "Instrui o test runner a não executar aquele teste específico.",
+        "Executa apenas aquele teste e pula todos os outros."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Semelhante ao `@Disabled` do JUnit, `test.skip()` (ou `it.skip()`) informa ao runner para pular a execução de um teste. Ele aparecerá no relatório como 'skipped'. Pode-se fornecer uma condição, como `test.skip(browserName === 'firefox', 'Este teste não funciona no Firefox')`, para pular o teste apenas em cenários específicos.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-test#test-skip-1",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual anotação do JUnit 5 é usada para dar um nome de exibição mais legível a um teste ou classe?",
+      "opcoes": [
+        "@Name()",
+        "@DisplayName()",
+        "@Title()",
+        "@Description()"
+      ],
+      "indice_correto": "1",
+      "explicacao": "A anotação `@DisplayName` permite fornecer uma string, incluindo espaços e caracteres especiais, que será usada para exibir o nome do teste nos relatórios e na visualização da IDE. Isso melhora a legibilidade, permitindo nomes como `@DisplayName('Deve calcular o imposto corretamente para pessoa física')`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Como o Selenium WebDriver se comunica com os navegadores (ex: Chrome, Firefox)?",
+      "opcoes": [
+        "Injetando JavaScript diretamente na página.",
+        "Através de um servidor intermediário (o WebDriver) que traduz os comandos do script para uma API que o navegador entende, via protocolo W3C WebDriver.",
+        "Usando APIs do sistema operacional para simular cliques e digitação do teclado.",
+        "Conectando-se diretamente ao código-fonte do navegador."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O script de teste (cliente) se comunica com o WebDriver específico do navegador (servidor). O WebDriver, por sua vez, se comunica com o navegador usando seu protocolo de automação nativo. Essa arquitetura desacoplada é o que permite que o Selenium suporte múltiplos navegadores e linguagens de programação.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/how_it_works/",
+      "tags": ["Selenium"]
+    },
+    {
+      "pergunta": "Em JavaScript, o que a função `JSON.stringify(objeto)` faz?",
+      "opcoes": [
+        "Analisa uma string JSON e a converte em um objeto JavaScript.",
+        "Verifica se um objeto pode ser convertido em uma string JSON.",
+        "Converte um objeto ou valor JavaScript em uma string no formato JSON.",
+        "Cria uma cópia profunda de um objeto."
+      ],
+      "indice_correto": "2",
+      "explicacao": "`JSON.stringify()` é usado para serializar dados, ou seja, converter um objeto JavaScript em uma representação de string JSON. Isso é comumente usado ao enviar dados no corpo de uma requisição de API (POST, PUT) ou ao salvar dados em `localStorage`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+      "tags": ["JavaScript", "API Testing"]
+    },
+    {
+      "pergunta": "Qual das seguintes opções é uma má prática ao escrever testes E2E com Cypress?",
+      "opcoes": [
+        "Usar `cy.intercept()` para mockar o backend e testar o frontend de forma isolada.",
+        "Usar atributos `data-cy` para selecionar elementos.",
+        "Tentar testar funcionalidades em múltiplos domínios (como Google ou Github) em um único teste, sem usar `cy.origin()`.",
+        "Organizar testes em múltiplos arquivos de especificação (`spec`)."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Visitar sites de terceiros que você não controla é um anti-padrão. Isso torna seus testes dependentes de um serviço externo, lentos e extremamente instáveis. Além disso, a política de mesma origem do Cypress impediria a interação após o redirecionamento. O ideal é mockar a resposta desses serviços.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/guides/references/best-practices#Visiting-external-sites",
+      "tags": ["Cypress", "Boas Práticas"]
+    },
+    {
+      "pergunta": "O que o `test.use()` permite fazer na configuração do Playwright?",
+      "opcoes": [
+        "Reutilizar um trecho de código de teste em múltiplos arquivos.",
+        "Definir configurações específicas para um conjunto de testes, como viewport, locale ou headers HTTP, sobrescrevendo a configuração global.",
+        "Marcar um teste como sendo parte da suíte de testes de usabilidade.",
+        "Importar bibliotecas de asserção externas."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A diretiva `test.use()` pode ser usada no topo de um arquivo de teste para fornecer configurações que se aplicam a todos os testes naquele arquivo. Isso é útil se um conjunto específico de testes precisa ser executado com uma viewport de celular, enquanto outros usam a viewport de desktop padrão, por exemplo.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-test#test-use",
+      "tags": ["Playwright", "Configuration"]
+    },
+    {
+      "pergunta": "Em TestNG, qual a diferença entre `@BeforeMethod` e `@BeforeClass`?",
+      "opcoes": [
+        "Não há diferença, são aliases.",
+        "`@BeforeClass` roda uma vez antes de qualquer teste na classe, enquanto `@BeforeMethod` roda antes de cada método de teste (`@Test`) na classe.",
+        "`@BeforeMethod` roda uma vez antes dos testes na classe, e `@BeforeClass` roda antes de cada método de teste.",
+        "`@BeforeClass` só pode ser usado em classes abstratas."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Essa distinção é fundamental para o ciclo de vida do teste. `@BeforeClass` é para setups caros que podem ser compartilhados por todos os testes na classe (ex: criar uma conexão com o DB). `@BeforeMethod` é para setups que precisam ser refeitos para garantir o isolamento de cada teste (ex: criar um novo usuário ou limpar cookies).",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "Java"]
+    },
+    {
+      "pergunta": "Como você pode obter todos os elementos que correspondem a um seletor no Selenium?",
+      "opcoes": [
+        "driver.findElement(By.cssSelector('...'))",
+        "driver.findElements(By.cssSelector('...'))",
+        "driver.queryAll(By.cssSelector('...'))",
+        "driver.getAllElements(By.cssSelector('...'))"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `findElements` (no plural) retorna uma `List<WebElement>`. Se nenhum elemento corresponder ao seletor, ele retorna uma lista vazia em vez de lançar uma exceção. Isso é útil para verificar a quantidade de elementos ou para iterar sobre uma lista de itens.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/locators/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "No Cypress, qual a finalidade da pasta `screenshots`?",
+      "opcoes": [
+        "É onde os desenvolvedores devem armazenar manualmente as imagens de referência para os testes.",
+        "É onde o Cypress salva automaticamente as capturas de tela tiradas quando um teste falha durante a execução de `cypress run`.",
+        "Contém os ícones e imagens usados pela interface do Cypress Test Runner.",
+        "É usada para armazenar vídeos das execuções de teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Por padrão, quando você executa seus testes em modo headless (`cypress run`), o Cypress tira automaticamente uma screenshot no ponto exato da falha. Essas imagens são salvas na pasta `cypress/screenshots`, o que é extremamente útil para depurar falhas que ocorrem em ambientes de CI.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Screenshots",
+      "tags": ["Cypress", "CI/CD", "Debugging"]
+    },
+    {
+      "pergunta": "Qual dos seguintes frameworks de automação executa os testes diretamente no navegador, no mesmo loop de eventos da aplicação?",
+      "opcoes": [
+        "Selenium WebDriver",
+        "Playwright",
+        "Cypress",
+        "WebDriverIO"
+      ],
+      "indice_correto": "2",
+      "explicacao": "A arquitetura única do Cypress o executa no mesmo loop de eventos do navegador que a sua aplicação. Isso lhe dá acesso nativo e síncrono a tudo na aplicação (window, document, etc.), o que permite um controle e depuração mais diretos, mas também impõe algumas limitações (como a política de mesma origem).",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Architecture",
+      "tags": ["Cypress", "Arquitetura"]
+    },
+    {
+      "pergunta": "Em Playwright, o que a asserção `expect(locator).toBeEditable()` verifica?",
+      "opcoes": [
+        "Se o elemento é um `div` com o atributo `contenteditable`.",
+        "Se o texto do elemento pode ser selecionado.",
+        "Se o elemento é habilitado e não é somente leitura (readonly).",
+        "Se o elemento tem um valor vazio."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Esta asserção verifica se um elemento é editável, o que significa que ele está habilitado (`:enabled`) e não tem o atributo `readonly`. É útil para garantir que campos de input ou textareas estão prontos para receber texto.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-editable",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual método do Selenium é usado para executar uma série de interações complexas (como 'mouse over', clique e arraste) como uma única ação contínua?",
+      "opcoes": [
+        "new Actions(driver).moveToElement(el1).click().moveToElement(el2).perform()",
+        "driver.executeSequence(actions...)",
+        "driver.perform(actions...)",
+        "Não é possível encadear múltiplas ações."
+      ],
+      "indice_correto": "0",
+      "explicacao": "A classe `Actions` usa um padrão de construtor (builder pattern). Você encadeia os métodos de ação desejados (`moveToElement`, `click`, `dragAndDrop`, etc.) para construir a sequência. No final, você deve chamar `.perform()` para compilar e executar todas as ações na ordem definida.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/actions_api/mouse/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, o que é 'destructuring assignment' (atribuição via desestruturação)?",
+      "opcoes": [
+        "Um processo que destrói um objeto para liberar memória.",
+        "Uma sintaxe que permite extrair valores de arrays ou propriedades de objetos e atribuí-los a variáveis distintas.",
+        "Uma forma de renomear as chaves de um objeto.",
+        "Um método para remover propriedades de um objeto."
+      ],
+      "indice_correto": "1",
+      "explicacao": "A desestruturação torna o código mais conciso. Em vez de `const nome = user.name; const idade = user.age;`, você pode escrever `const { nome, idade } = user;`. Isso é muito comum em testes ao lidar com objetos de fixtures ou respostas de API.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment",
+      "tags": ["JavaScript"]
+    },
+    {
+      "pergunta": "O que o `test.only()` faz no test runner do Playwright?",
+      "opcoes": [
+        "Marca o teste para ser o único a ser executado em modo 'headless'.",
+        "Executa apenas este teste específico (ou testes) dentro do arquivo, ignorando todos os outros.",
+        "Faz o teste ser executado apenas uma vez, mesmo que esteja em um loop.",
+        "Garante que apenas uma asserção pode ser feita dentro do teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Adicionar `.only` a um `test` ou `describe` é uma maneira rápida de focar em um subconjunto de testes durante o desenvolvimento ou depuração. Quando o test runner encontra um `.only`, ele ignora todos os testes que não estão marcados com `.only`. É uma prática que deve ser removida antes de 'commitar' o código.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-test#test-only",
+      "tags": ["Playwright", "Debugging"]
+    },
+    {
+      "pergunta": "Qual a diferença entre um `Map` e um `Object` em JavaScript para armazenar pares chave-valor?",
+      "opcoes": [
+        "Não há diferença, `Map` é apenas uma sintaxe mais moderna.",
+        "As chaves de um `Map` podem ser de qualquer tipo (incluindo objetos e funções), enquanto as chaves de um `Object` são convertidas para strings. `Map` também mantém a ordem de inserção.",
+        "Objects são mais performáticos para um grande número de entradas.",
+        "`Map` só pode armazenar um número fixo de elementos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Para uso como dicionário, `Map` é geralmente superior a `Object`. A capacidade de usar qualquer tipo como chave é uma grande vantagem, e o fato de manter a ordem de inserção torna a iteração previsível. `Map` também possui métodos convenientes como `.size`, `.has()`, `.delete()`.",
+      "dificuldade": "Difícil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Map",
+      "tags": ["JavaScript"]
+    },
+    {
+      "pergunta": "Como você tira um screenshot de um único elemento no Cypress?",
+      "opcoes": [
+        "Cypress só pode tirar screenshots da página inteira.",
+        "cy.screenshot(element)",
+        "cy.get('.meu-elemento').screenshot()",
+        "cy.capture('.meu-elemento')"
+      ],
+      "indice_correto": "2",
+      "explicacao": "O comando `cy.screenshot()` pode ser encadeado após um comando que produz um elemento DOM (como `cy.get()`). Quando feito isso, ele tirará uma captura de tela apenas daquele elemento específico, em vez da viewport inteira.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/screenshot#Element-capture",
+      "tags": ["Cypress"]
+    },
+    {
+      "pergunta": "Qual das seguintes `ExpectedConditions` do Selenium aguarda até que um elemento não esteja mais visível na página?",
+      "opcoes": [
+        "invisibilityOfElementLocated(By locator)",
+        "elementToBeInvisible(By locator)",
+        "stalenessOf(WebElement element)",
+        "absenceOfElement(By locator)"
+      ],
+      "indice_correto": "0",
+      "explicacao": "`invisibilityOfElementLocated` é a condição correta para esperar que um elemento se torne invisível (ex: após uma ação, um spinner de carregamento deve desaparecer). `stalenessOf` é diferente; ela espera que um elemento específico seja removido do DOM.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/waits/#expected-conditions",
+      "tags": ["Selenium", "Waits", "Java"]
+    },
+    {
+      "pergunta": "No Playwright, como você emula a geolocalização do navegador?",
+      "opcoes": [
+        "Não é possível emular a geolocalização.",
+        "Usando o método `page.setGeolocation({ latitude: 59.95, longitude: 30.31 })`.",
+        "Editando as configurações do navegador manualmente antes de iniciar o teste.",
+        "Passando as coordenadas como um argumento de linha de comando."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Playwright permite configurar a geolocalização para um 'browser context'. O método `browserContext.setGeolocation()` define as coordenadas que serão usadas pela API de Geolocalização do navegador. Isso é útil para testar funcionalidades que dependem da localização do usuário.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/emulation#geolocation",
+      "tags": ["Playwright", "Emulation"]
+    },
+    {
+      "pergunta": "Em JUnit 5, qual o propósito de uma 'Assumption' (suposição)?",
+      "opcoes": [
+        "É um sinônimo para uma asserção (`Assert`).",
+        "Permite que um teste seja executado ou abortado (e marcado como pulado) com base em uma condição. Se a suposição for falsa, o teste é pulado, não falho.",
+        "Faz o teste passar automaticamente se a condição for verdadeira.",
+        "Define uma pré-condição que deve ser verdadeira para toda a classe de teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Suposições são úteis para testes que só fazem sentido em determinados ambientes. Por exemplo, `assumeTrue(System.getProperty(\"os.name\").contains(\"Windows\"))` pularia um teste se ele não estivesse sendo executado no Windows. Isso é diferente de uma asserção, pois não indica uma falha no código sendo testado, mas sim que o teste não é aplicável.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "O que o método `driver.manage().window().maximize()` faz no Selenium?",
+      "opcoes": [
+        "Abre o navegador em modo de tela cheia (fullscreen).",
+        "Maximiza a janela do navegador para preencher a tela.",
+        "Define um tamanho fixo para a janela (800x600).",
+        "Abre uma nova janela maximizada."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Este comando instrui o gerenciador de janelas do sistema operacional a maximizar a janela do navegador atual. Isso é frequentemente usado no início de um teste para garantir um tamanho de viewport consistente e previsível.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/browser/windows/#maximize-window",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual é a principal diferença entre os comandos `type` e `realType` do plugin `cypress-real-events`?",
+      "opcoes": [
+        "`realType` é mais rápido que o `type` nativo.",
+        "`realType` simula eventos de teclado nativos do sistema operacional, enquanto `cy.type()` simula eventos no nível do navegador, o que pode fazer com que alguns event listeners não sejam acionados corretamente.",
+        "`type` só funciona para inputs de texto, e `realType` para textareas.",
+        "Não há diferença funcional, apenas o nome."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O comando `cy.type()` é uma simulação de alto nível. Para aplicações que dependem de eventos de teclado de baixo nível, a simulação pode não ser perfeita. O plugin `cypress-real-events` usa o Chrome DevTools Protocol para disparar eventos nativos, tornando a interação mais fiel à de um usuário real, especialmente para componentes complexos.",
+      "dificuldade": "Difícil",
+      "referencias": "https://docs.cypress.io/",
+      "tags": ["Cypress", "Plugins"]
+    },
+    {
+      "pergunta": "No Playwright, o que a asserção `expect(locator).toHaveCount(3)` verifica?",
+      "opcoes": [
+        "Que o texto do elemento contém o número 3.",
+        "Que o localizador corresponde a exatamente 3 elementos na página.",
+        "Que o teste foi executado 3 vezes.",
+        "Que o elemento tem 3 elementos filhos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Esta asserção é usada para verificar o número de elementos que correspondem a um determinado localizador. Ela espera automaticamente até que o número de elementos correspondentes seja o esperado ou até que o tempo limite seja atingido.",
+      "dificuldade": "Fácil",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-count",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual o propósito da anotação `@Test(timeOut = 500)` em TestNG ou JUnit 4?",
+      "opcoes": [
+        "Pausa o teste por 500 milissegundos antes de começar.",
+        "Define que o teste deve levar exatamente 500 milissegundos para passar.",
+        "Faz o teste falhar se sua execução exceder 500 milissegundos.",
+        "Garante que o teste será executado a cada 500 milissegundos."
+      ],
+      "indice_correto": "2",
+      "explicacao": "O atributo `timeOut` é uma salvaguarda contra testes que podem entrar em loops infinitos ou demorar excessivamente para serem concluídos. Se o tempo de execução do método de teste ultrapassar o valor especificado, o framework interromperá o teste e o marcará como falho.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/using_selenium/",
+      "tags": ["TestNG", "JUnit", "Java"]
+    },
+    {
+      "pergunta": "Qual seletor CSS seleciona um elemento `input` que tem o atributo `required`?",
+      "opcoes": [
+        "input.required",
+        "input[required]",
+        "input:required",
+        "input#required"
+      ],
+      "indice_correto": "1",
+      "explicacao": "A sintaxe `[atributo]` é usada para selecionar elementos que simplesmente possuem o atributo, independentemente do seu valor. A pseudo-classe `:required` também funciona para a mesma finalidade.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Attribute_selectors",
+      "tags": ["Locators"]
+    },
+    {
+      "pergunta": "No Playwright, como você pode aguardar que a página atinja um estado de rede 'ocioso' (sem novas requisições)?",
+      "opcoes": [
+        "page.waitForLoadState('networkidle')",
+        "page.waitUntilNetworkIsQuiet()",
+        "page.waitForNetworkIdle()",
+        "Não há um método direto, é preciso monitorar as requisições manualmente."
+      ],
+      "indice_correto": "0",
+      "explicacao": "Em aplicações de página única (SPA), o evento `load` pode não ser suficiente. `page.waitForLoadState('networkidle')` espera até que não haja mais requisições de rede ativas por um certo período. Isso é útil para garantir que todos os dados dinâmicos tenham sido carregados antes de prosseguir com as asserções.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/navigations#network-idle",
+      "tags": ["Playwright", "Waits"]
+    },
+    {
+      "pergunta": "Qual o propósito do arquivo `pom.xml` em um projeto Java de automação com Maven?",
+      "opcoes": [
+        "É onde as classes Page Object Model são definidas.",
+        "É o arquivo de configuração do projeto (Project Object Model) que define as dependências (como Selenium, TestNG), plugins e como construir o projeto.",
+        "Contém o código-fonte dos testes automatizados.",
+        "Armazena os relatórios de execução dos testes."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O `pom.xml` é o coração de um projeto Maven. Nele, você declara as bibliotecas que seu projeto precisa (ex: `selenium-java`, `testng`), e o Maven se encarrega de baixá-las e adicioná-las ao seu projeto. Ele também define o ciclo de vida da construção, como compilar o código e executar os testes.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/getting_started/install_library/#maven",
+      "tags": ["Java", "Selenium", "TestNG", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual a principal diferença entre `cy.click()` e `cy.click({ force: true })` no Cypress?",
+      "opcoes": [
+        "`force: true` torna o clique mais rápido.",
+        "`force: true` permite que o Cypress clique em um elemento mesmo que ele esteja coberto por outro elemento, desabilitado ou oculto, ignorando as verificações de 'acionabilidade'.",
+        "Não há diferença, `{ force: true }` é o padrão.",
+        "`force: true` executa um clique duplo."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Por padrão, o Cypress não clica em um elemento se um usuário não puder fazer o mesmo (ex: se ele estiver coberto por um modal). A opção `{ force: true }` desativa essas verificações de segurança. Seu uso deve ser evitado, pois pode esconder bugs, mas é útil em casos raros onde a verificação padrão do Cypress está incorreta.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/click#Force",
+      "tags": ["Cypress", "JavaScript"]
+    },
+    {
+      "pergunta": "Como o Playwright lida com 'Shadow DOM'?",
+      "opcoes": [
+        "Ele não consegue interagir com elementos dentro do Shadow DOM.",
+        "Ele atravessa o Shadow DOM automaticamente, permitindo que seletores padrão como `page.locator('css=...')` encontrem os elementos diretamente.",
+        "É preciso usar um comando especial `page.shadow()` para entrar no contexto do Shadow DOM.",
+        "Apenas seletores XPath funcionam para Shadow DOM."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Uma vantagem do Playwright é que seus seletores perfuram o Shadow DOM por padrão. Você não precisa de nenhum código especial para interagir com componentes web que usam Shadow DOM, tornando os testes mais simples e limpos em comparação com frameworks que exigem manipulação explícita.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/selectors#selecting-elements-in-shadow-dom",
+      "tags": ["Playwright"]
+    },
+    {
+      "pergunta": "Qual método do Selenium é usado para navegar para a página anterior no histórico do navegador?",
+      "opcoes": [
+        "driver.navigate().back()",
+        "driver.back()",
+        "driver.history().previous()",
+        "driver.navigate().previous()"
+      ],
+      "indice_correto": "0",
+      "explicacao": "A interface `Navigation` do Selenium, acessada via `driver.navigate()`, fornece métodos para manipulação do histórico do navegador, como `back()`, `forward()` e `refresh()`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/browser/navigation/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "O que o método `String.prototype.includes()` faz em JavaScript?",
+      "opcoes": [
+        "Verifica se uma string contém exatamente outra string.",
+        "Retorna `true` ou `false` indicando se uma string pode ser encontrada dentro de outra string.",
+        "Extrai uma parte de uma string e a retorna como uma nova string.",
+        "Divide uma string em um array de substrings."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método `includes()` realiza uma busca sensível a maiúsculas e minúsculas para determinar se uma string está contida em outra, retornando um booleano. É uma forma moderna e legível de fazer verificações de substring.",
+      "dificuldade": "Fácil",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/includes",
+      "tags": ["JavaScript"]
+    },
+    {
+      "pergunta": "Como você pode definir uma variável de ambiente globalmente para todas as execuções do Cypress?",
+      "opcoes": [
+        "Usando `Cypress.env('nome', 'valor')` no início de cada teste.",
+        "No objeto `env` dentro do arquivo de configuração `cypress.config.js`.",
+        "Criando um comando customizado para definir a variável.",
+        "Não é possível definir variáveis globais, apenas por teste."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O local principal para definir variáveis de ambiente que se aplicam a todos os testes é o objeto `env` no seu arquivo `cypress.config.js`. Os valores definidos aqui estarão disponíveis em todos os seus testes via `Cypress.env('nomeDaVariavel')`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/guides/guides/environment-variables#Configuration-file",
+      "tags": ["Cypress", "Configuration"]
+    },
+    {
+      "pergunta": "No Playwright, o que a opção `retries` no arquivo de configuração faz?",
+      "opcoes": [
+        "Define o número de vezes que a suíte de testes inteira será executada.",
+        "Define o número de vezes que o Playwright tentará novamente executar um teste que falhou antes de marcá-lo como falho.",
+        "Define o número máximo de asserções em um único teste.",
+        "Define o número de workers para execução paralela."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Para combater a instabilidade (flakiness), o Playwright pode ser configurado para tentar novamente os testes que falham. Definir `retries: 2` em um ambiente de CI, por exemplo, dará a um teste instável mais duas chances de passar antes de falhar a build. É uma ferramenta útil, mas não substitui a correção da causa raiz da instabilidade.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/test-retries",
+      "tags": ["Playwright", "CI/CD", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual a principal função do `RemoteWebDriver` no Selenium?",
+      "opcoes": [
+        "É uma classe para controlar navegadores em modo 'headless'.",
+        "É a implementação do WebDriver para o navegador Firefox.",
+        "É a classe cliente que se conecta a um Selenium Grid ou a um serviço de nuvem (como Sauce Labs), permitindo a execução de testes em uma máquina remota.",
+        "É uma versão mais antiga do WebDriver que foi descontinuada."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Quando você executa testes localmente, você geralmente instancia `ChromeDriver` ou `FirefoxDriver`. Para executar em um Grid, você instancia `RemoteWebDriver`, passando a URL do Grid Hub e as 'capabilities' (navegador, versão, plataforma) desejadas. O `RemoteWebDriver` então envia os comandos para o Grid, que os encaminha para o nó apropriado.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/grid/getting_started/#step-3-execute-a-remote-test",
+      "tags": ["Selenium", "Grid"]
+    },
+    {
+      "pergunta": "Qual comando do Cypress é usado para rolar a página ou um elemento para uma posição específica?",
+      "opcoes": [
+        "cy.scroll()",
+        "cy.moveTo()",
+        "cy.scrollTo()",
+        "cy.focus()"
+      ],
+      "indice_correto": "2",
+      "explicacao": "`cy.scrollTo()` pode ser usado para rolar a janela ou um elemento rolável. Ele pode receber posições (como 'bottom', 'center') ou coordenadas x, y específicas.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/scrollto",
+      "tags": ["Cypress"]
+    },
+    {
+      "pergunta": "Em Playwright, o que a asserção `expect(locator).toBeEditable()` verifica?",
+      "opcoes": [
+        "Se o elemento é um `div` com o atributo `contenteditable`.",
+        "Se o texto do elemento pode ser selecionado.",
+        "Se o elemento é habilitado e não é somente leitura (readonly).",
+        "Se o elemento tem um valor vazio."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Esta asserção verifica se um elemento é editável, o que significa que ele está habilitado (`:enabled`) e não tem o atributo `readonly`. É útil para garantir que campos de input ou textareas estão prontos para receber texto.",
+      "dificuldade": "Média",
+      "referencias": "https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-editable",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "O que o método `driver.switchTo().defaultContent()` faz no Selenium?",
+      "opcoes": [
+        "Muda o foco de volta para a primeira janela que foi aberta na sessão.",
+        "Reseta todo o estado do driver.",
+        "Muda o foco de um iframe de volta para o documento principal da página.",
+        "Carrega a URL padrão configurada para o driver."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Depois de ter mudado o foco para dentro de um iframe com `driver.switchTo().frame()`, todos os comandos subsequentes operarão dentro daquele iframe. Para interagir com elementos fora do iframe novamente, você deve usar `defaultContent()` para retornar ao contexto da página principal.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/interactions/frames/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, o que a função `setTimeout(callback, delay)` faz?",
+      "opcoes": [
+        "Executa a função `callback` repetidamente a cada `delay` milissegundos.",
+        "Pausa toda a execução do script por `delay` milissegundos.",
+        "Executa a função `callback` uma vez após um `delay` de milissegundos ter passado.",
+        "Define o tempo máximo de execução para a função `callback`."
+      ],
+      "indice_correto": "2",
+      "explicacao": "`setTimeout` é uma função assíncrona do navegador (e Node.js). Ela agenda a execução de uma função para o futuro, sem bloquear o thread principal. É a base de como muitas operações assíncronas funcionam na web.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/API/setTimeout",
+      "tags": ["JavaScript"]
+    },
+    {
+      "pergunta": "Como você pode interceptar uma requisição de rede e aguardar por sua resposta no Cypress?",
+      "opcoes": [
+        "cy.intercept('/api/data').as('getData'); cy.wait('@getData');",
+        "cy.waitFor('/api/data')",
+        "cy.get('/api/data').then(res => { /* ... */ })",
+        "cy.listen('/api/data')"
+      ],
+      "indice_correto": "0",
+      "explicacao": "Este é um padrão muito comum no Cypress. Primeiro, você define uma interceptação com `cy.intercept()` e dá a ela um alias com `.as()`. Depois, você aciona a ação na UI que causa a requisição. Finalmente, você usa `cy.wait('@alias')` para pausar o teste até que aquela requisição específica seja completada, permitindo que você então faça asserções sobre a resposta ou o estado da UI.",
+      "dificuldade": "Média",
+      "referencias": "https://docs.cypress.io/api/commands/wait#Waiting-on-a-request",
+      "tags": ["Cypress", "Waits", "API Testing"]
+    },
+    {
+      "pergunta": "No Playwright, o que o `expect.poll` é usado para fazer?",
+      "opcoes": [
+        "Fazer uma enquete com usuários sobre a qualidade da aplicação.",
+        "Verificar de forma assíncrona uma condição que pode não ser imediatamente verdadeira, como verificar o conteúdo de um arquivo que está sendo escrito.",
+        "Executar testes em um loop contínuo.",
+        "Interrogar o navegador sobre suas capacidades."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`expect.poll` é usado para asserções assíncronas. Ele executa repetidamente uma função até que seu resultado satisfaça a condição esperada ou até que o tempo limite seja atingido. É útil para testar coisas que acontecem fora do navegador, como verificar um log no servidor ou um e-mail que foi enviado.",
+      "dificuldade": "Difícil",
+      "referencias": "https://playwright.dev/docs/test-assertions#polling",
+      "tags": ["Playwright", "Assertions"]
+    },
+    {
+      "pergunta": "Qual das seguintes anotações do JUnit 5 é usada para fornecer uma fonte de argumentos no formato CSV para um teste parametrizado?",
+      "opcoes": [
+        "@CsvSource",
+        "@ValueSource",
+        "@CsvFileSource",
+        "@MethodSource"
+      ],
+      "indice_correto": "0",
+      "explicacao": "A anotação `@CsvSource` permite que você defina os dados de teste diretamente na anotação como um array de strings no formato CSV. Cada string representa uma linha de dados e uma invocação do teste. Ex: `@CsvSource({ 'maçã, 1', 'banana, 2' })`.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.oracle.com/en/java/",
+      "tags": ["JUnit", "Java"]
+    },
+    {
+      "pergunta": "Como você pode simular o pressionamento de múltiplas teclas ao mesmo tempo no Selenium (ex: Ctrl+A)?",
+      "opcoes": [
+        "element.sendKeys(Keys.CONTROL + 'a')",
+        "element.sendKeys(Keys.chord(Keys.CONTROL, 'a'))",
+        "Isso não é possível com a classe `Keys`.",
+        "new Actions(driver).press(Keys.CONTROL).press('a').perform()"
+      ],
+      "indice_correto": "1",
+      "explicacao": "O método estático `Keys.chord()` permite construir uma sequência de teclas que são pressionadas e liberadas juntas. Isso é útil para simular atalhos de teclado como selecionar tudo, copiar e colar.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/elements/interactions/#keyboard",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Qual seletor do Cypress seleciona o elemento focado atualmente?",
+      "opcoes": [
+        "cy.focused()",
+        "cy.get(':focus')",
+        "cy.active()",
+        "cy.get('.focused')"
+      ],
+      "indice_correto": "0",
+      "explicacao": "O comando `cy.focused()` retorna o elemento do DOM que tem o foco no momento. É um atalho útil para a pseudo-classe `:focus` e é frequentemente usado em asserções para verificar o comportamento da navegação por teclado.",
+      "dificuldade": "Fácil",
+      "referencias": "https://docs.cypress.io/api/commands/focused",
+      "tags": ["Cypress"]
+    },
+    {
+      "pergunta": "No Playwright, o que a opção `storageState` permite fazer?",
+      "opcoes": [
+        "Salvar o estado atual da memória do navegador para análise de performance.",
+        "Salvar o estado da autenticação (cookies, localStorage) de um contexto de navegador e reutilizá-lo em outros testes, evitando a necessidade de fazer login repetidamente.",
+        "Definir o estado inicial do armazenamento em nuvem para os testes.",
+        "Controlar o estado (ativo/inativo) dos workers paralelos."
+      ],
+      "indice_correto": "1",
+      "explicacao": "O fluxo de login pode ser lento. Com `storageState`, você pode fazer login uma vez em um arquivo de setup, salvar o estado da autenticação em um arquivo JSON e, em seguida, fazer com que seus testes carreguem esse estado ao criar um novo contexto. Isso acelera drasticamente a execução dos testes que requerem um usuário logado.",
+      "dificuldade": "Difícil",
+      "referencias": "https://playwright.dev/docs/auth#reuse-authentication-state",
+      "tags": ["Playwright", "Boas Práticas"]
+    },
+    {
+      "pergunta": "Qual a principal diferença entre os `hooks` do Cucumber (ex: `@Before`) e as palavras-chave de contexto (ex: `Background`)?",
+      "opcoes": [
+        "Hooks são executados para cada cenário, enquanto `Background` é executado apenas uma vez por arquivo `.feature`.",
+        "`Background` é visível para stakeholders não técnicos no arquivo `.feature`, definindo passos `Given` comuns a todos os cenários, enquanto hooks são código invisível para eles.",
+        "Hooks só podem ser usados para setup, enquanto `Background` pode ser usado para setup e teardown.",
+        "Não há diferença funcional."
+      ],
+      "indice_correto": "1",
+      "explicacao": "`Background` é uma construção do Gherkin. Ele permite adicionar contexto a todos os cenários em um arquivo de feature, listando passos `Given` que são executados antes de cada cenário. Hooks são construções do código de automação (invisíveis no `.feature`) que permitem executar código de setup/teardown antes/depois de cenários ou passos.",
+      "dificuldade": "Média",
+      "referencias": "https://www.selenium.dev/documentation/test_practices/behavior_driven_development/",
+      "tags": ["Cucumber", "BDD"]
+    },
+    {
+      "pergunta": "O que o método `driver.getPageSource()` retorna no Selenium?",
+      "opcoes": [
+        "Apenas o texto visível na página.",
+        "O código-fonte HTML da página atual, como uma string.",
+        "Uma lista de todas as URLs de recursos (imagens, scripts) carregados pela página.",
+        "O screenshot da página em formato Base64."
+      ],
+      "indice_correto": "1",
+      "explicacao": "Este método retorna o HTML completo da página no estado em que ela se encontra no momento da chamada. Pode ser útil para depuração ou para fazer asserções sobre o conteúdo da página quando não é fácil localizar um elemento específico.",
+      "dificuldade": "Fácil",
+      "referencias": "https://www.selenium.dev/documentation/webdriver/browser/information/",
+      "tags": ["Selenium", "Java"]
+    },
+    {
+      "pergunta": "Em JavaScript, qual a finalidade de uma 'arrow function' (`=>`)?",
+      "opcoes": [
+        "É apenas uma sintaxe mais curta para declarar funções e não possui diferenças funcionais.",
+        "Elas sempre retornam uma Promise.",
+        "Elas têm uma sintaxe mais concisa e herdam o valor de `this` do contexto em que foram criadas, ao contrário das funções tradicionais.",
+        "Só podem ser usadas como callbacks anônimos."
+      ],
+      "indice_correto": "2",
+      "explicacao": "Arrow functions são uma das características mais importantes do ES6. Além da sintaxe curta, a principal diferença é o `this` léxico. Funções tradicionais têm seu próprio `this`, que pode ser confuso. Arrow functions não têm, elas usam o `this` do escopo pai, o que resolve muitos problemas comuns em callbacks.",
+      "dificuldade": "Média",
+      "referencias": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions",
+      "tags": ["JavaScript"]
+    }
+  ]
+
+}

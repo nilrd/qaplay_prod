@@ -27,17 +27,17 @@ const UserInfoModal = ({ onStart, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Antes de Começar</CardTitle>
-          <CardDescription>
+      <Card className="w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden modal-container">
+        <CardHeader className="flex-shrink-0 text-center space-y-2">
+          <CardTitle className="text-xl">Antes de Começar</CardTitle>
+          <CardDescription className="text-sm modal-description">
             Precisamos de algumas informações para personalizar sua experiência e gerar seu certificado
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <CardContent className="flex-grow overflow-y-auto space-y-4 pr-1">
+          <form id="user-info-form" onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="flex items-center space-x-2">
+              <Label htmlFor="name" className="flex items-center space-x-2 text-sm">
                 <User className="w-4 h-4" />
                 <span>Nome Completo *</span>
               </Label>
@@ -47,13 +47,14 @@ const UserInfoModal = ({ onStart, onClose }) => {
                 placeholder="Digite seu nome completo"
                 value={userInfo.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
+                autoComplete="name"
                 required
-                className="w-full"
+                className="w-full text-sm"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="linkedin" className="flex items-center space-x-2">
+              <Label htmlFor="linkedin" className="flex items-center space-x-2 text-sm">
                 <Linkedin className="w-4 h-4" />
                 <span>LinkedIn (opcional)</span>
               </Label>
@@ -63,39 +64,45 @@ const UserInfoModal = ({ onStart, onClose }) => {
                 placeholder="https://linkedin.com/in/seu-perfil"
                 value={userInfo.linkedinUrl}
                 onChange={(e) => handleInputChange('linkedinUrl', e.target.value)}
-                className="w-full"
+                autoComplete="url"
+                className="w-full text-sm"
               />
               <p className="text-xs text-muted-foreground">
                 Será usado para compartilhamento do certificado
               </p>
             </div>
 
-            <div className="bg-blue-50 p-3 rounded-lg text-sm">
+            <div className="bg-blue-50 p-3 rounded-lg text-xs">
               <p className="text-blue-800">
                 <strong>Lembre-se:</strong> Você terá 60 minutos para completar 100 questões. 
                 Se minimizar o navegador ou trocar de aba, a questão atual será marcada como incorreta.
               </p>
             </div>
 
-            <div className="flex space-x-3 pt-4">
-              <Button 
-                type="button" 
-                variant="outline" 
-                onClick={onClose}
-                className="flex-1"
-              >
-                Cancelar
-              </Button>
-              <Button 
-                type="submit" 
-                className="flex-1"
-                disabled={!userInfo.name.trim()}
-              >
-                Iniciar Desafio
-              </Button>
-            </div>
           </form>
         </CardContent>
+        
+        {/* Rodapé fixo com botões de ação */}
+        <div className="flex-shrink-0 p-6 pt-4 border-t border-border modal-footer">
+          <div className="flex space-x-2">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={onClose}
+              className="flex-1 text-sm"
+            >
+              Cancelar
+            </Button>
+            <Button 
+              type="submit" 
+              form="user-info-form"
+              className="flex-1 text-sm"
+              disabled={!userInfo.name.trim()}
+            >
+              Iniciar Desafio
+            </Button>
+          </div>
+        </div>
       </Card>
     </div>
   )

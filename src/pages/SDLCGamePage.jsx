@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import TestPyramidGame from '../games/TestPyramidGame';
 
 const SDLCGamePage = () => {
   return (
@@ -20,7 +19,17 @@ const SDLCGamePage = () => {
         </div>
       </div>
       
-      <TestPyramidGame />
+      <div className="bg-muted/50 p-8 rounded-lg text-center">
+        <h2 className="text-xl font-semibold mb-2">Jogo em Desenvolvimento</h2>
+        <p className="text-muted-foreground mb-4">
+          O jogo de SDLC/STLC está sendo desenvolvido e estará disponível em breve.
+        </p>
+        <Button asChild>
+          <Link to="/quizzes">
+            Ver Quizzes Disponíveis
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };

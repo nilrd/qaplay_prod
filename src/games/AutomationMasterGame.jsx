@@ -1,575 +1,479 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Timer, CheckCircle, XCircle, RotateCcw, Cog, Lightbulb } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
+import { Badge } from '@/components/ui/badge'
+import { CheckCircle, XCircle, Clock, Trophy, RotateCcw, Home, X, ArrowLeft } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import quizData from '../data/quiz-automacao_doc.json'
+import QuizFlowWrapper from '../components/QuizFlowWrapper'
+import { useQuizTimer, calculateQuizTime, formatQuizTime, getTimeLeftClasses } from '../hooks/useQuizTimer'
 
 const AutomationMasterGame = () => {
-  const [gameStarted, setGameStarted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutos
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [score, setScore] = useState(0);
-  const [showExplanation, setShowExplanation] = useState(false);
-  const [gameFinished, setGameFinished] = useState(false);
-  const [shuffledQuestions, setShuffledQuestions] = useState([]);
-  const timerRef = useRef(null);
+  const navigate = useNavigate()
+  const [questions, setQuestions] = useState([])
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [answers, setAnswers] = useState([])
+  const [showResult, setShowResult] = useState(false)
+  const [gameFinished, setGameFinished] = useState(false)
+  const [gameStarted, setGameStarted] = useState(false)
+  const [totalQuestions, setTotalQuestions] = useState(20)
+  const [totalTime, setTotalTime] = useState(calculateQuizTime(20)) // Default 20 minutes
+  const [userInfo, setUserInfo] = useState(null)
 
-  const questions = [
-    {
-      id: 1,
-      question: "O que é o padrão Page Object Model (POM)?",
-      options: [
-        "Um padrão para organizar elementos da página em classes separadas",
-        "Uma ferramenta de automação de testes",
-        "Um tipo de teste de performance",
-        "Um framework de desenvolvimento web"
-      ],
-      correctAnswer: 0,
-      explanation: "Page Object Model é um padrão de design que cria uma camada de abstração entre os testes e a interface do usuário, organizando elementos e ações de cada página em classes separadas.",
-      category: "Page Objects"
-    },
-    {
-      id: 2,
-      question: "Qual é a principal vantagem do Page Object Model?",
-      options: [
-        "Aumenta a velocidade dos testes",
-        "Reduz a manutenção e melhora a reutilização de código",
-        "Elimina a necessidade de assertions",
-        "Torna os testes mais rápidos de executar"
-      ],
-      correctAnswer: 1,
-      explanation: "A principal vantagem do POM é reduzir a manutenção dos testes. Quando a interface muda, você só precisa atualizar o Page Object correspondente, não todos os testes.",
-      category: "Page Objects"
-    },
-    {
-      id: 3,
-      question: "O que é JUnit?",
-      options: [
-        "Uma linguagem de programação",
-        "Um framework de testes unitários para Java",
-        "Um banco de dados",
-        "Um servidor web"
-      ],
-      correctAnswer: 1,
-      explanation: "JUnit é um framework de testes unitários para Java que fornece anotações e métodos para escrever e executar testes automatizados.",
-      category: "Frameworks"
-    },
-    {
-      id: 4,
-      question: "Qual anotação do JUnit é usada para marcar um método de teste?",
-      options: [
-        "@TestMethod",
-        "@Test",
-        "@UnitTest",
-        "@TestCase"
-      ],
-      correctAnswer: 1,
-      explanation: "A anotação @Test é usada no JUnit para marcar métodos que devem ser executados como testes.",
-      category: "Frameworks"
-    },
-    {
-      id: 5,
-      question: "O que é Cucumber?",
-      options: [
-        "Uma ferramenta de teste de performance",
-        "Um framework BDD que permite escrever testes em linguagem natural",
-        "Um banco de dados NoSQL",
-        "Uma linguagem de programação"
-      ],
-      correctAnswer: 1,
-      explanation: "Cucumber é um framework BDD (Behavior-Driven Development) que permite escrever testes em linguagem natural usando Gherkin.",
-      category: "Frameworks"
-    },
-    {
-      id: 6,
-      question: "Qual é a linguagem usada pelo Cucumber para escrever cenários?",
-      options: [
-        "Java",
-        "Python",
-        "Gherkin",
-        "JavaScript"
-      ],
-      correctAnswer: 2,
-      explanation: "Gherkin é a linguagem usada pelo Cucumber para escrever cenários de teste em formato legível por humanos.",
-      category: "Frameworks"
-    },
-    {
-      id: 7,
-      question: "O que é SpecFlow?",
-      options: [
-        "Uma ferramenta de CI/CD",
-        "Um framework BDD para .NET",
-        "Um tipo de teste de API",
-        "Uma metodologia ágil"
-      ],
-      correctAnswer: 1,
-      explanation: "SpecFlow é um framework BDD para .NET que permite usar Gherkin para escrever testes executáveis.",
-      category: "Frameworks"
-    },
-    {
-      id: 8,
-      question: "Qual é uma boa prática ao nomear métodos de teste?",
-      options: [
-        "Usar nomes curtos como test1, test2",
-        "Usar nomes descritivos que expliquem o que está sendo testado",
-        "Usar apenas números",
-        "Usar nomes em código"
-      ],
-      correctAnswer: 1,
-      explanation: "Nomes descritivos ajudam a entender rapidamente o que cada teste faz, facilitando a manutenção e debugging.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 9,
-      question: "O que é um teste flaky?",
-      options: [
-        "Um teste que sempre passa",
-        "Um teste que sempre falha",
-        "Um teste que às vezes passa e às vezes falha sem mudanças no código",
-        "Um teste muito rápido"
-      ],
-      correctAnswer: 2,
-      explanation: "Testes flaky são instáveis - podem passar ou falhar sem mudanças no código, geralmente devido a dependências externas, timing ou problemas de sincronização.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 10,
-      question: "Qual é a melhor prática para lidar com waits em automação?",
-      options: [
-        "Usar sempre Thread.sleep()",
-        "Usar waits explícitos (WebDriverWait)",
-        "Não usar waits",
-        "Usar apenas waits implícitos"
-      ],
-      correctAnswer: 1,
-      explanation: "Waits explícitos são mais eficientes e confiáveis, pois esperam por condições específicas em vez de tempos fixos.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 11,
-      question: "O que significa DRY em automação de testes?",
-      options: [
-        "Don't Repeat Yourself",
-        "Dynamic Resource Yielding",
-        "Data Retrieval Yearly",
-        "Direct Response Yielding"
-      ],
-      correctAnswer: 0,
-      explanation: "DRY (Don't Repeat Yourself) é um princípio que visa evitar duplicação de código, promovendo reutilização e facilitando manutenção.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 12,
-      question: "Qual é o objetivo principal dos testes de regressão automatizados?",
-      options: [
-        "Testar novas funcionalidades",
-        "Verificar se mudanças não quebraram funcionalidades existentes",
-        "Testar performance",
-        "Testar segurança"
-      ],
-      correctAnswer: 1,
-      explanation: "Testes de regressão automatizados garantem que novas mudanças não introduzam bugs em funcionalidades que já funcionavam.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 13,
-      question: "O que é um Data Provider em automação de testes?",
-      options: [
-        "Um banco de dados",
-        "Um método que fornece dados para testes parametrizados",
-        "Uma ferramenta de teste",
-        "Um tipo de assertion"
-      ],
-      correctAnswer: 1,
-      explanation: "Data Provider é um mecanismo que permite executar o mesmo teste com diferentes conjuntos de dados, promovendo reutilização.",
-      category: "Frameworks"
-    },
-    {
-      id: 14,
-      question: "Qual é a diferença entre assertion e verification?",
-      options: [
-        "Não há diferença",
-        "Assertion para o teste se falhar, verification continua",
-        "Verification para o teste se falhar, assertion continua",
-        "Ambos param o teste sempre"
-      ],
-      correctAnswer: 1,
-      explanation: "Assertion para a execução do teste imediatamente se falhar, enquanto verification registra a falha mas continua a execução.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 15,
-      question: "O que é Continuous Integration (CI) em automação?",
-      options: [
-        "Executar testes manualmente",
-        "Integrar e testar código automaticamente a cada commit",
-        "Testar apenas em produção",
-        "Fazer deploy manual"
-      ],
-      correctAnswer: 1,
-      explanation: "CI é a prática de integrar mudanças de código frequentemente e executar testes automatizados para detectar problemas rapidamente.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 16,
-      question: "Qual é uma característica importante de um bom caso de teste automatizado?",
-      options: [
-        "Deve ser dependente de outros testes",
-        "Deve ser independente e executável isoladamente",
-        "Deve sempre usar dados de produção",
-        "Deve ser muito longo e complexo"
-      ],
-      correctAnswer: 1,
-      explanation: "Testes independentes são mais confiáveis, fáceis de manter e podem ser executados em qualquer ordem.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 17,
-      question: "O que é TestNG?",
-      options: [
-        "Uma linguagem de programação",
-        "Um framework de testes para Java inspirado no JUnit",
-        "Um banco de dados",
-        "Uma ferramenta de CI/CD"
-      ],
-      correctAnswer: 1,
-      explanation: "TestNG é um framework de testes para Java que oferece recursos avançados como grupos de testes, dependências e execução paralela.",
-      category: "Frameworks"
-    },
-    {
-      id: 18,
-      question: "Qual é o propósito do método setUp() em testes automatizados?",
-      options: [
-        "Limpar dados após o teste",
-        "Preparar o ambiente antes de executar o teste",
-        "Executar o teste principal",
-        "Gerar relatórios"
-      ],
-      correctAnswer: 1,
-      explanation: "O método setUp() (ou @BeforeEach) é usado para preparar o ambiente de teste, como inicializar objetos ou configurar dados.",
-      category: "Frameworks"
-    },
-    {
-      id: 19,
-      question: "O que é um Mock em testes automatizados?",
-      options: [
-        "Um tipo de banco de dados",
-        "Um objeto simulado que imita o comportamento de objetos reais",
-        "Uma ferramenta de CI/CD",
-        "Um tipo de assertion"
-      ],
-      correctAnswer: 1,
-      explanation: "Mocks são objetos simulados que imitam o comportamento de dependências reais, permitindo testar unidades isoladamente.",
-      category: "Boas Práticas"
-    },
-    {
-      id: 20,
-      question: "Qual é a pirâmide de testes em automação?",
-      options: [
-        "Muitos testes E2E, poucos testes unitários",
-        "Muitos testes unitários, alguns de integração, poucos E2E",
-        "Apenas testes manuais",
-        "Todos os tipos em igual quantidade"
-      ],
-      correctAnswer: 1,
-      explanation: "A pirâmide de testes preconiza muitos testes unitários (rápidos e baratos), alguns de integração e poucos E2E (lentos e caros).",
-      category: "Boas Práticas"
-    }
-  ];
-
-  // Função para embaralhar array (Fisher-Yates Shuffle)
+  // Function to shuffle array
   const shuffleArray = (array) => {
-    const shuffled = [...array];
+    const shuffled = [...array]
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-    return shuffled;
-  };
+    return shuffled
+  }
 
-  const startGame = () => {
-    const shuffled = shuffleArray(questions).slice(0, 15); // Pega 15 questões aleatórias
-    // Embaralha as opções de cada questão
-    const shuffledWithOptions = shuffled.map(q => ({
-      ...q,
-      originalOptions: [...q.options],
-      options: shuffleArray(q.options.map((option, index) => ({ text: option, originalIndex: index }))),
-    }));
-    
-    setShuffledQuestions(shuffledWithOptions);
-    setGameStarted(true);
-    setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
-    setScore(0);
-    setShowExplanation(false);
-    setGameFinished(false);
-    setTimeLeft(1200);
-    startTimer();
-  };
-
-  const startTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setTimeLeft(prevTime => {
-        if (prevTime <= 1) {
-          clearInterval(timerRef.current);
-          finishGame();
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-  };
-
+  // Load and shuffle all questions initially
   useEffect(() => {
-    return () => clearInterval(timerRef.current);
-  }, []);
+    // Convert from quiz-automacao_doc.json format to expected format
+    const convertedQuestions = quizData.questions.map((q, index) => {
+      const options = q.opcoes.map(option => option.trim())
+      const correctAnswerIndex = parseInt(q.indice_correto, 10)
+      const correctAnswer = options[correctAnswerIndex]
 
-  const handleAnswerSelect = (answerIndex) => {
-    if (showExplanation) return;
-    setSelectedAnswer(answerIndex);
-  };
+      return {
+        id: Math.random().toString(36).substring(2, 11),
+        question: q.pergunta.trim(),
+        options: options,
+        correctAnswer: correctAnswer,
+        explanation: q.explicacao.trim()
+      }
+    })
+    
+    const shuffledQuestions = shuffleArray(convertedQuestions)
+    setQuestions(shuffledQuestions)
+  }, [])
 
-  const handleSubmitAnswer = () => {
-    if (selectedAnswer === null) return;
-    
-    const currentQuestion = shuffledQuestions[currentQuestionIndex];
-    const selectedOption = currentQuestion.options[selectedAnswer];
-    const isCorrect = selectedOption.originalIndex === currentQuestion.correctAnswer;
-    
-    if (isCorrect) {
-      setScore(prevScore => prevScore + 1);
+  // Hook do temporizador padronizado
+  const { timeLeft, resetTimer } = useQuizTimer(
+    totalTime,
+    gameStarted,
+    gameFinished,
+    () => setGameFinished(true)
+  )
+
+  // Function to start the quiz with configurations
+  const handleQuizStart = (questionCount, timeInSeconds) => {
+    console.log('Iniciando quiz com:', questionCount, 'questões e', timeInSeconds, 'segundos')
+    setTotalQuestions(questionCount)
+    setTotalTime(timeInSeconds)
+    resetTimer(timeInSeconds)
+    setGameStarted(true)
+    setCurrentQuestion(0)
+    setSelectedAnswer(null)
+    setAnswers([])
+    setShowResult(false)
+    setGameFinished(false)
+  }
+
+  const handleUserInfoSubmit = (info) => {
+    setUserInfo(info)
+    setGameStarted(true)
+  }
+
+  // Timer effect removido - agora gerenciado pelo hook useQuizTimer
+
+  const handleAnswerSelect = (index) => {
+    if (!showResult) {
+      setSelectedAnswer(index)
     }
-    
-    setShowExplanation(true);
-  };
+  }
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < shuffledQuestions.length - 1) {
-      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
-      setSelectedAnswer(null);
-      setShowExplanation(false);
+    if (selectedAnswer === null) return
+
+    const currentQ = questions[currentQuestion]
+    const isCorrect = currentQ.options[selectedAnswer] === currentQ.correctAnswer
+
+    setAnswers([...answers, { question: currentQ.question, selected: currentQ.options[selectedAnswer], correct: currentQ.correctAnswer, isCorrect }])
+    setShowResult(true)
+  }
+
+  const handleContinue = () => {
+    if (currentQuestion < totalQuestions - 1) {
+      setCurrentQuestion(currentQuestion + 1)
+      setSelectedAnswer(null)
+      setShowResult(false)
     } else {
-      finishGame();
+      setGameFinished(true)
     }
-  };
+  }
 
-  const finishGame = () => {
-    clearInterval(timerRef.current);
-    setGameFinished(true);
-  };
+  const restartGame = () => {
+    // Convert from quiz-automacao_doc.json format to expected format
+    const convertedQuestions = quizData.questions.map((q, index) => {
+      const options = q.opcoes.map(option => option.trim())
+      const correctAnswerIndex = parseInt(q.indice_correto, 10)
+      const correctAnswer = options[correctAnswerIndex]
 
-  const resetGame = () => {
-    setGameStarted(false);
-    setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
-    setScore(0);
-    setShowExplanation(false);
-    setGameFinished(false);
-    setShuffledQuestions([]);
-    setTimeLeft(1200);
-  };
+      return {
+        id: Math.random().toString(36).substring(2, 11),
+        question: q.pergunta.trim(),
+        options: options,
+        correctAnswer: correctAnswer,
+        explanation: q.explicacao.trim()
+      }
+    })
+    
+    const shuffledQuestions = shuffleArray(convertedQuestions)
+    setQuestions(shuffledQuestions)
+    setCurrentQuestion(0)
+    setSelectedAnswer(null)
+    setAnswers([])
+    setShowResult(false)
+    setGameFinished(false)
+    resetTimer(totalTime) // Reset time to configured total
+    setGameStarted(false)
+    setUserInfo(null)
+  }
+
+  const calculateScore = () => {
+    const correctAnswers = answers.filter(answer => answer.isCorrect).length
+    return (correctAnswers / totalQuestions) * 100
+  }
+
+  // Função para formatar tempo (usando utilitário padronizado)
+  const formatTime = formatQuizTime
 
   if (!gameStarted) {
     return (
-      <div className="max-w-2xl mx-auto space-y-6">
-        <Card className="text-center">
-          <CardHeader>
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Cog className="h-8 w-8 text-white" />
-            </div>
-            <CardTitle className="text-2xl">Mestre da Automação</CardTitle>
-            <CardDescription className="text-lg">
-              Teste seus conhecimentos sobre automação de testes, frameworks e boas práticas.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-4">
-              <h3 className="font-semibold text-xl">Sobre o Jogo:</h3>
-              <p className="text-sm text-muted-foreground text-left">
-                No jogo "Mestre da Automação", você será desafiado com questões sobre Page Objects, frameworks como JUnit, Cucumber e SpecFlow, além de boas práticas em automação de testes.
-              </p>
-              <h3 className="font-semibold text-xl">Como Jogar:</h3>
-              <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                <li>• Você terá 20 minutos para responder 15 questões aleatórias.</li>
-                <li>• As questões e alternativas são embaralhadas a cada jogo.</li>
-                <li>• Selecione a resposta que considera correta e clique em "Confirmar".</li>
-                <li>• Após responder, você verá a explicação da resposta correta.</li>
-                <li>• Seu objetivo é acertar o máximo de questões possível!</li>
-              </ul>
-              <h3 className="font-semibold text-xl">Tópicos Abordados:</h3>
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Badge variant="secondary">Page Objects</Badge>
-                <Badge variant="secondary">JUnit</Badge>
-                <Badge variant="secondary">Cucumber</Badge>
-                <Badge variant="secondary">SpecFlow</Badge>
-                <Badge variant="secondary">Boas Práticas</Badge>
-              </div>
-            </div>
-            <Button onClick={startGame} size="lg" className="w-full">
-              <Cog className="mr-2 h-5 w-5" />
-              Começar Jogo
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
+      <QuizFlowWrapper
+        quizTitle="Mestre da Automação"
+        onQuizStart={handleQuizStart}
+        onUserInfoSubmit={handleUserInfoSubmit}
+        onShowCertificate={() => {}}
+        score={calculateScore()}
+        onShareLinkedIn={(url) => window.open(url, '_blank')}
+      >
+        <div className="text-center">Preparando o quiz...</div>
+      </QuizFlowWrapper>
+    )
   }
 
   if (gameFinished) {
-    const percentage = Math.round((score / shuffledQuestions.length) * 100);
-    let performance = '';
-    if (percentage >= 80) performance = 'Excelente! Você é um verdadeiro Mestre da Automação!';
-    else if (percentage >= 60) performance = 'Muito bom! Você tem um bom conhecimento em automação.';
-    else if (percentage >= 40) performance = 'Razoável. Continue estudando para melhorar!';
-    else performance = 'Precisa estudar mais. Não desista, a prática leva à perfeição!';
+    const score = calculateScore()
+    const correctAnswers = answers.filter(answer => answer.isCorrect).length
 
     return (
-      <div className="max-w-2xl mx-auto space-y-6">
-        <Card className="text-center">
-          <CardHeader>
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Cog className="h-8 w-8 text-white" />
+      <QuizFlowWrapper
+        quizTitle="Mestre da Automação"
+        onQuizStart={handleQuizStart}
+        onUserInfoSubmit={handleUserInfoSubmit}
+        onShowCertificate={() => {}}
+        score={score}
+        onShareLinkedIn={(url) => window.open(url, '_blank')}
+      >
+        <div className="min-h-screen bg-background p-2 sm:p-4">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+            {/* Header */}
+            <div className="bg-card border rounded-lg p-4 shadow-sm">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="space-y-3 w-full sm:w-auto">
+                  <div className="flex items-center space-x-3">
+                    <Trophy className="w-8 h-8 text-yellow-500" />
+                    <div>
+                      <h1 className="text-2xl font-bold text-foreground">Quiz Finalizado!</h1>
+                      <p className="text-muted-foreground">Mestre da Automação</p>
+                    </div>
             </div>
-            <CardTitle className="text-2xl">Jogo Finalizado!</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-4">
-              <div className="text-4xl font-bold text-primary">{score}/{shuffledQuestions.length}</div>
-              <div className="text-xl font-semibold">{percentage}% de acertos</div>
-              <p className="text-muted-foreground">{performance}</p>
-              
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-green-50 p-3 rounded-lg">
-                  <div className="font-semibold text-green-800">Acertos</div>
-                  <div className="text-2xl font-bold text-green-600">{score}</div>
                 </div>
-                <div className="bg-red-50 p-3 rounded-lg">
-                  <div className="font-semibold text-red-800">Erros</div>
-                  <div className="text-2xl font-bold text-red-600">{shuffledQuestions.length - score}</div>
+                <div className="flex items-center space-x-3">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => navigate('/quizzes')}
+                    className="text-muted-foreground hover:text-foreground"
+                    title="Voltar aos Quizzes"
+                  >
+                    <X className="w-5 h-5" />
+                  </Button>
                 </div>
               </div>
             </div>
             
+            {/* Resultado */}
+            <Card className="w-full overflow-hidden">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto w-24 h-24 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-4">
+                  <Trophy className="w-12 h-12 text-white" />
+                </div>
+                <CardTitle className="text-3xl font-bold text-foreground">
+                  Parabéns!
+                </CardTitle>
+                <CardDescription className="text-lg text-muted-foreground">
+                  Você completou o quiz Mestre da Automação
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                  <div className="space-y-2">
+                    <div className="text-3xl font-bold text-primary">{Math.round(score)}%</div>
+                    <div className="text-sm text-muted-foreground">Pontuação Final</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-3xl font-bold text-green-600">{correctAnswers}</div>
+                    <div className="text-sm text-muted-foreground">Respostas Corretas</div>
+                  </div>
             <div className="space-y-2">
-              <Button onClick={resetGame} size="lg" className="w-full">
+                    <div className="text-3xl font-bold text-blue-600">{totalQuestions}</div>
+                    <div className="text-sm text-muted-foreground">Total de Questões</div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <Button
+                    onClick={() => setUserInfo({ name: 'Usuário', linkedinUrl: '' })}
+                    className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white"
+                    size="lg"
+                  >
+                    <Trophy className="mr-2 h-5 w-5" />
+                    Gerar Certificado
+                  </Button>
+                  
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button
+                      onClick={restartGame}
+                      variant="outline"
+                      className="flex-1"
+                      size="lg"
+                    >
                 <RotateCcw className="mr-2 h-5 w-5" />
-                Jogar Novamente
+                      Reiniciar Quiz
+                    </Button>
+                    <Button
+                      onClick={() => navigate('/quizzes')}
+                      variant="outline"
+                      className="flex-1"
+                      size="lg"
+                    >
+                      <Home className="mr-2 h-5 w-5" />
+                      Voltar aos Quizzes
               </Button>
+                  </div>
             </div>
           </CardContent>
         </Card>
       </div>
-    );
+        </div>
+      </QuizFlowWrapper>
+    )
   }
 
-  const currentQuestion = shuffledQuestions[currentQuestionIndex];
-  const selectedOption = selectedAnswer !== null ? currentQuestion.options[selectedAnswer] : null;
-  const isCorrect = selectedOption && selectedOption.originalIndex === currentQuestion.correctAnswer;
+  const question = questions[currentQuestion]
+  const progress = ((currentQuestion + 1) / totalQuestions) * 100
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold">
-          Questão {currentQuestionIndex + 1} de {shuffledQuestions.length}
-        </h2>
-        <div className="flex items-center space-x-4">
-          <div className="text-sm">
-            Pontuação: <span className="font-bold">{score}/{shuffledQuestions.length}</span>
+    <QuizFlowWrapper
+      quizTitle="Mestre da Automação"
+      onQuizStart={handleQuizStart}
+      onUserInfoSubmit={handleUserInfoSubmit}
+      onShowCertificate={() => {}}
+      score={calculateScore()}
+      onShareLinkedIn={(url) => window.open(url, '_blank')}
+    >
+      <div className="min-h-screen bg-background p-2 sm:p-4">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+          {/* Header com progresso e timer */}
+          <div className="bg-card border rounded-lg p-4 shadow-sm">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div className="space-y-3 w-full sm:w-auto">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Badge variant="secondary" className="text-sm font-semibold">
+                      Questão {currentQuestion + 1} de {totalQuestions}
+                    </Badge>
+                    <Badge variant="outline" className="text-sm">
+                      {Math.round(progress)}% Concluído
+                    </Badge>
           </div>
-          <div className="flex items-center space-x-2">
-            <Timer className="h-5 w-5" />
-            <span className={`font-mono text-lg ${timeLeft <= 300 ? 'text-red-500' : ''}`}>
-              {Math.floor(timeLeft / 60).toString().padStart(2, '0')}:{(timeLeft % 60).toString().padStart(2, '0')}
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2 text-lg font-mono">
+                      <Clock className="w-5 h-5" />
+                      <span className={getTimeLeftClasses(timeLeft)}>
+                        {formatTime(timeLeft)}
             </span>
+          </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => navigate('/quizzes')}
+                      className="text-muted-foreground hover:text-foreground"
+                      title="Sair do Quiz"
+                    >
+                      <X className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </div>
+                <Progress value={progress} className="w-full h-2" />
           </div>
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">{currentQuestion.question}</CardTitle>
-          <CardDescription>
-            <Badge variant="outline">{currentQuestion.category}</Badge>
-          </CardDescription>
+          {/* Questão */}
+          <Card className="w-full overflow-hidden">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg sm:text-xl leading-relaxed break-words overflow-wrap-anywhere">
+                {question.question}
+              </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-3">
-            {currentQuestion.options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleAnswerSelect(index)}
-                disabled={showExplanation}
-                className={`w-full p-4 text-left rounded-lg border transition-colors ${
-                  selectedAnswer === index
-                    ? showExplanation
-                      ? isCorrect
-                        ? 'bg-green-50 border-green-200 text-green-800'
-                        : 'bg-red-50 border-red-200 text-red-800'
-                      : 'bg-blue-50 border-blue-200 text-blue-800'
-                    : showExplanation && option.originalIndex === currentQuestion.correctAnswer
-                    ? 'bg-green-50 border-green-200 text-green-800'
-                    : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-                }`}
-              >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                    selectedAnswer === index
-                      ? showExplanation
-                        ? isCorrect
-                          ? 'border-green-500 bg-green-500'
-                          : 'border-red-500 bg-red-500'
-                        : 'border-blue-500 bg-blue-500'
-                      : showExplanation && option.originalIndex === currentQuestion.correctAnswer
-                      ? 'border-green-500 bg-green-500'
-                      : 'border-gray-300'
-                  }`}>
-                    {(selectedAnswer === index && showExplanation) || 
-                     (showExplanation && option.originalIndex === currentQuestion.correctAnswer) ? (
-                      <CheckCircle className="h-4 w-4 text-white" />
-                    ) : selectedAnswer === index && showExplanation && !isCorrect ? (
-                      <XCircle className="h-4 w-4 text-white" />
-                    ) : null}
+            <CardContent className="space-y-3 px-4 sm:px-6">
+              <div className="grid gap-3">
+                {question.options.map((option, index) => {
+                  const isSelected = selectedAnswer === index
+                  const isCorrect = showResult && option === question.correctAnswer
+                  const isIncorrect = showResult && index === selectedAnswer && option !== question.correctAnswer
+                  
+                  let cardClass = "w-full p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md "
+                  
+                  if (showResult) {
+                    if (isCorrect) {
+                      cardClass += "bg-green-50 border-green-300 text-green-900"
+                    } else if (isIncorrect) {
+                      cardClass += "bg-red-50 border-red-300 text-red-900"
+                    } else {
+                      cardClass += "opacity-50 bg-gray-50 border-gray-200"
+                    }
+                  } else if (isSelected) {
+                    cardClass += "bg-blue-600 border-blue-600 text-white shadow-lg ring-2 ring-blue-200 transform scale-[1.02]"
+                  } else {
+                    cardClass += "bg-white border-gray-300 text-white hover:border-blue-400 hover:bg-blue-50"
+                  }
+
+                  return (
+                    <div key={index}>
+                      <div
+                        className={cardClass}
+                        onClick={() => !showResult && handleAnswerSelect(index)}
+                        role="button"
+                        tabIndex={showResult ? -1 : 0}
+                        onKeyDown={(e) => {
+                          if (!showResult && (e.key === 'Enter' || e.key === ' ')) {
+                            e.preventDefault()
+                            handleAnswerSelect(index)
+                          }
+                        }}
+                      >
+                        <div className="flex items-start space-x-4">
+                          {/* Marcador da Alternativa */}
+                          <div className="flex-shrink-0">
+                            {isSelected && !showResult ? (
+                              <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                              </div>
+                            ) : (
+                              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-semibold ${
+                                isSelected && !showResult 
+                                  ? 'border-white' 
+                                  : showResult && isCorrect
+                                  ? 'border-green-600 bg-green-100 text-green-600'
+                                  : showResult && isIncorrect
+                                  ? 'border-red-600 bg-red-100 text-red-600'
+                                  : 'border-white text-white'
+                              }`}>
+                                {String.fromCharCode(65 + index)}
                   </div>
-                  <span>{option.text}</span>
+                            )}
                 </div>
-              </button>
-            ))}
+                          
+                          {/* Texto da Alternativa */}
+                          <div className="flex-1 min-w-0">
+                            <span className={`text-sm sm:text-base leading-relaxed break-words overflow-wrap-anywhere whitespace-normal ${
+                              isSelected && !showResult ? 'font-semibold text-white' : ''
+                            }`}>
+                              {option}
+                            </span>
           </div>
 
-          {showExplanation && (
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <div className="flex items-start space-x-2">
-                <Lightbulb className="h-5 w-5 text-blue-600 mt-0.5" />
-                <div>
-                  <h4 className="font-semibold text-blue-800 mb-2">Explicação:</h4>
-                  <p className="text-blue-700 text-sm">{currentQuestion.explanation}</p>
+                          {/* Ícone de Status */}
+                          <div className="flex-shrink-0">
+                            {showResult && isCorrect && (
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                            )}
+                            {showResult && isIncorrect && (
+                              <XCircle className="w-5 h-5 text-red-600" />
+                            )}
+                          </div>
                 </div>
               </div>
+                </div>
+                  )
+                })}
+              </div>
+
+              {showResult && (
+                <div className="mt-4 sm:mt-6 space-y-4">
+                  {(() => {
+                    const isCorrect = question.options[selectedAnswer] === question.correctAnswer
+                    return (
+                      <div className={`p-4 rounded-lg border-2 ${
+                        isCorrect 
+                          ? 'bg-green-50 border-green-200' 
+                          : 'bg-red-50 border-red-200'
+                      }`}>
+                        <div className="flex items-center space-x-2 mb-3">
+                          {isCorrect ? (
+                            <CheckCircle className="w-5 h-5 text-green-600" />
+                          ) : (
+                            <XCircle className="w-5 h-5 text-red-600" />
+                          )}
+                          <h4 className={`font-semibold text-sm sm:text-base ${
+                            isCorrect ? 'text-green-800' : 'text-red-800'
+                          }`}>
+                            {isCorrect ? 'Você acertou!' : 'Você errou!'}
+                          </h4>
+                        </div>
+                        <div className="space-y-2">
+                          <h5 className={`font-medium text-sm ${
+                            isCorrect ? 'text-green-700' : 'text-red-700'
+                          }`}>
+                            Explicação:
+                          </h5>
+                          <p className={`text-xs sm:text-sm break-words overflow-wrap-anywhere leading-relaxed ${
+                            isCorrect ? 'text-green-600' : 'text-red-600'
+                          }`}>
+                            {question.explanation}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  })()}
+                  <Button
+                    onClick={handleContinue}
+                    className="w-full sm:w-auto sm:min-w-[200px]"
+                    size="lg"
+                  >
+                    {currentQuestion === totalQuestions - 1 ? 'Finalizar Desafio' : 'Próxima Pergunta'}
+                  </Button>
             </div>
           )}
 
-          <div className="flex justify-between pt-4">
-            {!showExplanation ? (
+              {!showResult && (
+                <div className="mt-6">
               <Button 
-                onClick={handleSubmitAnswer} 
+                    onClick={handleNextQuestion}
                 disabled={selectedAnswer === null}
-                className="ml-auto"
+                    className="w-full sm:w-auto sm:min-w-[200px]"
+                    size="lg"
               >
-                Confirmar Resposta
+                    {selectedAnswer !== null ? 'Confirmar Resposta' : 'Selecione uma resposta'}
               </Button>
-            ) : (
-              <Button onClick={handleNextQuestion} className="ml-auto">
-                {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Questão' : 'Finalizar Jogo'}
-              </Button>
+                </div>
             )}
-          </div>
         </CardContent>
       </Card>
     </div>
-  );
-};
+      </div>
+    </QuizFlowWrapper>
+  )
+}
 
-export default AutomationMasterGame;
-
+export default AutomationMasterGame
