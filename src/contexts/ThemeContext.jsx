@@ -17,11 +17,8 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme
     }
-    // Verificar preferência do sistema
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-    return 'light'
+    // Tema padrão é dark
+    return 'dark'
   })
 
   useEffect(() => {

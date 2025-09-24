@@ -89,15 +89,14 @@ const About = () => {
 
   const projects = [
     {
-      title: 'QA Play',
-      description: 'Criador do QA Play, plataforma gamificada para meu portfólio e treino de questões sobre Qualidade de software, metodologias ágeis e Lógica de Programação em Java e JavaScript. Em desenvolvimento - testes de software manual e automatizados em construção.',
+      title: 'QAPlay',
+      description: 'Criador do QAPlay, um projeto de portfólio que demonstra minhas habilidades em QA através de uma plataforma de desafios para a comunidade. Em desenvolvimento contínuo, com foco em testes de software e automação.',
       technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Node.js', 'Vite'],
       highlights: [
-        'Plataforma educacional gamificada',
-        'Questões sobre Quality Assurance',
-        'Metodologias ágeis',
-        'Lógica de Programação em Java e JavaScript',
-        'Testes manuais e automatizados em desenvolvimento'
+        'Plataforma de Desafios',
+        'Quizzes Técnicos e Práticos',
+        'Foco em Automação de Testes',
+        'Desenvolvido com Tecnologias Modernas'
       ],
       link: 'https://qaplay.vercel.app/',
       image: '/images/logo_QAPlay.png'
@@ -132,7 +131,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header Profissional */}
-      <section className="bg-gradient-to-br from-primary/10 via-blue-50/50 to-purple-50/50 dark:from-primary/5 dark:via-blue-500/5 dark:to-purple-500/5 py-12">
+      <section className="bg-gradient-to-br from-primary/10 via-blue-50/50 to-purple-50/50 dark:from-primary/5 dark:via-blue-500/5 dark:to-purple-500/5 py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
             {/* Foto e Informações Básicas */}
@@ -178,13 +177,9 @@ const About = () => {
                   Analista de Testes QA
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Profissional hands-on, autodidata e comprometido com o aprendizado contínuo, sempre buscando 
-                  qualidade e superação de desafios, mesmo diante de novas tecnologias. Com perfil analítico e boa 
-                  comunicação, atuo como Analista de Testes em times ágeis com framework Scrum.
-                </p>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  Criador do QA Play, plataforma para meu portfólio e treino de questões sobre Qualidade de software, 
-                  metodologias ágeis e Lógica de Programação em Java e JavaScript.
+                  Sou apaixonado por Quality Assurance e acredito que a melhor forma de demonstrar conhecimento é construindo. 
+                  O QAPlay nasceu dessa ideia: um projeto de portfólio funcional onde aplico e testo minhas habilidades em 
+                  automação, desenvolvimento e UX. Sinta-se à vontade para explorar, testar seus conhecimentos e se conectar!
                 </p>
               </div>
               
@@ -216,7 +211,7 @@ const About = () => {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 py-12 space-y-12">
+      <div className="max-w-6xl mx-auto px-4 py-8 space-y-8">
         {/* Resumo Profissional */}
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
@@ -441,7 +436,7 @@ const About = () => {
         </section>
 
         {/* Seção de Contato */}
-        <section className="text-center py-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 rounded-lg shadow-inner">
+        <section className="text-center py-8 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 rounded-lg shadow-inner">
           <h2 className="text-2xl font-bold text-foreground mb-4">Vamos Conversar!</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Se você tem um projeto, uma ideia ou apenas quer trocar uma experiência, 

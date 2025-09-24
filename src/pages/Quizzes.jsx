@@ -63,7 +63,7 @@ const Quizzes = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Desafios de Conhecimento QA
@@ -76,7 +76,7 @@ const Quizzes = () => {
       </section>
 
       {/* Filtros */}
-      <section className="py-8 bg-muted/30">
+      <section className="py-6 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {difficulties.map((difficulty) => (
@@ -94,7 +94,7 @@ const Quizzes = () => {
       </section>
 
       {/* Quizzes Grid */}
-      <section className="py-12">
+      <section className="py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredQuizzes.map((quiz) => (

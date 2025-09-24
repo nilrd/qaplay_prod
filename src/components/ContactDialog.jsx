@@ -28,7 +28,7 @@ const ContactDialog = () => {
               <div className="relative flex-shrink-0">
                 <div className="w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 rounded-lg xs:rounded-xl bg-white/20 backdrop-blur-sm p-0.5 shadow-lg">
                   <img 
-                    src="/nilson-photo.png" 
+                    src="/Nilson Brites1.jpg" 
                     alt="Nilson Brites" 
                     className="w-full h-full rounded-md xs:rounded-lg object-cover border border-white/30" 
                   />
@@ -48,8 +48,7 @@ const ContactDialog = () => {
                 </div>
                 
                 <AlertDialogDescription className="text-white/90 text-xs leading-relaxed hidden xs:block">
-                  Especialista em QA com paixão por ensinar e compartilhar conhecimento. 
-                  Criador do QAPlay e entusiasta de automação de testes.
+                  Quality Assurance Engineer que acredita no poder da colaboração para aprender e evoluir o conhecimento em QA.
                 </AlertDialogDescription>
                 
                 {/* Status e localização - adaptável */}
@@ -112,26 +111,6 @@ const ContactDialog = () => {
               </Button>
             </div>
             
-            {/* Card de informações adicionais - responsivo */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 p-2.5 xs:p-3 sm:p-5 rounded-lg border border-blue-200/50 dark:border-blue-500/20">
-              <div className="flex items-start space-x-2 xs:space-x-3">
-                <div className="w-6 h-6 xs:w-8 xs:h-8 sm:w-9 sm:h-9 bg-gradient-to-r from-blue-500 to-purple-500 rounded-md flex items-center justify-center flex-shrink-0">
-                  <Star className="h-2.5 w-2.5 xs:h-3 xs:w-3 sm:h-4 sm:w-4 text-white" />
-                </div>
-                <div className="space-y-1 xs:space-y-1.5 min-w-0 flex-1">
-                  <h4 className="font-semibold text-foreground text-xs xs:text-sm">Sobre mim</h4>
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    Sou apaixonado por Quality Assurance e educação. Criador do QAPlay, 
-                    uma plataforma gamificada para ensinar QA. Sempre aberto a novas 
-                    oportunidades, colaborações e conversas sobre automação de testes.
-                  </p>
-                  <div className="flex flex-col xs:flex-row xs:items-center xs:space-x-3 space-y-0.5 xs:space-y-0 text-xs text-muted-foreground">
-                    <span>• Especialista em Automação</span>
-                    <span>• Mentor QA</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 

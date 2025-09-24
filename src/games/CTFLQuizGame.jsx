@@ -172,8 +172,33 @@ const CTFLQuizGame = () => {
   };
 
   const handleGenerateCertificate = () => {
+    const percentage = Math.round((score / shuffledQuestions.length) * 100);
+    
+    // Verificar se atingiu a pontuação mínima (70%)
+    if (percentage < 70) {
+      alert('Você precisa atingir pelo menos 70% de acertos para gerar um certificado.');
+      return;
+    }
+
     if (fullName && linkedinProfile) {
-      setIsCertificateModalOpen(true);
+      // Criar dados do certificado
+      const certificateId = `cert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      const certificateData = {
+        id: certificateId,
+        userName: fullName,
+        quizName: 'CTFL Quiz Game',
+        score: percentage,
+        correctAnswers: score,
+        totalQuestions: shuffledQuestions.length,
+        completionDate: new Date().toLocaleDateString('pt-BR'),
+        linkedinUrl: linkedinProfile
+      }
+
+      // Salvar no localStorage
+      localStorage.setItem(`certificate_${certificateId}`, JSON.stringify(certificateData))
+      
+      // Redirecionar para a página do certificado
+      window.location.href = `/certificado/${certificateId}`;
     } else {
       alert('Por favor, preencha seu nome completo e o link do seu perfil do LinkedIn para gerar o certificado.');
     }
@@ -261,7 +286,7 @@ const CTFLQuizGame = () => {
         <Card className="text-center">
           <CardHeader>
             <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Trophy className="h-8 w-8 text-white" />
+              <Trophy className="h-8 w-8 text-primary-foreground" />
             </div>
             <CardTitle className="text-2xl">Jogo Finalizado!</CardTitle>
             <CardDescription className="text-lg">
@@ -413,7 +438,7 @@ const CTFLQuizGame = () => {
           {showExplanation && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <h4 className="font-semibold text-blue-900 mb-2">Explicação:</h4>
-              <p className="text-blue-800">{currentQ.explanation}</p>
+              <p className="text-blue-800">{currentQ.explanation.replace(/^Correto\.\s*/, '')}</p>
             </div>
           )}
 

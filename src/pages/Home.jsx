@@ -11,89 +11,112 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section - Layout Desktop Centralizado */}
-      <section className="text-center py-16 px-4">
-        <div className="max-w-6xl mx-auto space-y-8">
-          {/* Badge e Título Principal */}
-          <div className="space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/20">
-              <User className="w-4 h-4" />
-              <span className="text-gray-800 dark:text-gray-200 font-semibold">por Nilson Brites</span>
+      {/* Hero Section - Layout de Duas Colunas */}
+      <section className="py-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+            
+            {/* Coluna da Esquerda: Apresentação de Nilson Brites */}
+            <div className="flex flex-col flex-1">
+              <Card className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-blue-200 dark:border-blue-800 h-full flex flex-col">
+                {/* Conteúdo Principal */}
+                <div className="flex flex-col items-center text-center space-y-4 flex-grow">
+                  {/* Foto de Perfil */}
+                  <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center overflow-hidden">
+                    <img 
+                      src="/Nilson Brites1 (3).png" 
+                      alt="Nilson Brites" 
+                      className="w-full h-full object-cover object-center object-top"
+                      style={{ objectPosition: 'center 20%' }}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="w-full h-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center" style={{display: 'none'}}>
+                      <User className="w-10 h-10 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Informações Pessoais */}
+                  <div className="space-y-2">
+                    <h2 className="text-2xl font-bold text-foreground">Nilson Brites</h2>
+                    <p className="text-lg text-primary font-semibold">Quality Assurance Engineer</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Quality Assurance Engineer que acredita no poder da colaboração para aprender e evoluir o conhecimento em QA.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Botão de Ação - Posicionado na base */}
+                <Button asChild size="lg" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white mt-auto">
+                  <Link to="/sobre">
+                    <User className="mr-2 h-5 w-5" />
+                    Ver Perfil Completo
+                  </Link>
+                </Button>
+              </Card>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
-              Olá, sou Nilson Brites.<br />
-              <span className="text-primary">E este é o meu convite para você.</span>
-            </h1>
-            
-            <div className="max-w-4xl mx-auto space-y-8">
-              <p className="text-xl text-muted-foreground">
-                Um mergulho prático no universo de Quality Assurance, construído por quem vive isso todos os dias.
-              </p>
-              
-              {/* Pílulas de Informação */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Pílula 1 */}
-                <div className="text-center space-y-4 p-6 bg-muted/30 rounded-lg border border-border/50">
-                  <div className="text-4xl">🧩</div>
-                  <h3 className="text-xl font-bold text-foreground">Mais que um Portfólio</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    O QAPlay é um projeto vivo. Em vez de apenas descrever minhas habilidades, 
-                    decidi construí-las em uma aplicação funcional que você pode usar e testar agora.
-                  </p>
+
+            {/* Coluna da Direita: Apresentação do QAPlay */}
+            <div className="flex flex-col flex-1">
+              <Card className="p-6 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 border-green-200 dark:border-green-800 h-full flex flex-col">
+                {/* Conteúdo Principal */}
+                <div className="flex flex-col space-y-4 flex-grow">
+                  {/* Título e Descrição */}
+                  <div className="space-y-4">
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+                      Bem-vindo ao <span className="text-primary">QAPlay</span>
+                    </h1>
+                    
+                    <p className="text-xl text-muted-foreground leading-relaxed">
+                      Uma plataforma de desafios para profissionais de QA, desenvolvida como um projeto de portfólio para demonstrar habilidades práticas em automação e qualidade de software.
+                    </p>
+                  </div>
+
+                  {/* Destaques com Ícones */}
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold text-foreground">Desafios Práticos</h3>
+                        <p className="text-muted-foreground text-sm">Quizzes elaborados com base em cenários e documentações reais.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold text-foreground">Feedback Imediato</h3>
+                        <p className="text-muted-foreground text-sm">Explicações detalhadas para cada questão, correta ou incorreta.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="font-semibold text-foreground">Valide sua Expertise</h3>
+                        <p className="text-muted-foreground text-sm">Meça seu conhecimento e identifique pontos de aprimoramento.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Pílula 2 */}
-                <div className="text-center space-y-4 p-6 bg-muted/30 rounded-lg border border-border/50">
-                  <div className="text-4xl">🎯</div>
-                  <h3 className="text-xl font-bold text-foreground">Desafie seu Conhecimento</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Teste suas habilidades com quizzes elaborados, baseados em temas essenciais de QA. 
-                    Cada pergunta é uma oportunidade de aprendizado e autoavaliação.
-                  </p>
-                </div>
-
-                {/* Pílula 3 */}
-                <div className="text-center space-y-4 p-6 bg-muted/30 rounded-lg border border-border/50">
-                  <div className="text-4xl">🛡️</div>
-                  <h3 className="text-xl font-bold text-foreground">A Visão de um QA</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Cada detalhe, da validação de respostas à experiência do usuário, foi pensado com a 
-                    mentalidade de um Quality Assurance. Este site é a minha forma de dizer: "Veja a qualidade que eu entrego".
-                  </p>
-                </div>
-              </div>
-              
-              <p className="text-xl font-semibold text-foreground text-center">
-                Vamos começar o desafio?
-              </p>
+                {/* Botão de Ação Principal - Posicionado na base */}
+                <Button size="lg" className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 mt-auto" asChild>
+                  <Link to="/quizzes">
+                    <Play className="mr-2 h-5 w-5" />
+                    Começar um Desafio
+                  </Link>
+                </Button>
+              </Card>
             </div>
-          </div>
-          
-          {/* Botões de Ação Melhorados */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Button size="lg" className="px-8 py-4 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300" asChild>
-              <Link to="/quizzes">
-                <Play className="mr-2 h-5 w-5" />
-                Começar Desafio
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300" asChild>
-              <Link to="/sobre">
-                <User className="mr-2 h-5 w-5" />
-                Conhecer Nilson
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300" onClick={() => setShowContactModal(true)}>
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Entrar em Contato
-            </Button>
           </div>
         </div>
       </section>
 
       {/* Layout Principal - Grade Simétrica de 3 Colunas */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Card 1: Sobre Mim */}

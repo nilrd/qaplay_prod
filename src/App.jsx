@@ -11,6 +11,7 @@ import About from './pages/About'
 import Train from './pages/Train'
 import TrainContent from './pages/TrainContent'
 import CTFL100Quiz from './pages/CTFL100Quiz'
+import CertificatePage from './pages/CertificatePage'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Jogos da aba Treinar
@@ -49,6 +50,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPostPage />} />
             <Route path="/sobre" element={<About />} />
+            <Route path="/certificado/:id" element={<CertificatePage />} />
           </Route>
         </Routes>
       </Router>

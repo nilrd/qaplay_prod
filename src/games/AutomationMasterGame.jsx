@@ -204,7 +204,7 @@ const AutomationMasterGame = () => {
             <Card className="w-full overflow-hidden">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto w-24 h-24 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-4">
-                  <Trophy className="w-12 h-12 text-white" />
+                  <Trophy className="w-12 h-12 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-3xl font-bold text-foreground">
                   Parabéns!
@@ -231,9 +231,39 @@ const AutomationMasterGame = () => {
 
                 <div className="space-y-4">
                   <Button
-                    onClick={() => setUserInfo({ name: 'Usuário', linkedinUrl: '' })}
-                    className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white"
+                    onClick={() => {
+                      const score = Math.round((answers.filter(answer => answer.isCorrect).length / totalQuestions) * 100)
+                      
+                      // Verificar se atingiu a pontuação mínima (70%)
+                      if (score < 70) {
+                        alert('Você precisa atingir pelo menos 70% de acertos para gerar um certificado.')
+                        return
+                      }
+
+                      // Criar dados do certificado
+                      const certificateId = `cert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+                      const certificateData = {
+                        id: certificateId,
+                        userName: userInfo?.name || 'Usuário',
+                        quizName: 'Mestre da Automação',
+                        score: score,
+                        correctAnswers: answers.filter(answer => answer.isCorrect).length,
+                        totalQuestions: totalQuestions,
+                        completionDate: new Date().toLocaleDateString('pt-BR'),
+                        linkedinUrl: userInfo?.linkedinUrl || ''
+                      }
+
+                      // Salvar no localStorage
+                      localStorage.setItem(`certificate_${certificateId}`, JSON.stringify(certificateData))
+                      
+                      // Redirecionar para a página do certificado
+                      navigate(`/certificado/${certificateId}`)
+                    }}
+                    className={`w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-primary-foreground ${
+                      Math.round((answers.filter(answer => answer.isCorrect).length / totalQuestions) * 100) < 70 ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                     size="lg"
+                    disabled={Math.round((answers.filter(answer => answer.isCorrect).length / totalQuestions) * 100) < 70}
                   >
                     <Trophy className="mr-2 h-5 w-5" />
                     Gerar Certificado
@@ -343,9 +373,9 @@ const AutomationMasterGame = () => {
                       cardClass += "opacity-50 bg-gray-50 border-gray-200"
                     }
                   } else if (isSelected) {
-                    cardClass += "bg-blue-600 border-blue-600 text-white shadow-lg ring-2 ring-blue-200 transform scale-[1.02]"
+                    cardClass += "bg-blue-600 border-blue-600 text-primary-foreground shadow-lg ring-2 ring-blue-200 transform scale-[1.02]"
                   } else {
-                    cardClass += "bg-white border-gray-300 text-white hover:border-blue-400 hover:bg-blue-50"
+                    cardClass += "bg-card border-border text-card-foreground hover:border-blue-400 hover:bg-accent"
                   }
 
                   return (
@@ -377,7 +407,7 @@ const AutomationMasterGame = () => {
                                   ? 'border-green-600 bg-green-100 text-green-600'
                                   : showResult && isIncorrect
                                   ? 'border-red-600 bg-red-100 text-red-600'
-                                  : 'border-white text-white'
+                                  : 'border-border text-card-foreground'
                               }`}>
                                 {String.fromCharCode(65 + index)}
                   </div>
@@ -387,7 +417,7 @@ const AutomationMasterGame = () => {
                           {/* Texto da Alternativa */}
                           <div className="flex-1 min-w-0">
                             <span className={`text-sm sm:text-base leading-relaxed break-words overflow-wrap-anywhere whitespace-normal ${
-                              isSelected && !showResult ? 'font-semibold text-white' : ''
+                              isSelected && !showResult ? 'font-semibold text-primary-foreground' : ''
                             }`}>
                               {option}
                             </span>
@@ -440,7 +470,7 @@ const AutomationMasterGame = () => {
                           <p className={`text-xs sm:text-sm break-words overflow-wrap-anywhere leading-relaxed ${
                             isCorrect ? 'text-green-600' : 'text-red-600'
                           }`}>
-                            {question.explanation}
+                            {isCorrect ? question.explanation : question.explanation.replace(/^Correto\.\s*/, '')}
                           </p>
                         </div>
                       </div>

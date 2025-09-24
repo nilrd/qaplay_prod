@@ -54,7 +54,7 @@ const Blog = () => {
   );
 
   return (
-    <div className="container mx-auto py-12 px-4">
+    <div className="container mx-auto py-8 px-4">
       <h1 className="text-4xl font-bold text-center mb-8">Blog QAPlay</h1>
       
       <div className="max-w-xl mx-auto mb-8 flex space-x-2">

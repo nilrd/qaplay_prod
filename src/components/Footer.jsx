@@ -15,8 +15,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">QAPlay</h3>
             <p className="text-sm text-muted-foreground">
-              Plataforma gamificada para aprendizado de Quality Assurance. 
-              Aprenda QA de forma divertida e interativa.
+              Uma plataforma de desafios para profissionais de QA, desenvolvida como um projeto de portfólio para demonstrar habilidades práticas em automação e qualidade de software.
             </p>
           </div>
 
@@ -101,14 +100,14 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Nilson Brites</h3>
             <p className="text-sm text-muted-foreground">
-              Quality Assurance Engineer apaixonado por ensinar e compartilhar conhecimento.
+              Quality Assurance Engineer que acredita no poder da colaboração para aprender e evoluir o conhecimento em QA.
             </p>
           </div>
         </div>
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} QAPlay. Criado com <Heart className="h-4 w-4 inline text-red-500" /> por Nilson da Silva Brites.
+            © {currentYear} QAPlay. <Heart className="h-4 w-4 inline text-red-500" /> Uma iniciativa de Nilson Brites para a comunidade de QA.
           </p>
           <p className="text-sm text-muted-foreground mt-2 md:mt-0">
             Todos os direitos reservados.
