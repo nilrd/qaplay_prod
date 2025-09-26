@@ -61,7 +61,7 @@ const Blog = () => {
           title: 'Testes de API: 3 Ferramentas Essenciais que Todo QA Deve Conhecer',
           date: '2025-01-20',
           author: 'Nilson Brites',
-          thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center',
+          thumbnail: '/images/testes_api.png',
           preview: 'Enquanto a interface do usuário (UI) é o que o cliente vê, a API (Application Programming Interface) é o motor que faz tudo funcionar nos bastidores.',
           excerpt: 'Descubra as 3 ferramentas essenciais para testes de API: Postman, Insomnia e REST-assured. Domine a camada de serviços e aumente seu valor como QA.',
           category: 'Testes de API',

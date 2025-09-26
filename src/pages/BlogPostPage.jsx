@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Share2, Linkedin, MessageCircle, Facebook, Twitter, Instagram, Download, Tag, Calendar, Clock, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import html2canvas from 'html2canvas';
 import { useSEO } from '@/hooks/useSEO';
 import '../styles/blog-typography.css';
 
@@ -14,7 +13,6 @@ const BlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [instagramSticker, setInstagramSticker] = useState(null);
 
   // Funções de compartilhamento social
   const shareToLinkedIn = () => {
@@ -43,6 +41,37 @@ const BlogPostPage = () => {
 
   // Função para gerar sticker do Instagram Stories
   const generateInstagramSticker = () => {
+    if (!post) return;
+    
+    // Verificar se estamos em produção (Vercel) ou desenvolvimento
+    const isProduction = window.location.hostname === 'qaplay.com.br' || 
+                        window.location.hostname.includes('vercel.app');
+    
+    if (isProduction) {
+      // Em produção, usar a API da Vercel OG
+      const apiUrl = new URL('/api/og-image-story', window.location.origin);
+      apiUrl.searchParams.set('title', post.title);
+      apiUrl.searchParams.set('author', post.author || 'Nilson Brites');
+      
+      // Se o post tem uma imagem de thumbnail, usar ela como fundo
+      if (post.thumbnail) {
+        // Converter URL relativa para absoluta se necessário
+        const imageUrl = post.thumbnail.startsWith('http') 
+          ? post.thumbnail 
+          : `${window.location.origin}${post.thumbnail}`;
+        apiUrl.searchParams.set('image', imageUrl);
+      }
+      
+      // Abrir a imagem gerada em uma nova aba
+      window.open(apiUrl.toString(), '_blank');
+    } else {
+      // Em desenvolvimento, usar canvas como fallback
+      generateCanvasImage();
+    }
+  };
+
+  // Função fallback para desenvolvimento local usando canvas
+  const generateCanvasImage = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
@@ -50,67 +79,187 @@ const BlogPostPage = () => {
     canvas.width = 1080;
     canvas.height = 1920;
     
-    // Fundo gradiente
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, '#667eea');
-    gradient.addColorStop(1, '#764ba2');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Logo QAPlay (simulado)
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 60px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('QAPlay', canvas.width / 2, 200);
-    
-    // Título do post (com quebra de linha)
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 48px Arial';
-    ctx.textAlign = 'center';
-    
-    const words = post.title.split(' ');
-    let line = '';
-    let y = 400;
-    const maxWidth = canvas.width - 100;
-    
-    for (let n = 0; n < words.length; n++) {
-      const testLine = line + words[n] + ' ';
-      const metrics = ctx.measureText(testLine);
-      const testWidth = metrics.width;
+    // Carregar imagem de fundo se disponível
+    const loadBackgroundImage = () => {
+      return new Promise((resolve) => {
+        if (post.thumbnail) {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => {
+            // Desenhar imagem de fundo
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // Adicionar overlay escuro para contraste
+            const overlayGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            overlayGradient.addColorStop(0, 'rgba(0,0,0,0.3)');
+            overlayGradient.addColorStop(1, 'rgba(0,0,0,0.7)');
+            ctx.fillStyle = overlayGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            resolve();
+          };
+          img.onerror = () => {
+            // Se falhar ao carregar a imagem, usar gradiente
+            drawGradientBackground();
+            resolve();
+          };
+          img.src = post.thumbnail.startsWith('http') ? post.thumbnail : `${window.location.origin}${post.thumbnail}`;
+        } else {
+          drawGradientBackground();
+          resolve();
+        }
+      });
+    };
+
+    const drawGradientBackground = () => {
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+
+    const drawContent = () => {
+      // Logo QAPlay no canto superior esquerdo
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 80px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('QAPlay', 60, 120);
       
-      if (testWidth > maxWidth && n > 0) {
-        ctx.fillText(line, canvas.width / 2, y);
-        line = words[n] + ' ';
-        y += 60;
-      } else {
-        line = testLine;
+      // Adicionar sombra ao texto
+      ctx.shadowColor = 'rgba(0,0,0,0.8)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 2;
+      
+      // Título do post (centralizado)
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 64px Arial';
+      ctx.textAlign = 'center';
+      
+      const words = post.title.split(' ');
+      let line = '';
+      let y = canvas.height / 2 - 100;
+      const maxWidth = canvas.width - 120;
+      
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx.measureText(testLine);
+        const testWidth = metrics.width;
+        
+        if (testWidth > maxWidth && n > 0) {
+          ctx.fillText(line, canvas.width / 2, y);
+          line = words[n] + ' ';
+          y += 80;
+        } else {
+          line = testLine;
+        }
       }
-    }
-    ctx.fillText(line, canvas.width / 2, y);
-    
-    // Autor
-    ctx.fillStyle = '#e0e0e0';
-    ctx.font = '32px Arial';
-    ctx.fillText('Por Nilson Brites', canvas.width / 2, y + 100);
-    
-    // URL do site
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '28px Arial';
-    ctx.fillText('qaplay.com.br', canvas.width / 2, canvas.height - 100);
-    
-    // Converter para imagem
-    const dataURL = canvas.toDataURL('image/png');
-    setInstagramSticker(dataURL);
+      ctx.fillText(line, canvas.width / 2, y);
+      
+      // Resetar sombra
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      
+      // Autor
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '36px Arial';
+      ctx.fillText('Por Nilson Brites', canvas.width / 2, y + 120);
+      
+      // URL do site
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '32px Arial';
+      ctx.fillText('qaplay.com.br', canvas.width / 2, canvas.height - 80);
+    };
+
+    // Executar sequencialmente
+    loadBackgroundImage().then(() => {
+      drawContent();
+      
+      // Converter para imagem e abrir em nova aba com melhor apresentação
+      const dataURL = canvas.toDataURL('image/png');
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Instagram Story - ${post.title}</title>
+          <style>
+            body { 
+              margin: 0; 
+              padding: 20px; 
+              background: #f0f0f0; 
+              display: flex; 
+              justify-content: center; 
+              align-items: center; 
+              min-height: 100vh; 
+              font-family: Arial, sans-serif;
+            }
+            .container {
+              background: white;
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+              text-align: center;
+            }
+            img { 
+              max-width: 100%; 
+              height: auto; 
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            }
+            .instructions {
+              margin-top: 20px;
+              padding: 15px;
+              background: #f8f9fa;
+              border-radius: 8px;
+              font-size: 14px;
+              color: #666;
+            }
+            .download-btn {
+              background: #007bff;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              margin-top: 10px;
+              font-size: 16px;
+            }
+            .download-btn:hover {
+              background: #0056b3;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h2>Instagram Story Gerada</h2>
+            <img src="${dataURL}" alt="Instagram Story" />
+            <div class="instructions">
+              <p><strong>Como usar:</strong></p>
+              <p>1. Clique em "Baixar Imagem" para salvar</p>
+              <p>2. Abra o Instagram e crie um novo Story</p>
+              <p>3. Adicione a imagem salva</p>
+              <p>4. Inclua o link: <code>${window.location.href}</code></p>
+            </div>
+            <button class="download-btn" onclick="downloadImage()">Baixar Imagem</button>
+          </div>
+          <script>
+            function downloadImage() {
+              const link = document.createElement('a');
+              link.download = 'instagram-story-${post.slug || 'post'}.png';
+              link.href = '${dataURL}';
+              link.click();
+            }
+          </script>
+        </body>
+        </html>
+      `);
+    });
   };
 
-  const downloadInstagramSticker = () => {
-    if (instagramSticker) {
-      const link = document.createElement('a');
-      link.download = `instagram-story-${post.slug}.png`;
-      link.href = instagramSticker;
-      link.click();
-    }
-  };
 
   // SEO Meta Tags
   useSEO({
@@ -277,7 +426,7 @@ O conhecimento está aí, acessível a todos. A única coisa que você precisa i
             title: 'Testes de API: 3 Ferramentas Essenciais que Todo QA Deve Conhecer',
             date: '2025-01-20',
             author: 'Nilson Brites',
-            thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=center',
+            thumbnail: '/images/testes_api.png',
             excerpt: 'Descubra as 3 ferramentas essenciais para testes de API: Postman, Insomnia e REST-assured. Domine a camada de serviços e aumente seu valor como QA.',
             category: 'Testes de API',
             readTime: '7 min',
@@ -688,7 +837,7 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
                     Compartilhe no Instagram
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Crie um sticker personalizado para suas stories
+                    Gere uma imagem personalizada para suas stories. Em produção usa alta qualidade, em desenvolvimento usa canvas.
                   </p>
                   <div className="space-y-2">
                     <Button 
@@ -697,32 +846,14 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
                       onClick={generateInstagramSticker}
                     >
                       <Instagram className="h-4 w-4 mr-2" />
-                      Gerar Sticker
+                      Gerar Imagem para Stories
                     </Button>
-                    {instagramSticker && (
-                      <Button 
-                        variant="outline" 
-                        className="w-full"
-                        onClick={downloadInstagramSticker}
-                      >
-                        <Download className="h-4 w-4 mr-2" />
-                        Baixar Imagem
-                      </Button>
-                    )}
                   </div>
-                  {instagramSticker && (
-                    <div className="mt-4">
-                      <img 
-                        src={instagramSticker} 
-                        alt="Instagram Story" 
-                        className="w-full rounded border"
-                      />
-                      <p className="text-xs text-muted-foreground mt-2">
-                        <strong>Como usar:</strong> Baixe a imagem, abra o Instagram, crie um novo story, 
-                        adicione a imagem como sticker e inclua o link do post: <code className="bg-white/20 px-1 rounded">{window.location.href}</code>
-                      </p>
-                    </div>
-                  )}
+                  <p className="text-xs text-muted-foreground mt-3">
+                    <strong>Como usar:</strong> Clique no botão acima para gerar uma imagem otimizada. 
+                    Salve a imagem que abrirá em uma nova aba e use-a em suas stories do Instagram. 
+                    Inclua o link do post: <code className="bg-white/20 px-1 rounded">{window.location.href}</code>
+                  </p>
                 </CardContent>
               </Card>
             </div>
