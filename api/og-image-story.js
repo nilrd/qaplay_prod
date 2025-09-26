@@ -9,7 +9,6 @@ export default async function handler(request) {
     const { searchParams } = new URL(request.url);
     
     const title = searchParams.get('title') || 'QAPlay Blog';
-    const imageUrl = searchParams.get('image') || '';
     const author = searchParams.get('author') || 'Nilson Brites';
     
     return new ImageResponse(
@@ -22,9 +21,7 @@ export default async function handler(request) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundImage: imageUrl ? `url(${imageUrl})` : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             position: 'relative',
           }}
         >
@@ -45,16 +42,12 @@ export default async function handler(request) {
               top: 60,
               left: 60,
               zIndex: 10,
+              color: 'white',
+              fontSize: 80,
+              fontWeight: 'bold',
             }}
           >
-            <img
-              src="https://qaplay.com.br/qa-play-logo.png"
-              alt="QAPlay Logo"
-              style={{
-                width: 120,
-                height: 120,
-              }}
-            />
+            QAPlay
           </div>
 
           <div
