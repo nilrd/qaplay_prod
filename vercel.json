@@ -3,9 +3,6 @@
     "api/og-image-story.js": {
       "runtime": "nodejs18.x"
     }
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  }
 }
 
