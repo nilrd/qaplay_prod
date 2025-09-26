@@ -4,19 +4,14 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(req) {
+export default async function handler(request) {
   try {
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = new URL(request.url);
     
-    // Extrair parâmetros da URL
     const title = searchParams.get('title') || 'QAPlay Blog';
     const imageUrl = searchParams.get('image') || '';
     const author = searchParams.get('author') || 'Nilson Brites';
     
-    // Dimensões para Instagram Stories (9:16)
-    const width = 1080;
-    const height = 1920;
-
     return new ImageResponse(
       (
         <div
@@ -33,7 +28,6 @@ export default async function handler(req) {
             position: 'relative',
           }}
         >
-          {/* Overlay escuro para contraste */}
           <div
             style={{
               position: 'absolute',
@@ -45,7 +39,6 @@ export default async function handler(req) {
             }}
           />
           
-          {/* Logo QAPlay no topo */}
           <div
             style={{
               position: 'absolute',
@@ -64,7 +57,6 @@ export default async function handler(req) {
             />
           </div>
 
-          {/* Conteúdo principal */}
           <div
             style={{
               display: 'flex',
@@ -77,7 +69,6 @@ export default async function handler(req) {
               flex: 1,
             }}
           >
-            {/* Título do post */}
             <h1
               style={{
                 fontSize: 64,
@@ -93,7 +84,6 @@ export default async function handler(req) {
             </h1>
           </div>
 
-          {/* Rodapé com informações */}
           <div
             style={{
               position: 'absolute',
@@ -104,7 +94,6 @@ export default async function handler(req) {
               zIndex: 10,
             }}
           >
-            {/* Assinatura */}
             <div
               style={{
                 fontSize: 32,
@@ -117,7 +106,6 @@ export default async function handler(req) {
               Por {author}
             </div>
             
-            {/* URL do site */}
             <div
               style={{
                 fontSize: 28,
@@ -133,8 +121,8 @@ export default async function handler(req) {
         </div>
       ),
       {
-        width,
-        height,
+        width: 1080,
+        height: 1920,
       }
     );
   } catch (e) {

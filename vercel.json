@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/og-image-story.js": {
-      "runtime": "edge"
-    }
-  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
