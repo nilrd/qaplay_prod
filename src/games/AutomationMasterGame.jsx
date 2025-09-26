@@ -396,7 +396,7 @@ const AutomationMasterGame = () => {
                           {/* Marcador da Alternativa */}
                           <div className="flex-shrink-0">
                             {isSelected && !showResult ? (
-                              <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                              <div className="w-6 h-6 rounded-full bg-primary-foreground flex items-center justify-center">
                                 <div className="w-3 h-3 rounded-full bg-blue-600"></div>
                               </div>
                             ) : (

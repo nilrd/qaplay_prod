@@ -2,194 +2,426 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, Share2, Linkedin, MessageCircle, Facebook, Twitter, Instagram, Download, Tag, Calendar, Clock, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import html2canvas from 'html2canvas';
+import { useSEO } from '@/hooks/useSEO';
+import '../styles/blog-typography.css';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [instagramSticker, setInstagramSticker] = useState(null);
+
+  // Funções de compartilhamento social
+  const shareToLinkedIn = () => {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(post.title);
+    const summary = encodeURIComponent(post.excerpt);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`, '_blank');
+  };
+
+  const shareToWhatsApp = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`${post.title} - ${post.excerpt}`);
+    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+  };
+
+  const shareToFacebook = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  };
+
+  const shareToTwitter = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`${post.title} - ${post.excerpt}`);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  };
+
+  // Função para gerar sticker do Instagram Stories
+  const generateInstagramSticker = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Dimensões do Instagram Story (9:16)
+    canvas.width = 1080;
+    canvas.height = 1920;
+    
+    // Fundo gradiente
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, '#667eea');
+    gradient.addColorStop(1, '#764ba2');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Logo QAPlay (simulado)
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 60px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('QAPlay', canvas.width / 2, 200);
+    
+    // Título do post (com quebra de linha)
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'center';
+    
+    const words = post.title.split(' ');
+    let line = '';
+    let y = 400;
+    const maxWidth = canvas.width - 100;
+    
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = ctx.measureText(testLine);
+      const testWidth = metrics.width;
+      
+      if (testWidth > maxWidth && n > 0) {
+        ctx.fillText(line, canvas.width / 2, y);
+        line = words[n] + ' ';
+        y += 60;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, canvas.width / 2, y);
+    
+    // Autor
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '32px Arial';
+    ctx.fillText('Por Nilson Brites', canvas.width / 2, y + 100);
+    
+    // URL do site
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '28px Arial';
+    ctx.fillText('qaplay.com.br', canvas.width / 2, canvas.height - 100);
+    
+    // Converter para imagem
+    const dataURL = canvas.toDataURL('image/png');
+    setInstagramSticker(dataURL);
+  };
+
+  const downloadInstagramSticker = () => {
+    if (instagramSticker) {
+      const link = document.createElement('a');
+      link.download = `instagram-story-${post.slug}.png`;
+      link.href = instagramSticker;
+      link.click();
+    }
+  };
+
+  // SEO Meta Tags
+  useSEO({
+    title: post ? `${post.title} | Blog QAPlay` : 'Blog QAPlay',
+    description: post ? post.excerpt : 'Blog oficial do QAPlay com artigos sobre Quality Assurance e testes de software.',
+    image: post ? post.thumbnail : '/qa-play-logo.png',
+    url: post ? `${window.location.origin}/blog/${slug}` : window.location.href,
+    type: 'article'
+  });
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        // Em um ambiente real, você carregaria o arquivo markdown correspondente
-        // Por enquanto, vamos simular com dados estáticos
-        const dummyPosts = {
-          'primeiro-post': {
-            title: 'Meu Primeiro Post no Blog',
-            date: '2025-07-20',
-            author: 'Nilson da Silva Brites',
-            thumbnail: '/images/blog/post1.jpg',
-            content: `# Bem-vindos ao Blog do QAPlay!
+        const allPosts = [
+          {
+            slug: 'paradoxo-do-pesticida',
+            title: 'O Paradoxo do Pesticida: Por Que Seus Testes Deixam de Encontrar Bugs e Como Resolver',
+            date: '2025-01-15',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Descubra como o Paradoxo do Pesticida afeta seus testes e aprenda estratégias para manter sua suíte de testes sempre eficaz na detecção de bugs.',
+            category: 'Qualidade de Software',
+            readTime: '5 min',
+            content: `# O Paradoxo do Pesticida: Por Que Seus Testes Deixam de Encontrar Bugs e Como Resolver
 
-Este é o meu primeiro post no blog do QAPlay. Estou muito animado para compartilhar conhecimentos sobre Quality Assurance, testes de software e muito mais.
+Você já se deparou com uma situação em que sua suíte de testes de regressão, que antes era tão eficaz, começa a passar repetidamente sem encontrar nenhum novo defeito, mesmo sabendo que a aplicação continua evoluindo? Se sim, você pode estar vivenciando um dos princípios mais importantes do teste de software: o **Paradoxo do Pesticida**.
 
-## O que você pode esperar
+## O Conceito
 
-Neste blog, vou abordar:
+O conceito, um dos sete princípios fundamentais do ISTQB, é simples, mas profundo: se você aplicar o mesmo conjunto de testes repetidamente, com o tempo, ele deixará de encontrar novos defeitos. Assim como os insetos desenvolvem resistência a um pesticida usado continuamente, seu software se torna "imune" aos seus testes existentes. As falhas que seus testes foram projetados para encontrar já foram corrigidas, e os novos bugs surgirão em áreas que você não está cobrindo.
 
-- **Dicas de QA**: Melhores práticas para testadores
-- **Ferramentas**: Reviews e tutoriais de ferramentas de teste
-- **Automação**: Guias práticos de automação de testes
-- **Carreira**: Conselhos para crescer na área de QA
+## Como Evitar que Seus Testes se Tornem Obsoletos?
 
-## Sobre o QAPlay
+### 1. Revise e Atualize Constantemente
 
-O QAPlay é uma plataforma educativa focada em Quality Assurance. Nosso objetivo é democratizar o conhecimento em testes de software através de jogos interativos e conteúdo de qualidade.
+Seus casos de teste não são documentos estáticos. A cada nova funcionalidade ou alteração, revise e adapte os testes existentes para cobrir os novos cenários e fluxos de usuário.
 
-Fique ligado para mais conteúdos em breve!
+### 2. Introduza Novos Testes
 
----
+A chave é a **variedade**. Baseie-se em:
+- Dados de produção
+- Feedback de usuários  
+- Sua própria experiência
 
-*Nilson da Silva Brites*  
-*Fundador do QAPlay*`
-          },
-          'dicas-de-qa': {
-            title: 'Dicas Essenciais para Testadores de Software',
-            date: '2025-07-25',
-            author: 'Nilson da Silva Brites',
-            thumbnail: '/images/blog/post2.jpg',
-            content: `# Dicas Essenciais para Testadores de Software
+Crie novos casos de teste que explorem a aplicação de maneiras diferentes.
 
-Como testador de software, você desempenha um papel crucial no desenvolvimento de aplicações de qualidade. Aqui estão algumas dicas essenciais para se destacar na área.
+### 3. Foco em Dados Variáveis
 
-## 1. Entenda o Negócio
+Em vez de usar sempre os mesmos dados de entrada, implemente **testes orientados a dados (Data-Driven Testing)** para variar as combinações e aumentar a chance de encontrar bugs de borda.
 
-Antes de começar a testar, é fundamental entender:
-- O objetivo do software
-- O público-alvo
-- Os processos de negócio envolvidos
+## Lembre-se
 
-## 2. Planeje Seus Testes
-
-- **Análise de Requisitos**: Leia e entenda todos os requisitos
-- **Casos de Teste**: Escreva casos de teste claros e objetivos
-- **Priorização**: Foque nos cenários mais críticos primeiro
-
-## 3. Automatize Quando Possível
-
-A automação é essencial para:
-- Testes de regressão
-- Testes repetitivos
-- Validação de builds
-
-### Ferramentas Recomendadas
-
-- **Cypress**: Para testes de interface web
-- **Selenium**: Para automação cross-browser
-- **Postman**: Para testes de API
-
-## 4. Documente Tudo
-
-- Mantenha evidências dos testes
-- Documente bugs de forma clara
-- Crie relatórios de teste detalhados
-
-## 5. Mantenha-se Atualizado
-
-A área de QA evolui constantemente. Invista em:
-- Cursos e certificações
-- Participação em comunidades
-- Leitura de blogs e artigos técnicos
+O objetivo da regressão não é apenas garantir que o antigo funciona, mas também que o novo não quebrou nada de forma inesperada. Manter seus "pesticidas" atualizados é a única forma de garantir uma colheita de software com qualidade.
 
 ---
 
-Essas dicas são apenas o começo. Continue praticando e aprendendo!`
+*Nilson Brites*`
           },
-          'automacao-com-cypress': {
-            title: 'Introdução à Automação de Testes com Cypress',
-            date: '2025-07-30',
-            author: 'Nilson da Silva Brites',
-            thumbnail: '/images/blog/post3.jpg',
-            content: `# Introdução à Automação de Testes com Cypress
+          {
+            slug: 'scrum-para-qas',
+            title: 'Scrum para QAs: 3 Dicas para se Destacar nas Sprints',
+            date: '2025-01-10',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Aprenda como se destacar como QA em times ágeis com práticas que vão além da detecção de bugs e te tornam um parceiro estratégico.',
+            category: 'Metodologias Ágeis',
+            readTime: '4 min',
+            content: `# Scrum para QAs: 3 Dicas para se Destacar nas Sprints
 
-O Cypress é uma das ferramentas mais populares para automação de testes de interface web. Neste post, vamos explorar seus fundamentos.
+Trabalhar como Analista de QA em um time Scrum vai muito além de "encontrar bugs". É sobre ser um **parceiro estratégico na entrega de valor**. Após participar de inúmeras Sprints, aprendi que algumas práticas podem elevar o papel do QA de um simples "verificador" para um verdadeiro "guardião da qualidade".
 
-## Por que Cypress?
+## 1. Atue na Prevenção, Não Apenas na Detecção (Shift Left)
 
-- **Fácil de usar**: Sintaxe simples e intuitiva
-- **Debugging**: Excelentes ferramentas de debug
-- **Real-time**: Execução em tempo real
-- **Screenshots**: Captura automática de evidências
+O seu trabalho não começa quando o desenvolvedor move o card para "Testing". Ele começa no **refinamento**. 
 
-## Instalação
+Participe ativamente das discussões, questione os critérios de aceite, aponte ambiguidades e ajude a definir os requisitos de forma clara. Cada bug que você ajuda a prevenir nesta fase vale dez vezes mais do que um bug encontrado no final do ciclo.
 
-\`\`\`bash
-npm install cypress --save-dev
-\`\`\`
+## 2. Entenda o "Definition of Done" (DoD)
 
-## Primeiro Teste
+O DoD é o **contrato de qualidade da equipe**. Ele define o que significa "pronto". Como QA, você é a pessoa que garante que cada item entregue não apenas "funciona", mas atende a todos os critérios do DoD:
 
-\`\`\`javascript
-describe('Meu primeiro teste', () => {
-  it('Visita a página inicial', () => {
-    cy.visit('https://qaplay.com.br')
-    cy.contains('QAPlay')
-    cy.get('[data-testid="login-button"]').click()
-  })
-})
-\`\`\`
+- Testes unitários passaram
+- A documentação foi atualizada
+- Os testes de regressão foram executados
+- Etc.
 
-## Comandos Essenciais
+Conheça o DoD de cor e seja a voz que o defende.
 
-### Navegação
-- \`cy.visit(url)\`: Navega para uma URL
-- \`cy.go('back')\`: Volta uma página
+## 3. Comunicação Clara e Construtiva
 
-### Seleção de Elementos
-- \`cy.get(selector)\`: Seleciona elementos
-- \`cy.contains(text)\`: Encontra por texto
+Ao reportar um bug, o objetivo não é apontar um erro, mas sim fornecer ao desenvolvedor todas as informações necessárias para corrigi-lo rapidamente.
 
-### Interações
-- \`cy.click()\`: Clica em um elemento
-- \`cy.type(text)\`: Digita texto
-- \`cy.select(value)\`: Seleciona opção
+### Um bom reporte de bug inclui:
 
-### Asserções
-- \`cy.should('be.visible')\`: Verifica visibilidade
-- \`cy.should('contain', text)\`: Verifica conteúdo
-
-## Boas Práticas
-
-1. **Use data-testid**: Para seletores mais estáveis
-2. **Page Objects**: Organize seu código
-3. **Fixtures**: Use dados de teste externos
-4. **Custom Commands**: Crie comandos reutilizáveis
-
-## Exemplo Prático
-
-\`\`\`javascript
-describe('Login', () => {
-  beforeEach(() => {
-    cy.visit('/login')
-  })
-
-  it('Deve fazer login com credenciais válidas', () => {
-    cy.get('[data-testid="email"]').type('user@example.com')
-    cy.get('[data-testid="password"]').type('password123')
-    cy.get('[data-testid="login-button"]').click()
-    
-    cy.url().should('include', '/dashboard')
-    cy.get('[data-testid="welcome-message"]')
-      .should('contain', 'Bem-vindo')
-  })
-})
-\`\`\`
+- **Um título claro e conciso**
+- **Passos para reproduzir o erro (Step by Step)**
+- **O resultado esperado vs. o resultado observado**
+- **Evidências (screenshots, vídeos, logs)**
 
 ## Conclusão
 
-O Cypress é uma ferramenta poderosa que pode revolucionar seus testes automatizados. Comece pequeno e vá evoluindo gradualmente.
+Ao adotar essas práticas, você se torna uma peça indispensável no motor do Scrum, garantindo não apenas que o software funcione, mas que ele seja construído com qualidade desde o primeiro dia.
 
 ---
 
-Nos próximos posts, vamos explorar recursos mais avançados do Cypress!`
+*Nilson Brites*`
+          },
+          {
+            slug: 'cursos-gratuitos-ti-2025',
+            title: '5 Cursos Gratuitos para Turbinar sua Carreira em TI em 2025',
+            date: '2025-01-05',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Descubra 5 plataformas com cursos gratuitos que podem fazer a diferença no seu currículo e acelerar sua carreira em TI.',
+            category: 'Dicas de Cursos',
+            readTime: '6 min',
+            content: `# 5 Cursos Gratuitos para Turbinar sua Carreira em TI em 2025
+            
+Manter-se atualizado é a chave para o sucesso em qualquer área de TI, e o melhor de tudo é que não é preciso gastar uma fortuna para isso. Existem recursos incríveis e gratuitos disponíveis para quem tem disciplina e vontade de aprender.
+            
+Seja você um QA, desenvolvedor ou aspirante na área, aqui estão cinco plataformas com cursos gratuitos que podem fazer a diferença no seu currículo:
+            
+## 1. Alura (Formações Gratuitas)
+            
+Embora seja uma plataforma paga, a Alura frequentemente libera formações completas de forma gratuita por tempo limitado, especialmente durante seus eventos "Imersão Dev". Fique de olho nessas oportunidades! Eles também possuem uma rica coleção de artigos e vídeos no YouTube.
+            
+## 2. freeCodeCamp
+            
+Uma das maiores comunidades de aprendizado do mundo. Oferece milhares de horas de conteúdo interativo e certificações gratuitas em áreas como:
+            
+- Desenvolvimento Web Responsivo
+            - Algoritmos e Estruturas de Dados com JavaScript
+            - Qualidade de Software
+            
+## 3. Coursera (Modo Auditoria)
+            
+Muitas das melhores universidades do mundo (como Stanford e Michigan) oferecem seus cursos no Coursera. Você pode se inscrever na maioria deles gratuitamente no "Modo Auditoria". Você não receberá o certificado, mas terá acesso a todo o material de vídeo e leitura, o que já é um conhecimento valiosíssimo.
+            
+## 4. DIO (Digital Innovation One)
+            
+Uma plataforma brasileira com um foco imenso em "bootcamps" e formações completas em parceria com grandes empresas. Eles oferecem muitos programas gratuitos que não apenas ensinam a tecnologia, mas também te conectam com oportunidades de emprego.
+            
+## 5. Canais de Qualidade no YouTube
+            
+Não subestime o poder do YouTube. Canais como:
+            
+- **Júlio de Lima**
+            - **Curso em Vídeo** (para fundamentos)
+            - **The Test Lead** (internacional)
+            - **Automation Step by Step** (internacional)
+            
+Oferecem tutoriais práticos e dicas de carreira que valem ouro.
+            
+## Conclusão
+            
+O conhecimento está aí, acessível a todos. A única coisa que você precisa investir é o seu tempo.
+            
+---
+            
+*Nilson Brites*`
+          },
+          {
+            slug: 'testes-api-ferramentas-essenciais',
+            title: 'Testes de API: 3 Ferramentas Essenciais que Todo QA Deve Conhecer',
+            date: '2025-01-20',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Descubra as 3 ferramentas essenciais para testes de API: Postman, Insomnia e REST-assured. Domine a camada de serviços e aumente seu valor como QA.',
+            category: 'Testes de API',
+            readTime: '7 min',
+            content: `# Testes de API: 3 Ferramentas Essenciais que Todo QA Deve Conhecer
+            
+Enquanto a interface do usuário (UI) é o que o cliente vê, a API (Application Programming Interface) é o motor que faz tudo funcionar nos bastidores. Testar essa camada é crucial para garantir a estabilidade e a segurança de uma aplicação. Para um QA, dominar as ferramentas de teste de API não é mais um diferencial, é uma necessidade.
+            
+Se você está começando ou querendo expandir seu arsenal, aqui estão três ferramentas essenciais:
+            
+## Postman: O "canivete suíço" dos testes de API
+            
+O Postman é a ferramenta mais popular para testes manuais e exploratórios de APIs. Com uma interface gráfica intuitiva, ele permite que você monte e envie requisições (GET, POST, PUT, DELETE), organize-as em coleções, gerencie ambientes (desenvolvimento, produção) e escreva testes de asserção simples em JavaScript para validar as respostas. É o ponto de partida perfeito para qualquer profissional de QA.
+            
+## Insomnia: Design limpo e foco em velocidade
+            
+Um forte concorrente do Postman, o Insomnia se destaca por seu design limpo e foco em velocidade e simplicidade. Muitos desenvolvedores e QAs preferem o Insomnia por sua interface menos poluída e seu excelente suporte para especificações como OpenAPI (Swagger) e GraphQL, facilitando a importação e o teste de APIs já documentadas.
+            
+## REST-assured: Automação poderosa
+            
+Quando os testes manuais não são mais suficientes, é hora de automatizar. REST-assured é uma biblioteca Java extremamente poderosa que torna a automação de testes para APIs REST uma tarefa quase trivial. Sua sintaxe fluente, inspirada no BDD, permite escrever testes que são ao mesmo tempo legíveis e robustos. Um exemplo de validação:
+            
+\`\`\`java
+given().
+    param("q", "test automation").
+when().
+    get("/search").
+then().
+    statusCode(200).
+    body("results.size()", greaterThan(0));
+\`\`\`
+
+Dominar o REST-assured é um passo fundamental para quem trabalha com automação de testes em ecossistemas Java.
+            
+## Conclusão
+            
+Seja qual for a sua escolha, investir tempo em aprender a testar a camada de serviços irá aprofundar seu conhecimento sobre o sistema e aumentar exponencialmente o seu valor como profissional de QA.
+            
+---
+            
+*Nilson Brites*`
+          },
+          {
+            slug: 'certificacao-ctfl-guia-definitivo',
+            title: 'Certificação CTFL: O Guia Definitivo para Passar na Prova',
+            date: '2025-01-18',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Guia completo para passar na certificação CTFL do ISTQB. Aprenda sobre o syllabus, níveis de conhecimento e estratégias de estudo eficazes.',
+            category: 'Carreira e Estudos',
+            readTime: '8 min',
+            content: `# Certificação CTFL: O Guia Definitivo para Passar na Prova
+            
+A certificação CTFL (Certified Tester Foundation Level) do ISTQB é, sem dúvida, o cartão de visitas mais reconhecido para um profissional de Qualidade de Software. Ela não apenas valida seu conhecimento nos fundamentos teóricos do teste, mas também abre portas no mercado de trabalho. No entanto, passar na prova exige mais do que apenas experiência prática; requer estudo focado.
+            
+Aqui está um guia passo a passo para sua preparação:
+            
+## 1. Baixe o Syllabus Oficial (Sua Fonte da Verdade)
+            
+A prova é 100% baseada no conteúdo do syllabus. Baixe a versão mais recente diretamente do site do ISTQB ou do BSTQB (no Brasil). Este documento é seu guia principal, e cada tópico listado nele é um potencial tema de questão.
+            
+## 2. Entenda os Níveis de Conhecimento (K-Levels)
+            
+O syllabus classifica cada tópico em níveis de conhecimento (K1 a K4). Preste atenção nisso!
+            
+- **K1 (Lembrar)**: Você só precisa memorizar a definição.
+- **K2 (Entender)**: Você precisa ser capaz de explicar o conceito com suas próprias palavras.
+- **K3 (Aplicar)**: Você precisa ser capaz de aplicar o conhecimento a um cenário prático. A maioria das questões de cálculo (ex: cobertura de decisão) se enquadra aqui.
+            
+## 3. Use Simulados de Forma Inteligente
+            
+Fazer simulados é a melhor forma de testar seu conhecimento e gerenciar seu tempo. Plataformas como o QAPlay oferecem quizzes baseados no syllabus que te ajudam a identificar seus pontos fracos. A regra de ouro é: não decore as respostas. Entenda por que cada resposta está certa e, mais importante, por que as outras estão erradas.
+            
+## 4. Técnicas e Palavras-Chave
+            
+Foque em entender profundamente as técnicas de teste de caixa preta, como Particionamento de Equivalência, Análise de Valor Limite e Tabela de Decisão, pois elas são frequentemente cobradas em questões práticas. Fique atento também às palavras-chave em cada pergunta, como "principalmente", "qual dos seguintes NÃO é", etc.
+            
+## Conclusão
+            
+Com disciplina e um plano de estudos estruturado, a certificação CTFL está totalmente ao seu alcance. Boa sorte!
+            
+---
+            
+*Nilson Brites*`
+          },
+          {
+            slug: 'jira-para-qas-mais-que-bugs',
+            title: 'Jira para QAs: Mais do que Apenas Reportar Bugs',
+            date: '2025-01-16',
+            author: 'Nilson Brites',
+            thumbnail: 'https://images.unsplash.com/photo-1553484771-cc0d9b8c2b33?w=1200&h=600&fit=crop&crop=center',
+            excerpt: 'Aprenda a usar o Jira como uma ferramenta estratégica de qualidade. Crie bug reports perfeitos, monitore métricas e integre com ferramentas de teste.',
+            category: 'Dicas de Ferramentas',
+            readTime: '6 min',
+            content: `# Jira para QAs: Mais do que Apenas Reportar Bugs
+            
+Para muitos, o Jira é simplesmente a ferramenta onde se "abre, retesta e fecha bugs". No entanto, para um Analista de QA estratégico, o Jira é uma fonte rica de dados e uma ferramenta poderosa para gerenciar e otimizar todo o processo de qualidade dentro de um time ágil.
+            
+Veja como você pode usar o Jira de forma mais inteligente:
+            
+## 1. Crie Bug Reports Perfeitos
+            
+A qualidade do seu bug report impacta diretamente a velocidade da correção. Um card no Jira bem-feito não é negociável. Ele deve conter:
+            
+- **Título Claro e Objetivo**: Ex: "Erro 500 ao tentar salvar perfil sem preencher o campo 'Sobrenome'".
+- **Passos para Reproduzir (Steps)**: Uma lista numerada e inequívoca.
+- **Resultado Esperado vs. Atual**: A comparação clara do que deveria acontecer com o que de fato aconteceu.
+- **Anexos**: Screenshots, vídeos curtos (essencial!) e logs.
+- **Metadados**: Preencha corretamente a versão, ambiente, prioridade e componentes afetados.
+            
+## 2. Use Dashboards para Visibilidade
+            
+Não espere a reunião de retrospectiva para levantar pontos de melhoria. Crie um dashboard pessoal no Jira para monitorar métricas de qualidade. Use gadgets para visualizar:
+            
+- **Bugs Criados vs. Resolvidos**: Ajuda a identificar gargalos no processo.
+- **Bugs por Componente**: Mostra quais partes do sistema são mais frágeis.
+- **Tempo Médio de Resolução de Bugs**: Uma métrica importante da eficiência do time.
+            
+## 3. Integre com suas Ferramentas de Teste
+            
+Explore integrações. Ferramentas de gerenciamento de casos de teste como o Qase (ou Zephyr, Xray) se integram ao Jira, permitindo que você vincule diretamente a execução de um caso de teste a uma história de usuário ou a um bug. Isso cria uma rastreabilidade completa, que é crucial para auditorias e para entender a cobertura de teste de cada funcionalidade.
+
+## Conclusão
+
+Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de inteligência de qualidade, você eleva sua atuação e fornece insights valiosos que ajudam todo o time a entregar um produto melhor.
+
+---
+
+*Nilson Brites*`
           }
+        ];
+
+        const dummyPosts = {
+          'paradoxo-do-pesticida': allPosts[0],
+          'scrum-para-qas': allPosts[1],
+          'cursos-gratuitos-ti-2025': allPosts[2],
+          'testes-api-ferramentas-essenciais': allPosts[3],
+          'certificacao-ctfl-guia-definitivo': allPosts[4],
+          'jira-para-qas-mais-que-bugs': allPosts[5]
         };
 
         const postData = dummyPosts[slug];
         if (postData) {
           setPost(postData);
+          setPosts(allPosts);
         }
       } catch (error) {
         console.error('Erro ao carregar post:', error);
@@ -203,57 +435,302 @@ Nos próximos posts, vamos explorar recursos mais avançados do Cypress!`
 
   if (loading) {
     return (
-      <div className="container mx-auto py-12 px-4">
-        <p className="text-center">Carregando post...</p>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Carregando artigo...</p>
+        </div>
       </div>
     );
   }
 
   if (!post) {
     return (
-      <div className="container mx-auto py-12 px-4">
-        <Card>
-          <CardContent className="text-center py-12">
-            <h1 className="text-2xl font-bold mb-4">Post não encontrado</h1>
-            <p className="text-muted-foreground mb-4">O post que você está procurando não existe.</p>
-            <Link to="/blog">
-              <Button>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Voltar ao Blog
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Artigo não encontrado</h1>
+          <p className="text-muted-foreground mb-4">O artigo que você está procurando não existe.</p>
+          <Link to="/blog">
+            <Button>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Voltar ao Blog
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Link to="/blog" className="inline-flex items-center text-primary hover:underline mb-6">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar ao Blog
-        </Link>
-
-        <Card>
-          {post.thumbnail && (
-            <img src={post.thumbnail} alt={post.title} className="w-full h-64 object-cover rounded-t-lg" />
-          )}
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold">{post.title}</CardTitle>
-            <p className="text-muted-foreground">Por {post.author} em {post.date}</p>
-          </CardHeader>
-          <CardContent>
-            <div className="prose prose-lg max-w-none">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+    <div className="min-h-screen bg-background">
+      {/* Header com navegação */}
+      <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <Link to="/blog" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <ArrowLeft className="h-4 w-4" />
+              Voltar ao Blog
+            </Link>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" onClick={shareToLinkedIn}>
+                <Linkedin className="h-4 w-4 mr-2" />
+                LinkedIn
+              </Button>
+              <Button variant="outline" size="sm" onClick={shareToWhatsApp}>
+                <MessageCircle className="h-4 w-4 mr-2" />
+                WhatsApp
+              </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Coluna Principal de Conteúdo (~70%) */}
+          <div className="lg:col-span-2">
+            <article>
+              {/* Imagem de Destaque */}
+              <div className="relative mb-8 rounded-lg overflow-hidden">
+                <img 
+                  src={post.thumbnail} 
+                  alt={post.title}
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-primary text-primary-foreground">
+                    {post.category}
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Cabeçalho do Artigo */}
+              <header className="mb-8">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                  {post.title}
+                </h1>
+                
+                <div className="flex items-center gap-4 text-muted-foreground mb-6">
+                  <span className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    Por {post.author}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    {new Date(post.date).toLocaleDateString('pt-BR')}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    {post.readTime}
+                  </span>
+                </div>
+              </header>
+
+              {/* Conteúdo do Artigo */}
+              <div className="prose prose-lg max-w-none mb-12">
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+              </div>
+
+              {/* Tags do Post */}
+              <div className="border-t pt-8 mb-8">
+                <h3 className="text-xl font-semibold mb-4 flex items-center">
+                  <Tag className="mr-2 h-5 w-5" />
+                  Tags
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-primary text-primary-foreground">
+                    {post.category}
+                  </Badge>
+                  <Badge variant="outline">
+                    Quality Assurance
+                  </Badge>
+                  <Badge variant="outline">
+                    Testes de Software
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Seção Sobre o Autor */}
+              <div className="border-t pt-8 mb-8">
+                <h3 className="text-xl font-semibold mb-6">
+                  Sobre o Autor
+                </h3>
+                <Card>
+                  <CardContent className="p-6">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="flex-shrink-0">
+                        <img 
+                          src="/Nilson Brites1 (3).png" 
+                          alt="Nilson Brites"
+                          className="w-24 h-24 rounded-full object-cover"
+                          style={{ objectPosition: 'center 20%' }}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold mb-2">
+                          Nilson Brites
+                        </h4>
+                        <p className="text-sm mb-3 text-muted-foreground">
+                          Quality Assurance Engineer
+                        </p>
+                        <p className="text-sm leading-relaxed mb-4 text-muted-foreground">
+                          Analista de QA com experiência em automação de testes e metodologias ágeis, apaixonado por colaborar e evoluir o conhecimento na comunidade de tecnologia.
+                        </p>
+                        <div className="flex gap-3">
+                          <Button 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => window.open('https://linkedin.com/in/nilson-brites', '_blank')}
+                          >
+                            <Linkedin className="h-4 w-4 mr-2" />
+                            LinkedIn
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => window.open('https://github.com/nilson-brites', '_blank')}
+                          >
+                            <MessageCircle className="h-4 w-4 mr-2" />
+                            GitHub
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Seção "Leia a Seguir" */}
+              <div className="border-t pt-8">
+                <h3 className="text-xl font-semibold mb-6">
+                  Leia a Seguir
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {posts.filter(p => p.slug !== slug).slice(0, 3).map((relatedPost) => (
+                    <Link key={relatedPost.slug} to={`/blog/${relatedPost.slug}`} className="group">
+                      <div className="relative h-48 rounded-lg overflow-hidden bg-gray-900">
+                        <img 
+                          src={relatedPost.thumbnail} 
+                          alt={relatedPost.title}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                          <Badge className="bg-primary text-primary-foreground text-xs font-medium mb-2 w-fit">
+                            {relatedPost.category}
+                          </Badge>
+                          <h4 className="text-white text-sm font-semibold line-clamp-2 leading-tight">
+                            {relatedPost.title}
+                          </h4>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Sidebar (Coluna Lateral - ~30%) */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 space-y-6">
+              {/* Módulo 1: Desafio em Destaque */}
+              <Card className="bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-bold mb-3">
+                    Pronto para o Desafio?
+                  </h3>
+                  <p className="text-sm mb-4 opacity-90">
+                    Valide seus conhecimentos no Quiz CTFL 4.0
+                  </p>
+                  <Link to="/quizzes">
+                    <Button className="w-full bg-white text-blue-600 hover:bg-gray-100">
+                      Iniciar Desafio
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Módulo 2: Vamos nos Conectar */}
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">
+                    Vamos nos Conectar
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Siga-me nas redes sociais para mais conteúdo sobre QA
+                  </p>
+                  <div className="space-y-2">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => window.open('https://linkedin.com/in/nilson-brites', '_blank')}
+                    >
+                      <Linkedin className="h-4 w-4 mr-2" />
+                      LinkedIn
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start"
+                      onClick={() => window.open('https://github.com/nilson-brites', '_blank')}
+                    >
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      GitHub
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Instagram Stories */}
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">
+                    Compartilhe no Instagram
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Crie um sticker personalizado para suas stories
+                  </p>
+                  <div className="space-y-2">
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={generateInstagramSticker}
+                    >
+                      <Instagram className="h-4 w-4 mr-2" />
+                      Gerar Sticker
+                    </Button>
+                    {instagramSticker && (
+                      <Button 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={downloadInstagramSticker}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Baixar Imagem
+                      </Button>
+                    )}
+                  </div>
+                  {instagramSticker && (
+                    <div className="mt-4">
+                      <img 
+                        src={instagramSticker} 
+                        alt="Instagram Story" 
+                        className="w-full rounded border"
+                      />
+                      <p className="text-xs text-muted-foreground mt-2">
+                        <strong>Como usar:</strong> Baixe a imagem, abra o Instagram, crie um novo story, 
+                        adicione a imagem como sticker e inclua o link do post: <code className="bg-white/20 px-1 rounded">{window.location.href}</code>
+                      </p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default BlogPostPage;
-
