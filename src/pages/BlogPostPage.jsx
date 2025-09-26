@@ -49,52 +49,50 @@ const BlogPostPage = () => {
     // URL base do Cloudinary
     const baseUrl = `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload`;
     
-    // Parâmetros de transformação
+    // Parâmetros de transformação básicos
     const transformations = [
       'w_1080,h_1920,c_fill', // Dimensões do Instagram Story (9:16)
       'q_auto,f_auto', // Qualidade automática e formato otimizado
     ];
     
-    // Imagem de fundo (usar thumbnail do post se disponível, senão usar gradiente)
-    let backgroundImage = 'gradient:linear-gradient(135deg,rgb(102,126,234),rgb(118,75,162))';
+    // Usar apenas gradiente como fundo (mais confiável)
+    const backgroundImage = 'gradient:linear-gradient(135deg,rgb(102,126,234),rgb(118,75,162))';
     
-    if (post.thumbnail) {
-      // Se tem thumbnail, usar como fundo
-      const imageUrl = post.thumbnail.startsWith('http') 
-        ? post.thumbnail 
-        : `${window.location.origin}${post.thumbnail}`;
-      backgroundImage = `fetch:${encodeURIComponent(imageUrl)}`;
-    }
+    // Adicionar overlay escuro para contraste usando SVG inline
+    const overlaySvg = `<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:rgba(0,0,0,0.3);stop-opacity:1" />
+          <stop offset="100%" style="stop-color:rgba(0,0,0,0.7);stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#overlay)" />
+    </svg>`;
     
-    // Adicionar overlay escuro para contraste
-    transformations.push(`l_fetch:${encodeURIComponent('data:image/svg+xml;base64,' + btoa(`
-      <svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="overlay" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:rgba(0,0,0,0.3);stop-opacity:1" />
-            <stop offset="100%" style="stop-color:rgba(0,0,0,0.7);stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#overlay)" />
-      </svg>
-    `))}`);
+    transformations.push(`l_fetch:${encodeURIComponent('data:image/svg+xml;base64,' + btoa(overlaySvg))}`);
     
-    // Adicionar logo QAPlay
-    transformations.push(`l_fetch:${encodeURIComponent(`${window.location.origin}/qa-play-logo.png`)},w_120,h_120,x_60,y_60`);
-    
-    // Adicionar título do post
+    // Adicionar título do post (centralizado)
     const titleText = encodeURIComponent(post.title);
     transformations.push(`l_text:Arial_64_bold:${titleText},co_white,x_center,y_center,w_900,c_fit`);
     
-    // Adicionar autor
+    // Adicionar autor (parte inferior)
     const authorText = encodeURIComponent(`Por ${post.author || 'Nilson Brites'}`);
     transformations.push(`l_text:Arial_32_normal:${authorText},co_rgb:e0e0e0,x_center,y_${1920 - 200},w_900,c_fit`);
     
-    // Adicionar URL do site
+    // Adicionar URL do site (rodapé)
     transformations.push(`l_text:Arial_28_bold:qaplay.com.br,co_white,x_center,y_${1920 - 100},w_900,c_fit`);
     
     // Construir URL final
     const finalUrl = `${baseUrl}/${transformations.join(',')}/${backgroundImage}`;
+    
+    // Debug: Log da URL gerada para análise
+    console.log('=== DEBUG CLOUDINARY ===');
+    console.log('Cloudinary URL gerada:', finalUrl);
+    console.log('Transformações:', transformations);
+    console.log('Imagem de fundo:', backgroundImage);
+    console.log('Título do post:', post.title);
+    console.log('Autor:', post.author);
+    console.log('========================');
     
     // Abrir em nova aba
     window.open(finalUrl, '_blank');
