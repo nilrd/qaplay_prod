@@ -5,10 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Trophy, Download, Share2, Award } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
-const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, linkedinProfile }) => {
+const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQuestions = 1, linkedinProfile = '' }) => {
   const certificateRef = useRef(null);
 
-  const percentage = Math.round((score / totalQuestions) * 100);
+  const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
   const currentDate = new Date().toLocaleDateString('pt-BR');
 
   const downloadCertificate = async () => {
@@ -33,12 +33,14 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 
   const shareOnLinkedIn = () => {
     const badgeText = `QA Quiz - ${getBadgeLevel()} (${percentage}% de acertos)`;
-    const text = `🎯 Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🏆\n\n📚 Baseado no Syllabus ISTQB® CTFL 4.0 - International Software Testing Qualifications Board\n🎮 150 questões cuidadosamente elaboradas para preparação certificação\n⚡ Teste seus conhecimentos em Quality Assurance: https://qaplay.vercel.app\n\n#QA #QualityAssurance #Testing #ISTQB #CTFL #SoftwareTesting #QAPlay #Certificação`;
+    const text = `🎯 Acabei de completar o Quiz de QA no QAPlay com ${percentage}% de acertos e conquistei o badge '${badgeText}'! 🏆\n\n📚 Baseado no Syllabus ISTQB® CTFL 4.0 - International Software Testing Qualifications Board\n🎮 150 questões cuidadosamente elaboradas para preparação certificação\n⚡ Teste seus conhecimentos em Quality Assurance: https://qaplay.com.br\n\n#QA #QualityAssurance #Testing #ISTQB #CTFL #SoftwareTesting #QAPlay #Certificação`;
     
-    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.vercel.app')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay - ISTQB CTFL 4.0')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://qaplay.com.br')}&summary=${encodeURIComponent(badgeText)}&title=${encodeURIComponent('Meu Resultado no QA Quiz do QAPlay - ISTQB CTFL 4.0')}&source=${encodeURIComponent('QAPlay')}&text=${encodeURIComponent(text)}`;
     
     window.open(linkedinUrl, '_blank', 'width=600,height=400');
   };
+
+
 
   const getBadgeColor = () => {
     if (percentage >= 90) return 'bg-yellow-500';
@@ -166,8 +168,4 @@ const CertificateModal = ({ isOpen, onClose, fullName, score, totalQuestions, li
 };
 
 export default CertificateModal;
-
-
-
-
 

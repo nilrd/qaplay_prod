@@ -89,10 +89,12 @@ const QuizFlowWrapper = ({
 
       {showCertificate && userInfo && (
         <CertificateModal
-          userInfo={userInfo}
-          score={score || 0}
+          isOpen={showCertificate}
           onClose={() => setShowCertificate(false)}
-          onShareLinkedIn={onShareLinkedIn || ((url) => window.open(url, '_blank'))}
+          fullName={userInfo.fullName || ''}
+          score={score || 0}
+          totalQuestions={totalQuestions || 1}
+          linkedinProfile={userInfo.linkedinUrl || ''}
         />
       )}
     </>

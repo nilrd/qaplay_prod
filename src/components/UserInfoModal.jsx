@@ -61,7 +61,7 @@ const UserInfoModal = ({ onStart, onClose }) => {
               <Input
                 id="linkedin"
                 type="url"
-                placeholder="https://linkedin.com/in/seu-perfil"
+                placeholder="https://www.linkedin.com/in/nilsondasilvabrites/"
                 value={userInfo.linkedinUrl}
                 onChange={(e) => handleInputChange('linkedinUrl', e.target.value)}
                 autoComplete="url"

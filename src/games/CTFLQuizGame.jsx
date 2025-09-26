@@ -324,7 +324,7 @@ const CTFLQuizGame = () => {
                 <Input
                   id="linkedinProfile"
                   type="url"
-                  placeholder="https://linkedin.com/in/seuperfil"
+                  placeholder="https://www.linkedin.com/in/nilsondasilvabrites/"
                   value={linkedinProfile}
                   onChange={(e) => setLinkedinProfile(e.target.value)}
                   autoComplete="url"

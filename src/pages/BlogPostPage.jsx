@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Share2, Linkedin, MessageCircle, Facebook, Twitter, Instagram, Download, Tag, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeft, Tag, Calendar, Clock, User, Linkedin, MessageCircle } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { useSEO } from '@/hooks/useSEO';
 import '../styles/blog-typography.css';
@@ -14,89 +14,7 @@ const BlogPostPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Funções de compartilhamento social
-  const shareToLinkedIn = () => {
-    const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent(post.title);
-    const summary = encodeURIComponent(post.excerpt);
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`, '_blank');
-  };
 
-  const shareToWhatsApp = () => {
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent(`${post.title} - ${post.excerpt}`);
-    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
-  };
-
-  const shareToFacebook = () => {
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-  };
-
-  const shareToTwitter = () => {
-    const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent(`${post.title} - ${post.excerpt}`);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-  };
-
-  // Função para gerar imagem do Instagram Stories usando Cloudinary
-  const generateInstagramSticker = () => {
-    if (!post) return;
-    
-    // Cloudinary Cloud Name (será fornecido pelo Nilson)
-    const cloudinaryCloudName = 'qaplay'; // Substituir pelo cloud name real
-    
-    // URL base do Cloudinary
-    const baseUrl = `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload`;
-    
-    // Parâmetros de transformação básicos
-    const transformations = [
-      'w_1080,h_1920,c_fill', // Dimensões do Instagram Story (9:16)
-      'q_auto,f_auto', // Qualidade automática e formato otimizado
-    ];
-    
-    // Usar apenas gradiente como fundo (mais confiável)
-    const backgroundImage = 'gradient:linear-gradient(135deg,rgb(102,126,234),rgb(118,75,162))';
-    
-    // Adicionar overlay escuro para contraste usando SVG inline
-    const overlaySvg = `<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="overlay" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:rgba(0,0,0,0.3);stop-opacity:1" />
-          <stop offset="100%" style="stop-color:rgba(0,0,0,0.7);stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#overlay)" />
-    </svg>`;
-    
-    transformations.push(`l_fetch:${encodeURIComponent('data:image/svg+xml;base64,' + btoa(overlaySvg))}`);
-    
-    // Adicionar título do post (centralizado)
-    const titleText = encodeURIComponent(post.title);
-    transformations.push(`l_text:Arial_64_bold:${titleText},co_white,x_center,y_center,w_900,c_fit`);
-    
-    // Adicionar autor (parte inferior)
-    const authorText = encodeURIComponent(`Por ${post.author || 'Nilson Brites'}`);
-    transformations.push(`l_text:Arial_32_normal:${authorText},co_rgb:e0e0e0,x_center,y_${1920 - 200},w_900,c_fit`);
-    
-    // Adicionar URL do site (rodapé)
-    transformations.push(`l_text:Arial_28_bold:qaplay.com.br,co_white,x_center,y_${1920 - 100},w_900,c_fit`);
-    
-    // Construir URL final
-    const finalUrl = `${baseUrl}/${transformations.join(',')}/${backgroundImage}`;
-    
-    // Debug: Log da URL gerada para análise
-    console.log('=== DEBUG CLOUDINARY ===');
-    console.log('Cloudinary URL gerada:', finalUrl);
-    console.log('Transformações:', transformations);
-    console.log('Imagem de fundo:', backgroundImage);
-    console.log('Título do post:', post.title);
-    console.log('Autor:', post.author);
-    console.log('========================');
-    
-    // Abrir em nova aba
-    window.open(finalUrl, '_blank');
-  };
 
 
 
@@ -459,16 +377,6 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
               <ArrowLeft className="h-4 w-4" />
               Voltar ao Blog
             </Link>
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={shareToLinkedIn}>
-                <Linkedin className="h-4 w-4 mr-2" />
-                LinkedIn
-              </Button>
-              <Button variant="outline" size="sm" onClick={shareToWhatsApp}>
-                <MessageCircle className="h-4 w-4 mr-2" />
-                WhatsApp
-              </Button>
-            </div>
           </div>
         </div>
       </div>
@@ -568,7 +476,7 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
                           <Button 
                             size="sm" 
                             variant="outline"
-                            onClick={() => window.open('https://linkedin.com/in/nilson-brites', '_blank')}
+                            onClick={() => window.open('https://www.linkedin.com/in/nilsondasilvabrites/', '_blank')}
                           >
                             <Linkedin className="h-4 w-4 mr-2" />
                             LinkedIn
@@ -652,7 +560,7 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
                     <Button 
                       variant="outline" 
                       className="w-full justify-start"
-                      onClick={() => window.open('https://linkedin.com/in/nilson-brites', '_blank')}
+                      onClick={() => window.open('https://www.linkedin.com/in/nilsondasilvabrites/', '_blank')}
                     >
                       <Linkedin className="h-4 w-4 mr-2" />
                       LinkedIn
@@ -669,32 +577,6 @@ Ao tratar o Jira não apenas como um sistema de tickets, mas como uma central de
                 </CardContent>
               </Card>
 
-              {/* Instagram Stories */}
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-3">
-                    Compartilhe no Instagram
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Gere uma imagem profissional para suas stories usando Cloudinary
-                  </p>
-                  <div className="space-y-2">
-                    <Button 
-                      variant="outline" 
-                      className="w-full"
-                      onClick={generateInstagramSticker}
-                    >
-                      <Instagram className="h-4 w-4 mr-2" />
-                      Gerar Imagem para Stories
-                    </Button>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-3">
-                    <strong>Como usar:</strong> Clique no botão acima para gerar uma imagem profissional usando Cloudinary. 
-                    A imagem será aberta em uma nova aba - salve-a e use em suas stories do Instagram. 
-                    Inclua o link do post: <code className="bg-white/20 px-1 rounded">{window.location.href}</code>
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
