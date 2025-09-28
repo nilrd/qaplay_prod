@@ -107,27 +107,153 @@ const CertificatePage = () => {
   };
 
   const downloadCertificate = async () => {
-    if (certificateRef.current) {
-      try {
-        const canvas = await html2canvas(certificateRef.current, {
-          backgroundColor: '#ffffff',
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          foreignObjectRendering: false,
-          logging: false,
-          width: certificateRef.current.offsetWidth,
-          height: certificateRef.current.offsetHeight
-        });
-        
-        const link = document.createElement('a');
-        link.download = `certificado-qaplay-${certificateData.nome.replace(/\s+/g, '-').toLowerCase()}.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-      } catch (error) {
-        console.error('Erro ao gerar certificado:', error);
-        alert('Erro ao gerar o certificado. Tente novamente.');
+    if (!certificateData) {
+      alert('Erro: Dados do certificado não encontrados.');
+      return;
+    }
+
+    try {
+      // Mostrar indicador de carregamento
+      const button = document.querySelector('[data-testid="download-button"]');
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Gerando imagem...';
       }
+
+      // Criar canvas diretamente
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Definir dimensões
+      canvas.width = 1800; // 2x para alta resolução
+      canvas.height = 1300;
+      
+      // Fundo branco
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Borda azul
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+      
+      // Fundo do certificado
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+      
+      // Título principal
+      ctx.fillStyle = '#1e40af';
+      ctx.font = 'bold 72px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('RELATÓRIO DE DESEMPENHO', canvas.width / 2, 150);
+      
+      // Subtítulo
+      ctx.fillStyle = '#64748b';
+      ctx.font = '40px Arial';
+      ctx.fillText('QAPlay - Quality Assurance', canvas.width / 2, 200);
+      
+      // Descrição
+      ctx.font = '28px Arial';
+      ctx.fillText('Baseado no Syllabus ISTQB® CTFL 4.0', canvas.width / 2, 240);
+      
+      // Texto de certificação
+      ctx.fillStyle = '#374151';
+      ctx.font = '36px Arial';
+      ctx.fillText('Certificamos que', canvas.width / 2, 320);
+      
+      // Nome do usuário
+      ctx.fillStyle = '#1e40af';
+      ctx.font = 'bold 56px Arial';
+      ctx.fillText(certificateData.nome, canvas.width / 2, 380);
+      
+      // Descrição da conclusão
+      ctx.fillStyle = '#64748b';
+      ctx.font = '32px Arial';
+      ctx.fillText('concluiu o Desafio QA: Fundamentos CTFL 4.0', canvas.width / 2, 420);
+      
+      // Caixa de resultados
+      const boxX = canvas.width / 2 - 400;
+      const boxY = 480;
+      const boxWidth = 800;
+      const boxHeight = 200;
+      
+      // Fundo da caixa
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
+      
+      // Borda da caixa
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
+      
+      // Pontuação
+      ctx.fillStyle = '#1e40af';
+      ctx.font = 'bold 96px Arial';
+      ctx.fillText(certificateData.score.toString(), boxX + 200, boxY + 120);
+      
+      // Porcentagem
+      ctx.fillStyle = '#16a34a';
+      ctx.fillText(certificateData.percentage + '%', boxX + 400, boxY + 120);
+      
+      // Nível
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 32px Arial';
+      const levelText = getBadgeLevel();
+      const levelWidth = ctx.measureText(levelText).width;
+      const levelX = boxX + 600;
+      const levelY = boxY + 80;
+      
+      // Fundo do nível
+      ctx.fillStyle = getBadgeColor();
+      ctx.fillRect(levelX - 20, levelY - 40, levelWidth + 40, 80);
+      
+      // Texto do nível
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(levelText, levelX, levelY);
+      
+      // Labels
+      ctx.fillStyle = '#64748b';
+      ctx.font = '28px Arial';
+      ctx.fillText('Pontuação', boxX + 200, boxY + 160);
+      ctx.fillText('Acertos', boxX + 400, boxY + 160);
+      ctx.fillText('Nível', boxX + 600, boxY + 160);
+      
+      // Data de conclusão
+      ctx.fillStyle = '#64748b';
+      ctx.font = '28px Arial';
+      ctx.fillText('Data de conclusão: ' + new Date(certificateData.data).toLocaleDateString('pt-BR'), canvas.width / 2, 750);
+      
+      // Footer
+      ctx.font = '24px Arial';
+      ctx.fillText('QAPlay - Plataforma de Treinamento em Quality Assurance', canvas.width / 2, 800);
+      
+      ctx.font = '20px Arial';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText('Relatório gerado automaticamente pelo sistema QAPlay', canvas.width / 2, 840);
+      
+      // Download da imagem
+      const link = document.createElement('a');
+      link.download = `relatorio-desempenho-qaplay-${certificateData.nome.replace(/\s+/g, '-').toLowerCase()}.png`;
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+      
+      // Restaurar botão
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
+      }
+      
+    } catch (error) {
+      console.error('Erro detalhado ao gerar certificado:', error);
+      
+      // Restaurar botão em caso de erro
+      const button = document.querySelector('[data-testid="download-button"]');
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
+      }
+      
+      alert('Ocorreu um erro ao gerar a imagem. Por favor, tente novamente.');
     }
   };
 
@@ -172,14 +298,14 @@ const CertificatePage = () => {
         <div style={{ width: '100%', maxWidth: '448px', margin: '0 16px' }}>
           <div style={{ padding: '32px', textAlign: 'center' }}>
             <div style={{ color: '#ef4444', marginBottom: '16px' }}>
-              <Award className="h-16 w-16 mx-auto" />
+              <Award style={{ height: '64px', width: '64px', margin: '0 auto' }} />
             </div>
             <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1f2937', marginBottom: '16px' }}>Certificado Inválido</h1>
             <p style={{ color: '#4b5563', marginBottom: '24px' }}>{error}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <Button asChild style={{ width: '100%' }}>
                 <Link to="/quizzes">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  <ArrowLeft style={{ marginRight: '8px', height: '16px', width: '16px' }} />
                   Voltar aos Quizzes
                 </Link>
               </Button>
@@ -213,7 +339,7 @@ const CertificatePage = () => {
               color: 'white' 
             }}>
               <Link to="/quizzes">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft style={{ marginRight: '8px', height: '16px', width: '16px' }} />
                 Voltar aos Quizzes
               </Link>
             </Button>
@@ -229,99 +355,146 @@ const CertificatePage = () => {
               <div 
                 ref={certificateRef}
                 style={{ 
-                  padding: '32px 48px',
-                  borderRadius: '8px',
-                  border: '2px solid #bfdbfe',
-                  background: 'linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%)',
-                  minHeight: '600px',
-                  textAlign: 'center'
+                  width: '900px',
+                  height: '650px',
+                  backgroundColor: '#f8fafc',
+                  border: '3px solid #3b82f6',
+                  borderRadius: '12px',
+                  padding: '50px',
+                  textAlign: 'center',
+                  fontFamily: 'Arial, sans-serif',
+                  position: 'relative',
+                  margin: '0 auto',
+                  boxSizing: 'border-box'
                 }}
               >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  {/* Header */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                      <div 
-                        style={{ 
-                          width: '80px', 
-                          height: '80px', 
-                          borderRadius: '50%', 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          justifyContent: 'center',
-                          backgroundColor: getBadgeColor()
-                        }}
-                      >
-                        <Award className="h-10 w-10 text-white" />
-                      </div>
-                    </div>
-                    <h1 style={{ fontSize: '32px', fontWeight: 'bold', color: '#1f2937' }}>
-                      Relatório de Desempenho
-                    </h1>
-                    <p style={{ fontSize: '18px', color: '#4b5563' }}>
-                      QAPlay - Quiz de Quality Assurance
-                    </p>
-                    <p style={{ fontSize: '14px', fontWeight: '600', color: '#2563eb' }}>
-                      Baseado no Syllabus ISTQB® CTFL 4.0
-                    </p>
-                    <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                      International Software Testing Qualifications Board
-                    </p>
-                  </div>
-
-                  {/* Conteúdo Principal */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <p style={{ fontSize: '18px', color: '#374151' }}>
-                      {certificateData.nome} concluiu o Desafio QA: Fundamentos CTFL 4.0 com o seguinte desempenho:
-                    </p>
-                  </div>
-
-                  {/* Resultados */}
+                {/* Header */}
+                <div style={{ marginBottom: '30px' }}>
                   <div style={{ 
-                    backgroundColor: 'white', 
-                    padding: '24px', 
-                    borderRadius: '8px', 
-                    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)', 
-                    border: '1px solid #e5e7eb',
-                    maxWidth: '512px',
-                    margin: '0 auto'
+                    fontSize: '36px', 
+                    fontWeight: 'bold', 
+                    color: '#1e40af',
+                    marginBottom: '10px'
                   }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', textAlign: 'center' }}>
-                      <div>
-                        <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#2563eb' }}>
-                          {certificateData.score}
-                        </div>
-                        <div style={{ fontSize: '14px', color: '#4b5563' }}>Pontuação</div>
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#16a34a' }}>
-                          {certificateData.percentage}%
-                        </div>
-                        <div style={{ fontSize: '14px', color: '#4b5563' }}>Acertos</div>
-                      </div>
-                      <div>
-                        <div 
-                          style={{ 
-                            backgroundColor: getBadgeColor(),
-                            color: 'white',
-                            fontSize: '14px',
-                            padding: '8px 16px',
-                            borderRadius: '4px',
-                            fontWeight: '600'
-                          }}
-                        >
-                          {getBadgeLevel()}
-                        </div>
-                        <div style={{ fontSize: '14px', color: '#4b5563', marginTop: '8px' }}>Nível</div>
-                      </div>
+                    RELATÓRIO DE DESEMPENHO
+                  </div>
+                  <div style={{ 
+                    fontSize: '20px', 
+                    color: '#64748b',
+                    marginBottom: '5px'
+                  }}>
+                    QAPlay - Quality Assurance
+                  </div>
+                  <div style={{ 
+                    fontSize: '14px', 
+                    color: '#94a3b8'
+                  }}>
+                    Baseado no Syllabus ISTQB® CTFL 4.0
+                  </div>
+                </div>
+
+                {/* Conteúdo Principal */}
+                <div style={{ marginBottom: '30px' }}>
+                  <div style={{ 
+                    fontSize: '18px', 
+                    color: '#374151',
+                    marginBottom: '20px'
+                  }}>
+                    Certificamos que
+                  </div>
+                  <div style={{ 
+                    fontSize: '28px', 
+                    fontWeight: 'bold', 
+                    color: '#1e40af',
+                    marginBottom: '20px'
+                  }}>
+                    {certificateData.nome}
+                  </div>
+                  <div style={{ 
+                    fontSize: '16px', 
+                    color: '#64748b'
+                  }}>
+                    concluiu o Desafio QA: Fundamentos CTFL 4.0
+                  </div>
+                </div>
+
+                {/* Resultados */}
+                <div style={{ 
+                  backgroundColor: '#ffffff',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '8px',
+                  padding: '30px',
+                  marginBottom: '30px',
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  alignItems: 'center'
+                }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      fontSize: '48px', 
+                      fontWeight: 'bold', 
+                      color: '#1e40af'
+                    }}>
+                      {certificateData.score}
+                    </div>
+                    <div style={{ 
+                      fontSize: '14px', 
+                      color: '#64748b'
+                    }}>
+                      Pontuação
                     </div>
                   </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      fontSize: '48px', 
+                      fontWeight: 'bold', 
+                      color: '#16a34a'
+                    }}>
+                      {certificateData.percentage}%
+                    </div>
+                    <div style={{ 
+                      fontSize: '14px', 
+                      color: '#64748b'
+                    }}>
+                      Acertos
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      backgroundColor: getBadgeColor(),
+                      color: '#ffffff',
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      padding: '12px 20px',
+                      borderRadius: '6px',
+                      marginBottom: '8px'
+                    }}>
+                      {getBadgeLevel()}
+                    </div>
+                    <div style={{ 
+                      fontSize: '14px', 
+                      color: '#64748b'
+                    }}>
+                      Nível
+                    </div>
+                  </div>
+                </div>
 
-                  {/* Footer */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#4b5563' }}>
-                    <p>Data de conclusão: {new Date(certificateData.data).toLocaleDateString('pt-BR')}</p>
-                    <p>QAPlay - Plataforma de Treinamento em Quality Assurance</p>
-                    <p style={{ fontSize: '12px' }}>Relatório gerado automaticamente pelo sistema QAPlay</p>
+                {/* Footer */}
+                <div style={{ 
+                  fontSize: '14px', 
+                  color: '#64748b',
+                  borderTop: '1px solid #e2e8f0',
+                  paddingTop: '20px'
+                }}>
+                  <div style={{ marginBottom: '5px' }}>
+                    Data de conclusão: {new Date(certificateData.data).toLocaleDateString('pt-BR')}
+                  </div>
+                  <div style={{ marginBottom: '5px' }}>
+                    QAPlay - Plataforma de Treinamento em Quality Assurance
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#94a3b8' }}>
+                    Relatório gerado automaticamente pelo sistema QAPlay
                   </div>
                 </div>
               </div>
@@ -356,7 +529,7 @@ const CertificatePage = () => {
                       backgroundColor: getBadgeColor()
                     }}
                   >
-                    <Trophy className="h-8 w-8 text-white" />
+                    <Trophy style={{ height: '32px', width: '32px', color: 'white' }} />
                   </div>
                   <div style={{ textAlign: 'left' }}>
                     <div style={{ fontWeight: '600', fontSize: '18px' }}>QA Quiz - {getBadgeLevel()}</div>
@@ -379,8 +552,8 @@ const CertificatePage = () => {
                 Ações do Relatório
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '512px', margin: '0 auto' }}>
-                <Button onClick={downloadCertificate} style={{ flex: '1', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
-                  <Download className="mr-2 h-4 w-4" />
+                <Button onClick={downloadCertificate} data-testid="download-button" style={{ flex: '1', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
+                  <Download style={{ marginRight: '8px', height: '16px', width: '16px' }} />
                   Baixar como Imagem
                 </Button>
                 <Button onClick={copyShareLink} variant="outline" style={{ 
@@ -390,7 +563,7 @@ const CertificatePage = () => {
                   color: '#3b82f6',
                   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
                 }}>
-                  <Share2 className="mr-2 h-4 w-4" />
+                  <Share2 style={{ marginRight: '8px', height: '16px', width: '16px' }} />
                   Copiar Link para Compartilhar
                 </Button>
               </div>

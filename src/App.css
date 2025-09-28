@@ -353,3 +353,16 @@
   @apply shadow-black/30;
 }
 
+/* Custom GitHub button hover fix */
+.github-button:hover {
+  background-color: #f9fafb !important;
+  border-color: #9ca3af !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .github-button:hover {
+  background-color: rgba(75, 85, 99, 0.1) !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+

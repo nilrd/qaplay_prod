@@ -198,7 +198,12 @@ const About = () => {
                       LinkedIn
                     </a>
                   </Button>
-                  <Button variant="outline" size="lg" className="hover:bg-gray-50 hover:border-gray-400 dark:hover:bg-gray-500/10" asChild>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="github-button transition-all duration-300 dark:hover:bg-gray-500/10" 
+                    asChild
+                  >
                     <a href="https://github.com/nilrd" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-5 w-5" />
                       GitHub
