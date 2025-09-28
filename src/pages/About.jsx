@@ -443,7 +443,7 @@ const About = () => {
             sinta-se à vontade para entrar em contato. Estou sempre aberto a novas conexões e desafios.
           </p>
           <ContactDialog>
-            <Button size="lg" className="px-8 py-3 text-lg">Entrar em Contato</Button>
+            <Button size="lg" className="px-8 py-3 text-lg hover:shadow-lg transition-all duration-300">Entrar em Contato</Button>
           </ContactDialog>
         </section>
       </div>

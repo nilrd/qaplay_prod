@@ -57,13 +57,13 @@ const Home = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="text-lg px-8">
+          <Button asChild size="lg" className="text-lg px-8 hover:shadow-lg transition-all duration-300">
             <Link to="/jogos">
               <Play className="mr-2 h-5 w-5" />
               Começar a Jogar
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="text-lg px-8">
+          <Button asChild variant="outline" size="lg" className="text-lg px-8 hover:bg-gray-50 hover:border-gray-300 hover:shadow-md transition-all duration-300">
             <Link to="/sobre">
               Saiba Mais
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -126,7 +126,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="mb-4">{game.description}</CardDescription>
-                <Button asChild className="w-full">
+                <Button asChild className="w-full hover:shadow-lg transition-all duration-300">
                   <Link to="/jogos">
                     Jogar Agora
                     <Play className="ml-2 h-4 w-4" />
@@ -147,7 +147,7 @@ const Home = () => {
           </p>
         </div>
         
-        <Button asChild size="lg" className="text-lg px-8">
+        <Button asChild size="lg" className="text-lg px-8 hover:shadow-lg transition-all duration-300">
           <Link to="/jogos">
             <Gamepad2 className="mr-2 h-5 w-5" />
             Começar Agora - É Grátis!

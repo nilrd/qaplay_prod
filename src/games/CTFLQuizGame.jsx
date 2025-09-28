@@ -6,7 +6,6 @@ import { Badge } from '@/components/ui/badge'
 import { CheckCircle, XCircle, RotateCcw, Trophy, Clock, Target, BookOpen } from 'lucide-react'
 import questionsData from '../data/quiz-ctfl.json'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import CertificateModal from '@/components/CertificateModal';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import QuizConfigModal from '@/components/QuizConfigModal';
@@ -22,7 +21,6 @@ const CTFLQuizGame = () => {
   const [gameStarted, setGameStarted] = useState(false)
   const [shuffledQuestions, setShuffledQuestions] = useState([])
   const [isTimeUpModalOpen, setIsTimeUpModalOpen] = useState(false);
-  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
   const [fullName, setFullName] = useState('');
   const [linkedinProfile, setLinkedinProfile] = useState('');
   const [gameMode, setGameMode] = useState('');
@@ -77,7 +75,6 @@ const CTFLQuizGame = () => {
     if (mode === 'simulado') {
       resetTimer(totalTime); // Usar tempo configurado para o modo simulado
     }
-    setIsCertificateModalOpen(false);
     setFullName('');
     setLinkedinProfile('');
     // O hook useQuizTimer já gerencia o temporizador automaticamente
@@ -140,7 +137,6 @@ const CTFLQuizGame = () => {
     setShuffledQuestions([]);
     resetTimer(totalTime); // Usar tempo configurado
     setIsTimeUpModalOpen(false);
-    setIsCertificateModalOpen(false);
     setFullName('');
     setLinkedinProfile('');
     setGameMode('');
@@ -181,24 +177,18 @@ const CTFLQuizGame = () => {
     }
 
     if (fullName && linkedinProfile) {
-      // Criar dados do certificado
-      const certificateId = `cert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-      const certificateData = {
-        id: certificateId,
-        userName: fullName,
-        quizName: 'CTFL Quiz Game',
-        score: percentage,
-        correctAnswers: score,
-        totalQuestions: shuffledQuestions.length,
-        completionDate: new Date().toLocaleDateString('pt-BR'),
-        linkedinUrl: linkedinProfile
-      }
-
-      // Salvar no localStorage
-      localStorage.setItem(`certificate_${certificateId}`, JSON.stringify(certificateData))
+      // Construir URL com parâmetros
+      const params = new URLSearchParams({
+        quiz: 'CTFL Quiz Game',
+        nome: fullName,
+        score: score.toString(),
+        total: shuffledQuestions.length.toString(),
+        data: new Date().toISOString(),
+        linkedin: linkedinProfile
+      });
       
-      // Redirecionar para a página do certificado
-      window.location.href = `/certificado/${certificateId}`;
+      // Navegar para a página do certificado
+      window.location.href = `/certificado?${params.toString()}`;
     } else {
       alert('Por favor, preencha seu nome completo e o link do seu perfil do LinkedIn para gerar o certificado.');
     }
@@ -234,7 +224,7 @@ const CTFLQuizGame = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Button onClick={() => setShowConfigModal(true)} size="lg" className="w-full">
+              <Button onClick={() => setShowConfigModal(true)} size="lg" className="w-full hover:shadow-lg transition-all duration-300">
                 <Target className="mr-2 h-5 w-5" />
                 Modo Simulado Configurável
               </Button>
@@ -330,31 +320,22 @@ const CTFLQuizGame = () => {
                   autoComplete="url"
                 />
               </div>
-              <Button onClick={handleGenerateCertificate} className="w-full">
+              <Button onClick={handleGenerateCertificate} className="w-full hover:shadow-lg transition-all duration-300">
                 Gerar Certificado e Compartilhar
               </Button>
             </div>
             
             <div className="flex gap-4">
-              <Button onClick={resetGame} variant="outline" className="flex-1">
+              <Button onClick={resetGame} variant="outline" className="flex-1 hover:bg-gray-50 hover:border-gray-300 hover:shadow-md transition-all duration-300">
                 <RotateCcw className="mr-2 h-4 w-4" />
                 Jogar Novamente
               </Button>
-              <Button onClick={() => window.history.back()} className="flex-1">
+              <Button onClick={() => window.history.back()} className="flex-1 hover:shadow-lg transition-all duration-300">
                 Voltar aos Jogos
               </Button>
             </div>
           </CardContent>
         </Card>
-
-        <CertificateModal
-          isOpen={isCertificateModalOpen}
-          onClose={() => setIsCertificateModalOpen(false)}
-          fullName={fullName}
-          score={score}
-          totalQuestions={shuffledQuestions.length}
-          linkedinProfile={linkedinProfile}
-        />
       </div>
     );
   }
@@ -443,13 +424,13 @@ const CTFLQuizGame = () => {
           )}
 
           {showExplanation && gameMode === 'aprendizado' && (
-            <Button onClick={handleNextQuestion} className="w-full" size="lg">
+            <Button onClick={handleNextQuestion} className="w-full" size="lg" hover:shadow-lg transition-all duration-300>
               {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
             </Button>
           )}
 
           {gameMode === 'simulado' && (
-            <Button onClick={handleNextQuestion} className="w-full" size="lg" disabled={selectedAnswerIndex === null && gameMode === 'simulado'}>
+            <Button onClick={handleNextQuestion} className="w-full" size="lg" disabled={selectedAnswerIndex === null && gameMode === 'simulado'} hover:shadow-lg transition-all duration-300>
               {currentQuestionIndex < shuffledQuestions.length - 1 ? 'Próxima Pergunta' : 'Finalizar'}
             </Button>
           )}
@@ -464,7 +445,7 @@ const CTFLQuizGame = () => {
               O tempo para o simulado acabou. Vamos ver seus resultados!
             </DialogDescription>
           </DialogHeader>
-          <Button onClick={handleNextQuestion} className="w-full mt-4">Ver Resultado</Button>
+          <Button onClick={handleNextQuestion} className="w-full mt-4 hover:shadow-lg transition-all duration-300">Ver Resultado</Button>
         </DialogContent>
       </Dialog>
 

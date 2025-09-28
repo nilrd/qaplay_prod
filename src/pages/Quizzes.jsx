@@ -120,13 +120,13 @@ const Quizzes = () => {
                   Cada desafio foi cuidadosamente elaborado para proporcionar uma experiência de aprendizado única.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                  <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white hover:shadow-xl transition-all duration-300">
                     <Link to="/sobre">
                       <BookOpen className="mr-2 h-5 w-5" />
                       Conheça o Criador
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="lg" className="hover:bg-gray-50 hover:border-gray-300 hover:shadow-md transition-all duration-300">
                     <Link to="/blog">
                       <BookOpen className="mr-2 h-5 w-5" />
                       Leia o Blog

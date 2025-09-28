@@ -240,24 +240,18 @@ const AutomationMasterGame = () => {
                         return
                       }
 
-                      // Criar dados do certificado
-                      const certificateId = `cert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
-                      const certificateData = {
-                        id: certificateId,
-                        userName: userInfo?.name || 'Usuário',
-                        quizName: 'Mestre da Automação',
-                        score: score,
-                        correctAnswers: answers.filter(answer => answer.isCorrect).length,
-                        totalQuestions: totalQuestions,
-                        completionDate: new Date().toLocaleDateString('pt-BR'),
-                        linkedinUrl: userInfo?.linkedinUrl || ''
-                      }
-
-                      // Salvar no localStorage
-                      localStorage.setItem(`certificate_${certificateId}`, JSON.stringify(certificateData))
+                      // Construir URL com parâmetros
+                      const params = new URLSearchParams({
+                        quiz: 'Mestre da Automação',
+                        nome: userInfo?.name || 'Usuário',
+                        score: answers.filter(answer => answer.isCorrect).length.toString(),
+                        total: totalQuestions.toString(),
+                        data: new Date().toISOString(),
+                        linkedin: userInfo?.linkedinUrl || ''
+                      });
                       
-                      // Redirecionar para a página do certificado
-                      navigate(`/certificado/${certificateId}`)
+                      // Navegar para a página do certificado
+                      navigate(`/certificado?${params.toString()}`);
                     }}
                     className={`w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-primary-foreground ${
                       Math.round((answers.filter(answer => answer.isCorrect).length / totalQuestions) * 100) < 70 ? 'opacity-50 cursor-not-allowed' : ''

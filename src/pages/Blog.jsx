@@ -46,15 +46,15 @@ const Blog = () => {
           readTime: '4 min'
         },
         {
-          slug: 'cursos-gratuitos-ti-2025',
-          title: '5 Cursos Gratuitos para Turbinar sua Carreira em TI em 2025',
-          date: '2025-01-05',
+          slug: 'desvendando-tecnicas-teste-guia-pratico',
+          title: 'Desvendando as Técnicas de Teste: Guia Prático para QAs na Era Ágil',
+          date: '2025-01-28',
           author: 'Nilson Brites',
-          thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop&crop=center',
-          preview: 'Manter-se atualizado é a chave para o sucesso em qualquer área de TI, e o melhor de tudo é que não é preciso gastar uma fortuna para isso.',
-          excerpt: 'Descubra 5 plataformas com cursos gratuitos que podem fazer a diferença no seu currículo e acelerar sua carreira em TI.',
-          category: 'Dicas de Cursos',
-          readTime: '6 min'
+          thumbnail: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&crop=center',
+          preview: 'Em um cenário de desenvolvimento cada vez mais ágil, conhecer e aplicar as técnicas de teste corretas é o diferencial para qualquer QA. Este guia prático explora as metodologias essenciais para garantir a qualidade do software.',
+          excerpt: 'Domine as técnicas de teste essenciais: caixa preta, caixa branca, exploratório e performance. Aprenda como integrá-las ao seu fluxo de trabalho ágil e se tornar um QA estratégico.',
+          category: 'Técnicas de Teste',
+          readTime: '8 min'
         },
         {
           slug: 'testes-api-ferramentas-essenciais',

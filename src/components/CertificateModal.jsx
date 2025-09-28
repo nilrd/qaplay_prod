@@ -18,6 +18,11 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
           backgroundColor: '#ffffff',
           scale: 2,
           useCORS: true,
+          allowTaint: true,
+          foreignObjectRendering: false,
+          logging: false,
+          width: certificateRef.current.offsetWidth,
+          height: certificateRef.current.offsetHeight
         });
         
         const link = document.createElement('a');
@@ -43,10 +48,10 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
 
 
   const getBadgeColor = () => {
-    if (percentage >= 90) return 'bg-yellow-500';
-    if (percentage >= 70) return 'bg-blue-500';
-    if (percentage >= 50) return 'bg-green-500';
-    return 'bg-gray-500';
+    if (percentage >= 90) return '#eab308'; // yellow-500
+    if (percentage >= 70) return '#3b82f6'; // blue-500
+    if (percentage >= 50) return '#22c55e'; // green-500
+    return '#6b7280'; // gray-500
   };
 
   const getBadgeLevel = () => {
@@ -67,28 +72,35 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
           {/* Certificado */}
           <div 
             ref={certificateRef}
-            className="bg-gradient-to-br from-blue-50 to-purple-50 p-4 sm:p-6 rounded-lg border-2 border-blue-200 text-center"
-            style={{ minHeight: '400px' }}
+            className="p-4 sm:p-6 rounded-lg border-2 text-center"
+            style={{ 
+              minHeight: '400px',
+              background: 'linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%)',
+              borderColor: '#bfdbfe'
+            }}
           >
             <div className="space-y-4">
               {/* Header */}
               <div className="space-y-2">
                 <div className="flex justify-center">
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 ${getBadgeColor()} rounded-full flex items-center justify-center`}>
+                  <div 
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: getBadgeColor() }}
+                  >
                     <Award className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                   </div>
                 </div>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Certificado de Conclusão</h1>
-                <p className="text-sm sm:text-base text-gray-600">QAPlay - Quiz de Quality Assurance</p>
-                <p className="text-xs sm:text-sm text-blue-600 font-semibold">Baseado no Syllabus ISTQB® CTFL 4.0</p>
-                <p className="text-xs text-gray-500">International Software Testing Qualifications Board</p>
+                <h1 className="text-xl sm:text-2xl font-bold" style={{ color: '#1f2937' }}>Certificado de Conclusão</h1>
+                <p className="text-sm sm:text-base" style={{ color: '#4b5563' }}>QAPlay - Quiz de Quality Assurance</p>
+                <p className="text-xs sm:text-sm font-semibold" style={{ color: '#2563eb' }}>Baseado no Syllabus ISTQB® CTFL 4.0</p>
+                <p className="text-xs" style={{ color: '#6b7280' }}>International Software Testing Qualifications Board</p>
               </div>
 
               {/* Conteúdo Principal */}
               <div className="space-y-3">
-                <p className="text-sm sm:text-base text-gray-700">Certificamos que</p>
-                <h2 className="text-2xl sm:text-3xl font-bold text-blue-600 break-words">{fullName}</h2>
-                <p className="text-sm sm:text-base text-gray-700">
+                <p className="text-sm sm:text-base" style={{ color: '#374151' }}>Certificamos que</p>
+                <h2 className="text-2xl sm:text-3xl font-bold break-words" style={{ color: '#2563eb' }}>{fullName}</h2>
+                <p className="text-sm sm:text-base" style={{ color: '#374151' }}>
                   completou com sucesso o Quiz de Quality Assurance
                 </p>
               </div>
@@ -97,24 +109,27 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
               <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border">
                 <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
                   <div>
-                    <div className="text-lg sm:text-xl font-bold text-blue-600">{score}</div>
-                    <div className="text-xs text-gray-600">Pontuação</div>
+                    <div className="text-lg sm:text-xl font-bold" style={{ color: '#2563eb' }}>{score}</div>
+                    <div className="text-xs" style={{ color: '#4b5563' }}>Pontuação</div>
                   </div>
                   <div>
-                    <div className="text-lg sm:text-xl font-bold text-green-600">{percentage}%</div>
-                    <div className="text-xs text-gray-600">Acertos</div>
+                    <div className="text-lg sm:text-xl font-bold" style={{ color: '#16a34a' }}>{percentage}%</div>
+                    <div className="text-xs" style={{ color: '#4b5563' }}>Acertos</div>
                   </div>
                   <div>
-                    <Badge className={`${getBadgeColor()} text-white text-xs`}>
+                    <Badge 
+                      className="text-white text-xs"
+                      style={{ backgroundColor: getBadgeColor() }}
+                    >
                       {getBadgeLevel()}
                     </Badge>
-                    <div className="text-xs text-gray-600 mt-1">Nível</div>
+                    <div className="text-xs" style={{ color: '#4b5563' }}>Nível</div>
                   </div>
                 </div>
               </div>
 
               {/* Footer */}
-              <div className="space-y-1 text-xs text-gray-600">
+              <div className="space-y-1 text-xs" style={{ color: '#4b5563' }}>
                 <p>Data de conclusão: {currentDate}</p>
                 <p>QAPlay - Plataforma de Treinamento em Quality Assurance</p>
                 <p className="text-xs">Certificado gerado automaticamente pelo sistema QAPlay</p>
@@ -123,26 +138,29 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
           </div>
 
           {/* Badge Digital */}
-          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg text-center">
+          <div className="p-3 sm:p-4 rounded-lg text-center" style={{ backgroundColor: '#f9fafb' }}>
             <h3 className="text-sm sm:text-base font-semibold mb-3">Seu Badge Digital</h3>
             <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-white p-3 rounded-lg shadow-sm border">
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 ${getBadgeColor()} rounded-full flex items-center justify-center`}>
+              <div 
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: getBadgeColor() }}
+              >
                 <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
               <div className="text-left">
                 <div className="font-semibold text-sm">QA Quiz - {getBadgeLevel()}</div>
-                <div className="text-xs text-gray-600">{percentage}% de acertos</div>
+                <div className="text-xs" style={{ color: '#4b5563' }}>{percentage}% de acertos</div>
               </div>
             </div>
           </div>
 
           {/* Informações do LinkedIn */}
           {linkedinProfile && (
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <p className="text-xs text-blue-800">
+            <div className="p-3 rounded-lg" style={{ backgroundColor: '#eff6ff' }}>
+              <p className="text-xs" style={{ color: '#1e40af' }}>
                 <strong>Perfil LinkedIn:</strong> {linkedinProfile}
               </p>
-              <p className="text-xs text-blue-600 mt-1">
+              <p className="text-xs mt-1" style={{ color: '#2563eb' }}>
                 Adicione este certificado ao seu perfil para destacar suas habilidades em QA!
               </p>
             </div>
@@ -152,11 +170,11 @@ const CertificateModal = ({ isOpen, onClose, fullName = '', score = 0, totalQues
         {/* Rodapé fixo com botões de ação */}
         <div className="flex-shrink-0 p-6 pt-4 border-t border-border modal-footer">
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-            <Button onClick={downloadCertificate} className="flex-1 text-sm">
+            <Button onClick={downloadCertificate} className="flex-1 text-sm hover:shadow-lg transition-all duration-300">
               <Download className="mr-2 h-4 w-4" />
               Baixar Certificado
             </Button>
-            <Button onClick={shareOnLinkedIn} variant="outline" className="flex-1 text-sm">
+            <Button onClick={shareOnLinkedIn} variant="outline" className="flex-1 text-sm hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition-all duration-300">
               <Share2 className="mr-2 h-4 w-4" />
               Compartilhar no LinkedIn
             </Button>

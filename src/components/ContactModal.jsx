@@ -113,7 +113,7 @@ const ContactModal = ({ isOpen, onClose }) => {
             </div>
 
             <div className="flex justify-center pt-4">
-              <Button variant="outline" onClick={onClose} className="px-8">
+              <Button variant="outline" onClick={onClose} className="px-8 hover:bg-gray-50 hover:border-gray-300 hover:shadow-md transition-all duration-300">
                 Fechar
               </Button>
             </div>

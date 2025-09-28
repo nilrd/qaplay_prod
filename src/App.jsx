@@ -50,7 +50,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPostPage />} />
             <Route path="/sobre" element={<About />} />
-            <Route path="/certificado/:id" element={<CertificatePage />} />
+            <Route path="certificado" element={<CertificatePage />} />
           </Route>
         </Routes>
       </Router>
