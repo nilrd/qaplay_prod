@@ -249,27 +249,36 @@ const CertificatePage = () => {
       
       // Nível
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 32px Arial';
+      ctx.font = 'bold 28px Arial';
       const levelText = getBadgeLevel();
       const levelWidth = ctx.measureText(levelText).width;
       const levelX = boxX + 800;
       const levelY = boxY + 80;
       
-      // Fundo do nível
+      // Fundo do nível - ajustar largura para acomodar texto
+      const badgePadding = 30;
+      const badgeWidth = Math.max(levelWidth + (badgePadding * 2), 120);
+      const badgeHeight = 60;
+      
       ctx.fillStyle = getBadgeColor();
-      ctx.fillRect(levelX - 20, levelY - 40, levelWidth + 40, 80);
+      ctx.fillRect(levelX - (badgeWidth / 2), levelY - (badgeHeight / 2), badgeWidth, badgeHeight);
       
       // Texto do nível
       ctx.fillStyle = '#ffffff';
-      ctx.fillText(levelText, levelX, levelY);
+      ctx.textAlign = 'center';
+      ctx.fillText(levelText, levelX, levelY + 8);
       
       // Labels
       ctx.fillStyle = '#64748b';
       ctx.font = '28px Arial';
+      ctx.textAlign = 'center';
       ctx.fillText('Acertos', boxX + 200, boxY + 160);
       ctx.fillText('Total de Questões', boxX + 400, boxY + 160);
       ctx.fillText('Taxa de Acerto', boxX + 600, boxY + 160);
-      ctx.fillText('Nível', boxX + 800, boxY + 160);
+      ctx.fillText('Nível', levelX, boxY + 160);
+      
+      // Restaurar alinhamento para o resto do código
+      ctx.textAlign = 'center';
       
       // Data de conclusão
       ctx.fillStyle = '#64748b';
