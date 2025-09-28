@@ -42,6 +42,13 @@ const CertificatePage = () => {
       return;
     }
 
+    // Validar se score não excede o total (caso de dados corrompidos)
+    if (scoreNum > totalNum) {
+      setError('Dados do certificado inconsistentes. Score maior que total de questões.');
+      setLoading(false);
+      return;
+    }
+
     // Calcular porcentagem
     const percentage = Math.round((scoreNum / totalNum) * 100);
 
@@ -112,6 +119,13 @@ const CertificatePage = () => {
       return;
     }
 
+    // Validar dados essenciais
+    if (!certificateData.nome || !certificateData.quiz || 
+        certificateData.score === undefined || certificateData.totalQuestions === undefined) {
+      alert('Erro: Dados do certificado incompletos.');
+      return;
+    }
+
     try {
       // Mostrar indicador de carregamento
       const button = document.querySelector('[data-testid="download-button"]');
@@ -164,17 +178,31 @@ const CertificatePage = () => {
       // Nome do usuário
       ctx.fillStyle = '#1e40af';
       ctx.font = 'bold 56px Arial';
-      ctx.fillText(certificateData.nome, canvas.width / 2, 380);
+      
+      // Truncar nome se muito longo
+      let userName = certificateData.nome;
+      if (userName.length > 25) {
+        userName = userName.substring(0, 22) + '...';
+      }
+      
+      ctx.fillText(userName, canvas.width / 2, 380);
       
       // Descrição da conclusão
       ctx.fillStyle = '#64748b';
       ctx.font = '32px Arial';
-      ctx.fillText('concluiu o Desafio QA: Fundamentos CTFL 4.0', canvas.width / 2, 420);
+      
+      // Truncar nome do quiz se muito longo
+      let quizDisplayName = certificateData.quiz;
+      if (quizDisplayName.length > 50) {
+        quizDisplayName = quizDisplayName.substring(0, 47) + '...';
+      }
+      
+      ctx.fillText(`concluiu o ${quizDisplayName}`, canvas.width / 2, 420);
       
       // Caixa de resultados
-      const boxX = canvas.width / 2 - 400;
+      const boxX = canvas.width / 2 - 500;
       const boxY = 480;
-      const boxWidth = 800;
+      const boxWidth = 1000;
       const boxHeight = 200;
       
       // Fundo da caixa
@@ -186,21 +214,45 @@ const CertificatePage = () => {
       ctx.lineWidth = 4;
       ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
       
-      // Pontuação
+      // Acertos
       ctx.fillStyle = '#1e40af';
       ctx.font = 'bold 96px Arial';
-      ctx.fillText(certificateData.score.toString(), boxX + 200, boxY + 120);
+      
+      // Ajustar tamanho da fonte se número muito grande
+      let scoreText = certificateData.score.toString();
+      if (scoreText.length > 3) {
+        ctx.font = 'bold 72px Arial';
+      }
+      ctx.fillText(scoreText, boxX + 200, boxY + 120);
+      
+      // Total de questões
+      ctx.fillStyle = '#64748b';
+      ctx.font = 'bold 96px Arial';
+      
+      // Ajustar tamanho da fonte se número muito grande
+      let totalText = certificateData.totalQuestions.toString();
+      if (totalText.length > 3) {
+        ctx.font = 'bold 72px Arial';
+      }
+      ctx.fillText(totalText, boxX + 400, boxY + 120);
       
       // Porcentagem
       ctx.fillStyle = '#16a34a';
-      ctx.fillText(certificateData.percentage + '%', boxX + 400, boxY + 120);
+      ctx.font = 'bold 96px Arial';
+      
+      // Ajustar tamanho da fonte se porcentagem muito grande
+      let percentageText = certificateData.percentage + '%';
+      if (percentageText.length > 4) {
+        ctx.font = 'bold 72px Arial';
+      }
+      ctx.fillText(percentageText, boxX + 600, boxY + 120);
       
       // Nível
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 32px Arial';
       const levelText = getBadgeLevel();
       const levelWidth = ctx.measureText(levelText).width;
-      const levelX = boxX + 600;
+      const levelX = boxX + 800;
       const levelY = boxY + 80;
       
       // Fundo do nível
@@ -214,9 +266,10 @@ const CertificatePage = () => {
       // Labels
       ctx.fillStyle = '#64748b';
       ctx.font = '28px Arial';
-      ctx.fillText('Pontuação', boxX + 200, boxY + 160);
-      ctx.fillText('Acertos', boxX + 400, boxY + 160);
-      ctx.fillText('Nível', boxX + 600, boxY + 160);
+      ctx.fillText('Acertos', boxX + 200, boxY + 160);
+      ctx.fillText('Total de Questões', boxX + 400, boxY + 160);
+      ctx.fillText('Taxa de Acerto', boxX + 600, boxY + 160);
+      ctx.fillText('Nível', boxX + 800, boxY + 160);
       
       // Data de conclusão
       ctx.fillStyle = '#64748b';
@@ -233,7 +286,14 @@ const CertificatePage = () => {
       
       // Download da imagem
       const link = document.createElement('a');
-      link.download = `relatorio-desempenho-qaplay-${certificateData.nome.replace(/\s+/g, '-').toLowerCase()}.png`;
+      
+      // Sanitizar nome do arquivo
+      const sanitizedName = certificateData.nome
+        .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove caracteres especiais
+        .replace(/\s+/g, '-') // Substitui espaços por hífens
+        .toLowerCase();
+      
+      link.download = `relatorio-desempenho-qaplay-${sanitizedName}.png`;
       link.href = canvas.toDataURL('image/png', 1.0);
       link.click();
       
@@ -311,7 +371,7 @@ const CertificatePage = () => {
               </Button>
               <Button variant="outline" asChild style={{ width: '100%' }}>
                 <Link to="/">Ir para Home</Link>
-              </Button>
+            </Button>
             </div>
           </div>
         </div>
@@ -349,7 +409,7 @@ const CertificatePage = () => {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px', paddingTop: '32px', paddingBottom: '32px' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
-          {/* Certificado */}
+        {/* Certificado */}
           <div style={{ marginBottom: '32px' }}>
             <div style={{ padding: '0' }}>
               <div 
@@ -368,7 +428,7 @@ const CertificatePage = () => {
                   boxSizing: 'border-box'
                 }}
               >
-                {/* Header */}
+          {/* Header */}
                 <div style={{ marginBottom: '30px' }}>
                   <div style={{ 
                     fontSize: '36px', 
@@ -384,23 +444,23 @@ const CertificatePage = () => {
                     marginBottom: '5px'
                   }}>
                     QAPlay - Quality Assurance
-                  </div>
+              </div>
                   <div style={{ 
                     fontSize: '14px', 
                     color: '#94a3b8'
                   }}>
                     Baseado no Syllabus ISTQB® CTFL 4.0
-                  </div>
-                </div>
+            </div>
+          </div>
 
-                {/* Conteúdo Principal */}
+          {/* Conteúdo Principal */}
                 <div style={{ marginBottom: '30px' }}>
                   <div style={{ 
                     fontSize: '18px', 
                     color: '#374151',
                     marginBottom: '20px'
                   }}>
-                    Certificamos que
+              Certificamos que
                   </div>
                   <div style={{ 
                     fontSize: '28px', 
@@ -414,9 +474,9 @@ const CertificatePage = () => {
                     fontSize: '16px', 
                     color: '#64748b'
                   }}>
-                    concluiu o Desafio QA: Fundamentos CTFL 4.0
+                    concluiu o {certificateData.quiz}
                   </div>
-                </div>
+          </div>
 
                 {/* Resultados */}
                 <div style={{ 
@@ -425,8 +485,9 @@ const CertificatePage = () => {
                   borderRadius: '8px',
                   padding: '30px',
                   marginBottom: '30px',
-                  display: 'flex',
-                  justifyContent: 'space-around',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  gap: '20px',
                   alignItems: 'center'
                 }}>
                   <div style={{ textAlign: 'center' }}>
@@ -441,7 +502,22 @@ const CertificatePage = () => {
                       fontSize: '14px', 
                       color: '#64748b'
                     }}>
-                      Pontuação
+                      Acertos
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      fontSize: '48px', 
+                      fontWeight: 'bold', 
+                      color: '#64748b'
+                    }}>
+                      {certificateData.totalQuestions}
+                    </div>
+                    <div style={{ 
+                      fontSize: '14px', 
+                      color: '#64748b'
+                    }}>
+                      Total de Questões
                     </div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
@@ -451,14 +527,14 @@ const CertificatePage = () => {
                       color: '#16a34a'
                     }}>
                       {certificateData.percentage}%
-                    </div>
+              </div>
                     <div style={{ 
                       fontSize: '14px', 
                       color: '#64748b'
                     }}>
-                      Acertos
-                    </div>
-                  </div>
+                      Taxa de Acerto
+            </div>
+              </div>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ 
                       backgroundColor: getBadgeColor(),
@@ -470,15 +546,15 @@ const CertificatePage = () => {
                       marginBottom: '8px'
                     }}>
                       {getBadgeLevel()}
-                    </div>
+            </div>
                     <div style={{ 
                       fontSize: '14px', 
                       color: '#64748b'
                     }}>
                       Nível
-                    </div>
-                  </div>
-                </div>
+              </div>
+            </div>
+          </div>
 
                 {/* Footer */}
                 <div style={{ 
@@ -542,10 +618,10 @@ const CertificatePage = () => {
                   </div>
                 </div>
               </div>
-            </div>
           </div>
+        </div>
 
-          {/* Ações */}
+        {/* Ações */}
           <div>
             <div style={{ padding: '24px' }}>
               <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px', textAlign: 'center' }}>
@@ -554,8 +630,8 @@ const CertificatePage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '512px', margin: '0 auto' }}>
                 <Button onClick={downloadCertificate} data-testid="download-button" style={{ flex: '1', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
                   <Download style={{ marginRight: '8px', height: '16px', width: '16px' }} />
-                  Baixar como Imagem
-                </Button>
+            Baixar como Imagem
+          </Button>
                 <Button onClick={copyShareLink} variant="outline" style={{ 
                   flex: '1',
                   backgroundColor: 'rgba(59, 130, 246, 0.05)',
@@ -565,7 +641,7 @@ const CertificatePage = () => {
                 }}>
                   <Share2 style={{ marginRight: '8px', height: '16px', width: '16px' }} />
                   Copiar Link para Compartilhar
-                </Button>
+          </Button>
               </div>
               <p style={{ fontSize: '14px', textAlign: 'center', marginTop: '16px', color: '#6b7280' }}>
                 Compartilhe este link no LinkedIn, WhatsApp ou outras redes sociais
