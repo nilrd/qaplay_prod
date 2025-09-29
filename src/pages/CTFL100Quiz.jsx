@@ -19,7 +19,7 @@ const CTFL100Quiz = () => {
   const [gameFinished, setGameFinished] = useState(false)
   const [gameStarted, setGameStarted] = useState(false)
   const [totalQuestions, setTotalQuestions] = useState(20)
-  const [totalTime, setTotalTime] = useState(calculateQuizTime(20)) // 20 minutos em segundos
+  const [totalTime, setTotalTime] = useState(calculateQuizTime(20))
   const [userInfo, setUserInfo] = useState(null)
 
   // Função para embaralhar array
@@ -48,9 +48,14 @@ const CTFL100Quiz = () => {
 
   // Função para iniciar o quiz com configurações
   const handleQuizStart = (questionCount, timeInSeconds) => {
-    console.log('Iniciando quiz com:', questionCount, 'questões e', timeInSeconds, 'segundos')
     setTotalQuestions(questionCount)
     setTotalTime(timeInSeconds)
+    
+    // Usar questões diretamente sem limitedQuestions
+    const shuffledQuestions = shuffleArray(quizData.questions)
+    const limitedQuestionsArray = shuffledQuestions.slice(0, questionCount)
+    setQuestions(limitedQuestionsArray)
+    
     resetTimer(timeInSeconds)
     setGameStarted(true)
     setCurrentQuestion(0)
@@ -60,17 +65,9 @@ const CTFL100Quiz = () => {
     setGameFinished(false)
   }
 
-  // Detectar mudança de aba/minimização (opcional - pode ser implementado no hook se necessário)
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden && gameStarted && !gameFinished) {
-        // O hook já gerencia o temporizador automaticamente
-      }
-    }
-
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [gameStarted, gameFinished])
+  const handleUserInfoSubmit = (info) => {
+    setUserInfo(info)
+  }
 
   const handleAnswerSelect = (index) => {
     if (!showResult) {
@@ -95,7 +92,6 @@ const CTFL100Quiz = () => {
     setShowResult(true)
   }
 
-  // Função para continuar para próxima questão
   const handleContinue = () => {
     if (currentQuestion === totalQuestions - 1) {
       setGameFinished(true)
@@ -106,37 +102,11 @@ const CTFL100Quiz = () => {
     }
   }
 
-  // Função para reiniciar o jogo
-  const restartGame = () => {
-    setCurrentQuestion(0)
-    setSelectedAnswer(null)
-    setAnswers([])
-    setShowResult(false)
-    setGameFinished(false)
-    resetTimer(totalTime)
-    setGameStarted(false)
-    setUserInfo(null)
-    // Embaralhar perguntas novamente
-    const shuffledQuestions = shuffleArray(questions)
-    setQuestions(shuffledQuestions)
-  }
-
-  const handleUserInfoSubmit = (info) => {
-    setUserInfo(info)
-    setGameStarted(true)
-  }
-
-  const handleGameFinish = () => {
-    setGameFinished(true)
-  }
-
-  // Função para calcular pontuação
   const calculateScore = () => {
     const correctAnswers = answers.filter(answer => answer.isCorrect).length
     return Math.round((correctAnswers / totalQuestions) * 100)
   }
 
-  // Função para formatar tempo (usando utilitário padronizado)
   const formatTime = formatQuizTime
 
   if (!gameStarted) {
@@ -146,10 +116,8 @@ const CTFL100Quiz = () => {
         onQuizStart={handleQuizStart}
         onUserInfoSubmit={handleUserInfoSubmit}
         onShowCertificate={() => {}}
-        score={calculateScore()}
-        onShareLinkedIn={(url) => window.open(url, '_blank')}
       >
-        <div className="text-center">Preparando o quiz...</div>
+        <div></div>
       </QuizFlowWrapper>
     )
   }
@@ -169,83 +137,61 @@ const CTFL100Quiz = () => {
       >
         <div className="min-h-screen bg-background p-2 sm:p-4">
           <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-            {/* Header */}
             <div className="bg-card border rounded-lg p-4 shadow-sm">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div className="space-y-3 w-full sm:w-auto">
-                  <div className="flex items-center space-x-3">
-                    <Trophy className="w-8 h-8 text-yellow-500" />
-                    <div>
-                      <h1 className="text-2xl font-bold text-foreground">Quiz Finalizado!</h1>
-                      <p className="text-muted-foreground">Desafio: Mestre da Qualidade</p>
-                    </div>
-                  </div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Quiz Concluído!</h1>
+                  <p className="text-muted-foreground">Parabéns por completar o desafio!</p>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => navigate('/quizzes')}
-                    className="text-muted-foreground hover:text-foreground"
-                    title="Voltar aos Quizzes"
-                  >
-                    <X className="w-5 h-5" />
-                  </Button>
-                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => navigate('/quizzes')}
+                  className="text-muted-foreground hover:text-foreground"
+                  title="Voltar aos Quizzes"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Voltar aos Quizzes
+                </Button>
               </div>
             </div>
 
-            {/* Resultado */}
             <Card className="w-full overflow-hidden">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto w-24 h-24 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mb-4">
-                  <Trophy className="w-12 h-12 text-primary-foreground" />
+                  <Trophy className="w-12 h-12 text-white" />
                 </div>
-                <CardTitle className="text-3xl font-bold text-foreground">
-                  Parabéns!
-                </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground">
-                  Você completou o quiz Desafio: Mestre da Qualidade
+                <CardTitle className="text-2xl sm:text-3xl">Excelente Trabalho!</CardTitle>
+                <CardDescription className="text-lg">
+                  Você completou o quiz com {correctAnswers} de {totalQuestions} acertos
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                  <div className="space-y-2">
-                    <div className="text-3xl font-bold text-primary">{score}%</div>
-                    <div className="text-sm text-muted-foreground">Pontuação Final</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="text-3xl font-bold text-green-600">{correctAnswers}</div>
-                    <div className="text-sm text-muted-foreground">Respostas Corretas</div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="text-3xl font-bold text-blue-600">{totalQuestions}</div>
-                    <div className="text-sm text-muted-foreground">Total de Questões</div>
-                  </div>
+                <div className="text-center">
+                  <div className="text-4xl sm:text-5xl font-bold text-primary mb-2">{score}%</div>
+                  <div className="text-lg text-muted-foreground">Taxa de Acerto</div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="flex justify-center">
                   <Button
                     onClick={() => {
                       const score = Math.round((answers.filter(answer => answer.isCorrect).length / totalQuestions) * 100)
                       
-                      // Verificar se atingiu a pontuação mínima (70%)
                       if (score < 70) {
                         alert('Você precisa atingir pelo menos 70% de acertos para gerar um certificado.')
                         return
                       }
 
-                      // Construir URL com parâmetros
                       const params = new URLSearchParams({
                         quiz: 'Mestre da Qualidade',
                         nome: userInfo?.name || 'Usuário',
                         score: answers.filter(answer => answer.isCorrect).length.toString(),
-                        total: totalQuestions.toString(),
+                        totalQuestions: totalQuestions.toString(),
+                        percentage: score.toString(),
                         data: new Date().toISOString(),
-                        linkedin: userInfo?.linkedinUrl || ''
-                      });
+                        level: score >= 90 ? 'Avançado' : score >= 70 ? 'Intermediário' : 'Precisa Estudar'
+                      })
                       
-                      // Navegar para a página do certificado
                       navigate(`/certificado?${params.toString()}`);
                     }}
                     className={`w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-primary-foreground ${
@@ -257,27 +203,6 @@ const CTFL100Quiz = () => {
                     <Trophy className="mr-2 h-5 w-5" />
                     Gerar Certificado
                   </Button>
-                  
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Button
-                      onClick={restartGame}
-                      variant="outline"
-                      className="flex-1"
-                      size="lg"
-                    >
-                      <RotateCcw className="mr-2 h-5 w-5" />
-                      Reiniciar Quiz
-                    </Button>
-                    <Button
-                      onClick={() => navigate('/quizzes')}
-                      variant="outline"
-                      className="flex-1"
-                      size="lg"
-                    >
-                      <Home className="mr-2 h-5 w-5" />
-                      Voltar aos Quizzes
-                    </Button>
-                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -290,6 +215,23 @@ const CTFL100Quiz = () => {
   const question = questions[currentQuestion]
   const progress = ((currentQuestion + 1) / totalQuestions) * 100
 
+  if (!question) {
+    return (
+      <QuizFlowWrapper
+        quizTitle="Mestre da Qualidade"
+        onQuizStart={handleQuizStart}
+        onUserInfoSubmit={handleUserInfoSubmit}
+        onShowCertificate={() => {}}
+      >
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-muted-foreground">Carregando questão...</p>
+          </div>
+        </div>
+      </QuizFlowWrapper>
+    )
+  }
+
   return (
     <QuizFlowWrapper
       quizTitle="Desafio: Mestre da Qualidade"
@@ -301,7 +243,6 @@ const CTFL100Quiz = () => {
     >
       <div className="min-h-screen bg-background p-2 sm:p-4">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-          {/* Header com progresso e timer */}
           <div className="bg-card border rounded-lg p-4 shadow-sm">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="space-y-3 w-full sm:w-auto">
@@ -314,119 +255,106 @@ const CTFL100Quiz = () => {
                       {Math.round(progress)}% Concluído
                     </Badge>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="flex items-center space-x-2 text-lg font-mono">
-                      <Clock className="w-5 h-5" />
-                      <span className={getTimeLeftClasses(timeLeft)}>
-                        {formatTime(timeLeft)}
-                      </span>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => navigate('/quizzes')}
-                      className="text-muted-foreground hover:text-foreground"
-                      title="Sair do Quiz"
-                    >
-                      <X className="w-5 h-5" />
-                    </Button>
+                  <div className="flex items-center space-x-2 text-lg font-mono">
+                    <Clock className="w-5 h-5" />
+                    <span className={getTimeLeftClasses(timeLeft)}>
+                      {formatTime(timeLeft)}
+                    </span>
                   </div>
                 </div>
-                <Progress value={progress} className="w-full h-2" />
+                <Progress value={progress} className="w-full" />
               </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/quizzes')}
+                className="text-muted-foreground hover:text-foreground"
+                title="Voltar aos Quizzes"
+              >
+                <X className="w-4 h-4 mr-2" />
+                Sair
+              </Button>
             </div>
           </div>
 
-          {/* Questão */}
           <Card className="w-full overflow-hidden">
             <CardHeader className="pb-4">
-              <CardTitle className="text-lg sm:text-xl leading-relaxed break-words overflow-wrap-anywhere">
+              <CardTitle className="text-lg sm:text-xl leading-relaxed">
                 {question.question}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 px-4 sm:px-6">
-              <div className="grid gap-3">
-                {question.options.map((option, index) => {
-                  const isSelected = selectedAnswer === index
-                  const isCorrect = showResult && option === question.correctAnswer
-                  const isIncorrect = showResult && index === selectedAnswer && option !== question.correctAnswer
-                  
-                  let cardClass = "w-full p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md "
-                  
-                  if (showResult) {
-                    if (isCorrect) {
-                      cardClass += "bg-green-50 border-green-300 text-green-900"
-                    } else if (isIncorrect) {
-                      cardClass += "bg-red-50 border-red-300 text-red-900"
-                    } else {
-                      cardClass += "opacity-50 bg-gray-50 border-gray-200"
-                    }
-                  } else if (isSelected) {
+            <CardContent className="space-y-3">
+              {question.options.map((option, index) => {
+                let cardClass = "p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 text-left w-full "
+                
+                if (showResult) {
+                  if (index === selectedAnswer) {
+                    cardClass += question.options[selectedAnswer] === question.correctAnswer
+                      ? "bg-green-100 border-green-500 text-green-800"
+                      : "bg-red-100 border-red-500 text-red-800"
+                  } else if (question.options[index] === question.correctAnswer) {
+                    cardClass += "bg-green-100 border-green-500 text-green-800"
+                  } else {
+                    cardClass += "bg-gray-100 border-gray-300 text-gray-600"
+                  }
+                } else {
+                  if (selectedAnswer === index) {
                     cardClass += "bg-blue-600 border-blue-600 text-primary-foreground shadow-lg ring-2 ring-blue-200 transform scale-[1.02]"
                   } else {
                     cardClass += "bg-card border-border text-card-foreground hover:border-blue-400 hover:bg-accent"
                   }
+                }
 
-                  return (
-                    <div key={index}>
-                      <div
-                        className={cardClass}
-                        onClick={() => !showResult && handleAnswerSelect(index)}
-                        role="button"
-                        tabIndex={showResult ? -1 : 0}
-                        onKeyDown={(e) => {
-                          if (!showResult && (e.key === 'Enter' || e.key === ' ')) {
-                            e.preventDefault()
-                            handleAnswerSelect(index)
-                          }
-                        }}
-                      >
-                        <div className="flex items-start space-x-4">
-                          {/* Marcador da Alternativa */}
-                          <div className="flex-shrink-0">
-                            {isSelected && !showResult ? (
-                              <div className="w-6 h-6 rounded-full bg-primary-foreground flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-                              </div>
-                            ) : (
-                              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-semibold ${
-                                isSelected && !showResult 
-                                  ? 'border-white' 
-                                  : showResult && isCorrect
-                                  ? 'border-green-600 bg-green-100 text-green-600'
-                                  : showResult && isIncorrect
-                                  ? 'border-red-600 bg-red-100 text-red-600'
-                                  : 'border-border text-card-foreground'
-                              }`}>
-                                {String.fromCharCode(65 + index)}
-                              </div>
-                            )}
-                          </div>
-                          
-                          {/* Texto da Alternativa */}
-                          <div className="flex-1 min-w-0">
-                            <span className={`text-sm sm:text-base leading-relaxed break-words overflow-wrap-anywhere whitespace-normal ${
-                              isSelected && !showResult ? 'font-semibold text-primary-foreground' : ''
-                            }`}>
-                              {option}
-                            </span>
-                          </div>
-                          
-                          {/* Ícone de Status */}
-                          <div className="flex-shrink-0">
-                            {showResult && isCorrect && (
-                              <CheckCircle className="w-5 h-5 text-green-600" />
-                            )}
-                            {showResult && isIncorrect && (
-                              <XCircle className="w-5 h-5 text-red-600" />
-                            )}
-                          </div>
+                return (
+                  <div key={index}>
+                    <div
+                      className={cardClass}
+                      onClick={() => !showResult && handleAnswerSelect(index)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          !showResult && handleAnswerSelect(index)
+                        }
+                      }}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-semibold ${
+                          showResult
+                            ? index === selectedAnswer
+                              ? question.options[selectedAnswer] === question.correctAnswer
+                                ? "bg-green-500 border-green-500 text-white"
+                                : "bg-red-500 border-red-500 text-white"
+                              : question.options[index] === question.correctAnswer
+                                ? "bg-green-500 border-green-500 text-white"
+                                : "bg-gray-300 border-gray-300 text-gray-600"
+                            : selectedAnswer === index
+                              ? "bg-blue-500 border-blue-500 text-white"
+                              : "bg-transparent border-gray-300 text-gray-600"
+                        }`}>
+                          {String.fromCharCode(65 + index)}
                         </div>
+                        <span className="flex-1">{option}</span>
+                        {showResult && (
+                          <div className="flex items-center space-x-2">
+                            {index === selectedAnswer && (
+                              question.options[selectedAnswer] === question.correctAnswer ? (
+                                <CheckCircle className="w-5 h-5 text-green-500" />
+                              ) : (
+                                <XCircle className="w-5 h-5 text-red-500" />
+                              )
+                            )}
+                            {question.options[index] === question.correctAnswer && index !== selectedAnswer && (
+                              <CheckCircle className="w-5 h-5 text-green-500" />
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
-                  )
-                })}
-              </div>
+                  </div>
+                )
+              })}
 
               {showResult && (
                 <div className="mt-4 sm:mt-6 space-y-4">
@@ -438,52 +366,52 @@ const CTFL100Quiz = () => {
                           ? 'bg-green-50 border-green-200' 
                           : 'bg-red-50 border-red-200'
                       }`}>
-                        <div className="flex items-center space-x-2 mb-3">
+                        <div className="flex items-start space-x-3">
                           {isCorrect ? (
-                            <CheckCircle className="w-5 h-5 text-green-600" />
+                            <CheckCircle className="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" />
                           ) : (
-                            <XCircle className="w-5 h-5 text-red-600" />
+                            <XCircle className="w-6 h-6 text-red-500 mt-0.5 flex-shrink-0" />
                           )}
-                          <h4 className={`font-semibold text-sm sm:text-base ${
-                            isCorrect ? 'text-green-800' : 'text-red-800'
-                          }`}>
-                            {isCorrect ? 'Você acertou!' : 'Você errou!'}
-                          </h4>
-                        </div>
-                        <div className="space-y-2">
-                          <h5 className={`font-medium text-sm ${
-                            isCorrect ? 'text-green-700' : 'text-red-700'
-                          }`}>
-                            Explicação:
-                          </h5>
-                          <p className={`text-xs sm:text-sm break-words overflow-wrap-anywhere leading-relaxed ${
-                            isCorrect ? 'text-green-600' : 'text-red-600'
-                          }`}>
-                            {isCorrect ? question.explanation : question.explanation.replace(/^Correto\.\s*/, '')}
-                          </p>
+                          <div className="flex-1">
+                            <h4 className={`font-semibold text-lg ${
+                              isCorrect ? 'text-green-800' : 'text-red-800'
+                            }`}>
+                              {isCorrect ? 'Correto!' : 'Incorreto'}
+                            </h4>
+                            <p className={`text-sm mt-1 ${
+                              isCorrect ? 'text-green-700' : 'text-red-700'
+                            }`}>
+                              {isCorrect 
+                                ? 'Parabéns! Você acertou esta questão.' 
+                                : `A resposta correta é: ${question.correctAnswer}`
+                              }
+                            </p>
+                          </div>
                         </div>
                       </div>
                     )
                   })()}
-                  <Button 
-                    onClick={handleContinue} 
-                    className="w-full sm:w-auto sm:min-w-[200px]"
-                    size="lg"
-                  >
-                    {currentQuestion === totalQuestions - 1 ? 'Finalizar Desafio' : 'Próxima Pergunta'}
-                  </Button>
+                  
+                  <div className="flex justify-center">
+                    <Button
+                      onClick={handleContinue}
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg font-semibold"
+                      size="lg"
+                    >
+                      {currentQuestion === totalQuestions - 1 ? 'Ver Resultado Final' : 'Próxima Questão'}
+                    </Button>
+                  </div>
                 </div>
               )}
 
-              {!showResult && (
-                <div className="mt-6">
-                  <Button 
-                    onClick={handleNextQuestion} 
-                    disabled={selectedAnswer === null}
-                    className="w-full sm:w-auto sm:min-w-[200px]"
+              {!showResult && selectedAnswer !== null && (
+                <div className="flex justify-center mt-4">
+                  <Button
+                    onClick={handleNextQuestion}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg font-semibold"
                     size="lg"
                   >
-                    {selectedAnswer !== null ? 'Confirmar Resposta' : 'Selecione uma resposta'}
+                    Confirmar Resposta
                   </Button>
                 </div>
               )}

@@ -26,7 +26,7 @@ const QuizFlowWrapper = ({
     restartFlow,
     showCertificateModal,
     setShowCertificate
-  } = useQuizFlow(quizTitle)
+  } = useQuizFlow(quizTitle, onQuizStart)
 
   // Se o quiz não foi configurado ainda, mostrar apenas o modal de configuração
   if (!quizConfigured) {

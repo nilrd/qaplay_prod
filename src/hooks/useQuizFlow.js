@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const useQuizFlow = (quizTitle) => {
+export const useQuizFlow = (quizTitle, onQuizStartCallback) => {
   const navigate = useNavigate()
   
   // Estados dos modais
@@ -17,12 +17,16 @@ export const useQuizFlow = (quizTitle) => {
   
   // Função para iniciar o quiz com configurações
   const handleQuizStart = (questionCount, timeInSeconds) => {
-    console.log('Iniciando quiz com:', questionCount, 'questões e', timeInSeconds, 'segundos')
     setTotalQuestions(questionCount)
     setTotalTime(timeInSeconds)
     setQuizConfigured(true)
     setShowConfigModal(false)
     setShowUserModal(true) // Mostrar modal de usuário após configuração
+    
+    // Chamar a função callback se fornecida
+    if (onQuizStartCallback) {
+      onQuizStartCallback(questionCount, timeInSeconds)
+    }
   }
 
   // Função para lidar com informações do usuário

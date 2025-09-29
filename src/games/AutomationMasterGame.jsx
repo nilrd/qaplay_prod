@@ -63,9 +63,14 @@ const AutomationMasterGame = () => {
 
   // Function to start the quiz with configurations
   const handleQuizStart = (questionCount, timeInSeconds) => {
-    console.log('Iniciando quiz com:', questionCount, 'questões e', timeInSeconds, 'segundos')
     setTotalQuestions(questionCount)
     setTotalTime(timeInSeconds)
+    
+    // Usar questões diretamente sem limitedQuestions
+    const shuffledQuestions = shuffleArray(questions)
+    const limitedQuestionsArray = shuffledQuestions.slice(0, questionCount)
+    setQuestions(limitedQuestionsArray)
+    
     resetTimer(timeInSeconds)
     setGameStarted(true)
     setCurrentQuestion(0)
@@ -77,7 +82,6 @@ const AutomationMasterGame = () => {
 
   const handleUserInfoSubmit = (info) => {
     setUserInfo(info)
-    setGameStarted(true)
   }
 
   // Timer effect removido - agora gerenciado pelo hook useQuizTimer
@@ -292,8 +296,41 @@ const AutomationMasterGame = () => {
     )
   }
 
+  // Renderização simplificada - apenas verificar se o quiz foi iniciado
+  if (!gameStarted) {
+    return (
+      <QuizFlowWrapper
+        quizTitle="Desafio: Mestre da Automação"
+        onQuizStart={handleQuizStart}
+        onUserInfoSubmit={handleUserInfoSubmit}
+        onShowCertificate={() => {}}
+      >
+        <div></div>
+      </QuizFlowWrapper>
+    )
+  }
+
+  // Se o quiz foi iniciado, mostrar as questões
   const question = questions[currentQuestion]
   const progress = ((currentQuestion + 1) / totalQuestions) * 100
+
+  // Se não há questão atual, mostrar carregamento
+  if (!question) {
+    return (
+      <QuizFlowWrapper
+        quizTitle="Desafio: Mestre da Automação"
+        onQuizStart={handleQuizStart}
+        onUserInfoSubmit={handleUserInfoSubmit}
+        onShowCertificate={() => {}}
+      >
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-muted-foreground">Preparando questões...</p>
+          </div>
+        </div>
+      </QuizFlowWrapper>
+    )
+  }
 
   return (
     <QuizFlowWrapper
