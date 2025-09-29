@@ -59,8 +59,19 @@ const CertificatePage = () => {
       return;
     }
 
+    // Mapear nomes antigos para novos
+    const quizNameMapping = {
+      'CTFL Quiz Game': 'Mestre da Qualidade',
+      'CTFL 100 Quiz': 'Mestre da Qualidade',
+      'Desafio do Conhecimento QA - CTFL 4.0': 'Mestre da Qualidade',
+      'Desafio: Mestre da Qualidade': 'Mestre da Qualidade',
+      'Mestre da Automação': 'Mestre da Automação'
+    };
+    
+    const finalQuizName = quizNameMapping[quiz] || quiz;
+
     setCertificateData({
-      quiz,
+      quiz: finalQuizName,
       nome,
       score: scoreNum,
       totalQuestions: totalNum,
@@ -138,9 +149,13 @@ const CertificatePage = () => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       
+      // Configurar qualidade de renderização
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      
       // Definir dimensões
       canvas.width = 1800; // 2x para alta resolução
-      canvas.height = 1300;
+      canvas.height = 1500; // Aumentado para acomodar melhor o conteúdo reorganizado
       
       // Fundo branco
       ctx.fillStyle = '#ffffff';
@@ -155,165 +170,214 @@ const CertificatePage = () => {
       ctx.fillStyle = '#f8fafc';
       ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
       
-      // Título principal
-      ctx.fillStyle = '#1e40af';
-      ctx.font = 'bold 72px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('RELATÓRIO DE DESEMPENHO', canvas.width / 2, 150);
+        // Carregar e desenhar o logo
+        const logo = new Image();
+        logo.crossOrigin = 'anonymous';
+        logo.onload = () => {
+          // Desenhar o logo centralizado mantendo proporção
+          const logoMaxWidth = 300;
+          const logoMaxHeight = 80;
+          
+          // Calcular proporção para manter aspecto original
+          const aspectRatio = logo.naturalWidth / logo.naturalHeight;
+          let logoWidth = logoMaxWidth;
+          let logoHeight = logoWidth / aspectRatio;
+          
+          // Se altura exceder o máximo, ajustar pela altura
+          if (logoHeight > logoMaxHeight) {
+            logoHeight = logoMaxHeight;
+            logoWidth = logoHeight * aspectRatio;
+          }
+          
+          const logoX = (canvas.width - logoWidth) / 2;
+          const logoY = 40;
+          
+          ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
+          
+          // Continuar com o resto do desenho após carregar o logo
+          drawCertificateContent();
+        };
+        
+        logo.onerror = (error) => {
+          console.error('Erro ao carregar logo:', error);
+          console.log('Tentando carregar logo de:', logo.src);
+          // Se falhar ao carregar o logo, continuar sem ele
+          drawCertificateContent();
+        };
+        
+        logo.src = '/qa-play-logo.png';
+        
+        const drawCertificateContent = () => {
+          // Título principal - maior e mais destacado
+          ctx.fillStyle = '#1e40af';
+          ctx.font = 'bold 80px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('RELATÓRIO DE DESEMPENHO', canvas.width / 2, 250);
+          
+          // Subtítulo
+          ctx.fillStyle = '#64748b';
+          ctx.font = '36px Arial';
+          ctx.fillText('QAPlay - Quality Assurance', canvas.width / 2, 320);
+          
+          // Descrição
+          ctx.font = '24px Arial';
+          ctx.fillText('Baseado no Syllabus ISTQB® CTFL 4.0', canvas.width / 2, 370);
       
-      // Subtítulo
-      ctx.fillStyle = '#64748b';
-      ctx.font = '40px Arial';
-      ctx.fillText('QAPlay - Quality Assurance', canvas.width / 2, 200);
+          // Texto de certificação - menor e mais sutil
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '28px Arial';
+          ctx.fillText('Certificamos que', canvas.width / 2, 450);
+          
+          // Nome do usuário - menor que o título mas destacado
+          ctx.fillStyle = '#7c3aed';
+          ctx.font = 'bold 64px Arial';
+          
+          // Truncar nome se muito longo
+          let userName = certificateData.nome;
+          if (userName.length > 25) {
+            userName = userName.substring(0, 22) + '...';
+          }
+          
+          ctx.fillText(userName, canvas.width / 2, 520);
+          
+          // Descrição da conclusão - texto secundário
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '24px Arial';
+          
+          // Truncar nome do quiz se muito longo
+          let quizDisplayName = certificateData.quiz;
+          if (quizDisplayName.length > 50) {
+            quizDisplayName = quizDisplayName.substring(0, 47) + '...';
+          }
+          
+          ctx.fillText(`concluiu o ${quizDisplayName}`, canvas.width / 2, 580);
+          
+          // Caixa de resultados - layout reorganizado
+          const boxX = canvas.width / 2 - 500;
+          const boxY = 640;
+          const boxWidth = 1000;
+          const boxHeight = 220;
+          
+          // Fundo da caixa
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
+          
+          // Borda da caixa
+          ctx.strokeStyle = '#e2e8f0';
+          ctx.lineWidth = 3;
+          ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
+          
+          // Layout de 4 colunas iguais
+          const colWidth = boxWidth / 4;
+          const centerY = boxY + (boxHeight / 2);
+          
+          // Coluna 1: Acertos
+          const col1X = boxX + (colWidth / 2);
+          ctx.fillStyle = '#1e40af';
+          ctx.font = 'bold 80px Arial';
+          ctx.textAlign = 'center';
+          let scoreText = certificateData.score.toString();
+          if (scoreText.length > 3) {
+            ctx.font = 'bold 60px Arial';
+          }
+          ctx.fillText(scoreText, col1X, centerY - 20);
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '24px Arial';
+          ctx.fillText('Acertos', col1X, centerY + 40);
+          
+          // Coluna 2: Total de Questões
+          const col2X = boxX + colWidth + (colWidth / 2);
+          ctx.fillStyle = '#64748b';
+          ctx.font = 'bold 80px Arial';
+          let totalText = certificateData.totalQuestions.toString();
+          if (totalText.length > 3) {
+            ctx.font = 'bold 60px Arial';
+          }
+          ctx.fillText(totalText, col2X, centerY - 20);
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '24px Arial';
+          ctx.fillText('Total de Questões', col2X, centerY + 40);
+          
+          // Coluna 3: Taxa de Acerto
+          const col3X = boxX + (colWidth * 2) + (colWidth / 2);
+          ctx.fillStyle = '#16a34a';
+          ctx.font = 'bold 80px Arial';
+          let percentageText = certificateData.percentage + '%';
+          if (percentageText.length > 4) {
+            ctx.font = 'bold 60px Arial';
+          }
+          ctx.fillText(percentageText, col3X, centerY - 20);
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '24px Arial';
+          ctx.fillText('Taxa de Acerto', col3X, centerY + 40);
+          
+          // Coluna 4: Nível
+          const col4X = boxX + (colWidth * 3) + (colWidth / 2);
+          const levelText = getBadgeLevel();
+          const badgePadding = 20;
+          const badgeWidth = Math.max(ctx.measureText(levelText).width + (badgePadding * 2), 100);
+          const badgeHeight = 50;
+          
+          // Fundo do nível
+          ctx.fillStyle = getBadgeColor();
+          ctx.fillRect(col4X - (badgeWidth / 2), centerY - 35, badgeWidth, badgeHeight);
+          
+          // Texto do nível
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 24px Arial';
+          ctx.fillText(levelText, col4X, centerY - 5);
+          ctx.fillStyle = '#6b7280';
+          ctx.font = '24px Arial';
+          ctx.fillText('Nível', col4X, centerY + 40);
+          
+          // Restaurar alinhamento para o resto do código
+          ctx.textAlign = 'center';
+          
+          // Data de conclusão - maior e com melhor contraste
+          ctx.fillStyle = '#374151';
+          ctx.font = '32px Arial';
+          ctx.fillText('Data de conclusão: ' + new Date(certificateData.data).toLocaleDateString('pt-BR'), canvas.width / 2, 920);
+          
+          // Footer - maior e com melhor contraste
+          ctx.font = '28px Arial';
+          ctx.fillText('QAPlay - Plataforma de Treinamento em Quality Assurance', canvas.width / 2, 970);
+          
+          ctx.font = '24px Arial';
+          ctx.fillStyle = '#6b7280';
+          ctx.fillText('Relatório gerado automaticamente pelo sistema QAPlay', canvas.width / 2, 1010);
       
-      // Descrição
-      ctx.font = '28px Arial';
-      ctx.fillText('Baseado no Syllabus ISTQB® CTFL 4.0', canvas.width / 2, 240);
-      
-      // Texto de certificação
-      ctx.fillStyle = '#374151';
-      ctx.font = '36px Arial';
-      ctx.fillText('Certificamos que', canvas.width / 2, 320);
-      
-      // Nome do usuário
-      ctx.fillStyle = '#1e40af';
-      ctx.font = 'bold 56px Arial';
-      
-      // Truncar nome se muito longo
-      let userName = certificateData.nome;
-      if (userName.length > 25) {
-        userName = userName.substring(0, 22) + '...';
-      }
-      
-      ctx.fillText(userName, canvas.width / 2, 380);
-      
-      // Descrição da conclusão
-      ctx.fillStyle = '#64748b';
-      ctx.font = '32px Arial';
-      
-      // Truncar nome do quiz se muito longo
-      let quizDisplayName = certificateData.quiz;
-      if (quizDisplayName.length > 50) {
-        quizDisplayName = quizDisplayName.substring(0, 47) + '...';
-      }
-      
-      ctx.fillText(`concluiu o ${quizDisplayName}`, canvas.width / 2, 420);
-      
-      // Caixa de resultados
-      const boxX = canvas.width / 2 - 500;
-      const boxY = 480;
-      const boxWidth = 1000;
-      const boxHeight = 200;
-      
-      // Fundo da caixa
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(boxX, boxY, boxWidth, boxHeight);
-      
-      // Borda da caixa
-      ctx.strokeStyle = '#e2e8f0';
-      ctx.lineWidth = 4;
-      ctx.strokeRect(boxX, boxY, boxWidth, boxHeight);
-      
-      // Acertos
-      ctx.fillStyle = '#1e40af';
-      ctx.font = 'bold 96px Arial';
-      
-      // Ajustar tamanho da fonte se número muito grande
-      let scoreText = certificateData.score.toString();
-      if (scoreText.length > 3) {
-        ctx.font = 'bold 72px Arial';
-      }
-      ctx.fillText(scoreText, boxX + 200, boxY + 120);
-      
-      // Total de questões
-      ctx.fillStyle = '#64748b';
-      ctx.font = 'bold 96px Arial';
-      
-      // Ajustar tamanho da fonte se número muito grande
-      let totalText = certificateData.totalQuestions.toString();
-      if (totalText.length > 3) {
-        ctx.font = 'bold 72px Arial';
-      }
-      ctx.fillText(totalText, boxX + 400, boxY + 120);
-      
-      // Porcentagem
-      ctx.fillStyle = '#16a34a';
-      ctx.font = 'bold 96px Arial';
-      
-      // Ajustar tamanho da fonte se porcentagem muito grande
-      let percentageText = certificateData.percentage + '%';
-      if (percentageText.length > 4) {
-        ctx.font = 'bold 72px Arial';
-      }
-      ctx.fillText(percentageText, boxX + 600, boxY + 120);
-      
-      // Nível
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 28px Arial';
-      const levelText = getBadgeLevel();
-      const levelWidth = ctx.measureText(levelText).width;
-      const levelX = boxX + 800;
-      const levelY = boxY + 80;
-      
-      // Fundo do nível - ajustar largura para acomodar texto
-      const badgePadding = 30;
-      const badgeWidth = Math.max(levelWidth + (badgePadding * 2), 120);
-      const badgeHeight = 60;
-      
-      ctx.fillStyle = getBadgeColor();
-      ctx.fillRect(levelX - (badgeWidth / 2), levelY - (badgeHeight / 2), badgeWidth, badgeHeight);
-      
-      // Texto do nível
-      ctx.fillStyle = '#ffffff';
-      ctx.textAlign = 'center';
-      ctx.fillText(levelText, levelX, levelY + 8);
-      
-      // Labels
-      ctx.fillStyle = '#64748b';
-      ctx.font = '28px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('Acertos', boxX + 200, boxY + 160);
-      ctx.fillText('Total de Questões', boxX + 400, boxY + 160);
-      ctx.fillText('Taxa de Acerto', boxX + 600, boxY + 160);
-      ctx.fillText('Nível', levelX, boxY + 160);
-      
-      // Restaurar alinhamento para o resto do código
-      ctx.textAlign = 'center';
-      
-      // Data de conclusão
-      ctx.fillStyle = '#64748b';
-      ctx.font = '28px Arial';
-      ctx.fillText('Data de conclusão: ' + new Date(certificateData.data).toLocaleDateString('pt-BR'), canvas.width / 2, 750);
-      
-      // Footer
-      ctx.font = '24px Arial';
-      ctx.fillText('QAPlay - Plataforma de Treinamento em Quality Assurance', canvas.width / 2, 800);
-      
-      ctx.font = '20px Arial';
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillText('Relatório gerado automaticamente pelo sistema QAPlay', canvas.width / 2, 840);
-      
-      // Download da imagem
-      const link = document.createElement('a');
-      
-      // Sanitizar nome do arquivo
-      const sanitizedName = certificateData.nome
-        .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove caracteres especiais
-        .replace(/\s+/g, '-') // Substitui espaços por hífens
-        .toLowerCase();
-      
-      link.download = `relatorio-desempenho-qaplay-${sanitizedName}.png`;
-      link.href = canvas.toDataURL('image/png', 1.0);
-      link.click();
-      
-      // Restaurar botão
-      if (button) {
-        button.disabled = false;
-        button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
-      }
+          // Download da imagem - agora dentro da função drawCertificateContent
+          try {
+            const link = document.createElement('a');
+            
+            // Sanitizar nome do arquivo
+            const sanitizedName = certificateData.nome
+              .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove caracteres especiais
+              .replace(/\s+/g, '-') // Substitui espaços por hífens
+              .toLowerCase();
+            
+            link.download = `relatorio-desempenho-qaplay-${sanitizedName}.png`;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
+            
+            // Restaurar botão
+            if (button) {
+              button.disabled = false;
+              button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
+            }
+          } catch (downloadError) {
+            console.error('Erro ao fazer download:', downloadError);
+            // Restaurar botão em caso de erro
+            if (button) {
+              button.disabled = false;
+              button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
+            }
+            alert('Erro ao gerar a imagem. Tente novamente.');
+          }
+        };
       
     } catch (error) {
-      console.error('Erro detalhado ao gerar certificado:', error);
+      console.error('Erro ao gerar certificado:', error);
       
       // Restaurar botão em caso de erro
       const button = document.querySelector('[data-testid="download-button"]');
@@ -322,7 +386,7 @@ const CertificatePage = () => {
         button.innerHTML = '<svg style="margin-right: 8px; height: 16px; width: 16px;" data-lucide="download"></svg>Baixar como Imagem';
       }
       
-      alert('Ocorreu um erro ao gerar a imagem. Por favor, tente novamente.');
+      alert('Ocorreu um erro ao gerar o certificado. Tente novamente.');
     }
   };
 
@@ -423,39 +487,60 @@ const CertificatePage = () => {
             <div style={{ padding: '0' }}>
               <div 
                 ref={certificateRef}
-                style={{ 
-                  width: '900px',
-                  height: '650px',
+                style={{
+                  width: '100%',
+                  maxWidth: '100vw',
+                  minHeight: '100vh',
                   backgroundColor: '#f8fafc',
-                  border: '3px solid #3b82f6',
-                  borderRadius: '12px',
-                  padding: '50px',
+                  border: '2px solid #3b82f6',
+                  borderRadius: '8px',
+                  padding: '20px',
                   textAlign: 'center',
                   fontFamily: 'Arial, sans-serif',
                   position: 'relative',
-                  margin: '0 auto',
+                  margin: '0',
                   boxSizing: 'border-box'
                 }}
               >
           {/* Header */}
-                <div style={{ marginBottom: '30px' }}>
+                <div style={{ marginBottom: '15px' }}>
+                  {/* Logo */}
+                  <div style={{ marginBottom: '10px' }}>
+                    <img 
+                      src="/qa-play-logo.png" 
+                      alt="QAPlay Logo" 
+                      style={{ 
+                        height: '80px', 
+                        width: 'auto',
+                        maxWidth: '300px',
+                        margin: '0 auto',
+                        display: 'block',
+                        objectFit: 'contain',
+                        imageRendering: 'high-quality'
+                      }}
+                      onError={(e) => {
+                        console.error('Erro ao carregar logo:', e);
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  </div>
                   <div style={{ 
-                    fontSize: '36px', 
+                    fontSize: '28px', 
                     fontWeight: 'bold', 
                     color: '#1e40af',
-                    marginBottom: '10px'
+                    marginBottom: '8px'
                   }}>
                     RELATÓRIO DE DESEMPENHO
                   </div>
                   <div style={{ 
-                    fontSize: '20px', 
+                    fontSize: '16px', 
                     color: '#64748b',
-                    marginBottom: '5px'
+                    marginBottom: '4px'
                   }}>
                     QAPlay - Quality Assurance
               </div>
                   <div style={{ 
-                    fontSize: '14px', 
+                    fontSize: '12px', 
                     color: '#94a3b8'
                   }}>
                     Baseado no Syllabus ISTQB® CTFL 4.0
@@ -463,7 +548,7 @@ const CertificatePage = () => {
           </div>
 
           {/* Conteúdo Principal */}
-                <div style={{ marginBottom: '30px' }}>
+                <div style={{ marginBottom: '15px' }}>
                   <div style={{ 
                     fontSize: '18px', 
                     color: '#374151',
@@ -492,8 +577,8 @@ const CertificatePage = () => {
                   backgroundColor: '#ffffff',
                   border: '2px solid #e2e8f0',
                   borderRadius: '8px',
-                  padding: '30px',
-                  marginBottom: '30px',
+                  padding: '20px',
+                  marginBottom: '15px',
                   display: 'grid',
                   gridTemplateColumns: 'repeat(4, 1fr)',
                   gap: '20px',
@@ -570,7 +655,7 @@ const CertificatePage = () => {
                   fontSize: '14px', 
                   color: '#64748b',
                   borderTop: '1px solid #e2e8f0',
-                  paddingTop: '20px'
+                  paddingTop: '10px'
                 }}>
                   <div style={{ marginBottom: '5px' }}>
                     Data de conclusão: {new Date(certificateData.data).toLocaleDateString('pt-BR')}

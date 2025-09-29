@@ -13,8 +13,8 @@ const Train = () => {
           </Link>
         </Button>
         <div>
-          <h1 className="text-2xl font-bold">Desafio do Conhecimento QA</h1>
-          <p className="text-muted-foreground">30 questões baseadas no CTFL 4.0 com certificação e compartilhamento</p>
+          <h1 className="text-2xl font-bold">Mestre da Qualidade</h1>
+          <p className="text-muted-foreground">200+ questões inspiradas nos materiais públicos do CTFL 4.0 com certificação e compartilhamento</p>
         </div>
       </div>
       
@@ -31,7 +31,7 @@ const Train = () => {
           </Button>
           <Button variant="outline" asChild>
             <Link to="/jogos/ctfl-100-quiz">
-              Quiz CTFL 4.0
+              Mestre da Qualidade
             </Link>
           </Button>
         </div>

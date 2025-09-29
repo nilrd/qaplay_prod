@@ -15,7 +15,6 @@ import CertificatePage from './pages/CertificatePage'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Jogos da aba Treinar
-import CTFLGamePage from './pages/CTFLGamePage'
 import SDLCGamePage from './pages/SDLCGamePage'
 import AutomationGamePage from './pages/AutomationGamePage'
 import AgileGamePage from './pages/AgileGamePage'
@@ -40,7 +39,6 @@ function App() {
             <Route path="jogos/automation-master" element={<AutomationMasterGame />} />
             <Route path="treinar" element={<Train />} />
             <Route path="treinar/exercicios" element={<TrainContent />} />
-            <Route path="treinar/jogo/fundamentos-ctfl" element={<CTFLGamePage />} />
             <Route path="treinar/jogo/sdlc-stlc" element={<SDLCGamePage />} />
             <Route path="treinar/jogo/automacao-frameworks" element={<AutomationGamePage />} />
             <Route path="treinar/jogo/metodologias-ageis" element={<AgileGamePage />} />

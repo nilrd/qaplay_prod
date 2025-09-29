@@ -242,7 +242,7 @@ const AutomationMasterGame = () => {
 
                       // Construir URL com parâmetros
                       const params = new URLSearchParams({
-                        quiz: 'Mestre da Automação',
+                        quiz: 'Desafio: Mestre da Automação',
                         nome: userInfo?.name || 'Usuário',
                         score: answers.filter(answer => answer.isCorrect).length.toString(),
                         total: totalQuestions.toString(),

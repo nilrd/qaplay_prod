@@ -11,8 +11,8 @@ const Quizzes = () => {
   const quizzes = [
     {
       id: 'ctfl-100-quiz',
-      title: 'Desafio do Conhecimento QA - CTFL 4.0',
-      description: 'Valide sua base de conhecimento em Quality Assurance. Este desafio é alinhado com o syllabus oficial e é o primeiro passo para provar sua maestria nos fundamentos.',
+      title: 'Mestre da Qualidade',
+      description: 'Valide sua base de conhecimento em Quality Assurance. Este desafio é inspirado nos materiais públicos do CTFL 4.0 e é o primeiro passo para provar sua maestria nos fundamentos.',
       icon: '🎯',
       difficulty: 'Intermediário',
       estimatedTime: '30-40 min',

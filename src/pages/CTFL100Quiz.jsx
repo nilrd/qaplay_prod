@@ -142,7 +142,7 @@ const CTFL100Quiz = () => {
   if (!gameStarted) {
     return (
       <QuizFlowWrapper
-        quizTitle="Desafio: Mestre da Qualidade"
+        quizTitle="Mestre da Qualidade"
         onQuizStart={handleQuizStart}
         onUserInfoSubmit={handleUserInfoSubmit}
         onShowCertificate={() => {}}
@@ -160,7 +160,7 @@ const CTFL100Quiz = () => {
 
     return (
       <QuizFlowWrapper
-        quizTitle="Desafio: Mestre da Qualidade"
+        quizTitle="Mestre da Qualidade"
         onQuizStart={handleQuizStart}
         onUserInfoSubmit={handleUserInfoSubmit}
         onShowCertificate={() => {}}
@@ -237,7 +237,7 @@ const CTFL100Quiz = () => {
 
                       // Construir URL com parâmetros
                       const params = new URLSearchParams({
-                        quiz: 'CTFL 100 Quiz',
+                        quiz: 'Mestre da Qualidade',
                         nome: userInfo?.name || 'Usuário',
                         score: answers.filter(answer => answer.isCorrect).length.toString(),
                         total: totalQuestions.toString(),
