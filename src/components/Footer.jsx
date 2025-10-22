@@ -109,9 +109,28 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {currentYear} QAPlay. <Heart className="h-4 w-4 inline text-red-500" /> Uma iniciativa de Nilson Brites para a comunidade de QA.
           </p>
-          <p className="text-sm text-muted-foreground mt-2 md:mt-0">
-            Todos os direitos reservados.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-4 mt-2 md:mt-0">
+            <p className="text-sm text-muted-foreground">
+              Todos os direitos reservados.
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">Desenvolvido por</span>
+              <a 
+                href="https://sites.qaplay.com.br/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="/images/qaplaystudio.png" 
+                  alt="QAPlay Studio" 
+                  className="h-6 w-auto"
+                />
+                <span className="text-sm font-medium text-primary">QAPlay Studio</span>
+              </a>
+              <span className="text-sm text-muted-foreground">por Nilson Brites</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -231,19 +231,22 @@ const About = () => {
                 <p>
                   Profissional hands-on, autodidata e comprometido com o aprendizado contínuo, sempre buscando 
                   qualidade e superação de desafios, mesmo diante de novas tecnologias. Com perfil analítico e boa 
-                  comunicação, atuo como <strong className="text-foreground">Analista de Testes em times ágeis com framework Scrum</strong>, 
+                  comunicação, atuo como <strong className="text-foreground">Analista de Testes em times ágeis utilizando o framework Scrum</strong>, 
                   participando de todo o ciclo de desenvolvimento (SDLC), desde o refinamento das histórias de usuário até a entrega final.
                 </p>
                 <p>
-                  Nessa fase inicial, colaboro para garantir que os requisitos estejam claros, completos e livres de ambiguidades, 
-                  contribuindo com o time de desenvolvimento na prevenção de erros através do conceito de <strong className="text-foreground">shift left testing</strong>. 
-                  Tenho experiência com <strong className="text-foreground">testes manuais e automatizados</strong>, aplicando técnicas de testes de caixa preta 
+                  Nessa etapa inicial, colaboro para garantir que os requisitos estejam claros, completos e livres de ambiguidades, 
+                  apoiando o time de desenvolvimento na prevenção de erros por meio do conceito de <strong className="text-foreground">shift left testing</strong>. 
+                  Tenho experiência em <strong className="text-foreground">testes manuais e automatizados</strong>, aplicando técnicas de caixa preta 
                   como Particionamento de Equivalência, Análise de Valor Limite, Tabela de Decisão e Transição de Estado.
                 </p>
                 <p>
                   Elaboro e executo testes funcionais, não funcionais, positivos, negativos e regressivos, além de manter 
-                  scripts de automação e executar casos de teste em pipelines. Também sou responsável pelo reporte de bugs 
-                  e sugestões de melhoria ao time técnico.
+                  scripts de automação e executar casos de teste em pipelines. Também sou responsável por reportar bugs 
+                  e sugestões de melhoria ao time técnico, contribuindo ativamente para a evolução contínua do produto.
+                </p>
+                <p>
+                  Atualmente, aprofundando conhecimentos em DevOps e IA Generativa, com foco em integrar qualidade, automação e inteligência na entrega de software. Estou sempre em busca de melhorias contínuas e de novas formas de elevar o padrão de qualidade nas entregas.
                 </p>
               </div>
             </CardContent>
