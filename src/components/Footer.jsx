@@ -119,14 +119,13 @@ const Footer = () => {
                 href="https://sites.qaplay.com.br/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                className="hover:opacity-80 transition-opacity"
               >
                 <img 
                   src="/images/qaplaystudio.png" 
                   alt="QAPlay Studio" 
                   className="h-6 w-auto"
                 />
-                <span className="text-sm font-medium text-primary">QAPlay Studio</span>
               </a>
               <span className="text-sm text-muted-foreground">por Nilson Brites</span>
             </div>
