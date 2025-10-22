@@ -177,9 +177,14 @@ const About = () => {
                   Analista de Testes QA
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Sou um profissional de QA hands-on e analítico, com experiência em todo o ciclo de desenvolvimento de software (SDLC) em times ágeis (Scrum). Atuo desde o refinamento de requisitos, garantindo clareza e prevenindo defeitos por meio do conceito de shift left testing. Tenho experiência na elaboração e execução de testes manuais e automatizados — funcionais, não funcionais e regressivos — além da criação e manutenção de scripts de automação.
+                  Sou um profissional de Qualidade que entende que o verdadeiro objetivo do QA não é apenas encontrar bugs, mas garantir qualidade em cada etapa do desenvolvimento.
                   <br /><br />
-                  Criei o QAPlay como um projeto pessoal para aplicar na prática tudo o que aprendo sobre testes, automação e UX, explorando novas ideias e fortalecendo minhas habilidades de engenharia de qualidade.
+                  Sei que testar tudo é impossível, por isso valorizo um olhar crítico e analítico para identificar riscos, priorizar o que realmente importa e contribuir para entregas mais assertivas.
+                  <br /><br />
+                  Sou adaptável a ambientes de pressão e mantenho o foco na entrega com qualidade.
+                  O QAPlay nasceu como um espaço pessoal para apresentar meu perfil e evoluiu para um projeto interativo, com quizzes voltados a QAs que desejam testar e aprimorar seus conhecimentos sobre Qualidade de Software.
+                  <br /><br />
+                  Acredito que testar cedo é investir na qualidade: iniciar os testes desde o levantamento de requisitos é o caminho mais eficiente — e econômico — para construir produtos melhores.
                 </p>
               </div>
               
