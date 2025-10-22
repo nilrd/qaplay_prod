@@ -178,13 +178,10 @@ const About = () => {
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
                   Sou um profissional de Qualidade que entende que o verdadeiro objetivo do QA não é apenas encontrar bugs, mas garantir qualidade em cada etapa do desenvolvimento.
-                  <br /><br />
                   Sei que testar tudo é impossível, por isso valorizo um olhar crítico e analítico para identificar riscos, priorizar o que realmente importa e contribuir para entregas mais assertivas.
-                  <br /><br />
                   Sou adaptável a ambientes de pressão e mantenho o foco na entrega com qualidade.
                   O QAPlay nasceu como um espaço pessoal para apresentar meu perfil e evoluiu para um projeto interativo, com quizzes voltados a QAs que desejam testar e aprimorar seus conhecimentos sobre Qualidade de Software.
-                  <br /><br />
-                  Acredito que testar cedo é investir na qualidade: iniciar os testes desde o levantamento de requisitos é o caminho mais eficiente — e econômico — para construir produtos melhores.
+                  Acredito que testar cedo é investir na qualidade: iniciar os testes desde o levantamento de requisitos é o caminho mais eficiente e econômico para construir produtos melhores.
                 </p>
               </div>
               
