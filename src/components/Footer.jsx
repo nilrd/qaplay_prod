@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin, Mail, Heart, MessageCircle, Instagram, Phone } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart, MessageCircle, Instagram, Phone, Bug } from 'lucide-react'
 import AdBannerFooter from './ads/AdBannerFooter'
+import BugReportModal from './BugReportModal'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -102,6 +103,16 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               Quality Assurance Engineer que acredita no poder da colaboração para aprender e evoluir o conhecimento em QA.
             </p>
+            
+            {/* Bug Report Section */}
+            <div className="space-y-4">
+              <BugReportModal>
+                <button className="flex items-center gap-2 text-sm text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 transition-colors">
+                  <Bug className="h-4 w-4" />
+                  Encontrou algum bug? Clique aqui e report.
+                </button>
+              </BugReportModal>
+            </div>
           </div>
         </div>
 
